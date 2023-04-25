@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href={{asset('icons/pulse.png')}} type="image/png" sizes="32x32">
+    <link rel="icon" href={{('icons/pulse.png')}} type="image/png" sizes="32x32">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
+    <link href="{{ ('css/font-awesome.min.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ ('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ ('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/highcharts/highcharts.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/highcharts/highcharts-3d.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/highcharts/modules/exporting.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/highcharts/modules/offline-exporting.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/highcharts/modules/accessibility.js') }}"></script>
+    <script type="text/javascript" src="{{ ('js/highcharts/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ ('js/highcharts/highcharts-3d.js') }}"></script>
+    <script type="text/javascript" src="{{ ('js/highcharts/modules/exporting.js') }}"></script>
+    <script type="text/javascript" src="{{ ('js/highcharts/modules/offline-exporting.js') }}"></script>
+    <script type="text/javascript" src="{{ ('js/highcharts/modules/accessibility.js') }}"></script>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>RO1 CIP</title>
