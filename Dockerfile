@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine
+FROM php:7.4-apache
 
 RUN apk add --no-cache nginx wget
 
@@ -13,6 +13,8 @@ COPY ./src /app
 RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar && mv composer.phar /usr/local/bin/composer"
 RUN cd /app && \
     /usr/local/bin/composer install --no-dev
+RUN docker-php-install -j "nproc" opcache
+RUN docker-php-ext-install -j "nproc" pdo pdo_mysql
 
 RUN chown -R www-data: /app
 
