@@ -232,13 +232,6 @@
                         <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</span>
                 </div>
             </div>
-            <div class="col-auto" style="margin-right:15px;">
-                <div class="input-group input-group-sm">
-                    <span id="export_data" class="btn btn-info btn-sm">
-                        <i class="fa fa-database" aria-hidden="true" style="color:black;"></i>&nbsp; Data
-                        Download</span>
-                </div>
-            </div>
         </div>
     </div>
 

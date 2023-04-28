@@ -16,6 +16,7 @@ function Stream(target){
     this.ufData = $('#ufdata'+target).val();
 
 }
+
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
                     this.ufData = $('#ufdata'+target).val();
@@ -23,8 +24,8 @@ function ChartParam(target){
                     this.lable = $('#dt_label'+target).is(':checked');
                     this.yAxis = $('#y_axis'+target).is(':checked');
                     this.chartType = $('#chart_type'+target).val();
-                    this.lineWidth = $('#line_width'+target).val();
-                    this.markerWeight =  $('#marker'+target).val();
+                    this.lineWidth = parseFloat($('#line_width'+target).val());
+                    this.markerWeight =  parseFloat($('#marker'+target).val());
                     this.markerShape = $('#marker_shape'+target).val();
                     this.modalColor = $(".modelheader"+target).css({'background-color':this.pen});
                     this.modalTitle = $('#seriestitle'+target).html('Series '+target+': '+$("#ufdata"+target+" option:selected").text());
@@ -49,19 +50,19 @@ $('.tensor-flow,.rednder').change(function(){
     let fx1 = $('#start_date').val();
     let fx2 = $('#end_date').val();
 let query_days_calc = getNumberOfDays(fx1,fx2);
-if(query_days_calc >12000 ){
+if(query_days_calc >600){
     $( ".query_fire" ).prop( "disabled", true); 
     $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 
     Notiflix.Report.Failure('Query Warning','Check your query, max 600 days query allowed','Close');
 }else if(query_days_calc<0){
-    $( ".query_fire" ).prop( "disabled", true); 
-    $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
+    $( "#trigger" ).prop( "disabled", true); 
+    $("#trigger").removeClass("btn-light,query_fire") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 
-    Notiflix.Report.Failure('Query Warning','check query, invalid dates range !','Close');
+    //Notiflix.Report.Failure('Query Warning','check query, invalid dates range !','Close');
 }else{
-    $( ".query_fire" ).prop( "disabled", false );
-    $(".query_fire").removeClass("btn-danger") .addClass("btn-success"); }
+    $( "#trigger" ).prop( "disabled", false );
+    $("#trigger").removeClass("btn-danger") .addClass("btn-warning"); }
     ;})
 
 function queryStream(){
@@ -102,7 +103,7 @@ headers:{"x-CSRF-TOKEN":csrfToken}
 })
 .then(response =>response.text())
 .then((data) =>{
-    console.log(data);
+    //console.log(data);
 try{
 let dataStream = JSON.parse(data);
 let date =dataStream[0];
@@ -186,8 +187,8 @@ let avera1 = collection.reduce((a, b) => a + b, 0) / collection.length;
 $("#data_max"+series).html(dmax1.toFixed(valLimit));
 $("#data_min"+series).html(dmin1.toFixed(valLimit));
 $("#data_avg"+series).html(avera1.toFixed(valLimit));}}
-else{Notiflix.Notify.Failure('Series'+series+ ' : check data Query');
-Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
+else{Notiflix.Notify.Failure('Series'+series+' :Empty data array');
+//Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
 $("#data_length"+series).html('0');
 $("#data_max"+series).html('-');
 $("#data_min"+series).html('-');
@@ -209,9 +210,15 @@ $("#unit"+series).html(" ");
         var date2_mode = date2_day +'-'+full_months_array[date2_month] + '-'+full_year2;
         var dates_diff_cal = getNumberOfDays(datex[0], datex[datex.length -1]);
 renderedChart();
-$( ".chart_render" ).change(function(){renderedChart();});
-$( ".filter" ).click(function(){renderedChart();});
+$( ".apply_changes" ).prop('disabled', true); 
+$( ".chart_render" ).change(function(){
+$( ".apply_changes" ).prop('disabled', false);
+$(".apply_changes").addClass("btn-danger").removeClass("btn-secondary");
+$( ".apply_changes" ).prop('disabled', false);  });
+$( ".apply_changes" ).click(function(){renderedChart();});
 function renderedChart(){
+$(".apply_changes").addClass("btn-secondary").removeClass("btn-danger");
+$( ".apply_changes" ).prop('disabled', true); 
 const st = {
 dpi_906:{
         unit:" bar",
@@ -1261,9 +1268,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               visible:s1Param.series,
                                                               showInLegend:s1Param.series,
                                                               data: dataSeries1x,                                          
-                                                              lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
+                                                             lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
                                                               yAxis:st[s1Param.ufData]['yAxis'],
-                                                              className:s1Param.chartType,
+                                                             className:s1Param.chartType,
                                                               tooltip: {
                                                                 crosshairs: [true, true],
                                                                 headerFormat: '{point.key}<br>',

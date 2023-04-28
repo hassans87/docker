@@ -31,9 +31,9 @@ Route::POST('/ro1norm', [RO1Normalisation::class, 'firstPassNorms'])->name('ro1.
 ROUTE::POST('/users/authenticate',[UserController::class, 'authenticate']);
 
 
-Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+Route::get('/register', [UserController::class, 'create'])->middleware('auth');
 
 // Create New User
-Route::POST('/users', [UserController::class, 'store']);
+Route::POST('/users', [UserController::class, 'store'])->middleware('auth');
 // Log User Out
 Route::POST('/logout', [UserController::class, 'logout'])->middleware('auth');

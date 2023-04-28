@@ -12,11 +12,11 @@
     <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts/highcharts.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts/highcharts-3d.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts/modules/exporting.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts/modules/offline-exporting.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts/modules/accessibility.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/highcharts-3d.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/modules/exporting.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/modules/offline-exporting.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>RO First Pass </title>
 </head>
@@ -133,11 +133,11 @@
 
         // Notiflix Notify Init - global.js
         Notiflix.Notify.Init({
-          width:'250px',
-          opacity:0.6,
+          width:'300px',
+          opacity:1,
           fontSize:'12px',
           timeout:3000,
-          messageMaxLength:200,
+          messageMaxLength:250,
           position:'right-bottom',
           cssAnimationStyle:"zoom",
         });
@@ -208,17 +208,10 @@
 </div>
       <div class="col-auto" style="margin-right:15px;">
               <div class="input-group input-group-sm">
-              <span id="query_fire" class="query_fire btn btn-warning btn-sm">
-              <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</span>
+              <button id="trigger" class="query_fire btn btn-warning btn-sm">
+              <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</button>
               </div>
               </div>
-            <div class="col-auto" style="margin-right:15px;">
-            <div class="input-group input-group-sm">
-            <span id="export_data" class="btn btn-info btn-sm">
-            <i class="fa fa-database" aria-hidden="true" style="color:black;"></i>&nbsp; Data Download</span>
-            </div>
-            </div>
-
               </div>
 
 
@@ -306,7 +299,7 @@
 
 
                 <div class="row mb-2">
-                  <label for="chart_type1" class="chart_render col-sm-4 col-form-label">Chart Type</label>
+                  <label for="chart_type1" class="col-sm-4 col-form-label">Chart Type</label>
                   <div class="col-sm-4">
                     <select class="chart_render form-control form-select" id="chart_type1">
                         <option value="spline" selected="">Line</option>
@@ -326,7 +319,7 @@
                  <div class="row mb-2">
                   <label for="marker1" class="col-sm-4 col-form-label">Marker Weight</label>
                   <div class="col-sm-4">
-                  <input type="number" id="marker1" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4">
+                  <input type="number" id="marker1" class="chart_render form-control" value="2" min="0" step="1" max="4">
                   </div>
                 </div>
                  <div class="row mb-2">
@@ -355,7 +348,8 @@
                   </div>
                 </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm btn-primary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>
@@ -457,7 +451,7 @@
                   </div>
                 </div>
                  <div class="row mb-2">
-                  <label for="marker1" class="col-sm-4 col-form-label">Marker Weight</label>
+                  <label for="marker2" class="col-sm-4 col-form-label">Marker Weight</label>
                   <div class="col-sm-4">
                   <input type="number" id="marker2" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4">
                   </div>
@@ -488,7 +482,8 @@
                   </div>
                 </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm secondary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>
@@ -623,7 +618,8 @@
                   </div>
                 </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm btn-secondary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>
@@ -755,7 +751,8 @@
                   </div>
                 </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm btn-secondary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>
@@ -888,7 +885,8 @@
                   </div>
                 </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm btn-secondary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>
@@ -1025,7 +1023,8 @@
                 </div>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm btn-secondary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>
@@ -1156,7 +1155,8 @@
                   </div>
                 </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-sm btn-secondary apply_changes" >Apply Changes</button>
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                     </div>
                   </div>

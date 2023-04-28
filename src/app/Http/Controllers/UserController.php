@@ -17,6 +17,7 @@ class UserController extends Controller
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
+            'username' =>  ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6'
         ]);
@@ -28,20 +29,17 @@ class UserController extends Controller
         $user = User::create($formFields);
 
         // Login
-        auth()->login($user);
+       // auth()->login($user);
 
-        return redirect('/home')->with('message', 'User created and logged in');
+        return redirect('/home')->with('message', 'New User created');
     }
 
     // Logout User
     public function logout(Request $request) {
         auth()->logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/login')->with('message', 'You have been logged out!');
-
     }
 
     // Show Login Form
@@ -52,7 +50,7 @@ class UserController extends Controller
     // Authenticate User
     public function authenticate(Request $request) {
         $formFields = $request->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required'],
             'password' => 'required'
         ]);
 
@@ -62,6 +60,6 @@ class UserController extends Controller
             return redirect('/home')->with('message', 'You are now logged in!');
         }
 
-        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+        return back()->withErrors(['username' => 'Invalid Credentials'])->onlyInput('username');
     }
 }
