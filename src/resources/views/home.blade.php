@@ -67,6 +67,7 @@
     width:100%;
     display: block;
     text-align:left;
+    font-weight: bold;
      
       
     }
@@ -81,13 +82,23 @@
   <div class="btn-group-vertical" style="width:100%;">
 
   <a class="btn btn-light menu"  href="{{ url('/ro1norm') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 Normalization </a>
-  <a class="btn btn-light menu"  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a>
-  <a class="btn btn-light menu"  href="{{ url('/') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO Common</a>
-  <a class="btn btn-light menu"  href="{{ url('/') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization New</a>
-  <a class="btn btn-light menu"  href="{{ url('/') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization </a>
-  <a class="btn btn-light menu"  href="{{ url('/') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Vibrations </a>
-  <a class="btn btn-light menu"  href="{{ url('/') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a>
-  <a class="btn btn-light menu"  href="{{ url('/') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; Import/Exports</a>
+  <a class="btn btn-light menu"  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;"><img src={{asset('icons/main-lab.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a>
+  <a class="btn btn-light menu"  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO Common</a>
+  <a class="btn btn-light menu"  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization New</a>
+  <a class="btn btn-light menu" href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization </a>
+  <a class="btn btn-light menu"  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Vibrations </a>
+  <a class="btn btn-light menu"  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a>
+  <a class="btn btn-light menu"  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; Import/Exports</a>
+
+  <form class="inline" method="POST" action="/logout">
+    @csrf
+    <button type="submit" class="btn btn-light menu">
+      <i class="fa fa-sign-out" aria-hidden="true" style="color:red;"></i>
+       Logout
+    </button>
+  </form>
+
+
 
   </div> </div>
 </div>

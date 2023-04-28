@@ -75,38 +75,38 @@
         .mnbtn0{
           border-radius: 0px 7px 7px 0px;
         }
-        .g1 {
+    .g1 {
     stroke-dasharray: 12;
     stroke-dashoffset: 100;
     animation: dash 8s linear infinite;
 }
 
-.g2 {
-    stroke-dasharray: 11;
-    stroke-dashoffset: 100;
-    animation: dash 5s linear infinite;
-}
-
-.g3 {
+.g2{
     stroke-dasharray: 4;
     stroke-dashoffset: 50;
     animation: dash 3.5s linear infinite;
 }
 
-.g4 {
-  animation: blink 1s infinite;
+.spline {
+    stroke-dasharray: 4;
+    stroke-dashoffset: 50;
+    animation: dash 3.5s linear infinite;
+}
+
+.scatter {
+  animation: blink 2s infinite;
    animation-fill-mode: both;
 }
 
-.g5 {
-    stroke-dasharray: 8;
-    stroke-dashoffset: 100;
-    animation: dash 1s linear infinite;
+.areaspline{
+    stroke-dasharray: 4;
+    stroke-dashoffset: 50;
+    animation: dash 3.5s linear infinite;
 }
 @keyframes blink {
-   0% { opacity: 0.3 }
+   0% { opacity: 0.5 }
    50% { opacity: 1 }
-   100% { opacity: 0.3 }
+   100% { opacity: 0.5 }
    }
 @keyframes dash {
     from {

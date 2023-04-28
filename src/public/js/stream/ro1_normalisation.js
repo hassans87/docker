@@ -660,11 +660,13 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         title: {
         align: 'center',
         x:35,
-        y:20, 
-        text: 'Skid:41'+plotParam.roSkid.toUpperCase() +', Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
+        y:30, 
+        text: 'RO First Pass Skid: 41'+plotParam.roSkid.toUpperCase(),
         style: {color: plotParam.plotExpTitleColor,
-        font: '15px "Calibri", Verdana, sans-serif'
+        font: '18px "Calibri", Verdana, sans-serif',
+        fontWeight:'bold'
         }},
+  
         exporting: {
         printMaxWidth: 1000,
         allowHTML: false,
@@ -687,6 +689,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         plotBackgroundColor:plotParam.plotExpBackground,
         width: plotParam.plotExpWidth,
         height: plotParam.plotExpHeight,              
+        },
+        boost: {
+            pixelRatio: 2
         },
         }
         },          
@@ -760,7 +765,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                           },
                           title: {  
                             rotation: 0,
-                            text: 'Span ' +dates_diff_cal+' Days',
+                            text: 'Span ' +dates_diff_cal+' Days'+', Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs',
                             style: {
                                 color:'#0984e3',
                                 font: '14px "Calibri", Verdana, sans-serif'
@@ -786,7 +791,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         width:1.5,
                                       label: {
                                         enabled: true,
-                                        backgroundColor: '#ffffff',
+                                        color:'#1e272e',
+                                        fontWeight:'bold',
+                                        backgroundColor: '#000000',
                                          
                                       }
                                     },
@@ -795,8 +802,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 enabled: mainYaxis,
                                 format: '{value}',
                                 style: {
-                                    color:'black',
-                                    backgroundColor: '#000000',
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
                     
                                 }
                             },
@@ -837,7 +844,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                // formatter: function() {
                                 //    return Math.ceil(this.value);
                                //   },
-                                style: {color:'#2f3542'}
+                               style:{
+                                color:'#ff3838',
+                                fontWeight:'bold',
+                                backgroundColor: '#000000',
+                            }
                             },
                             title: {
                                 useHTML: true,
@@ -847,7 +858,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 y: -10,
                                 text: 'bar',
                                 style: {
-                                    color:'#0984e3'
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
                                 }
                             },
                             //labels: false,
@@ -873,7 +885,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                    // formatter: function() {
                     //    return Math.ceil(this.value);
                   //    },
-                  //  style: {color:temperature_color,}
+                  style:{
+                    color:'#1e272e',
+                    fontWeight:'bold',
+                    backgroundColor: '#000000',
+                }
                 },
                 title: {
                     useHTML: true,
@@ -883,7 +899,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                     y: -10,
                     text: 'm<sup>3</sup>/h',
                     style: {
-                        color:'#27ae60'
+                        color:'#1e272e',
+                        fontWeight:'bold',
                     }
                 },
                 //labels: false,
@@ -895,7 +912,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                  //   max:100,  
                   tickAmount: 11,
                   visible:pr_Yaxis,
-                 // opposite:true, 
+                 opposite:true, 
                   tickWidth: 1,      
                  gridLineWidth: 0,
                         crosshair: {color:'#ffffff',
@@ -911,7 +928,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         enabled: true,
                         //format: '{value}',
                         formatter:function(){return Math.ceil(this.value)},           
-                      //  style: {color:temperature_color,}
+                        style:{
+                            color:'#1e272e',
+                            fontWeight:'bold',
+                            backgroundColor: '#000000',
+                        }
                     },
                     title: {
                         useHTML: true,
@@ -921,7 +942,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         y: -10,
                         text: 'Bar',
                         style: {
-                            color:'#c0392b'
+                            color:'#1e272e',
+                            fontWeight:'bold',
                         }
                     },
                     //labels: false,
@@ -933,6 +955,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         max:100,                
                         visible:reject_erimix, 
                         tickWidth: 1, 
+                        opposite:true,
                         tickAmount: 11,                 
                         gridLineWidth: 0,
                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
@@ -940,7 +963,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         labels: {
                             enabled: true, 
                             format: '{value}',                       
-                            style: {color:'#636e72',}
+                            style:{
+                                color:'#1e272e',
+                                fontWeight:'bold',
+                                backgroundColor: '#000000',
+                            }
                         },
                         title: {
                             useHTML: true,
@@ -950,7 +977,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             y: -10,
                             text: 'R-%',
                             style: {
-                                color:'#636e72'
+                                color:'#1e272e',
+                                fontWeight:'bold',
                             }
                         },
                         //labels: false,
@@ -970,7 +998,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 enabled: true,
                                 format: '{value}', 
 
-                                style: {color:'#2d3436',}
+                                style:{
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
+                                    backgroundColor: '#000000',
+                                }
                                 },
                             title: {
                                 useHTML: true,
@@ -980,7 +1012,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 y: -10,
                                 text: 'P-%',
                                 style: {
-                                    color:'#2d3436'
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
                                 }
                             },
                             //labels: false,
@@ -1004,7 +1037,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         return (this.value/1000).toFixed(1)+' K';
                                       }, 
                                              
-                                    style: {color:'#2d3436',}
+                                      style:{
+                                        color:'#1e272e',
+                                        fontWeight:'bold',
+                                        backgroundColor: '#000000',
+                                    }
                                 },
                                 title: {
                                     useHTML: true,
@@ -1014,7 +1051,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                     y: -10,
                                     text: 'SW-EC',
                                     style: {
-                                        color:'#2d3436'
+                                        color:'#1e272e',
+                                    fontWeight:'bold',
                                     }
                                 },
                                 //labels: false,
@@ -1027,6 +1065,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 tickAmount: 11,
                                 visible:ecLYaxis, 
                                 tickWidth: 1,
+                                opposite:true,
                                  gridLineWidth: 0,
                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
                         label: {enabled: true,backgroundColor: '#ffffff',}},
@@ -1036,7 +1075,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         formatter: function() {
                                             return (this.value/1000).toFixed(1)+' K';
                                           },                       
-                                        style: {color:'#2d3436',}
+                                          style:{
+                                            color:'#1e272e',
+                                            fontWeight:'bold',
+                                            backgroundColor: '#000000',
+                                        }
                                     },
                                     title: {
                                         useHTML: true,
@@ -1046,7 +1089,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         y: -10,
                                         text: 'P-EC',
                                         style: {
-                                            color:'#2d3436'
+                                            color:'#1e272e',
+                                            fontWeight:'bold',
                                         }
                                     },
                                     //labels: false,
@@ -1066,7 +1110,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                             format: '{value}',
                                                                                    
                                                      
-                                            style:{color:'#2d3436'}
+                                            style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                         },
                                         title: {
                                             useHTML: true,
@@ -1076,7 +1124,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                             y: -10,
                                             text: 'TDS',
                                             style: {
-                                                color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                             }
                                         },
                                         //labels: false,
@@ -1090,7 +1139,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                          labels: {
                                                enabled: true,
                                                format: '{value}',                                                
-                                               style:{color:'#2d3436'}
+                                               style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                            },
                                            title: {
                                                useHTML: true,
@@ -1100,7 +1153,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                y: -10,
                                                text: '°F',
                                                style: {
-                                                   color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                                }
                                            },
                                            //labels: false,
@@ -1118,7 +1172,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                enabled: true,
                                               format: '{value}',
                                                                                          
-                                               style:{color:'#2d3436'}
+                                              style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                            },
                                            title: {
                                                useHTML: true,
@@ -1128,7 +1186,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                y: -10,
                                                text: '°C',
                                                style: {
-                                                   color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                                }
                                            },
                                            //labels: false,
@@ -1145,7 +1204,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                enabled: true,
                                               format: '{value}',
                                                                                          
-                                               style:{color:'#2d3436'}
+                                               style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                            },
                                            title: {
                                                useHTML: true,
@@ -1155,7 +1218,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                y: -10,
                                                text: 'Days',
                                                style: {
-                                                   color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                                }
                                            },
                                            //labels: false,
@@ -1199,7 +1263,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries1x,                                          
                                                               lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
                                                               yAxis:st[s1Param.ufData]['yAxis'],
-                                                              className: 'g3',
+                                                              className:s1Param.chartType,
                                                               tooltip: {
                                                                 crosshairs: [true, true],
                                                                 headerFormat: '{point.key}<br>',
@@ -1237,6 +1301,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries2x,                                          
                                                               lineWidth:(s2Param.chartType=="scatter")?0:s2Param.lineWidth,
                                                               yAxis:st[s2Param.ufData]['yAxis'],
+                                                              className:s2Param.chartType,
                                                               tooltip: {
                                                                 crosshairs: [true, true],
                                                                 headerFormat: '{point.key}<br>',
@@ -1275,6 +1340,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries3x,                                          
                                                               lineWidth:(s3Param.chartType=="scatter")?0: s3Param.lineWidth,
                                                               yAxis:st[s3Param.ufData]['yAxis'],
+                                                              className:s3Param.chartType,
                                                               tooltip: {
                                                                 crosshairs: [true, true],
                                                                 headerFormat: '{point.key}<br>',
