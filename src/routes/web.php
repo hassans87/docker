@@ -18,9 +18,8 @@ Route::get('/', function () {return view('home');});
 */
 
 
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
-
-Route::get('/', function () {return view('home');})->middleware('auth');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/', [UserController::class, 'login'])->name('login');
 Route::get('/home', function () {return view('home');})->name('home')->middleware('auth');
 Route::get('/ro1norm', function () {return view('ro1_normalisation');})->middleware('auth');
 Route::get('/ro1_cip', [PageSettings::class, 'settings'])->middleware('auth');
@@ -30,6 +29,7 @@ Route::POST('/ro1_cip', [RO1CIP::class, 'cipRoList'])->name('cip.list');
 Route::POST('/ro1norm', [RO1Normalisation::class, 'firstPassNorms'])->name('ro1.norms');
 //user login request
 ROUTE::POST('/users/authenticate',[UserController::class, 'authenticate']);
+
 
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
