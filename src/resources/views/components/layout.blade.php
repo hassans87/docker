@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="images/favicon.ico" />
@@ -27,7 +28,6 @@
 
 <body class="mb-48">
   <nav class="flex justify-between items-center mb-4">
-    <a href="/"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
       @auth
       <li>
@@ -48,8 +48,8 @@
     {{$slot}}
   </main>
   <footer
-    class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
-    <p class="ml-2">Normalisation Data Analytics</p>
+    class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-20 mt-24 opacity-90 md:justify-center">
+    <p class="ml-2">Google Cloud Run</p>
   </footer>
 
   <x-flash-message />
