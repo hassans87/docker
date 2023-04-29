@@ -10,11 +10,10 @@
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
     <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/ripples/jquery.ripples-min.js') }}"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Log In</title>
 </head>
-<body class="mb-48">
+<body class="mb-10">
   <script>
     tailwind.config = {
         theme: {
@@ -60,7 +59,7 @@
     // Notiflix Notify Init - global.js
     </script>
 <main >
-  <div class="bg-gray-50 border border-gray-200 rounded p-6 p-10 max-w-lg mx-auto mt-20">
+  <div class="bg-gray-50 border border-gray-200 rounded p-6 p-10 max-w-lg mx-auto mt-10">
   <header class="text-center">
     
       <h2 class="text-2xl font-bold uppercase mb-1">Login</h2>
@@ -120,15 +119,6 @@
     </script>
 </div>
 @endif
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("body").ripples({
-      dropRadius: 12,
-      perturbance: 10,
-    });
-  })
-
-</script>
 </body>
 </html>
 

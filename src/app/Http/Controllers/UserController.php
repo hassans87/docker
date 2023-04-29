@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     // Show Register/Create Form
     public function create() {
+
         return view('users.register');
     }
 
@@ -44,6 +45,9 @@ class UserController extends Controller
 
     // Show Login Form
     public function login() {
+        if (Auth::check()) {
+        return redirect('/home');
+        }
         return view('users.login');
     }
 

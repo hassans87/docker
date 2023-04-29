@@ -19,7 +19,7 @@ Route::get('/', function () {return view('home');});
 
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
-Route::get('/', [UserController::class, 'login'])->name('login');
+Route::get('/', [UserController::class, 'login']);
 Route::get('/home', function () {return view('home');})->name('home')->middleware('auth');
 Route::get('/ro1norm', function () {return view('ro1_normalisation');})->middleware('auth');
 Route::get('/ro1_cip', [PageSettings::class, 'settings'])->middleware('auth');
