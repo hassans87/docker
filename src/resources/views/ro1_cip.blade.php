@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,17 +17,11 @@
     <script type="text/javascript" src="{{ ('js/highcharts/modules/exporting.js') }}"></script>
     <script type="text/javascript" src="{{ ('js/highcharts/modules/offline-exporting.js') }}"></script>
     <script type="text/javascript" src="{{ ('js/highcharts/modules/accessibility.js') }}"></script>
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>RO1 CIP</title>
+    <title> RO1 CIP </title>
 </head>
-
 <body>
-
-
-
-
-    <figure id="plot_window" class="test_print loading-msg" style="width:98vw; height:90vh;"></figure>
+    <figure id="plot_window" class="test_print loading-msg" style="height:96vh;"></figure>
     <style>
         .main-chk {
             width: 20px;
@@ -209,27 +202,18 @@
                     </select>
                 </div>
             </div>
-            <div class="col-auto" style="margin-right:5px;">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-text badge-light3d mnbtn">Data Interval &nbsp;<i class="fa fa-clock-o"
-                            aria-hidden="true" style="color:black;"></i></div>
-                    <select class="query form-control form-control-sm form-select" id="invt"
-                        style="background-color:#dff9fb;">
-                        <option value="0.7">1 Hour</option>
-                        <option value="1.8" selected>2 Hours</option>
-                        <option value="3.7">4 Hours</option>
-                        <option value="5.7">6 Hours</option>
-                        <option value="7.7">8 Hours</option>
-                        <option value="11">12 Hours</option>
-                        <option value="23">24 Hours</option>
-                        <option value="47">48 Hours</option>
-                    </select>
-                </div>
-            </div>
             <div class="col-auto" style="margin-right:15px;">
                 <div class="input-group input-group-sm">
                     <span id="query_fire" class="query_fire btn btn-warning btn-sm">
                         <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</span>
+                </div>
+            </div>
+            <div class="col-auto" style="margin-right:15px;">
+                <div class="input-group input-group-sm">
+                    <span id="query_fire" class="badge-light3d btn btn-sm">
+                    <input type="checkbox" class="query_fire form-check-input col-auto" id="sec_xAxis">
+                   <label for="y_axis6" class="form-check-label col-auto">&nbsp;<i class="fa fa-map" aria-hidden="true"></i>&nbsp;CIP Type Mapping</label>
+                   <input type="color" id="mapping_clr" name="mapping_clr" value="#95a5a6" class="query series-color form-check-input col-auto"> </span>
                 </div>
             </div>
         </div>
@@ -524,7 +508,7 @@
                 <td>
                     <div class="input-group">
                         <div class="col-auto"><input type="checkbox" class="query series-chk" id="line2"
-                                <?php if ($dex[0]->line2 == 'true') {
+                                <?php if ($dex[0]->line2 == 'false') {
                                     echo 'checked';
                                 } ?>>
                             &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2"
@@ -2151,23 +2135,14 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: green;">
+                <div class="modal-header" style="background-color:grey;">
                     <h5 class="modal-title" id="staticBackdropLabel">Chart Global Settings</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
                     <div class="row mb-2">
-                        <label for="plot_width" class="col-sm-5 col-form-label">Plot Width Span</label>
-                        <div class="col-sm-4">
-                            <input type="number" id="plot_width" class="chart_render form-control"
-                                min="1000" value="1500" step="200">
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <label for="pen_main" class="col-sm-5 col-form-label">Background Color</label>
+                        <label for="pen_main" class="col-sm-6 col-form-label">Background Color</label>
                         <div class="col-sm-4">
                             <input type="color" id="pen_main" name="chart_background" value="#0d0d0d"
                                 class="chart_render series-color">
@@ -2175,7 +2150,7 @@
                     </div>
 
                     <div class="row mb-2">
-                        <label for="pen_grid" class="col-sm-5 col-form-label">Grid Lines Color</label>
+                        <label for="pen_grid" class="col-sm-6 col-form-label">Grid Lines Color</label>
                         <div class="col-sm-4">
                             <input type="color" id="pen_grid" name="grid_background" value="#8a8b89"
                                 class="chart_render series-color">
@@ -2183,14 +2158,14 @@
                     </div>
 
                     <div class="row mb-2">
-                        <label for="is_legend" class="col-sm-5 col-form-label">Show Legends</label>
+                        <label for="is_legend" class="col-sm-6 col-form-label">Show Legends</label>
                         <div class="col-sm-4">
                             <input type="checkbox" id="is_legend" name="is_legend" checked=""
                                 class="chart_render main-chk">
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="is_main_yaxis" class="col-sm-5 col-form-label">Y-axis % &nbsp;<i
+                        <label for="is_main_yaxis" class="col-sm-6 col-form-label">Common Y-axis % &nbsp;<i
                                 class="fa fa-area-chart" aria-hidden="true"></i></label>
                         <div class="col-sm-4">
                             <input type="checkbox" id="is_main_yaxis" name="is_main_yaxis"
@@ -2199,7 +2174,7 @@
                     </div>
 
                     <div class="row mb-2">
-                        <label for="export_width" class="col-sm-5 col-form-label">Export Width &nbsp;<i
+                        <label for="export_width" class="col-sm-6 col-form-label">Export Width &nbsp;<i
                                 class="fa fa-download" aria-hidden="true"></i></label>
                         <div class="col-sm-4">
                             <input type="number" id="export_width" class="chart_render form-control"
@@ -2207,7 +2182,7 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i
+                        <label for="export_height" class="col-sm-6 col-form-label">Export Height &nbsp;<i
                                 class="fa fa-download" aria-hidden="true"></i></label>
                         <div class="col-sm-4">
                             <input type="number" id="export_height" class="chart_render form-control"
@@ -2215,7 +2190,7 @@
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i
+                        <label for="pen_export" class="col-sm-6 col-form-label">Export Background Color &nbsp;<i
                                 class="fa fa-download" aria-hidden="true"></i></label>
                         <div class="col-sm-4">
                             <input type="color" id="pen_export" name="chart_background_export" value="#ffffff"
@@ -2230,7 +2205,6 @@
                                 value="#1068c6" class="chart_render series-color">
                         </div>
                     </div>
-
 
                 </div>
                 <div class="modal-footer">

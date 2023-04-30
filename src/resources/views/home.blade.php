@@ -116,13 +116,7 @@
 <div class="btn-group-vertical glass1">
 <button class="btn btn-light menu"> <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 Normalization </a> </button>
 <button class="btn btn-light menu"> <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;"><img src={{asset('icons/main-lab.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a> </button>
-<button class="btn btn-light menu"> <a  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO Common</a> </button>
-<button class="btn btn-light menu"> <a  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization New</a> </button>
-<button class="btn btn-light menu"> <a href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization </a> </button>
-<button class="btn btn-light menu"> <a  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Vibrations </a> </button>
-<button class="btn btn-light menu"> <a  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a> </button>
-<button class="btn btn-light menu"> <a  href="#"  style="text-decoration: none;"><img src={{asset('icons/error.png')}}  width="32px" style="vertical-align: middle;">&nbsp; Import/Exports</a> </button>
-
+<button class="btn btn-light menu"> <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization New</a> </button>
 <button class="btn btn-light menu"> <a  href="{{ url('/register') }}"  style="text-decoration: none;"><img src={{asset('icons/new_user.png')}}  width="32px" style="vertical-align: middle;">&nbsp; Add New User</a></button>
 <form class="inline" method="POST" action="/logout">
 @csrf

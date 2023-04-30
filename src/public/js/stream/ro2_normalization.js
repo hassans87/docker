@@ -1,22 +1,25 @@
 queryStream();
-
 //$('.tensor-flow,.rednder').change(function(){queryStream();})
 setInterval(function () {$("head title").html($("head title").html().substring(1) + $("head title").html().substring(0,1));}, 400);
 $('.query_fire').click(function(){queryStream();})
 $('.query').change(function(){
-     //   queryStream();
-Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
+       // queryStream();
+        Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
+$('#info').click(function(){
+Notiflix.Report.Info('Information!','Database avaialbe from 01-01-2016 to 30-11-2022, base interval is 1 hour from Violink source, Export server can handle up to 1000 data points more than this will throw an error','Close');
+;})
 $('#export_data').click(function(){
-//window.location.replace("./data_export_ro1.php");
+window.location.replace("./data_export_ro2.php");
+;})
+$('#custom_query').click(function(){
+window.location.replace("./ro2_normalization_qustom.php");
 ;})
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
     this.ufData = $('#ufdata'+target).val();
-
 }
-
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
                     this.ufData = $('#ufdata'+target).val();
@@ -25,13 +28,12 @@ function ChartParam(target){
                     this.yAxis = $('#y_axis'+target).is(':checked');
                     this.chartType = $('#chart_type'+target).val();
                     this.lineWidth = parseFloat($('#line_width'+target).val());
-                    this.markerWeight =  parseFloat($('#marker'+target).val());
+                    this.markerWeight = parseFloat($('#marker'+target).val());
                     this.markerShape = $('#marker_shape'+target).val();
                     this.modalColor = $(".modelheader"+target).css({'background-color':this.pen});
                     this.modalTitle = $('#seriestitle'+target).html('Series '+target+': '+$("#ufdata"+target+" option:selected").text());
                     this.isY = false;
                     if(this.series && this.yAxis){this.isY=true}else{this.isY=false}
-                    if(this.ufData=='cip'||this.ufData=='full_flushing'||this.ufData=='membrane_flushing'||this.ufData=='dbna_flushing'){this.markerWeight=4; this.chartType='scatter';}
 }                   
 
 function getNumberOfDays(start, end) {
@@ -50,19 +52,19 @@ $('.tensor-flow,.rednder').change(function(){
     let fx1 = $('#start_date').val();
     let fx2 = $('#end_date').val();
 let query_days_calc = getNumberOfDays(fx1,fx2);
-if(query_days_calc >600){
+if(query_days_calc >12000 ){
     $( ".query_fire" ).prop( "disabled", true); 
     $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 
     Notiflix.Report.Failure('Query Warning','Check your query, max 600 days query allowed','Close');
 }else if(query_days_calc<0){
-    $( "#trigger" ).prop( "disabled", true); 
-    $("#trigger").removeClass("btn-light,query_fire") .addClass("btn-danger");
+    $( ".query_fire" ).prop( "disabled", true); 
+    $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 
-    //Notiflix.Report.Failure('Query Warning','check query, invalid dates range !','Close');
+    Notiflix.Report.Failure('Query Warning','check query, invalid dates range !','Close');
 }else{
-    $( "#trigger" ).prop( "disabled", false );
-    $("#trigger").removeClass("btn-danger") .addClass("btn-warning"); }
+    $( ".query_fire" ).prop( "disabled", false );
+    $(".query_fire").removeClass("btn-danger") .addClass("btn-success"); }
     ;})
 
 function queryStream(){
@@ -93,17 +95,16 @@ let d7 = s7Param.series;
 let date1 = plotParam.dateFrom;
 let date2 = plotParam.dateTo;
 const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
-const query_data = new URLSearchParams({from:plotParam.dateFrom,dateto:plotParam.dateTo,
+const query_data = new URLSearchParams({from: plotParam.dateFrom,dateto:plotParam.dateTo,
 ufGroup:plotParam.bayline,datainvt:plotParam.interval,roskid:plotParam.ufqry,ufdata1:s1Param.ufData,ufdata2:s2Param.ufData,ufdata3:s3Param.ufData,ufdata4:s4Param.ufData,ufdata5:s5Param.ufData,ufdata6:s6Param.ufData,ufdata7:s7Param.ufData,
 d1:d1,d2:d2,d3:d3,d4:d4,d5:d5,d6:d6,d7:d7});
 fetch(window.location.href,    
-{method:'POST',
-body:query_data,
-headers:{"x-CSRF-TOKEN":csrfToken}
-})
+    {method:'POST',
+    body:query_data,
+    headers:{"x-CSRF-TOKEN":csrfToken}
+    })
 .then(response =>response.text())
 .then((data) =>{
-    //console.log(data);
 try{
 let dataStream = JSON.parse(data);
 let date =dataStream[0];
@@ -114,7 +115,7 @@ let dataSeries4 = dataStream[4];
 let dataSeries5 = dataStream[5];
 let dataSeries6 = dataStream[6];
 let dataSeries7 = dataStream[7];
-//console.log(dataSeries3);
+
 //date modification
 let date22 = [];
 let datex = [];      
@@ -187,8 +188,8 @@ let avera1 = collection.reduce((a, b) => a + b, 0) / collection.length;
 $("#data_max"+series).html(dmax1.toFixed(valLimit));
 $("#data_min"+series).html(dmin1.toFixed(valLimit));
 $("#data_avg"+series).html(avera1.toFixed(valLimit));}}
-else{Notiflix.Notify.Failure('Series'+series+' :Empty data array');
-//Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
+else{Notiflix.Notify.Failure('Series'+series+ ' : check data Query');
+Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
 $("#data_length"+series).html('0');
 $("#data_max"+series).html('-');
 $("#data_min"+series).html('-');
@@ -210,335 +211,250 @@ $("#unit"+series).html(" ");
         var date2_mode = date2_day +'-'+full_months_array[date2_month] + '-'+full_year2;
         var dates_diff_cal = getNumberOfDays(datex[0], datex[datex.length -1]);
 renderedChart();
-$( ".apply_changes" ).prop('disabled', true); 
-$( ".chart_render" ).change(function(){
-$( ".apply_changes" ).prop('disabled', false);
-$(".apply_changes").addClass("btn-danger").removeClass("btn-secondary");
-$( ".apply_changes" ).prop('disabled', false);  });
-$( ".apply_changes" ).click(function(){renderedChart();});
+$( ".chart_render" ).change(function(){renderedChart();});
+$( ".filter" ).click(function(){renderedChart();});
 function renderedChart(){
-$(".apply_changes").addClass("btn-secondary").removeClass("btn-danger");
-$( ".apply_changes" ).prop('disabled', true); 
 const st = {
-dpi_906:{
-        unit:" bar",
-        name:"DP",
-        yAxis:1,
-        arrFlr:0.1,
-        valFixTo:2,
-        sum:false
-        },
-norm_perm_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"Normalized Permeate Flow",
-        yAxis:2,
-        arrFlr:0.1,
-        valFixTo:0,
-         sum:false
-        },
-
-norm_per_salt_rej:{
-        unit:" %",
-        name:"Salt Rejection",
-        yAxis:4,
-        arrFlr:0.5,
-        valFixTo:1,
-        sum:false
-        },
-norm_per_salt_pas:{
-        unit:" %",
-        name:"Salt Passage",
-        yAxis:5,
-        arrFlr:0.005,
-        valFixTo:2,
-        sum:false
-        },
-feed_pres_pt108:{
-        unit:" bar",
-        name:"Feed Pressure",
-        yAxis:3,
-        arrFlr:1,
-        valFixTo:1,
-         sum:false
-        },
-conc_pres_pt307:{
-        unit:" bar",
-        name:"Reject Pressure",
-        yAxis:3,
-        arrFlr:0.01,
-        valFixTo:1,
-         sum:false
-        },
-per_pres_pt312:{
-        unit:" bar",
-        name:"Permeate Pressure",
-        yAxis:1,
-        arrFlr:0.01,
-        valFixTo:1,
-         sum:false
-        },
-recovery:{   
-        unit:" %",
-        name:"Recovery",
-        yAxis:0,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-rear_permeate_ft905:{
-        unit:" m<sup>3</sup>/h",
-        name:"Rear Permeate Flow",
-        yAxis:2,
-        arrFlr:10,
-        valFixTo:0,
-        sum:false
-        },
-front_permeate_ft_305:{
-        unit:" m<sup>3</sup>/h",
-        name:"Front Permeate Flow",
-        yAxis:2,
-        arrFlr:10,
-        valFixTo:0,
-        sum:false
-        },
- full_flushing:{
-        unit:" ",
-        name:"Full Flushing",
-        yAxis:12,
-        arrFlr:1,
-        valFixTo:0,
-        sum:true
-        },
-membrane_flushing:{
-        unit:" ",
-        name:"Membrane Flushing",
-        yAxis:12,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:true
-        },
-dbna_flushing:{
-        unit:" ",
-        name:"DBNPA Flushing",
-        yAxis:12,
-        arrFlr:60,
-        valFixTo:0,
-        sum:true
-        },
 cip:{
         unit:" ",
         name:"CIP",
-        yAxis:12,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:true
-        },
-feed_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"Feed Flow",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
-hp_pump_ft101:{
-       unit:" m<sup>3</sup>/h",
-        name:"HP Pump Flow",
-        yAxis:2,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:false
-        },
-eri_out_ft203:{
-        unit:" m<sup>3</sup>/h",
-        name:"ERI Out Flow FT-203",
-        yAxis:2,
-        arrFlr:50,
-        valFixTo:0,
-        sum:false
-        },
-eri_inlet_ft207:{
-        unit:" m<sup>3</sup>/h",
-        name:"ERI Out Flow FT-207",
-        yAxis:2,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:false
-        },
-conc_flow_cal:{
-      unit:" m<sup>3</sup>/h",
-        name:"Concentration Flow",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },       
-overflush:{
-        unit:" %",
-        name:"Overflush Ratio",
-        yAxis:5,
-        arrFlr:1,
+        yAxis:11,
+        arrFlr:0.1,
         valFixTo:2,
         sum:false
         },
-eri_hp_out_cond_at306:{
+dp_st1_dp_906:{
+        unit:" bar",
+        name:"DPI-906 Stage-1",
+        yAxis:1,
+        arrFlr:0.1,
+        valFixTo:2,
+        sum:false
+        },
+dp_st2_dp_907:{
+        unit:" bar",
+        name:"DPI-907 Stage-2",
+        yAxis:1,
+        arrFlr:0.1,
+        valFixTo:2,
+         sum:false
+        },
+
+tot_pres_dp:{
+        unit:" bar",
+        name:"Total DPI T-factor",
+        yAxis:1,
+        arrFlr:0.1,
+        valFixTo:2,
+        sum:false
+        },
+dp_total:{
+        unit:" bar",
+        name:"Total DPI calc.",
+        yAxis:1,
+        arrFlr:0.01,
+        valFixTo:2,
+        sum:false
+        },
+dp_stage1_calc:{
+        unit:" bar",
+        name:"Stage-1 DP calc.",
+        yAxis:1,
+        arrFlr:0.1,
+        valFixTo:2,
+         sum:false
+        },
+dp_stage2_calc:{
+        unit:" bar",
+        name:"Stage-2 DP calc.",
+        yAxis:1,
+        arrFlr:0.1,
+        valFixTo:2,
+         sum:false
+        },
+tmp_2nd_pass:{
+        unit:" bar",
+        name:"TMP",
+        yAxis:4,
+        arrFlr:0.1,
+        valFixTo:1,
+         sum:false
+        },
+tot_recovery:{
+        unit:" %",
+        name:"Total Recovery",
+        yAxis:2,
+        arrFlr:0.1,
+        valFixTo:1,
+         sum:false
+        },
+perm_flux:{   
+        unit:" Lmh",
+        name:"Permeate Flux",
+        yAxis:3,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+tds_at_mem_surf:{
+        unit:" ppm",
+        name:"TDS at Membrane Surface",
+        yAxis:8,
+        arrFlr:10,
+        valFixTo:0,
+        sum:false
+        },
+net_drv_pres:{
+        unit:" bar",
+        name:"Net Driving Pressure",
+        yAxis:4,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+ t_cor_salt_pas:{
+        unit:" %",
+        name:"Total Salt Passage",
+        yAxis:7,
+        arrFlr:0.01,
+        valFixTo:2,
+        sum:false
+        },
+tot_permeab:{
+        unit:" Lmh/bar",
+        name:"Total Permeability",
+        yAxis:9,
+        arrFlr:0.1,
+        valFixTo:1,
+        sum:false
+        },
+feed_wtr_temp:{
+        unit:" °C",
+        name:"Feed Water Temp.",
+        yAxis:10,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+feed_cond:{
         unit:" uS/cm",
-        name:"ERI Hp out Conductivity",
+        name:"Feed Water EC",
         yAxis:6,
+        arrFlr:0.5,
+        valFixTo:0,
+        sum:false
+        },
+stage2_cond:{
+        unit:" uS/cm",
+        name:"Stage-2 Permeate EC",
+        yAxis:6,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+permeate_cond:{
+       unit:" uS/cm",
+        name:"Common Permeate EC",
+        yAxis:6,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+feed_pres:{
+        unit:" bar",
+        name:"Feed Pressure",
+        yAxis:4,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+feed_pres_2ndstg:{
+        unit:" bar",
+        name:"Feed Pressure Stage-2",
+        yAxis:4,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },
+brine_pres_2ndstg:{
+      unit:" bar",
+        name:"Stage-2 Brine Pressure",
+        yAxis:4,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        },       
+stage1_per_pres:{
+        unit:" bar",
+        name:"Stage-1 Permeate Pressure",
+        yAxis:4,
+        arrFlr:1,
+        valFixTo:1,
+        sum:false
+        }, 
+
+totalfeed_calc:{
+        unit:" m<sup>3</sup>/h",
+        name:"Total Feed Flow",
+        yAxis:5,
         arrFlr:100,
         valFixTo:0,
         sum:false
         },
-eri_hp_in_con_at206:{
-        unit:" uS/cm",
-        name:"ERI Hp in Conductivity",
-        yAxis:6,
-        arrFlr:5,
+stage1_perm_flow:{
+        unit:" m<sup>3</sup>/h",
+        name:"Stage-1 Permeate Flow",
+        yAxis:5,
+        arrFlr:100,
         valFixTo:0,
         sum:false
         },
-mixing_eri_calc:{
-        unit:" %",
-        name:"ERI Mixing Calc.",
-        yAxis:4,
-        arrFlr:10,
-        valFixTo:2,
-        sum:false
-        },
-feed_tds:{
-        unit:" PPM",
-        name:"Feed TDS",
-        yAxis:8,
-        arrFlr:50,
+stage2_perm_flow:{
+        unit:" m<sup>3</sup>/h",
+        name:"Stage-2 Permeate Flow",
+        yAxis:5,
+        arrFlr:1,
         valFixTo:0,
         sum:false
         },
-feed_cond_at211:{
-        unit:" uS/cm",
-        name:"Feed Conductivity",
-        yAxis:6,
+total_perm_flow:{
+        unit:" m<sup>3</sup>/h",
+        name:"Total Permeate Flow",
+        yAxis:5,
+        arrFlr:1,
+        valFixTo:0,
+        sum:false
+        },
+brine_flowrate:{
+        unit:" m<sup>3</sup>/h",
+        name:"Brine Flow",
+        yAxis:5,
+        arrFlr:1,
+        valFixTo:0,
+        sum:false
+        },
+brine_rofeed:{
+        unit:" m<sup>3</sup>/h",
+        name:"Brine to RO Feed",
+        yAxis:5,
         arrFlr:0.5,
         valFixTo:0,
         sum:false
         },
-front_tds_calc:{
-        unit:" PPM",
-        name:"Front Permeate TDS",
-        yAxis:8,
-        arrFlr:50,
+brine_nl:{
+        unit:" m<sup>3</sup>/h",
+        name:"Brine to RO feed NL",
+        yAxis:5,
+        arrFlr:1,
         valFixTo:0,
         sum:false,
         },
-rear_tds_calc:{
-        unit:" PPM",
-        name:"Rear Permeate TDS",
-        yAxis:8,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:false
-        },
-rear_cond_at301:{
-        unit:" uS/cm",
-        name:"Rear EC",
-        yAxis:7,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:false
-        },
-front_cond_at303:{
-        unit:" uS/cm",
-        name:"Front EC",
-        yAxis:7,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:false
-        },
-cond_average:{ 
-        unit:" uS/cm",
-        name:"EC Average",
-        yAxis:4,
-        arrFlr:50,
-        valFixTo:0,
-        sum:false
-        },
-tds_average:{
-        unit:" PPM",
-        name:"Average TDS",
-        yAxis:3,
-        arrFlr:0.5,
-        valFixTo:1,
-        sum:false
-        },
-temp_calc:{
-        unit:" °C",
-        name:"Temp. Calc.",
-        yAxis:10,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-feed_temp:{
-        unit:" °F",
-        name:"Temp. F",
-        yAxis:9,
-        arrFlr:50,
-        valFixTo:1,
-        sum:false
-        },
-feed_temp_tit212:{
-        unit:" °C",
-        name:"Feed Temp.",
-        yAxis:10,
-        arrFlr:0.5,
-        valFixTo:1,
-        sum:false
-        },
-days_operation:{
-        unit:" Days",
-        name:"Operation Days",
-        yAxis:11,
-        arrFlr:0.5,
-        valFixTo:0,
-        sum:false
-        },
-temp_correc_fac:{
-        unit:" ",
-        name:"Temperator Correction Factor",
+brine_sl:{
+        unit:" m<sup>3</sup>/h",
+        name:"Brine to RO feed SL",
         yAxis:5,
-        arrFlr:0.5,
-        valFixTo:2,
-        sum:false
-        },
-calc_feed_brine_avg:{
-        unit:" uS/cm",
-        name:"Calc. Feed-Brine",
-        yAxis:6,
-        arrFlr:0.5,
+        arrFlr:1,
         valFixTo:0,
-        sum:false
-        },
-feed_brine_ro_press:{
-        unit:" bar",
-        name:"Feed-Brine Osmotic Pr.",
-        yAxis:3,
-        arrFlr:0.5,
-        valFixTo:1,
-        sum:false
-        },
-per_ro_pres:{
-        unit:" bar",
-        name:"Permeate Osmotic Pr.",
-        yAxis:1,
-        arrFlr:0.5,
-        valFixTo:1,
-        sum:false
-        },
-net_driving_press:{
-        unit:" bar",
-        name:"Net Driving Pr.",
-        yAxis:3,
-        arrFlr:0.5,
-        valFixTo:1,
         sum:false
         }
 }
@@ -583,8 +499,9 @@ let dataSeries7x = dataTrain7;
 let plotParam = {
 dateFrom:$('#start_date').val(),
 dateTo: $('#end_date').val(), 
-bayline: "41",
-roSkid: $('#skidx').val(), 
+bayline: "43",
+roSkid: $('#skidx').val(),
+interval:$('#invt').val(),
 ufqry:" ",
 chartBackground:$('#pen_main').val(),
 plotWidth:screen.availWidth * 0.95,
@@ -596,32 +513,28 @@ plotExpHeight:$('#export_height').val(),
 plotExpBackground:$('#pen_export').val(),
 plotExpTitleColor: $('#pen_export_title').val()}  
 var stack0=["recovery"];
-var stack1=["dpi_906","per_pres_pt312","per_ro_pres"];
-var stack2=["feed_pres_pt108","conc_pres_pt307","feed_brine_ro_press","net_driving_press"];
-var stack3 = ["norm_perm_flow","rear_permeate_ft905","front_permeate_ft_305","feed_flow","hp_pump_ft101","eri_out_ft203","eri_inlet_ft207","conc_flow_cal"];
-var stack4=["norm_per_salt_rej","mixing_eri_calc"];
-var stack5=["norm_per_salt_pas","overflush","temp_correc_fac"];
-var stack6=["eri_hp_out_cond_at306","eri_hp_in_con_at206","feed_cond_at211","calc_feed_brine_avg"];
-var stack7=["front_cond_at303","rear_cond_at301","cond_average"];
-var stack8=["front_tds_calc","rear_tds_calc","tds_average"];
-var stack9=["feed_temp"];
-var stack10=["temp_calc","feed_temp_tit212"];
-var stack11=["days_operation"];
+var stack1=["dp_st1_dp_906","dp_st2_dp_907","tot_pres_dp","dp_total","dp_stage1_calc","dp_stage2_calc"];
+var stack2=["tot_recovery"];
+var stack3 = ["perm_flux"];
+var stack4=["feed_cond","stage2_cond","permeate_cond"];
+var stack5=["totalfeed_calc","stage1_perm_flow","stage2_perm_flow","total_perm_flow","brine_flowrate","brine_rofeed","brine_nl","brine_sl"];
+var stack6=["feed_pres","feed_pres_2ndstg","brine_pres_2ndstg","stage1_per_pres","tmp_2nd_pass","net_drv_pres"];
+var stack7=["t_cor_salt_pas"];
+var stack8=["tds_at_mem_surf"];
+var stack9=["tot_permeab"];
+var stack10=["feed_wtr_temp"];
 var mainYaxis     =(plotParam.yAxis || s1Param.isY && (stack0.includes(s1Param.ufData))||s2Param.isY && (stack0.includes(s2Param.ufData))||s3Param.isY && (stack0.includes(s3Param.ufData))||s4Param.isY && (stack0.includes(s4Param.ufData))||s5Param.isY && (stack0.includes(s5Param.ufData))||s6Param.isY && (stack0.includes(s6Param.ufData))||s7Param.isY && (stack0.includes(s7Param.ufData)))? true: false;
      var dpX_Yaxis=(s1Param.isY && (stack1.includes(s1Param.ufData))||s2Param.isY && (stack1.includes(s2Param.ufData))||s3Param.isY && (stack1.includes(s3Param.ufData))||s4Param.isY && (stack1.includes(s4Param.ufData))||s5Param.isY && (stack1.includes(s5Param.ufData))||s6Param.isY && (stack1.includes(s6Param.ufData))||s7Param.isY && (stack1.includes(s7Param.ufData)))? true: false;
-      var pr_Yaxis=(s1Param.isY && (stack2.includes(s1Param.ufData))||s2Param.isY && (stack2.includes(s2Param.ufData))||s3Param.isY && (stack2.includes(s3Param.ufData))||s4Param.isY && (stack2.includes(s4Param.ufData))||s5Param.isY && (stack2.includes(s5Param.ufData))||s6Param.isY && (stack2.includes(s6Param.ufData))||s7Param.isY && (stack2.includes(s7Param.ufData)))? true: false; 
-         var flowY=(s1Param.isY && (stack3.includes(s1Param.ufData))||s2Param.isY && (stack3.includes(s2Param.ufData))||s3Param.isY && (stack3.includes(s3Param.ufData))||s4Param.isY && (stack3.includes(s4Param.ufData))||s5Param.isY && (stack3.includes(s5Param.ufData))||s6Param.isY && (stack3.includes(s6Param.ufData))||s7Param.isY && (stack3.includes(s7Param.ufData)))? true: false; 
-var reject_erimix =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (stack4.includes(s2Param.ufData))||s3Param.isY && (stack4.includes(s3Param.ufData))||s4Param.isY && (stack4.includes(s4Param.ufData))||s5Param.isY && (stack4.includes(s5Param.ufData))||s6Param.isY && (stack4.includes(s6Param.ufData))||s7Param.isY && (stack4.includes(s7Param.ufData)))? true: false; 
-   var salt_pas_y =(s1Param.isY && (stack5.includes(s1Param.ufData))||s2Param.isY && (stack5.includes(s2Param.ufData))||s3Param.isY && (stack5.includes(s3Param.ufData))||s4Param.isY && (stack5.includes(s4Param.ufData))||s5Param.isY && (stack5.includes(s5Param.ufData))||s6Param.isY && (stack5.includes(s6Param.ufData))||s7Param.isY && (stack5.includes(s7Param.ufData)))? true: false; 
-    var ecHYaxis  =(s1Param.isY && (stack6.includes(s1Param.ufData))||s2Param.isY && (stack6.includes(s2Param.ufData))||s3Param.isY && (stack6.includes(s3Param.ufData))||s4Param.isY && (stack6.includes(s4Param.ufData))||s5Param.isY && (stack6.includes(s5Param.ufData))||s6Param.isY && (stack6.includes(s6Param.ufData))||s7Param.isY && (stack6.includes(s7Param.ufData)))? true: false; 
-    var ecLYaxis  =(s1Param.isY && (stack7.includes(s1Param.ufData))||s2Param.isY && (stack7.includes(s2Param.ufData))||s3Param.isY && (stack7.includes(s3Param.ufData))||s4Param.isY && (stack7.includes(s4Param.ufData))||s5Param.isY && (stack7.includes(s5Param.ufData))||s6Param.isY && (stack7.includes(s6Param.ufData))||s7Param.isY && (stack7.includes(s7Param.ufData)))? true: false; 
+      var recovery_Yaxis=(s1Param.isY && (stack2.includes(s1Param.ufData))||s2Param.isY && (stack2.includes(s2Param.ufData))||s3Param.isY && (stack2.includes(s3Param.ufData))||s4Param.isY && (stack2.includes(s4Param.ufData))||s5Param.isY && (stack2.includes(s5Param.ufData))||s6Param.isY && (stack2.includes(s6Param.ufData))||s7Param.isY && (stack2.includes(s7Param.ufData)))? true: false; 
+         var per_Yaxis =(s1Param.isY && (stack3.includes(s1Param.ufData))||s2Param.isY && (stack3.includes(s2Param.ufData))||s3Param.isY && (stack3.includes(s3Param.ufData))||s4Param.isY && (stack3.includes(s4Param.ufData))||s5Param.isY && (stack3.includes(s5Param.ufData))||s6Param.isY && (stack3.includes(s6Param.ufData))||s7Param.isY && (stack3.includes(s7Param.ufData)))? true: false; 
+var ecYaxis =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (stack4.includes(s2Param.ufData))||s3Param.isY && (stack4.includes(s3Param.ufData))||s4Param.isY && (stack4.includes(s4Param.ufData))||s5Param.isY && (stack4.includes(s5Param.ufData))||s6Param.isY && (stack4.includes(s6Param.ufData))||s7Param.isY && (stack4.includes(s7Param.ufData)))? true: false; 
+   var florate_y =(s1Param.isY && (stack5.includes(s1Param.ufData))||s2Param.isY && (stack5.includes(s2Param.ufData))||s3Param.isY && (stack5.includes(s3Param.ufData))||s4Param.isY && (stack5.includes(s4Param.ufData))||s5Param.isY && (stack5.includes(s5Param.ufData))||s6Param.isY && (stack5.includes(s6Param.ufData))||s7Param.isY && (stack5.includes(s7Param.ufData)))? true: false; 
+    var presYaxis  =(s1Param.isY && (stack6.includes(s1Param.ufData))||s2Param.isY && (stack6.includes(s2Param.ufData))||s3Param.isY && (stack6.includes(s3Param.ufData))||s4Param.isY && (stack6.includes(s4Param.ufData))||s5Param.isY && (stack6.includes(s5Param.ufData))||s6Param.isY && (stack6.includes(s6Param.ufData))||s7Param.isY && (stack6.includes(s7Param.ufData)))? true: false; 
+    var saltpasYaxis  =(s1Param.isY && (stack7.includes(s1Param.ufData))||s2Param.isY && (stack7.includes(s2Param.ufData))||s3Param.isY && (stack7.includes(s3Param.ufData))||s4Param.isY && (stack7.includes(s4Param.ufData))||s5Param.isY && (stack7.includes(s5Param.ufData))||s6Param.isY && (stack7.includes(s6Param.ufData))||s7Param.isY && (stack7.includes(s7Param.ufData)))? true: false; 
     var tdsYaxis  =(s1Param.isY && (stack8.includes(s1Param.ufData))||s2Param.isY && (stack8.includes(s2Param.ufData))||s3Param.isY && (stack8.includes(s3Param.ufData))||s4Param.isY && (stack8.includes(s4Param.ufData))||s5Param.isY && (stack8.includes(s5Param.ufData))||s6Param.isY && (stack8.includes(s6Param.ufData))||s7Param.isY && (stack8.includes(s7Param.ufData)))? true: false; 
-    var tempFYaxis=(s1Param.isY && (stack9.includes(s1Param.ufData))||s2Param.isY && (stack9.includes(s2Param.ufData))||s3Param.isY && (stack9.includes(s3Param.ufData))||s4Param.isY && (stack9.includes(s4Param.ufData))||s5Param.isY && (stack9.includes(s5Param.ufData))||s6Param.isY && (stack9.includes(s6Param.ufData))||s7Param.isY && (stack9.includes(s7Param.ufData)))? true: false; 
+    var totpermeYaxis=(s1Param.isY && (stack9.includes(s1Param.ufData))||s2Param.isY && (stack9.includes(s2Param.ufData))||s3Param.isY && (stack9.includes(s3Param.ufData))||s4Param.isY && (stack9.includes(s4Param.ufData))||s5Param.isY && (stack9.includes(s5Param.ufData))||s6Param.isY && (stack9.includes(s6Param.ufData))||s7Param.isY && (stack9.includes(s7Param.ufData)))? true: false; 
     var tempCYaxis=(s1Param.isY && (stack10.includes(s1Param.ufData))||s2Param.isY && (stack10.includes(s2Param.ufData))||s3Param.isY && (stack10.includes(s3Param.ufData))||s4Param.isY && (stack10.includes(s4Param.ufData))||s5Param.isY && (stack10.includes(s5Param.ufData))||s6Param.isY && (stack10.includes(s6Param.ufData))||s7Param.isY && (stack10.includes(s7Param.ufData)))? true: false; 
-    var dayYaxis  =(s1Param.isY && (stack11.includes(s1Param.ufData))||s2Param.isY && (stack11.includes(s2Param.ufData))||s3Param.isY && (stack11.includes(s3Param.ufData))||s4Param.isY && (stack11.includes(s4Param.ufData))||s5Param.isY && (stack11.includes(s5Param.ufData))||s6Param.isY && (stack11.includes(s6Param.ufData))||s7Param.isY && (stack11.includes(s7Param.ufData)))? true: false; 
-
-
-
+    
 
 Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         Highcharts.chart('plot_window', {
@@ -665,27 +578,25 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         //  this.update({scrollbar: {enabled: true}});
         }}},  
         title: {
-        align: 'center',
-        x:35,
-        y:30, 
-        text: 'RO First Pass Skid: 41'+plotParam.roSkid.toUpperCase(),
-        style: {color: plotParam.plotExpTitleColor,
-        font: '18px "Calibri", Verdana, sans-serif',
-        fontWeight:'bold'
-        }},
-  
+            align: 'center',
+            x:35,
+            y:30, 
+            text: 'RO Second Pass Skid: 43'+plotParam.roSkid.toUpperCase(),
+            style: {color: plotParam.plotExpTitleColor,
+            font: '18px "Calibri", Verdana, sans-serif',
+            fontWeight:'bold'
+            }},
         exporting: {
         printMaxWidth: 1000,
         allowHTML: false,
-        //url:"http://exportserver.data-tensor.com/:3300",
-        //url: "http://localhost:7805",
+       // url: "http://localhost:7801",
         fallbackToExportServer: false,
-        filename:'SWRO-SADARA RO Normalization 41'+plotParam.roSkid.toUpperCase()+ ' '+datex[0] + " To "+datex[datex.length-1],
+        filename:'SADARA-SWRO RO Normalization 43'+plotParam.roSkid.toUpperCase()+ ' '+datex[0] + " To "+datex[datex.length-1],
         enabled: true,
         buttons: {
             contextButton: {
                 align: 'right',
-                x:-40
+                x:-50
         }},
         chartOptions: {
         title: {
@@ -712,40 +623,32 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         y:35,
         floating: true,
         borderWidth: 0,
-        // backgroundColor:'rgba(255, 255, 255, 0.5)'
+        backgroundColor:'rgba(255, 255, 255, 0.9)'
         },    
         tooltip: { 
+        //headerFormat: '{point.key}',      
         shared: true,
-        outside:false,
-        crosshair: [true, true],
-        split: false,
-        hideDelay:1000       
+        outside: true,
+        crosshairs: true,
+        split: false,      
         },
         credits: {enabled: false},
         boost: {enabled: true,useGPUTranslations: true,usePreallocated: true},
         plotOptions: {
         series: {
-        className: 'g3',
         turboThreshold: 15000,
         states: {inactive: {opacity: 1}}
         }},
                 
                       xAxis: [ // hidden primary x-axis
-                    {     
-                    // type: "datetime",        
-                           categories:datex,
-                           lineColor: '#8395a7',
-                           allowDecimals: false,
-                crosshair: {color:'#ffffff',
-                                        dashStyle: 'Dot',
-                                        width:1.5,
-                                      label: {
-                                        enabled: true,
-                                        backgroundColor: '#ffffff',
-                                         
-                                      }
-                                    },
-                          labels: {enabled:false }, },
+                                {     
+                                // type: "datetime",        
+                                categories:datex,
+                                lineColor: '#8395a7',
+                                allowDecimals: false, 
+                                crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},   
+                                labels: {enabled:false }, },
                       {
                        // type: "datetime", Secondary 
                         categories:date22,
@@ -773,7 +676,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                           },
                           title: {  
                             rotation: 0,
-                            text: 'Span ' +dates_diff_cal+' Days'+', Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs',
+                            text: 'Span ' +dates_diff_cal+' Days, '+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
                             style: {
                                 color:'#0984e3',
                                 font: '14px "Calibri", Verdana, sans-serif'
@@ -794,17 +697,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                           lineColor: 'gray',
                           lineWidth:2,
                           gridLineWidth:0.3,
-                        crosshair: {color:'#ffffff',
-                                        dashStyle: 'Dot',
-                                        width:1.5,
-                                      label: {
-                                        enabled: true,
-                                        color:'#1e272e',
-                                        fontWeight:'bold',
-                                        backgroundColor: '#000000',
-                                         
-                                      }
-                                    },
+                          crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                           gridLineColor: plotParam.gridColor,      
                             labels: {
                                 enabled: mainYaxis,
@@ -812,6 +706,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 style: {
                                     color:'#1e272e',
                                     fontWeight:'bold',
+                                    backgroundColor: '#000000',
                     
                                 }
                             },
@@ -823,7 +718,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 y: -10,
                                 text: '%',
                                 style: {
-                                    color:'#0984e3'
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
                                 }
                             },
                             //labels: false,
@@ -831,32 +727,22 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         
                     
                         { //  [1]    bar for DP
-                         min:1.5, 
-                         max:3,     
+                         min:0, 
+                        max:3.5,     
                           visible:dpX_Yaxis, 
                           tickWidth: 1, 
                           tickAmount: 11,  
                          gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                                        dashStyle: 'Dot',
-                                        width:1.5,
-                                      label: {
-                                        enabled: true,
-                                        backgroundColor: '#ffffff',
-                                         
-                                      }
-                                    },
+                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                           labels: {
                                 enabled: true,
                                 format: '{value}',
                                // formatter: function() {
                                 //    return Math.ceil(this.value);
                                //   },
-                               style:{
-                                color:'#ff3838',
-                                fontWeight:'bold',
-                                backgroundColor: '#000000',
-                            }
+                                style: { color:'#1e272e',
+                                fontWeight:'bold',}
                             },
                             title: {
                                 useHTML: true,
@@ -873,31 +759,23 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //labels: false,
                             //opposite: true
                         },
-        { //  [2] Flow 
+        { //  [2] Total Recovery
+                min:84,
+                max:92,
              tickAmount: 11,
-              visible:flowY, 
+              visible:recovery_Yaxis, 
               tickWidth: 1,      
              gridLineWidth: 0,
-        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                      label: {
-                        enabled: true,
-                        backgroundColor: '#ffffff',
-                         
-                      }
-                    },
+             crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
               labels: {
                     enabled: true, 
                     format: '{value}',
                    // formatter: function() {
                     //    return Math.ceil(this.value);
                   //    },
-                  style:{
-                    color:'#1e272e',
-                    fontWeight:'bold',
-                    backgroundColor: '#000000',
-                }
+                  style: { color:'#1e272e',
+                  fontWeight:'bold',}
                 },
                 title: {
                     useHTML: true,
@@ -905,7 +783,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                     offset: 15,
                     rotation: 0,
                     y: -10,
-                    text: 'm<sup>3</sup>/h',
+                    text: 'Rec.%',
                     style: {
                         color:'#1e272e',
                         fontWeight:'bold',
@@ -915,32 +793,22 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                 //opposite: true
             },   
     
-            { //[3]  Pressure
+            { //[3]  Lmh Permeability
                  //   min:0, 
                  //   max:100,  
                   tickAmount: 11,
-                  visible:pr_Yaxis,
-                 opposite:true, 
+                  visible:per_Yaxis,
+                 // opposite:true, 
                   tickWidth: 1,      
                  gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                                        dashStyle: 'Dot',
-                                        width:1.5,
-                                      label: {
-                                        enabled: true,
-                                        backgroundColor: '#ffffff',
-                                         
-                                      }
-                                    },
+                 crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                   labels: {
                         enabled: true,
                         //format: '{value}',
                         formatter:function(){return Math.ceil(this.value)},           
-                        style:{
-                            color:'#1e272e',
-                            fontWeight:'bold',
-                            backgroundColor: '#000000',
-                        }
+                      style: { color:'#1e272e',
+                      fontWeight:'bold',}
                     },
                     title: {
                         useHTML: true,
@@ -948,7 +816,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         offset: 15,
                         rotation: 0,
                         y: -10,
-                        text: 'Bar',
+                        text: 'Lmh',
                         style: {
                             color:'#1e272e',
                             fontWeight:'bold',
@@ -958,24 +826,20 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                     //opposite: true
                 },
                
-            { //[4] Salt Rejection      
-                        min:95, 
-                        max:100,                
-                        visible:reject_erimix, 
-                        tickWidth: 1, 
-                        opposite:true,
-                        tickAmount: 11,                 
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                        label: {enabled: true,backgroundColor: '#ffffff',}},
-                        labels: {
+            { //[4] Pressure     
+                    // min:0, 
+                    // max:3,                
+                      visible:presYaxis, 
+                      tickWidth: 1, 
+                      tickAmount: 11,                 
+                     gridLineWidth: 0,
+                     crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                      labels: {
                             enabled: true, 
                             format: '{value}',                       
-                            style:{
-                                color:'#1e272e',
-                                fontWeight:'bold',
-                                backgroundColor: '#000000',
-                            }
+                            style: { color:'#1e272e',
+                            fontWeight:'bold',}
                         },
                         title: {
                             useHTML: true,
@@ -983,7 +847,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             offset: 15,
                             rotation: 0,
                             y: -10,
-                            text: 'R-%',
+                            text: 'Bar',
                             style: {
                                 color:'#1e272e',
                                 fontWeight:'bold',
@@ -993,32 +857,28 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         //opposite: true
                     },
                    
-                    { //[5]  Salt Passage
-                                min:0, 
-                                max:5, 
-                                visible:salt_pas_y, 
-                                tickWidth: 1,
-                                tickAmount: 11,    
-                                gridLineWidth: 0,
-                                crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                                label: {enabled: true,backgroundColor: '#ffffff',}},
-                                labels: {
+                    { //[5]  Flow Rate
+                          visible:florate_y, 
+                          tickWidth: 1,
+                          tickAmount: 11,    
+                         gridLineWidth: 0,
+                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                          labels: {
                                 enabled: true,
-                                format: '{value}', 
-
-                                style:{
-                                    color:'#1e272e',
-                                    fontWeight:'bold',
-                                    backgroundColor: '#000000',
-                                }
-                                },
+                                //format: '{value}', 
+                                formatter:function(){return Math.ceil(this.value)},
+                                         
+                                style: { color:'#1e272e',
+                                fontWeight:'bold',}
+                            },
                             title: {
                                 useHTML: true,
                                 align: 'high',
                                 offset:15,
                                 rotation: 0,
                                 y: -10,
-                                text: 'P-%',
+                                text: 'm<sup>3</sup>/h',
                                 style: {
                                     color:'#1e272e',
                                     fontWeight:'bold',
@@ -1028,28 +888,24 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //opposite: true
                         },
       
-                        { //[6] high EC
+                        { //[6] Permeate EC
                            tickAmount: 11, 
-                            visible:ecHYaxis, 
-                            tickWidth: 1,      
+                            visible:ecYaxis,
+                            opposite:true, 
+                            tickWidth: 1, 
+                            crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},       
                              // lineColor:pen1,
                             // lineWidth:2,
                            // minorTickInterval: 'auto',
                              gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                        label: {enabled: true,backgroundColor: '#ffffff',}},
                               labels: {
                                     enabled: true, //is_temperature,
-                                   // format: '{value.toFixed(0)}', 
-                                    formatter: function() {
-                                        return (this.value/1000).toFixed(1)+' K';
-                                      }, 
+                                   formatter:function(){return Math.ceil(this.value)},
+                                   // formatter: function() {return (this.value/1000).toFixed(1)+' K';}, 
                                              
-                                      style:{
-                                        color:'#1e272e',
-                                        fontWeight:'bold',
-                                        backgroundColor: '#000000',
-                                    }
+                                    style: { color:'#1e272e',
+                                    fontWeight:'bold',}
                                 },
                                 title: {
                                     useHTML: true,
@@ -1057,37 +913,31 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                     offset:15,
                                     rotation: 0,
                                     y: -10,
-                                    text: 'SW-EC',
+                                    text: 'uS/cm',
                                     style: {
                                         color:'#1e272e',
-                                    fontWeight:'bold',
+                                        fontWeight:'bold',
                                     }
                                 },
                                 //labels: false,
                                 //opposite: true
                             },
     
-                            { //[7] low EC
+                            { //[7] Total Satl Passage
                                // min: 0,
                               //  max: 2,
                                 tickAmount: 11,
-                                visible:ecLYaxis, 
+                                visible:saltpasYaxis, 
                                 tickWidth: 1,
-                                opposite:true,
                                  gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                        label: {enabled: true,backgroundColor: '#ffffff',}},
+                                 crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                                   labels: {
                                         enabled: true,
-                                      //  format: '{value}',
-                                        formatter: function() {
-                                            return (this.value/1000).toFixed(1)+' K';
-                                          },                       
-                                          style:{
-                                            color:'#1e272e',
-                                            fontWeight:'bold',
-                                            backgroundColor: '#000000',
-                                        }
+                                       format: '{value}',
+               // formatter: function() {return (this.value/1000).toFixed(1)+' K';},                       
+                                        style: { color:'#1e272e',
+                                        fontWeight:'bold',}
                                     },
                                     title: {
                                         useHTML: true,
@@ -1095,34 +945,31 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         offset:10,
                                         rotation: 0,
                                         y: -10,
-                                        text: 'P-EC',
+                                        text: 'Salt %',
                                         style: {
                                             color:'#1e272e',
-                                            fontWeight:'bold',
+                                    fontWeight:'bold',
                                         }
                                     },
                                     //labels: false,
                                     //opposite: true
                                 },
-                                { //[8] TDS
+                                { //[8] TDS at membrane surfce
                                   //  min:1,
                                   //  max:14,
                                     tickAmount: 11,
                                     visible:tdsYaxis, 
                                     tickWidth: 1,
                                      gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                        label: {enabled: true,backgroundColor: '#ffffff',}},
+                                     crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                                       labels: {
                                             enabled: true,
                                             format: '{value}',
                                                                                    
                                                      
-                                            style:{
-                                                color:'#1e272e',
-                                                fontWeight:'bold',
-                                                backgroundColor: '#000000',
-                                            }
+                                            style:{ color:'#1e272e',
+                                            fontWeight:'bold',}
                                         },
                                         title: {
                                             useHTML: true,
@@ -1130,7 +977,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                             offset:15,
                                             rotation: 0,
                                             y: -10,
-                                            text: 'TDS',
+                                            text: 'PPM',
                                             style: {
                                                 color:'#1e272e',
                                                 fontWeight:'bold',
@@ -1139,19 +986,18 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         //labels: false,
                                         //opposite: true 
                                     },   
-                                    { //[9] Temp. F 
+                                    { //[9] Permeability 
                                         tickAmount: 11,
-                                       visible:tempFYaxis, 
+                                       visible:totpermeYaxis, 
                                        tickWidth: 1,
                                         gridLineWidth: 0,
+                                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                                          labels: {
                                                enabled: true,
                                                format: '{value}',                                                
-                                               style:{
-                                                color:'#1e272e',
-                                                fontWeight:'bold',
-                                                backgroundColor: '#000000',
-                                            }
+                                               style:{ color:'#1e272e',
+                                               fontWeight:'bold',}
                                            },
                                            title: {
                                                useHTML: true,
@@ -1159,7 +1005,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                offset:15,
                                                rotation: 0,
                                                y: -10,
-                                               text: '°F',
+                                               text: 'Lmh/b',
                                                style: {
                                                 color:'#1e272e',
                                                 fontWeight:'bold',
@@ -1174,17 +1020,14 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                        visible:tempCYaxis, 
                                        tickWidth: 1,
                                         gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                        label: {enabled: true,backgroundColor: '#ffffff',}},
+                                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
                                          labels: {
                                                enabled: true,
                                               format: '{value}',
                                                                                          
-                                              style:{
-                                                color:'#1e272e',
-                                                fontWeight:'bold',
-                                                backgroundColor: '#000000',
-                                            }
+                                               style:{ color:'#1e272e',
+                                               fontWeight:'bold',}
                                            },
                                            title: {
                                                useHTML: true,
@@ -1200,40 +1043,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                            },
                                            //labels: false,
                                            //opposite: true 
-                                       },   
-                                  { //[11] Days of Operations 
-                                        tickAmount: 11,
-                                       visible:dayYaxis, 
-                                       tickWidth: 1,
-                                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
-                        label: {enabled: true,backgroundColor: '#ffffff',}},
-                                         labels: {
-                                               enabled: true,
-                                              format: '{value}',
-                                                                                         
-                                               style:{
-                                                color:'#1e272e',
-                                                fontWeight:'bold',
-                                                backgroundColor: '#000000',
-                                            }
-                                           },
-                                           title: {
-                                               useHTML: true,
-                                               align: 'high',
-                                               offset:15,
-                                               rotation: 0,
-                                               y: -10,
-                                               text: 'Days',
-                                               style: {
-                                                color:'#1e272e',
-                                                fontWeight:'bold',
-                                               }
-                                           },
-                                           //labels: false,
-                                           //opposite: true 
-                                       },  
-                                    { //[12] CIP, Flushing, 
+                                       },
+         { //[11] CIP, Flushing, 
                                     min:-13,
                                     max:5, 
                                     tickAmount: 11,
@@ -1259,7 +1070,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                            },
                                            //labels: false,
                                            //opposite: true 
-                                       } 
+                                       }   
+                                  
                         ],   
                         series: [  
                     
@@ -1269,13 +1081,12 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               visible:s1Param.series,
                                                               showInLegend:s1Param.series,
                                                               data: dataSeries1x,                                          
-                                                             lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
+                                                              lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
                                                               yAxis:st[s1Param.ufData]['yAxis'],
-                                                             className:s1Param.chartType,
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small>{point.y}<br> ',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s1Param.ufData]['unit'],
@@ -1309,11 +1120,10 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries2x,                                          
                                                               lineWidth:(s2Param.chartType=="scatter")?0:s2Param.lineWidth,
                                                               yAxis:st[s2Param.ufData]['yAxis'],
-                                                              className:s2Param.chartType,
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s2Param.ufData]['unit'],
@@ -1348,11 +1158,10 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries3x,                                          
                                                               lineWidth:(s3Param.chartType=="scatter")?0: s3Param.lineWidth,
                                                               yAxis:st[s3Param.ufData]['yAxis'],
-                                                              className:s3Param.chartType,
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s3Param.ufData]['unit'],
@@ -1387,9 +1196,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s4Param.chartType=="scatter")?0: s4Param.lineWidth,
                                                               yAxis:st[s4Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s4Param.ufData]['unit'],
@@ -1424,9 +1233,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s5Param.chartType=="scatter")?0: s5Param.lineWidth,
                                                               yAxis:st[s5Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s5Param.ufData]['unit'],
@@ -1461,9 +1270,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s6Param.chartType=="scatter")?0: s6Param.lineWidth,
                                                               yAxis:st[s6Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s6Param.ufData]['unit'],
@@ -1498,9 +1307,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s7Param.chartType=="scatter")?0: s7Param.lineWidth,
                                                               yAxis:st[s7Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshairs: [true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s7Param.ufData]['unit'],

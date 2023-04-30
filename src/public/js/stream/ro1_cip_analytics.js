@@ -660,8 +660,10 @@ let plotParam = {
                 bayline: "41",
                 roSkid: $('#skidx').val(), 
                 ufqry:$('#skidx').val(),
+                sec_ax:$('#sec_xAxis').is(':checked'),
+                mappingClr:$('#mapping_clr').val(),
                 chartBackground:$('#pen_main').val(),
-                plotWidth:$('#plot_width').val(),
+                plotWidth:screen.availWidth * 0.95,
                 legendShow: $('#is_legend').is(':checked'),
                 yAxis:$('#is_main_yaxis').is(':checked'),
                 gridColor: $('#pen_grid').val(),
@@ -670,12 +672,6 @@ let plotParam = {
                 plotExpBackground:$('#pen_export').val(),
                 plotExpTitleColor: $('#pen_export_title').val()
                 }
-
-
-
-
-
-
 var dpY1 = (s1Param.series && s1Param.yAxis && (s1Param.ufData=="result_init_dp"||s1Param.ufData=="final_dp"||s1Param.ufData=="crt_lf_dp"||s1Param.ufData=="crt_hg_dp"))?true:false;
 var dpY2 = (s2Param.series && s2Param.yAxis && (s2Param.ufData=="result_init_dp"||s2Param.ufData=="final_dp"||s2Param.ufData=="crt_lf_dp"||s2Param.ufData=="crt_hg_dp"))?true:false;
 var dpY3 = (s3Param.series && s3Param.yAxis && (s3Param.ufData=="result_init_dp"||s3Param.ufData=="final_dp"||s3Param.ufData=="crt_lf_dp"||s3Param.ufData=="crt_hg_dp"))?true:false;
@@ -824,11 +820,12 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
         }}},  
         title: {
         align: 'center',
-      //  x:35,
-       // y:20, 
-        text:'RO SKid 41'+plotParam.ufqry.toUpperCase()+' Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
+        x:35,
+        y:30, 
+        text:'RO SKid 41'+plotParam.ufqry.toUpperCase(),
         style: {color: plotParam.plotExpTitleColor,
-        font: '15px "Calibri", Verdana, sans-serif'
+        font: '18px "Calibri", Verdana, sans-serif',
+        fontWeight:'bold'
         }},
         exporting: {
         printMaxWidth: 1000,
@@ -886,12 +883,21 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
         }},
                 
                       xAxis: [ // hidden primary x-axis
-                    {     
-                    // type: "datetime",        
-                           categories:datex,
-                           lineColor: '#8395a7',
-                           allowDecimals: false,    
-                          labels: {enabled:false }, },
+                      {     
+                        // type: "datetime",        
+                               categories:datex,
+                               lineColor: '#8395a7',
+                               allowDecimals: false,
+                    crosshair: {color:'#ffffff',
+                                            dashStyle: 'Dot',
+                                            width:1.5,
+                                          label: {
+                                            enabled: true,
+                                            backgroundColor: '#ffffff',
+                                             
+                                          }
+                                        },
+                              labels: {enabled:false }, },
                       {// type: "datetime", Secondary 
                         categories:date22,
                          lineColor: '#8395a7',
@@ -918,7 +924,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                           },
                           title: {  
                             rotation: 0,
-                            text: 'Span ' +dates_diff_cal+' Days',
+                            text: 'Span ' +dates_diff_cal+' Days,'+' Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
                             style: {
                                 color:'#0984e3',
                                 font: '14px "Calibri", Verdana, sans-serif'
@@ -933,7 +939,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                         // tickWidth: 1,
                        // tickColor:"gray",
                       //  gridLineColor:plotParam.gridColor,
-                        visible: true,
+                        visible:plotParam.sec_ax,
                        // tickInterval:tickcal,
                         opposite: true,
                        id: 'x7',
@@ -952,7 +958,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                            y:150,
                           // x:0,
                                style: {
-                                  color: '#95a5a6',
+                                  color:plotParam.mappingClr,
                                   fontSize:8,
                                   overflow:'allow'
                                   
@@ -973,6 +979,17 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                           lineColor: 'gray',
                           lineWidth:2,
                           gridLineWidth:0.3,
+                          crosshair: {color:'#ffffff',
+                          dashStyle: 'Dot',
+                          width:1.5,
+                        label: {
+                          enabled: true,
+                          color:'#1e272e',
+                          fontWeight:'bold',
+                          backgroundColor: '#000000',
+                           
+                        }
+                      },
                           gridLineColor: plotParam.gridColor,      
                             labels: {
                                 enabled: cipRinse_Yaxis,
@@ -1003,7 +1020,18 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                          max:3,     
                           visible:dp_Yaxis, 
                           tickWidth: 1, 
-                          tickAmount: 11,  
+                          tickAmount: 11,
+                          crosshair: {color:'#ffffff',
+                          dashStyle: 'Dot',
+                          width:1.5,
+                        label: {
+                          enabled: true,
+                          color:'#1e272e',
+                          fontWeight:'bold',
+                          backgroundColor: '#000000',
+                           
+                        }
+                      },  
                          gridLineWidth: 0,
                           labels: {
                                 enabled: true,
@@ -1011,7 +1039,11 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                // formatter: function() {
                                 //    return Math.ceil(this.value);
                                //   },
-                                style: {color:'#2f3542'}
+                               style:{
+                                color:'#ff3838',
+                                fontWeight:'bold',
+                                backgroundColor: '#000000',
+                            }
                             },
                             title: {
                                 useHTML: true,
@@ -1021,16 +1053,30 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                 y: -10,
                                 text: 'bar',
                                 style: {
-                                    color:'#0984e3'
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
                                 }
                             },
                             //labels: false,
                             //opposite: true
                         },
-        { //  [2] Elapsed Days
+        { //  [2] Elapsed Days not used
+            min:1.5, 
+            max:3,  
              tickAmount: 11,
               visible:false, 
-              tickWidth: 1,      
+              tickWidth: 1,
+              crosshair: {color:'#ffffff',
+              dashStyle: 'Dot',
+              width:1.5,
+            label: {
+              enabled: true,
+              color:'#1e272e',
+              fontWeight:'bold',
+              backgroundColor: '#000000',
+               
+            }
+          },      
              gridLineWidth: 0,
               labels: {
                     enabled: true, 
@@ -1038,7 +1084,11 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                    // formatter: function() {
                     //    return Math.ceil(this.value);
                   //    },
-                  //  style: {color:temperature_color,}
+                  style:{
+                    color:'#1e272e',
+                    fontWeight:'bold',
+                    backgroundColor: '#000000',
+                }
                 },
                 title: {
                     useHTML: true,
@@ -1048,7 +1098,8 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                     y: -10,
                     text: 'Days',
                     style: {
-                        color:'#27ae60'
+                        color:'#1e272e',
+                        fontWeight:'bold',
                     }
                 },
                 //labels: false,
@@ -1056,16 +1107,31 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
             },   
     
             { //[3]  Hrs and CIP Frequency
-                 //   min:0, 
-                 //   max:100,  
+                 min:0, 
+                 max:11,  
                   tickAmount: 11,
                   visible:hrsC_Yaxis, 
                   tickWidth: 1,      
                  gridLineWidth: 0,
+                 crosshair: {color:'#ffffff',
+                 dashStyle: 'Dot',
+                 width:1.5,
+               label: {
+                 enabled: true,
+                 color:'#1e272e',
+                 fontWeight:'bold',
+                 backgroundColor: '#000000',
+                  
+               }
+             },
                   labels: {
                         enabled: true,
                         format: '{value}',           
-                      //  style: {color:temperature_color,}
+                        style:{
+                            color:'#1e272e',
+                            fontWeight:'bold',
+                            backgroundColor: '#000000',
+                        }
                     },
                     title: {
                         useHTML: true,
@@ -1074,8 +1140,9 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                         rotation: 0,
                         y: -10,
                         text: 'hr-N',
-                        style: {
-                            color:'#c0392b'
+                        style:{
+                            color:'#1e272e',
+                        fontWeight:'bold',
                         }
                     },
                     //labels: false,
@@ -1083,16 +1150,31 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                 },
                
             { //[4] Flow Rate      
-                    // min:0, 
-                    // max:3,                
+                    min:500, 
+                    max:1400,                
                       visible:floR_Yaxis, 
                       tickWidth: 1, 
                       tickAmount: 11,                 
                      gridLineWidth: 0,
+                     crosshair: {color:'#ffffff',
+                     dashStyle: 'Dot',
+                     width:1.5,
+                   label: {
+                     enabled: true,
+                     color:'#1e272e',
+                     fontWeight:'bold',
+                     backgroundColor: '#000000',
+                      
+                   }
+                 },
                       labels: {
                             enabled: true, 
                             format: '{value}',                       
-                            style: {color:'#636e72',}
+                            style:{
+                                color:'#1e272e',
+                                fontWeight:'bold',
+                                backgroundColor: '#000000',
+                            }
                         },
                         title: {
                             useHTML: true,
@@ -1102,7 +1184,8 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                             y: -10,
                             text: 'm<sup>3</sup>/h',
                             style: {
-                                color:'#636e72'
+                                color:'#1e272e',
+                        fontWeight:'bold',
                             }
                         },
                         //labels: false,
@@ -1110,15 +1193,32 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                     },
                    
                     { //[5]  CIP Temperature
+                        min:15, 
+                        max:41, 
                           visible:cipTemp_Yaxis, 
                           tickWidth: 1,
-                          tickAmount: 11,    
+                          tickAmount: 11,
+                          crosshair: {color:'#ffffff',
+                          dashStyle: 'Dot',
+                          width:1.5,
+                        label: {
+                          enabled: true,
+                          color:'#1e272e',
+                          fontWeight:'bold',
+                          backgroundColor: '#000000',
+                           
+                        }
+                      },    
                          gridLineWidth: 0,
                           labels: {
                                 enabled: true,
                                 format: '{value}', 
                                          
-                                style: {color:'#2d3436',}
+                                style:{
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
+                                    backgroundColor: '#000000',
+                                }
                             },
                             title: {
                                 useHTML: true,
@@ -1128,7 +1228,8 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                 y: -10,
                                 text: '°C',
                                 style: {
-                                    color:'#2d3436'
+                                    color:'#1e272e',
+                        fontWeight:'bold',
                                 }
                             },
                             //labels: false,
@@ -1136,6 +1237,8 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                         },
       
                         { //[6] CIP TNK Volume m3
+                            min:60, 
+                            max:210, 
                            tickAmount: 11, 
                             visible:tankVol_Yaxis, 
                             tickWidth: 1,      
@@ -1143,6 +1246,17 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                             // lineWidth:2,
                            // minorTickInterval: 'auto',
                              gridLineWidth: 0,
+                             crosshair: {color:'#ffffff',
+                             dashStyle: 'Dot',
+                             width:1.5,
+                           label: {
+                             enabled: true,
+                             color:'#1e272e',
+                             fontWeight:'bold',
+                             backgroundColor: '#000000',
+                              
+                           }
+                         },
                               labels: {
                                     enabled: true, //is_temperature,
                                    // format: '{value.toFixed(0)}', 
@@ -1150,7 +1264,11 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                         return (this.value).toFixed(0);
                                       }, 
                                              
-                                    style: {color:'#2d3436',}
+                                      style:{
+                                        color:'#1e272e',
+                                        fontWeight:'bold',
+                                        backgroundColor: '#000000',
+                                    }
                                 },
                                 title: {
                                     useHTML: true,
@@ -1160,7 +1278,8 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                     y: -10,
                                     text: 'm<sup>3</sup>',
                                     style: {
-                                        color:'#2d3436'
+                                        color:'#1e272e',
+                        fontWeight:'bold',
                                     }
                                 },
                                 //labels: false,
@@ -1168,19 +1287,34 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                             },
     
                             { //[7] Chemical Used Liters
-                               // min: 0,
-                              //  max: 2,
+                              //  min: 0,
+                              //max:600,
                                 tickAmount: 11,
                                 visible:chmCon_Yaxis, 
                                 tickWidth: 1,
+                                crosshair: {color:'#ffffff',
+                                dashStyle: 'Dot',
+                                width:1.5,
+                              label: {
+                                enabled: true,
+                                color:'#1e272e',
+                                fontWeight:'bold',
+                                backgroundColor: '#000000',
+                                 
+                              }
+                            },
                                  gridLineWidth: 0,
                                   labels: {
                                         enabled: true,
                                       //  format: '{value}',
                                         formatter: function() {
-                                            return (this.value/1000).toFixed(1)+' K';
+                                            return (this.value/1000).toFixed(2)+' K';
                                           },                       
-                                        style: {color:'#2d3436',}
+                                          style:{
+                                            color:'#1e272e',
+                                            fontWeight:'bold',
+                                            backgroundColor: '#000000',
+                                        }
                                     },
                                     title: {
                                         useHTML: true,
@@ -1189,8 +1323,9 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                         rotation: 0,
                                         y: -10,
                                         text: 'Ltr',
-                                        style: {
-                                            color:'#2d3436'
+                                        style:{
+                                            color:'#1e272e',
+                        fontWeight:'bold',
                                         }
                                     },
                                     //labels: false,
@@ -1202,13 +1337,28 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                     tickAmount: 14,
                                     visible:ph_Yaxis, 
                                     tickWidth: 1,
+                                    crosshair: {color:'#ffffff',
+                                    dashStyle: 'Dot',
+                                    width:1.5,
+                                  label: {
+                                    enabled: true,
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
+                                    backgroundColor: '#000000',
+                                     
+                                  }
+                                },
                                      gridLineWidth: 0,
                                       labels: {
                                             enabled: true,
                                             format: '{value}',
                                                                                    
                                                      
-                                            style:{color:'#2d3436'}
+                                            style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                         },
                                         title: {
                                             useHTML: true,
@@ -1218,16 +1368,30 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                             y: -10,
                                             text: 'pH',
                                             style: {
-                                                color:'#2d3436'
+                                                color:'#1e272e',
+                        fontWeight:'bold',
                                             }
                                         },
                                         //labels: false,
                                         //opposite: true 
                                     },   
-                                    { //[9] Rinse Vol. 
+                                    { //[9] Rinse Vol.
+                                    min:1000,
+                                    //    max:15000,
                                         tickAmount: 11,
                                        visible:rinseVolYaxis, 
                                        tickWidth: 1,
+                                       crosshair: {color:'#ffffff',
+                                       dashStyle: 'Dot',
+                                       width:1.5,
+                                     label: {
+                                       enabled: true,
+                                       color:'#1e272e',
+                                       fontWeight:'bold',
+                                       backgroundColor: '#000000',
+                                        
+                                     }
+                                   },
                                         gridLineWidth: 0,
                                          labels: {
                                                enabled: true,
@@ -1235,7 +1399,11 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                formatter: function() {
                                                 return (this.value/1000).toFixed(1)+' K';
                                               },                                                   
-                                               style:{color:'#2d3436'}
+                                              style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                            },
                                            title: {
                                                useHTML: true,
@@ -1245,23 +1413,41 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                y: -10,
                                                text: 'm<sup>3</sup>',
                                                style: {
-                                                   color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                                }
                                            },
                                            //labels: false,
                                            //opposite: true 
                                        },   
 
-                                   { //[10] CIP Number. 
+                                   { //[10] CIP Number.
+                                    min:1,
+                                    max:700, 
                                         tickAmount: 11,
                                        visible:cipNum_Yaxis, 
                                        tickWidth: 1,
                                         gridLineWidth: 0,
+                                        crosshair: {color:'#ffffff',
+                                        dashStyle: 'Dot',
+                                        width:1.5,
+                                      label: {
+                                        enabled: true,
+                                        color:'#1e272e',
+                                        fontWeight:'bold',
+                                        backgroundColor: '#000000',
+                                         
+                                      }
+                                    },
                                          labels: {
                                                enabled: true,
                                               format: '{value}',
                                                                                          
-                                               style:{color:'#2d3436'}
+                                              style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                            },
                                            title: {
                                                useHTML: true,
@@ -1271,22 +1457,40 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                y: -10,
                                                text: 'N',
                                                style: {
-                                                   color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                                }
                                            },
                                            //labels: false,
                                            //opposite: true 
                                        },   
                                   { //[11] Running Days 
+                                    min:1,
+                                    max:2000,
                                         tickAmount: 11,
                                        visible:skidRunYaxis, 
                                        tickWidth: 1,
+                                       crosshair: {color:'#ffffff',
+                                       dashStyle: 'Dot',
+                                       width:1.5,
+                                     label: {
+                                       enabled: true,
+                                       color:'#1e272e',
+                                       fontWeight:'bold',
+                                       backgroundColor: '#000000',
+                                        
+                                     }
+                                   },
                                         gridLineWidth: 0,
                                          labels: {
                                                enabled: true,
                                               format: '{value}',
                                                                                          
-                                               style:{color:'#2d3436'}
+                                              style:{
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
+                                                backgroundColor: '#000000',
+                                            }
                                            },
                                            title: {
                                                useHTML: true,
@@ -1296,7 +1500,8 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                y: -10,
                                                text: 'Days',
                                                style: {
-                                                   color:'#2d3436'
+                                                color:'#1e272e',
+                                                fontWeight:'bold',
                                                }
                                            },
                                            //labels: false,
@@ -1320,7 +1525,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s1Param.ufData]['unit'],
@@ -1357,7 +1562,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: false,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s2Param.ufData]['unit'],
@@ -1395,7 +1600,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: false,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s3Param.ufData]['unit'],
@@ -1432,7 +1637,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: false,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s4Param.ufData]['unit'],
@@ -1469,7 +1674,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: false,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s5Param.ufData]['unit'],
@@ -1506,7 +1711,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: false,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s6Param.ufData]['unit'],
@@ -1543,7 +1748,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
                                                               tooltip: {
                                                                 crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small><strong>{point.y}</strong><br>',
                                                                 shared: false,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s7Param.ufData]['unit'],

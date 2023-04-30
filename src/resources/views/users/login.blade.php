@@ -68,8 +68,8 @@
     <form method="POST" action="/users/authenticate">
       <input type="hidden" name="_token" value="{{csrf_token()}}" />
       <div class="mb-4">
-        <label for="username" class="inline-block text-lg mb-2"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;User Name</label>
-        <input type="username" class="border border-gray-200 rounded p-2 w-full" autofocus placeholder="User Name" name="username" value="{{old('username')}}" />
+        <label for="username" class="inline-block text-lg mb-2"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Username or Email</label>
+        <input type="username" class="border border-gray-200 rounded p-2 w-full" autofocus placeholder="Username or Email" name="username" value="{{old('username')}}" />
 
         @error('username')
         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -80,7 +80,7 @@
         <label for="password" class="inline-block text-lg mb-2">
           <i class="fa fa-key" aria-hidden="true"></i>&nbsp; Password
         </label>
-        <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password"
+        <input type="password" class="border border-gray-200 rounded p-2 w-full" placeholder="*******" name="password"
           value="{{old('password')}}" />
 
         @error('password')
@@ -103,11 +103,13 @@
         </button>
       </div>
 
-      @if (Route::has('password.request'))
-      <a class="btn btn-link" href="{{ route('password.request') }}">
+      
+      @if (Route::has('forgot-passwordx'))
+      <div class="mb-2 text-right">
+      <a class="btn btn-link text-blue-600" href="{{ route('forgot-passwordx') }}">
           {{ __('Forgot Your Password?') }}
-      </a>
-  @endif
+      </a> </div>
+      @endif
 
     </form>
 </div>

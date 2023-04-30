@@ -21,7 +21,7 @@
 <title>RO First Pass </title>
 </head>
 <body>
-    <figure id="plot_window" class="test_print loading-msg" style="width:98vw; height:90vh;"></figure>
+    <figure id="plot_window" class="test_print loading-msg" style="height:95vh;"></figure>
     <style>
         .main-chk{
         width:20px;
@@ -1190,13 +1190,6 @@
                       <div class="modal-body">
 
                 <div class="row mb-2">
-                    <label for="plot_width" class="col-sm-5 col-form-label">Plot Width Span <i class="fa fa-arrows-h" aria-hidden="true"></i> Px</label>
-                    <div class="col-sm-4">
-                      <input type="number" id="plot_width" class="chart_render form-control" min="1000" value="1500" step="200">
-                    </div>
-                </div>
-
-                <div class="row mb-2">
                     <label for="pen_main" class="col-sm-5 col-form-label">Background Color <i class="fa fa-eyedropper" aria-hidden="true"></i></label>
                     <div class="col-sm-4">
                      <input type="color" id="pen_main" name="chart_background" value="#0d0d0d" class="chart_render series-color">
@@ -1217,7 +1210,7 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="is_main_yaxis" class="col-sm-5 col-form-label">Y-axis % &nbsp;<i class="fa fa-area-chart" aria-hidden="true"></i></label>
+                    <label for="is_main_yaxis" class="col-sm-5 col-form-label">Common Y-axis % &nbsp;<i class="fa fa-area-chart" aria-hidden="true"></i></label>
                     <div class="col-sm-4">
                       <input type="checkbox" id="is_main_yaxis" name="is_main_yaxis" class="chart_render main-chk">
                     </div>
@@ -1236,7 +1229,7 @@
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+                    <label for="pen_export" class="col-sm-6 col-form-label">Export Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
                     <div class="col-sm-4">
                        <input type="color" id="pen_export" name="chart_background_export" value="#ffffff" class="chart_render series-color">
                     </div>
