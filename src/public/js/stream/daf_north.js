@@ -6,9 +6,7 @@ $('.query').change(function(){
     //    queryStream();
 Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
-$('#info').click(function(){
-Notiflix.Report.Info('Information!','Database avaialbe from 01-01-2020 to 31-12-2020, base interval is 1 hour from Violink source, Export server can handle up to 1000 data points more than this will throw an error','Close');
-;})
+
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
