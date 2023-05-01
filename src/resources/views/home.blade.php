@@ -71,6 +71,10 @@
      color:#2f3542;
      text-decoration: none;
     }
+
+    .ancherx{
+      color:#ee0808;
+     }
     .ancher{
       color:#050505;
      }
@@ -129,6 +133,12 @@
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF South</button></a> 
   <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
+<a   href="#"  style="text-decoration: none;" class="menu not_ready">
+  <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; UF North</button></a>
+  <a   href="#"  style="text-decoration: none;" class="menu not_ready">
+    <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; UF South</button></a>
+    <a   href="#"  style="text-decoration: none;" class="menu not_ready">
+      <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; RO Feed</button></a>
 <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 Normalization  </button></a>
 <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
@@ -136,6 +146,15 @@
 <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; RO2 Normalization</button></a>
 <a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu">
+
+<a   href="#"  style="text-decoration: none;" class="menu not_ready">
+<button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post CO2</button></a>
+<a   href="#"  style="text-decoration: none;" class="menu not_ready">
+<button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Lime</button></a>
+<a   href="#"  style="text-decoration: none;" class="menu not_ready">
+<button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Cl2</button></a>
+
+
 <button class="btn btn-light menu"> <i class="ancher fa fa-user" aria-hidden="true" ></i>&nbsp; Add New User</button></a>
 
 <form class="menu" method="POST" action="/logout">
@@ -162,10 +181,12 @@ Logout
 </div>
 @endif
 
+<script>
+$('.not_ready').click(function(){
+  Notiflix.Report.Failure('Database built in progress','Close');
+  ;})
 
-
-
-
+</script>
 
 
 
