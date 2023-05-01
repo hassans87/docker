@@ -129,7 +129,7 @@
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF South</button></a> 
   <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
-      
+<a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 Normalization  </button></a>
 <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp; RO1 CIP </button></a>
