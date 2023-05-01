@@ -71,6 +71,17 @@
      color:#2f3542;
      text-decoration: none;
     }
+    .ancher{
+      color:#050505;
+     }
+    .btn-light:hover{
+     color:#e2e2e2;
+     background-color: rgb(7, 7, 7);
+     .ancher{
+      color:#0bf00b;
+     }
+    }
+
      </style>
 <script>
     Notiflix.Block.Init({
@@ -106,21 +117,30 @@
   //Notiflix.Block.Pulse('.loading-msg', 'Please wait Fetching data from server....');
   // Notiflix Notify Init - global.js
   </script>
-
-
-
-
 <div class="container-fluid">
 <div class="row"> 
 <div class="col">
-<div class="btn-group-vertical glass1">
-<button class="btn btn-light menu"> <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 Normalization </a> </button>
-<button class="btn btn-light menu"> <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;"><img src={{asset('icons/main-lab.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO1 CIP</a> </button>
-<button class="btn btn-light menu"> <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;"><img src={{asset('icons/stocks.png')}}  width="32px" style="vertical-align: middle;">&nbsp; RO2 Normalization New</a> </button>
-<button class="btn btn-light menu"> <a  href="{{ url('/register') }}"  style="text-decoration: none;"><img src={{asset('icons/new_user.png')}}  width="32px" style="vertical-align: middle;">&nbsp; Add New User</a></button>
-<form class="inline" method="POST" action="/logout">
+<div class="btn-group-vertical glass2">
+  <a   href="{{ url('/swintake') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; SW Intake </button></a> 
+<a   href="{{ url('/dafnorth') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF North</button></a> 
+  <a   href="{{ url('/dafsouth') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF South</button></a> 
+  <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
+      
+<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 Normalization  </button></a>
+<a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp; RO1 CIP </button></a>
+<a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; RO2 Normalization</button></a>
+<a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu">
+<button class="btn btn-light menu"> <i class="ancher fa fa-user" aria-hidden="true" ></i>&nbsp; Add New User</button></a>
+
+<form class="menu" method="POST" action="/logout">
 @csrf
-<button type="submit" class="btn btn-light menu">
+<button type="submit" class="btn btn-light">
 <i class="fa fa-sign-out" aria-hidden="true" style="color:red;"></i>
 Logout
 </button>
@@ -129,7 +149,6 @@ Logout
 
 
   </div> </div>
-
 
 
 </div>
@@ -142,6 +161,11 @@ Logout
     </script>
 </div>
 @endif
+
+
+
+
+
 
 
 
