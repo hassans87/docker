@@ -100,25 +100,17 @@ messageMaxLength:200,
 position:'right-bottom',
 cssAnimationStyle:"zoom",
 });
-
 </script>
-
-
 <div class="input-group">
   <div class="col-auto" style="margin-right:5px;">
     <a href="{{ url('/home') }}"> 
       <button class="btn form-control form-control-sm badge-light3d">Home &nbsp;<i class="fa fa-home" aria-hidden="true" style="color:black;"></i></button></a>
-
-
-
     </div>
            <div class="col-auto" style="margin-right:5px;">
                   <!-- Button trigger modal -->   
               <div class="input-group">
               <span class="btn badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;">Global &nbsp;<i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span>
               </div>
- 
-
       </div>
       <div class="col-auto" style="margin-right:8px;">
         <div class="input-group input-group-sm">

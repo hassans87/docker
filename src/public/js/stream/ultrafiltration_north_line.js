@@ -4,10 +4,6 @@ setInterval(function () {$("head title").html($("head title").html().substring(1
 $('.query_fire').click(function(){queryStream();})
 $('.apply_filter').click(function(){queryStream();})
 $('.filtercheck').click(function(){enableFilter();})
-$('#info').click(function(){
-Notiflix.Report.Info('Information!','Database avaialbe from 01-01-2016 to 30-11-2022, base interval is 15 minutes from Violink source, Export server can handle up to 1000 data points more than this will throw an error','Close');
-;})
-
 $('.query').change(function(){
         //queryStream();
 //Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
@@ -19,7 +15,6 @@ function Stream(target){
     this.ufSkid = $('#alpha'+target).val();
     this.ufData = $('#ufdata'+target).val();
 }
-
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
                     this.ufGroup ="31";
@@ -121,8 +116,8 @@ let s7Param = new Stream(7);
         let d5 = s5Param.series;
         let d6 = s6Param.series;
         let d7 = s7Param.series;
-
-    const query_data = new URLSearchParams({skid_tag:"test",action:'data',date1: plotParam.dateFrom,date2:plotParam.dateTo,dtinvt:plotParam.dataInvt,
+const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+const query_data = new URLSearchParams({from:plotParam.dateFrom,dateto:plotParam.dateTo,dtinvt:plotParam.dataInvt,
          skid1:s1Param.ufSkid, ufdata1:s1Param.ufData,
          skid2:s2Param.ufSkid, ufdata2:s2Param.ufData,
          skid3:s3Param.ufSkid, ufdata3:s3Param.ufData,
@@ -131,12 +126,13 @@ let s7Param = new Stream(7);
          ufGroup:s1Param.ufGroup,
         d1:d1,d2:d2,d3:d3,d4:d4,d5:d5,d6:d6,
 d7:d7});
-    fetch('../../_process/ultra_filtration/uf_veolink.php',{method:'POST',body: query_data,})
+fetch(window.location.href,    
+  {method:'POST',
+  body:query_data,
+  headers:{"x-CSRF-TOKEN":csrfToken}
+  })
 .then(response =>response.text())
 .then((data) => {
-    //console.log(data);
-    let data_stream = JSON.parse(data);
-       // console.log(data);
         let dataStream = JSON.parse(data);
         let date =dataStream[0];
         let dataSeries1 = dataStream[1]; 
@@ -147,7 +143,7 @@ d7:d7});
         let dataSeries6 = dataStream[6];
         let dataSeries7 = dataStream[7];
 
-console.log(dataSeries7);
+
 
 
 enableFilter();
@@ -246,8 +242,6 @@ $(".tr"+series).removeClass("table-light") .addClass("table-secondary");
 $("#unit"+series).html(" ");
 }}
 
-
- 
 function seriesData(stream,series,go,valLimit,offset,unit,sum){
 if(go && stream.length>1){
 let max_arrary1 = [];
@@ -266,7 +260,7 @@ $("#data_avg"+series).html(avera1.toFixed(valLimit));
 $("#unit"+series).html(unit);
 $("#data_length"+series).show(1000); $("#data_max"+series).show(1200); $("#data_min"+series).show(1400); $("#data_avg"+series).show(1600);
 }else{Notiflix.Notify.Failure('Series'+series+ ' : check data Query');
-Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
+//Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
 $("#data_length"+series).html('0');
 $("#data_max"+series).html('-');
 $("#data_min"+series).html('-');
@@ -416,11 +410,7 @@ avg_tmp:{
         maxOffset:4,
         arrFlr:0.001,
         valFixTo:2
-}
-
-}
-
-//console.log(dataSeries1);
+}}
 let s1Param = new ChartParam(1);
 let s2Param = new ChartParam(2);
 let s3Param = new ChartParam(3);
@@ -428,8 +418,6 @@ let s4Param = new ChartParam(4);
 let s5Param = new ChartParam(5);
 let s6Param = new ChartParam(6);
 let s7Param = new ChartParam(7);
-//console.log(s1Param);
-//console.log(dataSeries1);
 seriesLook(d1,1);
 seriesLook(d2,2);
 seriesLook(d3,3);
@@ -457,7 +445,7 @@ let plotParam = {
                  dateFrom:$('#start_date').val(),
                 dateTo: $('#end_date').val(),            
                 chartBackground:$('#pen_main').val(),
-                plotWidth:$('#plot_width').val(),
+                plotWidth:screen.availWidth * 0.95,
                 legendShow: $('#is_legend').is(':checked'),
                 yAxis:$('#is_main_yaxis').is(':checked'),
                 gridColor: $('#pen_grid').val(),
@@ -533,122 +521,6 @@ var flowY1 = (s6Param.series && s6Param.yAxis && s6Param.ufData=="online_skids_f
 var flowY2 = (s7Param.series && s7Param.yAxis && s7Param.ufData=="online_skids_flow")? true : false;
 var flowAxis = ( flowY1||flowY2 )? true: false;
 
-console.log(s1Param.ufGroup);
-const setting = new URLSearchParams({action:'data',date1: plotParam.dateFrom,date2:plotParam.dateTo,
-plotbg:plotParam.chartBackground, 
-grid:plotParam.gridColor,
-dbpage:'uf_north', 
-isLegend:plotParam.legendShow  ,
-isYaxis:plotParam.yAxis  ,
-expoWidth:plotParam.plotExpWidth ,
-expoHeight:plotParam.plotExpHeight ,
-expobg:plotParam.plotExpBackground ,
-expotitle:plotParam.plotExpTitleColor,
-isline1:s1Param.series,
-pen1:s1Param.pen,
-skid1:s1Param.ufSkid,
-qdata1:s1Param.ufData,
-yaxis1: s1Param.yAxis,
-charttype1:s1Param.chartType,
-lineWidth1:s1Param.lineWidth,
-markerWg1:s1Param.markerWeight,
-markerSp1:s1Param.markerShape,
-dataLb1:s1Param.lable,
-offst1:s1Param.isOff,
-offmn1:s1Param.offSetMin,
-offmx1:s1Param.offSetMax,
-
-isline2:s2Param.series,
-pen2:s2Param.pen,
-skid2:s2Param.ufSkid,
-qdata2:s2Param.ufData,
-yaxis2: s2Param.yAxis,
-charttype2:s2Param.chartType,
-lineWidth2:s2Param.lineWidth,
-markerWg2:s2Param.markerWeight,
-markerSp2:s2Param.markerShape,
-dataLb2:s2Param.lable,
-offst2:s2Param.isOff,
-offmn2:s2Param.offSetMin,
-offmx2:s2Param.offSetMax,
-
-isline3:s3Param.series,
-pen3:s3Param.pen,
-skid3:s3Param.ufSkid,
-qdata3:s3Param.ufData,
-yaxis3: s3Param.yAxis,
-charttype3:s3Param.chartType,
-lineWidth3:s3Param.lineWidth,
-markerWg3:s3Param.markerWeight,
-markerSp3:s3Param.markerShape,
-dataLb3:s3Param.lable,
-offst3:s3Param.isOff,
-offmn3:s3Param.offSetMin,
-offmx3:s3Param.offSetMax,
-
-isline4:s4Param.series,
-pen4:s4Param.pen,
-skid4:s4Param.ufSkid,
-qdata4:s4Param.ufData,
-yaxis4: s4Param.yAxis,
-charttype4:s4Param.chartType,
-lineWidth4:s4Param.lineWidth,
-markerWg4:s4Param.markerWeight,
-markerSp4:s4Param.markerShape,
-dataLb4:s4Param.lable,
-offst4:s4Param.isOff,
-offmn4:s4Param.offSetMin,
-offmx4:s4Param.offSetMax,
-isline5:s5Param.series,
-pen5:s5Param.pen,
-skid5:s5Param.ufSkid,
-qdata5:s5Param.ufData,
-yaxis5: s5Param.yAxis,
-charttype5:s5Param.chartType,
-lineWidth5:s5Param.lineWidth,
-markerWg5:s5Param.markerWeight,
-markerSp5:s5Param.markerShape,
-dataLb5:s5Param.lable,
-offst5:s5Param.isOff,
-offmn5:s5Param.offSetMin,
-offmx5:s5Param.offSetMax,
-isline6:s6Param.series,
-pen6:s6Param.pen,
-skid6:s6Param.ufSkid,
-qdata6:s6Param.ufData,
-yaxis6: s6Param.yAxis,
-charttype6:s6Param.chartType,
-lineWidth6:s6Param.lineWidth,
-markerWg6:s6Param.markerWeight,
-markerSp6:s6Param.markerShape,
-dataLb6:s6Param.lable,
-offst6:s6Param.isOff,
-offmn6:s6Param.offSetMin,
-offmx6:s6Param.offSetMax,
-isline7:s7Param.series,
-pen7:s7Param.pen,
-skid7:s7Param.ufSkid,
-qdata7:s7Param.ufData,
-yaxis7: s7Param.yAxis,
-charttype7:s7Param.chartType,
-lineWidth7:s7Param.lineWidth,
-markerWg7:s7Param.markerWeight,
-markerSp7:s7Param.markerShape,
-dataLb7:s7Param.lable,
-offst7:s7Param.isOff,
-offmn7:s7Param.offSetMin,
-offmx7:s7Param.offSetMax
-
-
-});
-    fetch('../../_process/setting/page.php',{method:'POST',body: setting,})
-    .then(response =>response.text())
-    .then((data) => {
-        console.log(data);
-
-    })
-
-
 Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         Highcharts.chart('plot_window', {
         chart: {
@@ -694,9 +566,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:20, 
-        text: 'UF North Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
+        text: 'UF North Data From',
         style: {color: plotParam.plotExpTitleColor,
-        font: '17px "Calibri", Verdana, sans-serif',
+        font: '18px "Calibri", Verdana, sans-serif',
         fontWeight:'bold'
         }},
         exporting: {
@@ -707,9 +579,10 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         filename: 'SWRO-SADARA UF Performance'+' '+datex[0] + " To "+datex[datex.length-1],
         enabled: true,
         buttons: {
-        contextButton: {
-        //  text: 'Chart Export'
-        }},
+          contextButton: {
+              align: 'right',
+              x:-40
+      }},
         chartOptions: {
         title: {
         style: {
@@ -800,7 +673,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                           },
                           title: {  
                             rotation: 0,
-                            text: 'Span ' +dates_diff_cal+' Days',
+                            text: 'Span ' +dates_diff_cal+' Days '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
                             style: {
                                 color:'#0984e3',
                                 font: '14px "Calibri", Verdana, sans-serif'

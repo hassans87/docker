@@ -860,7 +860,7 @@ var rinseVolYaxis = (rinseVoY1||rinseVoY2 ||rinseVoY3 ||rinseVoY4 ||rinseVoY5||r
         y:35,
         floating: true,
         borderWidth: 0,
-        // backgroundColor:'rgba(255, 255, 255, 0.5)'
+        backgroundColor:'rgba(255, 255, 255, 0.7)'
         },    
         tooltip: { 
        // headerFormat: '{point[1].key}',      

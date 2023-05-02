@@ -133,10 +133,10 @@
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF South</button></a> 
   <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
-<a   href="#"  style="text-decoration: none;" class="menu not_ready">
-  <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; UF North</button></a>
-  <a   href="#"  style="text-decoration: none;" class="menu not_ready">
-    <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; UF South</button></a>
+<a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
+  <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF North</button></a>
+  <a   href={{ url('/uf_south') }}  style="text-decoration: none;" class="menu">
+    <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF South</button></a>
     <a   href="#"  style="text-decoration: none;" class="menu not_ready">
       <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; RO Feed</button></a>
 <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
@@ -146,6 +146,10 @@
 <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; RO2 Normalization</button></a>
 <a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu">
+
+
+  <a   href="#"  style="text-decoration: none;" class="menu not_ready">
+    <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Brine</button></a>
 
 <a   href="#"  style="text-decoration: none;" class="menu not_ready">
 <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post CO2</button></a>
