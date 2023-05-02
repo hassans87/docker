@@ -56,6 +56,10 @@
       display: flex; 
       
     }
+
+    .glass2 a{
+      border-bottom: 1px solid rgb(189, 187, 187);
+    }
       .menu{
     font-size:0.9rem; 
     font-family: calibri; 
@@ -64,12 +68,13 @@
     display: block;
     text-align:left;
     font-weight: bold;
-     
+    
       
     }
     .menu a{
      color:#2f3542;
      text-decoration: none;
+     
     }
 
     .ancherx{
@@ -145,7 +150,8 @@
 <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp; RO1 CIP </button></a>
 <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; RO2 Normalization</button></a>
-<a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu">
+
+
 
 
   <a   href="#"  style="text-decoration: none;" class="menu not_ready">
@@ -157,13 +163,13 @@
 <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Lime</button></a>
 <a   href="#"  style="text-decoration: none;" class="menu not_ready">
 <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Cl2</button></a>
+<a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu ">
+  <button class="btn btn-light btn-sm menu"> <i class="ancher fa fa-user" aria-hidden="true"></i>&nbsp;Add New User</button></a>
 
-
-<button class="btn btn-light menu"> <i class="ancher fa fa-user" aria-hidden="true" ></i>&nbsp; Add New User</button></a>
 
 <form class="menu" method="POST" action="/logout">
 @csrf
-<button type="submit" class="btn btn-light">
+<button type="submit" class="btn btn-warning btn-sm">
 <i class="fa fa-sign-out" aria-hidden="true" style="color:red;"></i>
 Logout
 </button>
