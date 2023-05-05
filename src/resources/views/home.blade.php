@@ -163,7 +163,15 @@
 <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Lime</button></a>
 <a   href="#"  style="text-decoration: none;" class="menu not_ready">
 <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Cl2</button></a>
+
+<a   href="#"  style="text-decoration: none;" class="menu not_ready">
+  <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Import/Export</button></a>
+
+
+
 <a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu ">
+
+  
   <button class="btn btn-light btn-sm menu"> <i class="ancher fa fa-user" aria-hidden="true"></i>&nbsp;Add New User</button></a>
 
 
@@ -180,15 +188,36 @@ Logout
   </div> </div>
 
 
+
+
+
+
+
+
+
+
+
 </div>
+
+
+
+
+  
+  
+ 
+
+
+
+
+
+
 
 </div>
 @if(session()->has('message'))
-<div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show">
     <script>
       Notiflix.Notify.Info('{{session('message')}}');
     </script>
-</div>
+
 @endif
 
 <script>
