@@ -20,7 +20,7 @@
   <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
-<title> DAF South </title>
+<title> Import and Export </title>
 </head>
 <body style="font-family: calibri;" class="">
 <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
@@ -33,6 +33,7 @@
                           <th>&nbsp;&nbsp;Max Value &nbsp;&nbsp;</th>
                           <th>&nbsp;&nbsp;Min Value &nbsp;&nbsp;</th>
                           <th>&nbsp;&nbsp;Avg. Value &nbsp;&nbsp;</th>
+                          <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sum &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                           <th>&nbsp;&nbsp; Unit &nbsp;&nbsp;</th>
                           
                       </tr>
@@ -40,42 +41,26 @@
                         <tbody> 
                   <tr class="tr1 table-light">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line1" checked="">
-                                   &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#dd971d" class="chart_render series-color"> &nbsp; </div>
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line1" checked="">
+                                   &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#193ae1" class="chart_render series-color"> &nbsp; </div>
                                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata1">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres"> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres"> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres"> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_tot"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb" selected="">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph"> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve"> Sludge Pit Level  &nbsp;</option>
+                  <option value="sw_import" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production" selected="">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export">Cooling Water Export</option>
+                  <option value="dw_export">Demin Water Export</option>
+                  <option value="uw_export">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
+                  
                    </select>
                                       </div>
                                   </div></td><td style="text-align: center;">
@@ -91,8 +76,8 @@
                   <div class="modal fade" id="modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header modelheader1" style="background-color: rgb(221, 151, 29);">
-                          <h5 class="modal-title" id="seriestitle1">Series 1: Filtrated Water Turbidity   &nbsp;</h5>
+                        <div class="modal-header modelheader1" style="background-color: rgb(25, 58, 225);">
+                          <h5 class="modal-title" id="seriestitle1">Series 1: RO Production &nbsp;&nbsp;</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -102,10 +87,10 @@
                       <label for="chart_type1" class="chart_render col-sm-4 col-form-label">Chart Type</label>
                       <div class="col-sm-4">
                         <select class="chart_render form-control form-select" id="chart_type1">
-                            <option value="spline">Line</option>
+                            <option value="spline" selected="">Line</option>
                             <option value="areaspline">Area </option>          
                             <option value="column">Column </option> 
-                            <option value="scatter" selected="">Scatter </option>          
+                            <option value="scatter">Scatter </option>          
                           </select>  
                       </div>
                     </div>
@@ -113,7 +98,7 @@
                     <div class="row mb-2">
                       <label for="line_width1" class="col-sm-4 col-form-label">Line Width</label>
                       <div class="col-sm-4">
-                      <input type="number" id="line_width1" class="chart_render rednder form-control" value="0.5" min="0" max="4" step="0.1">  
+                      <input type="number" id="line_width1" class="chart_render rednder form-control" value="1.5" min="0" max="4" step="0.1">  
                       </div>
                     </div>
                      <div class="row mb-2">
@@ -158,52 +143,36 @@
                                    </div></td>
                                   
                                      
-                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length1">719</span></td>
-                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max1">1.0</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min1">0.0</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg1">0.0</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit1"> NTU</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length1">31</span></td>
+                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max1">68594</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min1">22095</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg1">50951</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum1">1579477</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit1"> m<sup>3</sup>/d</span> </td>
                                   
                         
                   </tr>
                   <tr class="tr2 table-light">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2" checked=""> 
-                                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#2d43e6" class="chart_render series-color"> &nbsp; </div>
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line2" checked=""> 
+                                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#1eb314" class="chart_render series-color"> &nbsp; </div>
                                   <div class="col-auto"> 
                                    <select class="query form-control form-control-sm form-select" id="ufdata2">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres"> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres"> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres"> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_2"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph" selected=""> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve"> Sludge Pit Level  &nbsp;</option>
+                  <option value="sw_import" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export" selected="">Cooling Water Export</option>
+                  <option value="dw_export">Demin Water Export</option>
+                  <option value="uw_export">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
                                   </select>
                                   </div>  
                   
@@ -219,8 +188,8 @@
                   <div class="modal fade" id="modal-series2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header modelheader2" style="background-color: rgb(45, 67, 230);">
-                          <h5 class="modal-title" id="seriestitle2">Series 2:  Filtrated Water pH  &nbsp;</h5>
+                        <div class="modal-header modelheader2" style="background-color: rgb(30, 179, 20);">
+                          <h5 class="modal-title" id="seriestitle2">Series 2: Cooling Water Export</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -228,10 +197,10 @@
                       <label for="chart_type2" class="col-sm-4 col-form-label">Chart Type</label>
                       <div class="col-sm-4">
                         <select class="chart_render form-control form-select" id="chart_type2">
-                            <option value="spline">Line</option>
+                            <option value="spline" selected="">Line</option>
                             <option value="areaspline">Area </option>          
                             <option value="column">Column </option> 
-                            <option value="scatter" selected="">Scatter </option>            
+                            <option value="scatter">Scatter </option>            
                           </select>  
                       </div>
                     </div>
@@ -239,7 +208,7 @@
                     <div class="row mb-2">
                       <label for="line_width1" class="col-sm-4 col-form-label">Line Width</label>
                       <div class="col-sm-4">
-                      <input type="number" id="line_width2" class="chart_render form-control" value="1.8" min="0" max="4" step="0.1">  
+                      <input type="number" id="line_width2" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
                       </div>
                     </div>
                      <div class="row mb-2">
@@ -253,9 +222,9 @@
                       <div class="col-sm-4">
                        <select id="marker_shape2" class="chart_render form-control form-select">
                             <option value="circle">Circle </option>
-                            <option value="square" selected="">Square </option>
+                            <option value="square">Square </option>
                             <option value="triangle">Trianlge </option>
-                            <option value="diamond">Diamond </option>
+                            <option value="diamond" selected="">Diamond </option>
                       </select>
                       </div>
                     </div>
@@ -285,51 +254,35 @@
                                     
                                   
                                      
-                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length2">719</span></td>
-                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max2">8.1</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min2">7.8</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg2">8.0</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit2"> </span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length2">31</span></td>
+                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max2">54400</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min2">28136</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg2">34958</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum2">1083712</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit2"> m<sup>3</sup>/d</span> </td>
                         
                   </tr>
                   <tr class="tr3 table-light">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line3" checked=""> 
-                                    &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="#f02e19" class="chart_render series-color"> &nbsp; </div>
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line3" checked=""> 
+                                    &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="#d707f2" class="chart_render series-color"> &nbsp; </div>
                                   <div class="col-auto"> 
                                    <select class="query form-control form-control-sm form-select" id="ufdata3">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres"> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres"> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres"> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_2"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph"> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve" selected=""> Sludge Pit Level  &nbsp;</option>
+                  <option value="sw_import" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export">Cooling Water Export</option>
+                  <option value="dw_export" selected="">Demin Water Export</option>
+                  <option value="uw_export">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
                                       </select>
                                   </div>   </div>
                                   </td><td style="text-align: center;">
@@ -345,8 +298,8 @@
                   <div class="modal fade" id="modal-series3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header modelheader3" style="background-color: rgb(240, 46, 25);">
-                          <h5 class="modal-title" id="seriestitle3">Series 3:  Sludge Pit Level  &nbsp;</h5>
+                        <div class="modal-header modelheader3" style="background-color: rgb(215, 7, 242);">
+                          <h5 class="modal-title" id="seriestitle3">Series 3: Demin Water Export</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -356,10 +309,10 @@
                       <label for="chart_type3" class="col-sm-4 col-form-label">Chart Type</label>
                       <div class="col-sm-4">
                         <select class="chart_render form-control form-select" id="chart_type3">
-                            <option value="spline">Line</option>
+                            <option value="spline" selected="">Line</option>
                             <option value="areaspline">Area </option>          
                             <option value="column">Column </option> 
-                            <option value="scatter" selected="">Scatter </option>      
+                            <option value="scatter">Scatter </option>      
                           </select>  
                       </div>
                     </div>
@@ -367,7 +320,7 @@
                     <div class="row mb-2">
                       <label for="line_width3" class="chart_render col-sm-4 col-form-label">Line Width</label>
                       <div class="col-sm-4">
-                      <input type="number" id="line_width3" class="rednder form-control" value="1.2" min="0" max="4" step="0.1">  
+                      <input type="number" id="line_width3" class="rednder form-control" value="1.5" min="0" max="4" step="0.1">  
                       </div>
                     </div>
                      <div class="row mb-2">
@@ -380,10 +333,10 @@
                       <label for="marker_shape3" class="chart_render col-sm-4 col-form-label">Marker Shape</label>
                       <div class="col-sm-4">
                        <select id="marker_shape3" class="chart_render form-control form-select">
-                            <option value="circle">Circle </option>
+                            <option value="circle" selected="">Circle </option>
                             <option value="square">Square </option>
                             <option value="triangle">Trianlge </option>
-                            <option value="diamond" selected="">Diamond </option>
+                            <option value="diamond">Diamond </option>
                       </select>
                       </div>
                     </div>
@@ -412,66 +365,50 @@
                                    </div></td>
                                   
                                      
-                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length3">719</span></td>
-                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max3">40.0</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min3">29.3</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg3">35.3</span> </td>
-                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit3"> %</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length3">31</span></td>
+                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max3">18426</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min3">5298</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg3">13870</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum3">429978</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit3"> m<sup>3</sup>/d</span> </td>
                         
                   </tr>
-                  <tr class="tr4 table-secondary">      
+                  <tr class="tr4 table-light">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line4"> 
-                                    &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#0eade1" class="chart_render series-color" style="display: none;"> &nbsp; </div>
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line4" checked=""> 
+                                    &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#dceb0a" class="chart_render series-color"> &nbsp; </div>
                                   <div class="col-auto"> 
-                                   <select class="query form-control form-control-sm form-select" id="ufdata4" style="display: none;">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres"> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres" selected=""> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres"> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_2"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph"> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve"> Sludge Pit Level  &nbsp;</option>
+                                   <select class="query form-control form-control-sm form-select" id="ufdata4">
+                  <option value="sw_import" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export">Cooling Water Export</option>
+                  <option value="dw_export">Demin Water Export</option>
+                  <option value="uw_export" selected="">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
                                   </select>
                                   </div>  
                   </div>
                                   </td><td style="text-align: center;">
                                        
                                                             <!-- Button trigger modal series 4-->
-                                                      <span id="panel4" style="display: none;">
+                                                      <span id="panel4">
                                                       <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series4">
                                                       <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
                   <!-- Modal series 4-->
                   <div class="modal fade" id="modal-series4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header modelheader4" style="background-color: rgb(14, 173, 225);">
-                          <h5 class="modal-title" id="seriestitle4">Series 4:  DAF 22D Ballon Pressure  &nbsp;</h5>
+                        <div class="modal-header modelheader4" style="background-color: rgb(220, 235, 10);">
+                          <h5 class="modal-title" id="seriestitle4">Series 4: Utility Water Export </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -481,10 +418,10 @@
                       <label for="chart_type4" class="col-sm-4 col-form-label">Chart Type</label>
                       <div class="col-sm-4">
                         <select class="chart_render form-control form-select" id="chart_type4">
-                             <option value="spline">Line</option>
+                             <option value="spline" selected="">Line</option>
                             <option value="areaspline">Area </option>          
                             <option value="column">Column </option> 
-                            <option value="scatter" selected="">Scatter </option>          
+                            <option value="scatter">Scatter </option>          
                           </select>  
                       </div>
                     </div>
@@ -505,9 +442,9 @@
                       <label for="marker_shape4" class="col-sm-4 col-form-label">Marker Shape</label>
                       <div class="col-sm-4">
                        <select id="marker_shape4" class="chart_render form-control form-select">
-                            <option value="circle">Circle </option>
+                            <option value="circle" selected="">Circle </option>
                             <option value="square">Square </option>
-                            <option value="triangle" selected="">Trianlge </option>
+                            <option value="triangle">Trianlge </option>
                             <option value="diamond">Diamond </option>
                       </select>
                       </div>
@@ -538,66 +475,50 @@
                                    </div></td>
                                   
                                      
-                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length4" style="display: none;"></span></td>
-                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max4" style="display: none;"></span> </td>
-                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min4" style="display: none;"></span> </td>
-                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg4" style="display: none;"></span> </td>
-                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit4"> </span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length4">31</span></td>
+                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max4">5112</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min4">3265</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg4">4145</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum4">128504</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit4"> m<sup>3</sup>/d</span> </td>
                         
                   </tr>
-                  <tr class="tr5 table-secondary">      
+                  <tr class="tr5 table-light">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line5"> 
-                                    &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="#f5ed05" class="chart_render series-color" style="display: none;"> &nbsp; </div>
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line5" checked=""> 
+                                    &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="#e78f13" class="chart_render series-color"> &nbsp; </div>
                                   <div class="col-auto"> 
-                                   <select class="query form-control form-control-sm form-select" id="ufdata5" style="display: none;">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres"> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres"> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres" selected=""> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_2"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph"> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve"> Sludge Pit Level  &nbsp;</option>
+                                   <select class="query form-control form-control-sm form-select" id="ufdata5">
+                  <option value="sw_import" selected="" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export">Cooling Water Export</option>
+                  <option value="dw_export">Demin Water Export</option>
+                  <option value="uw_export">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
                                       </select>
                                   </div>  
                    </div>
                                  </td><td style="text-align: center;">
                                        
                                                             <!-- Button trigger modal series 5-->
-                                                      <span id="panel5" style="display: none;">
+                                                      <span id="panel5">
                                                       <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series5">
                                                       <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
                   <!-- Modal series 5-->
                   <div class="modal fade" id="modal-series5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header modelheader5" style="background-color: rgb(245, 237, 5);">
-                          <h5 class="modal-title" id="seriestitle5">Series 5:  DAF 22E Ballon Pressure  &nbsp;</h5>
+                        <div class="modal-header modelheader5" style="background-color: rgb(231, 143, 19);">
+                          <h5 class="modal-title" id="seriestitle5">Series 5: Seawater Import  &nbsp;&nbsp;</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -607,10 +528,10 @@
                       <label for="chart_type5" class="col-sm-4 col-form-label">Chart Type</label>
                       <div class="col-sm-4">
                         <select class="chart_render form-control form-select" id="chart_type5">
-                            <option value="spline">Line</option>
+                            <option value="spline" selected="">Line</option>
                             <option value="areaspline">Area </option>          
                             <option value="column">Column </option> 
-                            <option value="scatter" selected="">Scatter </option>        
+                            <option value="scatter">Scatter </option>        
                           </select>  
                       </div>
                     </div>
@@ -618,7 +539,7 @@
                     <div class="row mb-2">
                       <label for="line_width5" class="col-sm-4 col-form-label">Line Width</label>
                       <div class="col-sm-4">
-                      <input type="number" id="line_width5" class="chart_render form-control" value="0" min="0" max="4" step="0.1">  
+                      <input type="number" id="line_width5" class="chart_render form-control" value="2" min="0" max="4" step="0.1">  
                       </div>
                     </div>
                      <div class="row mb-2">
@@ -648,7 +569,7 @@
                   
                   <div class="row mb-2">
                       <div class="input-group">
-                       <input type="checkbox" class="chart_render form-check-input col-auto" id="y_axis5">
+                       <input type="checkbox" class="chart_render form-check-input col-auto" id="y_axis5" checked="">
                        <label for="y_axis5" class="form-check-label col-auto">&nbsp; Show Y-axis</label>
                       </div>
                     </div>
@@ -667,52 +588,36 @@
                                    </div></td>
                                   
                                      
-                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length5" style="display: none;"></span></td>
-                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max5" style="display: none;"></span> </td>
-                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min5" style="display: none;"></span> </td>
-                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg5" style="display: none;"></span> </td>
-                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit5"> </span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length5">31</span></td>
+                                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max5">197824</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min5">78816</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg5">153138</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum5">4747264</span> </td>
+                                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit5"> m<sup>3</sup>/d</span> </td>
                         
                   </tr>
                   
                   <tr class="tr6 table-secondary">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line6"> 
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line6"> 
                                     &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#e27d08" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                                   <div class="col-auto"> 
                                   <select class="query form-control form-control-sm form-select" id="ufdata6" style="display: none;">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres"> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres"> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres"> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres" selected="">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_2"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph"> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve"> Sludge Pit Level  &nbsp;</option>
+                  <option value="sw_import" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export">Cooling Water Export</option>
+                  <option value="dw_export">Demin Water Export</option>
+                  <option value="uw_export">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" selected="" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
                                       </select>
                                   </div> </div>
                                  </td><td style="text-align: center;">
@@ -726,7 +631,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header modelheader6" style="background-color: rgb(226, 125, 8);">
-                          <h5 class="modal-title" id="seriestitle6">Series 6: DAF 22F Ballon Pressure   &nbsp;</h5>
+                          <h5 class="modal-title" id="seriestitle6">Series 6: Line-1 Energy Consumption  </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -736,10 +641,10 @@
                       <label for="chart_type6" class="col-sm-4 col-form-label">Chart Type</label>
                       <div class="col-sm-4">
                         <select class="chart_render form-control form-select" id="chart_type6">
-                            <option value="spline">Line</option>
+                            <option value="spline" selected="">Line</option>
                             <option value="areaspline">Area </option>          
                             <option value="column">Column </option> 
-                            <option value="scatter" selected="">Scatter </option>        
+                            <option value="scatter">Scatter </option>        
                           </select>  
                       </div>
                     </div>
@@ -797,48 +702,32 @@
                                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max6" style="display: none;"></span> </td>
                                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min6" style="display: none;"></span> </td>
                                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg6" style="display: none;"></span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum6" style="display: none;"></span> </td>
                                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit6"> </span> </td>
                         
                   </tr>
                   
                   <tr class="tr7 table-secondary">      
                                   <td><div class="input-group">
-                                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line7"> 
+                                  <div class="col-auto"><input type="checkbox" class="query series-chk" id="line7"> 
                                     &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#0717ed" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                                   <div class="col-auto"> 
                                   <select class="query form-control form-control-sm form-select" id="ufdata7" style="display: none;">
-                  <option value="working_daf">Number of working DAF &nbsp;</option>
-                  <option value="a_flow">DAF 22A Flow   &nbsp;</option>
-                  <option value="a_pcv">DAF 22A PCV   &nbsp;</option>
-                  <option value="a_spray_pres">DAF 22A Balloon Pressure   &nbsp;</option>
-                  <option value="b_flow"> DAF 22B Flow  &nbsp;</option>
-                  <option value="b_pcv">  DAF 22B PCV &nbsp;</option>
-                  <option value="b_spray_pres"> DAF 22B Balloon Pressure  &nbsp;</option>
-                  <option value="c_flow">DAF 22C Flow   &nbsp;</option>
-                  <option value="c_pcv">DAF 22C PCV   &nbsp;</option>
-                  <option value="c_spray_pres" selected=""> DAF 22C Balloon Pressure  &nbsp;</option>
-                  <option value="d_flow"> DAF 22D Flow  &nbsp;</option>
-                  <option value="d_pcv"> DAF 22D PCV  &nbsp;</option>
-                  <option value="d_spray_pres"> DAF 22D Ballon Pressure  &nbsp;</option>
-                  <option value="e_flow"> DAF 22E Flow  &nbsp;</option>
-                  <option value="e_pcv"> DAF 22E PCV  &nbsp;</option>
-                  <option value="e_spray_pres"> DAF 22E Ballon Pressure  &nbsp;</option>
-                  <option value="f_flow">DAF 22F Flow   &nbsp;</option>
-                  <option value="f_pcv">DAF 22F PCV   &nbsp;</option>
-                  <option value="f_spray_pres">DAF 22F Ballon Pressure   &nbsp;</option>
-                  <option value="daf_inletline_pres"> DAF Inlet Line Pressure &nbsp;</option>
-                  <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
-                  <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
-                  <option value="ferric_flow_2"> Ferric Flow  &nbsp;</option>
-                  <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
-                  <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
-                  <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>
-                  <option value="daf_inlet_ph"> DAF Inlet pH  &nbsp;</option>
-                  <option value="daf_flr_turb">Filtrated Water Turbidity   &nbsp;</option>
-                  <option value="daf_flr_ph"> Filtrated Water pH  &nbsp;</option>
-                  <option value="daf_turbiduty_removal"> DAF Turbidity Removal   &nbsp;</option>
-                  <option value="pre_tank_level"> Pre-Treatment TNK level  &nbsp;</option>
-                  <option value="sludge_pit_leve"> Sludge Pit Level  &nbsp;</option>
+                  <option value="sw_import" style="background-color:rgba(255,121,121,0.4);">Seawater Import  &nbsp;&nbsp;</option>
+                  <option value="daily_production">RO Production &nbsp;&nbsp;</option>
+                  <option value="total_export">Total Export </option>
+                  <option value="cw_export">Cooling Water Export</option>
+                  <option value="dw_export">Demin Water Export</option>
+                  <option value="uw_export">Utility Water Export </option>
+                  <option value="recovery_gross">Gross Recovery</option>
+                  <option value="line1_power" selected="" style="background-color:rgba(34,166,179,0.4);">Line-1 Energy Consumption  </option>
+                  <option value="line2_power">Line-2 Energy Consumption  </option>
+                  <option value="total_power">Total Energy Consumption   </option>
+                  <option value="power_per_cu">Energy Consumption Gross  </option>
+                  <option value="total_offspec">Total Off-spec </option>
+                  <option value="cw_offspec">Cooling Water Off-spec  &nbsp;&nbsp;</option>
+                  <option value="dw_offspec" style="background-color:rgba(190,46,221,0.4);">Demin Water Off-spec</option>
+                  <option value="uw_offspec">Utility Water Off-spec </option>
                                   </select>
                                   </div> </div>
                                  </td><td style="text-align: center;">
@@ -847,12 +736,12 @@
                                                       <span id="panel7" style="display: none;">
                                                       <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series7">
                                                       <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
-                  <!-- Modal series 7-->
+                  <!-- Modal series 5-->
                   <div class="modal fade" id="modal-series7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header modelheader7" style="background-color: rgb(7, 23, 237);">
-                          <h5 class="modal-title" id="seriestitle7">Series 7:  DAF 22C Balloon Pressure  &nbsp;</h5>
+                          <h5 class="modal-title" id="seriestitle7">Series 7: Line-1 Energy Consumption  </h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -925,85 +814,90 @@
                                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max7" style="display: none;"></span> </td>
                                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min7" style="display: none;"></span> </td>
                                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg7" style="display: none;"></span> </td>
+                                  <td style="text-align: center; background-color: black; color:#3ae374; "><span id="sum7" style="display: none;"></span> </td>
                                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit7"> </span> </td>
                         
                   </tr>
                   
                       </tbody>
                     </table>
-    
-                    <div class="modal fade" id="sajid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header" style="background-color: green;">
-                              <h5 class="modal-title" id="staticBackdropLabel">Chart Global Settings</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                        
-                      
-                      <div class="row mb-2">
-                          <label for="pen_main" class="col-sm-5 col-form-label">Background Color</label>  
-                          <div class="col-sm-4">
-                           <input type="color" id="pen_main" name="chart_background" value="#000000" class="chart_render series-color"> 
-                          </div>
-                      </div>
-                      
-                      <div class="row mb-2">
-                          <label for="pen_grid" class="col-sm-5 col-form-label">Grid Lines Color</label>
-                          <div class="col-sm-4">
-                           <input type="color" id="pen_grid" name="grid_background" value="#8a8b89" class="chart_render series-color">
-                          </div>
-                      </div>
-                      
-                      <div class="row mb-2">
-                          <label for="is_legend" class="col-sm-5 col-form-label">Show Legends</label>
-                          <div class="col-sm-4">
-                            <input type="checkbox" id="is_legend" name="is_legend" checked="" class="chart_render main-chk">
-                          </div>
-                      </div>
-                      <div class="row mb-2">
-                          <label for="is_main_yaxis" class="col-sm-5 col-form-label">Y-axis % &nbsp;<i class="fa fa-area-chart" aria-hidden="true"></i></label>
-                          <div class="col-sm-4">
-                            <input type="checkbox" id="is_main_yaxis" name="is_main_yaxis" class="chart_render main-chk">
-                          </div>
-                      </div>
-                      
-                      <div class="row mb-2">
-                          <label for="export_width" class="col-sm-5 col-form-label">Export Width &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-                          <div class="col-sm-4">
-                            <input type="number" id="export_width" class="chart_render form-control" min="500" step="50" value="1400">
-                          </div>
-                      </div>
-                      <div class="row mb-2">
-                          <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-                          <div class="col-sm-4">
-                             <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="600"> 
-                          </div>
-                      </div>
-                      <div class="row mb-2">
-                          <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-                          <div class="col-sm-4">
-                             <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
-                          </div>
-                      </div>
-                      <div class="row mb-2">
-                          <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-                          <div class="col-sm-4">
-                            <input type="color" id="pen_export_title" name="chart_background_title" value="#dc0404" class="chart_render series-color">
-                          </div>
-                      </div>
-                      
-                      
-                      </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-<x-footer_level1 /> 
-<script type="text/javascript" src="{{asset('js/stream/daf_south.js') }}"></script>
+
+
+  
+  <!-- Modal chart global settings-->
+  <div class="modal fade" id="sajid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: green;">
+          <h5 class="modal-title" id="staticBackdropLabel">Chart Global Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+  <div class="row mb-2">
+      <label for="pen_main" class="col-sm-5 col-form-label">Background Color</label>  
+      <div class="col-sm-4">
+       <input type="color" id="pen_main" name="chart_background" value="#000000" class="chart_render series-color"> 
+      </div>
+  </div>
+  
+  <div class="row mb-2">
+      <label for="pen_grid" class="col-sm-5 col-form-label">Grid Lines Color</label>
+      <div class="col-sm-4">
+       <input type="color" id="pen_grid" name="grid_background" value="#8a8b89" class="chart_render series-color">
+      </div>
+  </div>
+  
+  <div class="row mb-2">
+      <label for="is_legend" class="col-sm-5 col-form-label">Show Legends</label>
+      <div class="col-sm-4">
+        <input type="checkbox" id="is_legend" name="is_legend" checked="" class="chart_render main-chk">
+      </div>
+  </div>
+  <div class="row mb-2">
+      <label for="is_main_yaxis" class="col-sm-5 col-form-label">Y-axis % &nbsp;<i class="fa fa-area-chart" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+        <input type="checkbox" id="is_main_yaxis" name="is_main_yaxis" class="chart_render main-chk">
+      </div>
+  </div>
+  
+  <div class="row mb-2">
+      <label for="export_width" class="col-sm-5 col-form-label">Export Width &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+        <input type="number" id="export_width" class="chart_render form-control" min="500" step="50" value="1400">
+      </div>
+  </div>
+  <div class="row mb-2">
+      <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+         <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="600"> 
+      </div>
+  </div>
+  <div class="row mb-2">
+      <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+         <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
+      </div>
+  </div>
+  <div class="row mb-2">
+      <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+        <input type="color" id="pen_export_title" name="chart_background_title" value="#c61010" class="chart_render series-color">
+      </div>
+  </div>
+  
+  
+  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <x-footer_level2 />
+<script type="text/javascript" src="{{asset('js/stream/import_export.js') }}"></script>
 </body>
 </html>

@@ -25,11 +25,11 @@ function ChartParam(target){
                     this.lable = $('#dt_label'+target).is(':checked');
                     this.yAxis = $('#y_axis'+target).is(':checked');
                     this.chartType = $('#chart_type'+target).val();
-                    this.lineWidth = $('#line_width'+target).val();
-                    this.markerWeight =  $('#marker'+target).val();
+                    this.lineWidth = parseFloat($('#line_width'+target).val());
+                    this.markerWeight =  parseFloat($('#marker'+target).val());
                     this.markerShape = $('#marker_shape'+target).val();
-                    this.offSetMin = $('#offsetmin'+target).val();
-                    this.offSetMax = $('#offsetmax'+target).val();
+                    this.offSetMin = parseFloat($('#offsetmin'+target).val());
+                    this.offSetMax = parseFloat($('#offsetmax'+target).val());
                     this.modalColor = $(".modelheader"+target).css({'background-color':this.pen});
                     this.modalTitle = $('#seriestitle'+target).html('Series '+target+': '+$("#ufdata"+target+" option:selected").text());
 }

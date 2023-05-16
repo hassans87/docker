@@ -5,219 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href={{('icons/pulse.png')}} type="image/png" sizes="32x32">
+    <link rel="icon" href={{asset('icons/pulse.png')}} type="image/png" sizes="32x32">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ ('css/font-awesome.min.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ ('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ ('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/com.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ ('js/highcharts/highcharts.js') }}"></script>
-    <script type="text/javascript" src="{{ ('js/highcharts/highcharts-3d.js') }}"></script>
-    <script type="text/javascript" src="{{ ('js/highcharts/modules/exporting.js') }}"></script>
-    <script type="text/javascript" src="{{ ('js/highcharts/modules/offline-exporting.js') }}"></script>
-    <script type="text/javascript" src="{{ ('js/highcharts/modules/accessibility.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/highcharts-3d.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/modules/exporting.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/modules/offline-exporting.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
     <title> RO1 CIP </title>
 </head>
 <body>
-    <figure id="plot_window" class="test_print loading-msg" style="height:96vh;"></figure>
-    <style>
-        .main-chk {
-            width: 20px;
-            height: 25px;
-            margin-top: 7px;
-            border: none;
-            padding: 0px;
-            margin-left: 7px;
-        }
-
-        .series-chk {
-            text-align: center;
-            vertical-align: middle;
-            width: 17px;
-            height: 17px;
-        }
-
-        .series-color {
-            width: 17px;
-            border: none !important;
-            border-radius: 0.5rem;
-            height: 17px;
-            padding: 0px;
-            margin: 0px;
-            background: none;
-            vertical-align: middle;
-        }
-
-        .color-pic {
-            width: 20px;
-            height: 25px;
-            margin-top: 5px;
-            border: none;
-            padding: 0px;
-            background: none;
-            margin-left: 5px;
-        }
-
-        .badge-light3d {
-            text-align: center;
-            color: #636e72;
-            background: rgba(226, 226, 226, 1);
-            background: -moz-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
-            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226, 226, 226, 1)), color-stop(50%, rgba(219, 219, 219, 1)), color-stop(51%, rgba(209, 209, 209, 1)), color-stop(100%, rgba(254, 254, 254, 1)));
-            background: -webkit-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
-            background: -o-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
-            background: -ms-linear-gradient(top, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
-            background: linear-gradient(to bottom, rgba(226, 226, 226, 1) 0%, rgba(219, 219, 219, 1) 50%, rgba(209, 209, 209, 1) 51%, rgba(254, 254, 254, 1) 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0);
-
-        }
-
-        .table-light {
-            background-color: white;
-        }
-
-        .table-secondary {
-            background-color: silver;
-        }
-
-        .caustic {
-            background-color: rgba(168, 61, 255, 0.40);
-
-        }
-
-        .citric {
-            background-color: rgba(255, 168, 5, 0.40);
-        }
-
-        .mnbtn {
-            border-radius: 7px 0px 0px 7px;
-        }
-
-        .mnbtn0 {
-            border-radius: 0px 7px 7px 0px;
-        }
-    </style>
-    <script type="text/javascript">
-        Notiflix.Block.Init({
-            fontFamily: "Quicksand",
-            useGoogleFont: true,
-            backgroundColor: "rgba(0,0,0,0.86)",
-            messageColor: "#dfe4ea",
-            svgColor: "#18dcff",
-            svgSize: "80px",
-            messageFontSize: "16px"
-        });
-        //Notiflix.Block.Pulse('.loading-msg', 'Please wait Fetching data from server....');
-
-        // Notiflix Notify Init - global.js
-        Notiflix.Notify.Init({
-            width: '250px',
-            opacity: 0.6,
-            fontSize: '12px',
-            timeout: 3000,
-            messageMaxLength: 200,
-            position: 'right-bottom',
-            cssAnimationStyle: "zoom",
-        });
-    </script>
-
-    <div>
-        <div class="input-group">
-            <div class="col-auto" style="margin-right:5px;">
-                <a href="{{ url('/home') }}">
-                    <button class="btn btn-sm badge-light3d">Home &nbsp;<i class="fa fa-home"
-                            aria-hidden="true" style="color:black;"></i></button></a>
-
-
-
-            </div>
-
-            <div class="col-auto" style="margin-right:5px;">
-                <!-- Button trigger modal -->
-                <div class="input-group">
-                    <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid"
-                        style="margin-bottom:3px;">Global &nbsp;<i class="fa fa-wrench" aria-hidden="true"
-                            style="color:black;"></i></span>
-                </div>
-
-
-            </div>
-            <div class="col-auto" style="margin-right:8px;">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
-                    <input type="date" name="start_date" class="tensor-flow form-control form-control-sm"
-                        value="{{ $dex[0]->date1 }}" id="start_date" min="2016-01-01" max="2023-11-10" required=""
-                        style="background-color:#dff9fb;">
-                </div>
-            </div>
-            <div class="col-auto" style="margin-right:5px;">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-text badge-light3d mnbtn">To</div>
-                    <input type="date" name="end_date" id="end_date" min="2016-01-31" value="{{ $dex[0]->date2 }}"
-                        class="tensor-flow form-control form-control-sm" required=""
-                        style="background-color:#dff9fb;">
-                </div>
-            </div>
-
-            <div class="col-auto" style="margin-right:5px;">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-text badge-light3d mnbtn">Skid</div>
-                    <select class="query form-control form-control-sm form-select" id="skidx"
-                        style="background-color:#dff9fb;">
-                        <option value="a" <?php if ($dex[0]->skid1 == 'a') {
-                            echo 'selected';
-                        } ?>>41-A</option>
-                        <option value="b" <?php if ($dex[0]->skid1 == 'b') {
-                            echo 'selected';
-                        } ?>>41-B</option>
-                        <option value="c" <?php if ($dex[0]->skid1 == 'c') {
-                            echo 'selected';
-                        } ?>>41-C</option>
-                        <option value="d" <?php if ($dex[0]->skid1 == 'd') {
-                            echo 'selected';
-                        } ?>>41-D</option>
-                        <option value="e" <?php if ($dex[0]->skid1 == 'e') {
-                            echo 'selected';
-                        } ?>>41-E</option>
-                        <option value="f" <?php if ($dex[0]->skid1 == 'f') {
-                            echo 'selected';
-                        } ?>>41-F</option>
-                        <option value="g" <?php if ($dex[0]->skid1 == 'g') {
-                            echo 'selected';
-                        } ?>>41-G</option>
-                        <option value="h" <?php if ($dex[0]->skid1 == 'h') {
-                            echo 'selected';
-                        } ?>>41-H</option>
-                        <option value="i" <?php if ($dex[0]->skid1 == 'i') {
-                            echo 'selected';
-                        } ?>>41-I</option>
-                        <option value="j" <?php if ($dex[0]->skid1 == 'j') {
-                            echo 'selected';
-                        } ?>>41-J</option>
-                        <option value="k" <?php if ($dex[0]->skid1 == 'k') {
-                            echo 'selected';
-                        } ?>>41-K</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-auto" style="margin-right:15px;">
-                <div class="input-group input-group-sm">
-                    <span id="query_fire" class="query_fire btn btn-warning btn-sm">
-                        <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</span>
-                </div>
-            </div>
-            <div class="col-auto" style="margin-right:15px;">
-                <div class="input-group input-group-sm">
-                    <span id="query_fire" class="badge-light3d btn btn-sm">
-                    <input type="checkbox" class="query_fire form-check-input col-auto" id="sec_xAxis">
-                   <label for="y_axis6" class="form-check-label col-auto">&nbsp;<i class="fa fa-map" aria-hidden="true"></i>&nbsp;CIP Type Mapping</label>
-                   <input type="color" id="mapping_clr" name="mapping_clr" value="#95a5a6" class="query series-color form-check-input col-auto"> </span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+    
 
     <table class="table-sm table-responsive table-light table-bordered">
         <thead class="badge-light3d">
@@ -2215,6 +2022,13 @@
         </div>
     </div>
 
+
+
+
+
+
+    
+    <x-footer_rocip /> 
     <script type="text/javascript" src="{{ asset('js/stream/ro1_cip_analytics.js') }}"></script>
 
 </body>

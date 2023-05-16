@@ -32,15 +32,16 @@ class UserController extends Controller
         // Login
        // auth()->login($user);
 
-        return redirect('/home')->with('message', 'New User created');
+        return redirect('/home')->with('message', 'New User has been created');
     }
 
     // Logout User
     public function logout(Request $request) {
+        $userx = Auth::user()->name;
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login')->with('message', 'You have been logged out!');
+        return redirect('/login')->with('message', "{$userx} logged out!");
     }
 
     // Show Login Form
@@ -62,7 +63,8 @@ class UserController extends Controller
     // check input type username or email than login
         if(auth()->attempt( [filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'username' => $identity,'password' => $password])) {
             $request->session()->regenerate();
-            return redirect('/home')->with('message', 'You are now logged in!');
+            $userx = Auth::user()->name;
+            return redirect('/home')->with('message', "Welcome {$userx}, you 're  logged in");
         }
         return back()->withErrors(['username' => 'Invalid Credentials!'])->onlyInput('username');
     }

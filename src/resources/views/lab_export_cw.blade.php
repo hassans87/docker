@@ -20,11 +20,11 @@
   <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
-<title> Self-Cleaning Filters </title>
+<title> Lab CW Export </title>
 </head>
-<body style="font-family: calibri;">
-  <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
-<table class="table-sm table-responsive table-light table-bordered">
+<body style="font-family: calibri;" class="">
+<figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+   <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
       <tr>
           <th>Series</th>
@@ -34,36 +34,40 @@
           <th>&nbsp;&nbsp;Min Value &nbsp;&nbsp;</th>
           <th>&nbsp;&nbsp;Avg. Value &nbsp;&nbsp;</th>
           <th>&nbsp;&nbsp; Unit &nbsp;&nbsp;</th>
+          <th>&nbsp;&nbsp; Frequency &nbsp;&nbsp;</th>
+          <th>&nbsp;&nbsp; Normal Range &nbsp;&nbsp;</th>
+          
       </tr>
       </thead>
         <tbody> 
   <tr class="tr1 table-light">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line1" checked="">
-                   &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#07e43e" class="chart_render series-color"> &nbsp; </div>
+                   &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#d99608" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
-  <select class="query form-control form-control-sm form-select" id="ufdata1">  nb_pump_running
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow" selected="">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
-   </select>
+  <select class="query form-control form-control-sm form-select" id="ufdata1">
+    <option value="turb_lab" selected="" class="lab">Turbidity Lab </option>
+    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+    <option value="ph_lab" class="lab">pH Lab </option>
+    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+    <option value="frc_lab" selected="" class="lab">FRC Lab </option>
+    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+    <option value="ec_lab" class="lab">Conductivity Lab </option>
+    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+    <option value="tot_alk" class="lab">Total Alkalinity Lab</option>
+    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+    <option value="cah_lab" class="lab">CaH Lab </option>
+    <option value="ca_lab" class="lab">Ca Lab </option>
+    <option value="tds_lab" class="lab">TDS Lab </option>
+    <option value="chloride_lab" class="lab">Chloride Lab </option>
+    <option value="lsi_lab" class="lab">LSI Lab </option>
+    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
+ </select>
                       </div>
                   </div></td><td style="text-align: center;">
                        
@@ -78,8 +82,8 @@
   <div class="modal fade" id="modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header modelheader1" style="background-color: rgb(7, 228, 62);">
-          <h5 class="modal-title" id="seriestitle1">Series 1: Pump-1 Flow  &nbsp;</h5>
+        <div class="modal-header modelheader1" style="background-color: rgb(217, 150, 8);">
+          <h5 class="modal-title" id="seriestitle1">Series 1: Filtrated Water Turbidity   &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -145,40 +149,43 @@
                    </div></td>
                   
                      
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length1">0</span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max1">-</span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min1">-</span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg1">-</span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit1"> </span> </td>
+                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length1"></span></td>
+                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max1"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min1"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg1"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit1"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency1"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms1"></span> </td>
                   
         
   </tr>
   <tr class="tr2 table-light">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2" checked=""> 
-                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#f00a0a" class="chart_render series-color"> &nbsp; </div>
+                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#302df0" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata2">
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi" selected="">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
+                    <option value="turb_lab" class="lab">Turbidity Lab </option>
+                    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+                    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+                    <option value="ph_lab" class="lab">pH Lab </option>
+                    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+                    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+                    <option value="frc_lab" class="lab">FRC Lab </option>
+                    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+                    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+                    <option value="ec_lab" class="lab">Conductivity Lab </option>
+                    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+                    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+                    <option value="tot_alk" selected="" class="lab">Total Alkalinity Lab</option>
+                    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+                    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+                    <option value="cah_lab" class="lab">CaH Lab </option>
+                    <option value="ca_lab" class="lab">Ca Lab </option>
+                    <option value="tds_lab" class="lab">TDS Lab </option>
+                    <option value="chloride_lab" class="lab">Chloride Lab </option>
+                    <option value="lsi_lab" class="lab">LSI Lab </option>
+                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
                   </select>
                   </div>  
   
@@ -194,8 +201,8 @@
   <div class="modal fade" id="modal-series2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header modelheader2" style="background-color: rgb(240, 10, 10);">
-          <h5 class="modal-title" id="seriestitle2">Series 2: SCF-1 DP  &nbsp;</h5>
+        <div class="modal-header modelheader2" style="background-color: rgb(48, 45, 240);">
+          <h5 class="modal-title" id="seriestitle2">Series 2:  Filtrated Water pH  &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -260,39 +267,42 @@
                     
                   
                      
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length2">263</span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max2">0.04</span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min2">0.01</span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg2">0.02</span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit2"> bar</span> </td>
+                   <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length2"></span></td>
+                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max2"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min2"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg2"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit2"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency2"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms2"></span> </td>
         
   </tr>
   <tr class="tr3 table-light">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line3" checked=""> 
-                    &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="#d707f2" class="chart_render series-color"> &nbsp; </div>
+                    &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="#cf0202" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata3">
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi" selected="">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
+                    <option value="turb_lab" class="lab">Turbidity Lab </option>
+                    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+                    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+                    <option value="ph_lab" class="lab">pH Lab </option>
+                    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+                    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+                    <option value="frc_lab" class="lab">FRC Lab </option>
+                    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+                    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+                    <option value="ec_lab" selected="" class="lab">Conductivity Lab </option>
+                    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+                    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+                    <option value="tot_alk" class="lab">Total Alkalinity Lab</option>
+                    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+                    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+                    <option value="cah_lab" class="lab">CaH Lab </option>
+                    <option value="ca_lab" class="lab">Ca Lab </option>
+                    <option value="tds_lab" class="lab">TDS Lab </option>
+                    <option value="chloride_lab" class="lab">Chloride Lab </option>
+                    <option value="lsi_lab" class="lab">LSI Lab </option>
+                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
                       </select>
                   </div>   </div>
                   </td><td style="text-align: center;">
@@ -308,8 +318,8 @@
   <div class="modal fade" id="modal-series3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header modelheader3" style="background-color: rgb(215, 7, 242);">
-          <h5 class="modal-title" id="seriestitle3">Series 3: SCF-2 DP  &nbsp;</h5>
+        <div class="modal-header modelheader3" style="background-color: rgb(207, 2, 2);">
+          <h5 class="modal-title" id="seriestitle3">Series 3:  Sludge Pit Level  &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -373,14 +383,13 @@
   </div>
   <!-- modal end here   -->
                    </div></td>
-                  
-                     
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length3">164</span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max3">0.07</span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min3">-0.06</span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg3">0.02</span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit3"> bar</span> </td>
-        
+                   <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length3"></span></td>
+                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max3"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min3"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg3"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit3"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency3"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms3"></span> </td>
   </tr>
   <tr class="tr4 table-secondary">      
                   <td><div class="input-group">
@@ -388,26 +397,27 @@
                     &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#0eade1" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata4" style="display: none;">
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi" selected="">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
+                    <option value="turb_lab"  class="lab">Turbidity Lab </option>
+                    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+                    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+                    <option value="ph_lab" selected="" class="lab">pH Lab </option>
+                    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+                    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+                    <option value="frc_lab" class="lab">FRC Lab </option>
+                    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+                    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+                    <option value="ec_lab" class="lab">Conductivity Lab </option>
+                    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+                    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+                    <option value="tot_alk" class="lab">Total Alkalinity Lab</option>
+                    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+                    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+                    <option value="cah_lab" class="lab">CaH Lab </option>
+                    <option value="ca_lab" class="lab">Ca Lab </option>
+                    <option value="tds_lab" class="lab">TDS Lab </option>
+                    <option value="chloride_lab" class="lab">Chloride Lab </option>
+                    <option value="lsi_lab" class="lab">LSI Lab </option>
+                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
                   </select>
                   </div>  
   </div>
@@ -422,7 +432,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modelheader4" style="background-color: rgb(14, 173, 225);">
-          <h5 class="modal-title" id="seriestitle4">Series 4: SCF-3 DP  &nbsp;</h5>
+          <h5 class="modal-title" id="seriestitle4">Series 4:  DAF 21D Flow  &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -487,14 +497,13 @@
   <!-- modal end here   -->
   
                    </div></td>
-                  
-                     
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length4" style="display: none;"></span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max4" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min4" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg4" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit4"> </span> </td>
-        
+                   <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length4"></span></td>
+                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max4"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min4"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg4"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit4"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency4"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms4"></span> </td>
   </tr>
   <tr class="tr5 table-secondary">      
                   <td><div class="input-group">
@@ -502,26 +511,27 @@
                     &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="#f5ed05" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata5" style="display: none;">
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi" selected="">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
+                    <option value="turb_lab" class="lab">Turbidity Lab </option>
+                    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+                    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+                    <option value="ph_lab" class="lab">pH Lab </option>
+                    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+                    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+                    <option value="frc_lab" class="lab">FRC Lab </option>
+                    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+                    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+                    <option value="ec_lab" class="lab">Conductivity Lab </option>
+                    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+                    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+                    <option value="tot_alk" class="lab">Total Alkalinity Lab</option>
+                    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+                    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+                    <option value="cah_lab" class="lab">CaH Lab </option>
+                    <option value="ca_lab" class="lab">Ca Lab </option>
+                    <option value="tds_lab" class="lab">TDS Lab </option>
+                    <option value="chloride_lab" selected="" class="lab">Chloride Lab </option>
+                    <option value="lsi_lab" class="lab">LSI Lab </option>
+                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
                       </select>
                   </div>  
    </div>
@@ -536,7 +546,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modelheader5" style="background-color: rgb(245, 237, 5);">
-          <h5 class="modal-title" id="seriestitle5">Series 5: SCF-4 DP  &nbsp;</h5>
+          <h5 class="modal-title" id="seriestitle5">Series 5:  DAF 21E Flow  &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -604,13 +614,13 @@
   
   
                    </div></td>
-                  
-                     
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length5" style="display: none;"></span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max5" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min5" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg5" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit5"> </span> </td>
+                   <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length5"></span></td>
+                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max5"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min5"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg5"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit5"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency5"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms5"></span> </td>
         
   </tr>
   
@@ -620,26 +630,27 @@
                     &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#e27d08" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata6" style="display: none;">
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi" selected="">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
+                    <option value="turb_lab" class="lab">Turbidity Lab </option>
+                    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+                    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+                    <option value="ph_lab" class="lab">pH Lab </option>
+                    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+                    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+                    <option value="frc_lab" class="lab">FRC Lab </option>
+                    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+                    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+                    <option value="ec_lab" class="lab">Conductivity Lab </option>
+                    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+                    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+                    <option value="tot_alk" selected="" class="lab">Total Alkalinity Lab</option>
+                    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+                    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+                    <option value="cah_lab" class="lab">CaH Lab </option>
+                    <option value="ca_lab" class="lab">Ca Lab </option>
+                    <option value="tds_lab" class="lab">TDS Lab </option>
+                    <option value="chloride_lab" class="lab">Chloride Lab </option>
+                    <option value="lsi_lab" class="lab">LSI Lab </option>
+                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
                       </select>
                   </div> </div>
                  </td><td style="text-align: center;">
@@ -653,7 +664,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modelheader6" style="background-color: rgb(226, 125, 8);">
-          <h5 class="modal-title" id="seriestitle6">Series 6: SCF-5 DP  &nbsp;</h5>
+          <h5 class="modal-title" id="seriestitle6">Series 6: DAF 21F Flow   &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -718,13 +729,13 @@
   </div>
   <!-- modal end here   -->
                    </div></td>
-                  
-                     
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length6" style="display: none;"></span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max6" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min6" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg6" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit6"> </span> </td>
+                   <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length6"></span></td>
+                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max56"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min6"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg6"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit6"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency6"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms6"></span> </td>
         
   </tr>
   
@@ -734,26 +745,27 @@
                     &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#0717ed" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata7" style="display: none;">
-  <option value="nb_pump_running">Number of Pumps Running  &nbsp;</option>
-  <option value="p1_flow">Pump-1 Flow  &nbsp;</option>
-  <option value="p2_flow">Pump-2 Flow  &nbsp;</option>
-  <option value="p3_flow">Pump-3 Flow  &nbsp;</option>
-  <option value="p4_flow">Pump-4 Flow  &nbsp;</option>
-  <option value="p5_flow">Pump-5 Flow  &nbsp;</option>
-  <option value="p6_flow">Pump-6 Flow  &nbsp;</option>
-  <option value="tot_flow">Total Flow &nbsp;</option>
-  <option value="p1_dpi">SCF-1 DP  &nbsp;</option>
-  <option value="p2_dpi">SCF-2 DP  &nbsp;</option>
-  <option value="p3_dpi">SCF-3 DP  &nbsp;</option>
-  <option value="p4_dpi">SCF-4 DP  &nbsp;</option>
-  <option value="p5_dpi">SCF-5 DP  &nbsp;</option>
-  <option value="p6_dpi" selected="">SCF-6 DP  &nbsp;</option>
-  <option value="p1_pt">Pump-1 Pressure  &nbsp;</option>
-  <option value="p2_pt">Pump-2 Pressure  &nbsp;</option>
-  <option value="p3_pt">Pump-3 Pressure  &nbsp;</option>
-  <option value="p4_pt">Pump-4 Pressure  &nbsp;</option>
-  <option value="p5_pt">Pump-5 Pressure  &nbsp;</option>
-  <option value="p6_pt">Pump-6 Pressure  &nbsp;</option>
+                    <option value="turb_lab" class="lab">Turbidity Lab </option>
+                    <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
+                    <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
+                    <option value="ph_lab" class="lab">pH Lab </option>
+                    <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
+                    <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
+                    <option value="frc_lab" class="lab">FRC Lab </option>
+                    <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
+                    <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
+                    <option value="ec_lab" class="lab">Conductivity Lab </option>
+                    <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
+                    <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
+                    <option value="tot_alk" class="lab">Total Alkalinity Lab</option>
+                    <option value="tot_alkait204" class="dcs">Total Alkalinity Online AIT_204 </option>
+                    <option value="tot_hardness" class="lab">Total Hardness Lab </option>
+                    <option value="cah_lab" class="lab"selected="">CaH Lab </option>
+                    <option value="ca_lab" class="lab">Ca Lab </option>
+                    <option value="tds_lab" class="lab">TDS Lab </option>
+                    <option value="chloride_lab" class="lab">Chloride Lab </option>
+                    <option value="lsi_lab" class="lab">LSI Lab </option>
+                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
                   </select>
                   </div> </div>
                  </td><td style="text-align: center;">
@@ -767,7 +779,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modelheader7" style="background-color: rgb(7, 23, 237);">
-          <h5 class="modal-title" id="seriestitle7">Series 7: SCF-6 DP  &nbsp;</h5>
+          <h5 class="modal-title" id="seriestitle7">Series 7:  DAF 21C Balloon Pressure  &nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -776,10 +788,10 @@
       <label for="chart_type7" class="col-sm-4 col-form-label">Chart Type</label>
       <div class="col-sm-4">
         <select class="chart_render form-control form-select" id="chart_type7">
-            <option value="spline">Line</option>
+            <option value="spline" selected="">Line</option>
             <option value="areaspline">Area </option>          
             <option value="column">Column </option> 
-            <option value="scatter" selected="">Scatter </option>        
+            <option value="scatter">Scatter </option>        
           </select>  
       </div>
     </div>
@@ -834,96 +846,100 @@
   
   
                    </div></td>
-                  
-                     
-                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length7" style="display: none;"></span></td>
-                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max7" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min7" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg7" style="display: none;"></span> </td>
-                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit7"> </span> </td>
+                   <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length7"></span></td>
+                   <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max57"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min7"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg7"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit7"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0;"> <span id="frequency7"></span> </td>
+                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="norms7"></span> </td>
         
   </tr>
   
       </tbody>
-    </table>
-    <div class="modal fade" id="sajid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header" style="background-color: green;">
-              <h5 class="modal-title" id="staticBackdropLabel">Chart Global Settings</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              
+    </table>  	
+   
+  <div style="margin-bottom:100px">
 
-      
-      <div class="row mb-2">
-          <label for="pen_main" class="col-sm-5 col-form-label">Background Color</label>  
-          <div class="col-sm-4">
-           <input type="color" id="pen_main" name="chart_background" value="#000000" class="chart_render series-color"> 
-          </div>
+  </div>
+  
+  
+  <!-- Modal chart global settings-->
+  <div class="modal fade" id="sajid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: green;">
+          <h5 class="modal-title" id="staticBackdropLabel">Chart Global Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+  <div class="row mb-2">
+      <label for="pen_main" class="col-sm-5 col-form-label">Background Color</label>  
+      <div class="col-sm-4">
+       <input type="color" id="pen_main" name="chart_background" value="#000000" class="chart_render series-color"> 
       </div>
-      
-      <div class="row mb-2">
-          <label for="pen_grid" class="col-sm-5 col-form-label">Grid Lines Color</label>
-          <div class="col-sm-4">
-           <input type="color" id="pen_grid" name="grid_background" value="#8a8b89" class="chart_render series-color">
-          </div>
+  </div>
+  
+  <div class="row mb-2">
+      <label for="pen_grid" class="col-sm-5 col-form-label">Grid Lines Color</label>
+      <div class="col-sm-4">
+       <input type="color" id="pen_grid" name="grid_background" value="#8a8b89" class="chart_render series-color">
       </div>
-      
-      <div class="row mb-2">
-          <label for="is_legend" class="col-sm-5 col-form-label">Show Legends</label>
-          <div class="col-sm-4">
-            <input type="checkbox" id="is_legend" name="is_legend" checked="" class="chart_render main-chk">
-          </div>
+  </div>
+  
+  <div class="row mb-2">
+      <label for="is_legend" class="col-sm-5 col-form-label">Show Legends</label>
+      <div class="col-sm-4">
+        <input type="checkbox" id="is_legend" name="is_legend" checked="" class="chart_render main-chk">
       </div>
-      <div class="row mb-2">
-          <label for="is_main_yaxis" class="col-sm-5 col-form-label">Y-axis % &nbsp;<i class="fa fa-area-chart" aria-hidden="true"></i></label>
-          <div class="col-sm-4">
-            <input type="checkbox" id="is_main_yaxis" name="is_main_yaxis" class="chart_render main-chk">
-          </div>
+  </div>
+  <div class="row mb-2">
+      <label for="is_main_yaxis" class="col-sm-5 col-form-label">Y-axis % &nbsp;<i class="fa fa-area-chart" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+        <input type="checkbox" id="is_main_yaxis" name="is_main_yaxis" class="chart_render main-chk">
       </div>
-      
-      <div class="row mb-2">
-          <label for="export_width" class="col-sm-5 col-form-label">Export Width &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-          <div class="col-sm-4">
-            <input type="number" id="export_width" class="chart_render form-control" min="500" step="50" value="1500">
-          </div>
+  </div>
+  
+  <div class="row mb-2">
+      <label for="export_width" class="col-sm-5 col-form-label">Export Width &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+        <input type="number" id="export_width" class="chart_render form-control" min="500" step="50" value="1400">
       </div>
-      <div class="row mb-2">
-          <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-          <div class="col-sm-4">
-             <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="700"> 
-          </div>
+  </div>
+  <div class="row mb-2">
+      <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+         <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="600"> 
       </div>
-      <div class="row mb-2">
-          <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-          <div class="col-sm-4">
-             <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
-          </div>
+  </div>
+  <div class="row mb-2">
+      <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+         <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
       </div>
-      <div class="row mb-2">
-          <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
-          <div class="col-sm-4">
-            <input type="color" id="pen_export_title" name="chart_background_title" value="#ce0d0d" class="chart_render series-color">
-          </div>
+  </div>
+  <div class="row mb-2">
+      <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+      <div class="col-sm-4">
+        <input type="color" id="pen_export_title" name="chart_background_title" value="#c61010" class="chart_render series-color">
       </div>
-      
-      
-      </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              
-            </div>
-          </div>
+  </div>
+  
+  
+  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
         </div>
       </div>
-
-
-
-
-<x-footer_level1 /> 
-
-<script type="text/javascript" src="{{asset('js/stream/scf.js') }}"></script>
-</body>
+    </div>
+  </div>
+  
+  <x-footer_level2 /> 
+   
+  <script type="text/javascript" src="{{asset('js/stream/cw_export.js') }}"></script>
+  
+  </body>
 </html>
+

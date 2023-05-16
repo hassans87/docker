@@ -19,8 +19,8 @@ function ChartParam(target){
                     this.lable = $('#dt_label'+target).is(':checked');
                     this.yAxis = $('#y_axis'+target).is(':checked');
                     this.chartType = $('#chart_type'+target).val();
-                    this.lineWidth = $('#line_width'+target).val();
-                    this.markerWeight =  $('#marker'+target).val();
+                    this.lineWidth = parseFloat($('#line_width'+target).val());
+                    this.markerWeight =  parseFloat($('#marker'+target).val());
                     this.markerShape = $('#marker_shape'+target).val();
                     this.modalColor = $(".modelheader"+target).css({'background-color':this.pen});
                     this.modalTitle = $('#seriestitle'+target).html('Series '+target+': '+$("#ufdata"+target+" option:selected").text());
@@ -96,9 +96,8 @@ const csrfToken = document.head.querySelector("[name~=csrf-token][content]").con
     })
 .then(response =>response.text())
 .then((data) => {
-    console.log(data);
+    
     let data_stream = JSON.parse(data);
-       // console.log(data);
 let dataStream = JSON.parse(data);
 let date =dataStream[0];
 let dataSeries1 = dataStream[1]; 
@@ -625,7 +624,7 @@ let s4Param = new ChartParam(4);
 let s5Param = new ChartParam(5);
 let s6Param = new ChartParam(6);
 let s7Param = new ChartParam(7);
-console.log(s1Param);
+
 
 //console.log(dataSeries1);
 let dataTrain1 = dataSeries1;

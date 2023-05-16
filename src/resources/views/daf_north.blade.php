@@ -1,158 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href={{asset('icons/pulse.png')}} type="image/png" sizes="32x32">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts11/highcharts.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts11/highcharts-3d.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts11/modules/exporting.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts11/modules/offline-exporting.js') }}"></script>
-    <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href={{asset('icons/pulse.png')}} type="image/png" sizes="32x32">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/com.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-2.7.0.min.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="{{asset('js/highcharts11/highcharts.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/highcharts11/highcharts-3d.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/highcharts11/modules/exporting.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/highcharts11/modules/offline-exporting.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
 <title> DAF North </title>
 </head>
 <body style="font-family: calibri;" class="">
-<figure id="plot_window" class="test_print loading-msg" style="height:95vh;"></figure>
-  <style>
-  .main-chk{
-  width:20px; 
-  height:25px; 
-  margin-top:7px; 
-  border:none; 
-  padding:0px;
-  margin-left:7px;
-  }
-  .series-chk{
-    text-align: center; vertical-align:middle; width:17px; height:17px;
-  }
-  .series-color{
-    width: 17px; 
-    border:none !important ;
-    border-radius: 0.5rem;
-    height:17px; padding:0px; margin:0px; background:none; vertical-align: middle;
-  }
-  .color-pic{
-    width:20px; height:25px; margin-top:5px; border:none; padding:0px;  background:none; margin-left:5px;
-  }
-  .badge-light3d {
-    text-align: center;
-    color:#636e72;
-    background: rgba(226,226,226,1);
-  background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(50%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
-  background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-  background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-  background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-  background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
-  
-  }
-  .table-light{
-    background-color: white;
-  }
-  .table-secondary{
-    background-color: silver;
-  }
-  .caustic{
-  background-color:rgba(168, 61, 255, 0.40);
-  
-  }
-  .citric{
-  background-color:rgba(255, 168, 5, 0.40);
-  }
-  .mnbtn{
-    border-radius: 7px 0px 0px 7px;
-  }
-  .mnbtn0{
-    border-radius: 0px 7px 7px 0px;
-  }
-  </style>
-    <script type="text/javascript">
-  Notiflix.Block.Init({
-  fontFamily:"Quicksand",
-  useGoogleFont:true,
-  backgroundColor:"rgba(0,0,0,0.86)",
-  messageColor:"#dfe4ea",
-  svgColor:"#18dcff",
-  svgSize:"80px",
-  messageFontSize:"16px"
-  });
-  //Notiflix.Block.Pulse('.loading-msg', 'Please wait Fetching data from server....'); 
-  
-  // Notiflix Notify Init - global.js
-  Notiflix.Notify.Init({
-    width:'250px',
-    opacity:0.9,
-    fontSize:'12px',
-    timeout:3000,
-    messageMaxLength:220,
-    position:'right-bottom',
-    cssAnimationStyle:"zoom",
-  });
-  
-  </script>
-  <div class="input-group">
-      <div class="col-auto" style="margin-right:5px;">
-        <a href="{{ url('/home') }}"> 
-            <button class="btn form-control btn-sm badge-light3d">Home &nbsp;<i class="fa fa-home" aria-hidden="true" style="color:black;"></i></button></a>
-  
-  
-  
-        </div>
-               <div class="col-auto" style="margin-right:5px;">
-                      <!-- Button trigger modal -->   
-                  <div class="input-group">
-                  <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;">Global &nbsp;<i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span>
-                  </div>
-     
-  
-          </div>
-          <div class="col-auto" style="margin-right:8px;">
-            <div class="input-group input-group-sm">
-              <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
-      
-              <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2022-10-01" min="2016-01-01" max="2023-11-10" required="" style="background-color:#dff9fb;">
-            </div>
-          </div>
-          <div class="col-auto" style="margin-right:5px;">
-            <div class="input-group input-group-sm">
-              <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
-              <input type="date" name="end_date" id="end_date" value="2023-03-31" min="2016-01-31" max="2024-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
-            </div>
-          </div>
-  
-          <div class="col-auto" style="margin-right:5px;">
-            <div class="input-group input-group-sm">
-              <div class="input-group-text badge-light3d mnbtn">Data Interval &nbsp;<i class="fa fa-clock-o" aria-hidden="true" style="color:black;"></i></div>
-              <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
-                <option value="0.7" selected="">1 Hour</option>
-                <option value="1.8">2 Hours</option>
-                <option value="3.7">4 Hours</option>
-                <option value="5.7">6 Hours</option>
-                <option value="7.7">8 Hours</option>
-                <option value="11">12 Hours</option>
-                <option value="23">24 Hours</option>
-                <option value="47">48 Hours</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-auto" style="margin-right:15px;">
-            <div class="input-group input-group-sm">
-              <button id="query_fire" class="query_fire btn btn-warning btn-sm form-check">
-                <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</button>
-            </div>
-          </div>
-                  </div>
-  
+<figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>  
    <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
       <tr>
@@ -1135,12 +1006,8 @@
       </div>
     </div>
   </div>
-  
-  
-  
-  
+  <x-footer_level1 /> 
   <script type="text/javascript" src="{{asset('js/stream/daf_north.js') }}"></script>
-  
   </body>
 </html>
 

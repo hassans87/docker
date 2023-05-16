@@ -12,212 +12,166 @@
   <script type="text/javascript" src="{{asset('js/notiflix 2.7.0/notiflix-aio-2.7.0.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link href="{{ asset('css/com.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
   <title>Home</title>
 </head>
-<body>
-  
-  <style>
-    
-    .glass {
-      
-        background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-      ); 
-      z-index: 2;
-      backdrop-filter: blur(2rem);
-      display: flex;
-      
-      
-    }
-    .glass1 {
-      
-        background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.3)
-      ); 
-      z-index: 2;
-      backdrop-filter: blur(2rem);
-      border-top-right-radius: 1rem;
-      border-top-left-radius: 1rem;
-      
-    }
-    .glass_active {
-        background: red;
-        background: linear-gradient(
-        to right bottom,
-        rgba(255, 71, 87, 0.9),
-        rgba(255, 71, 87, 0.6)
-      ); 
-      z-index: 2;
-      backdrop-filter: blur(2rem);
-      display: flex; 
-      
-    }
+<body class="jumbotron"> 
+<div class="wrapper">
+<div class="">
+  <div class="table-responsive">
+  <table class="table-borderless align-middle mb-0 mt-0">
+    <thead class="badge-light3d">
+      <tr>
+          <th class="bdr">&nbsp;<i class="fa fa-television" aria-hidden="true"></i> &nbsp;VeoLink</th>
+          <th class="bdr">&nbsp;<i class="fa fa-cube" aria-hidden="true"></i>&nbsp;Operation &nbsp;&nbsp;</th>        
+          <th class="bdr">&nbsp;<i class="fa fa-flask" aria-hidden="true"></i>&nbsp;Laboratory&nbsp;&nbsp;</th>
+          <th class="bdr">&nbsp;<i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Maintenance&nbsp;&nbsp;</th>
+      </tr>
+      </thead>
+        <tbody> 
+        <tr >
+          <td class="bdr"><a   href="{{ url('/swintake') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; SW Intake </button></a> 
+          </td>
+            <td class="bdr">
+              <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
+                <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp; RO1 CIP </button></a> </td>
+          <td class="bdr"><a   href="{{ url('/labCoolingWaterExport') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp;Cooling Water Export</button></a> 
+            </td>
+            <td class="bdr"><a   href="{{ url('/DefectsMain') }}" style="text-decoration: none;" class="menu">
+              <button class="btn btn-light menu"> <i class="ancherx fa fa-file-text-o" aria-hidden="true" ></i>&nbsp;Defects</button></a> 
+              </td>
+        </tr>
+        <tr>
+          <td class="bdr"><a   href="{{ url('/dafnorth') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF North</button></a> 
+            </td>
+            <td class="bdr">
+              <a   href="{{ url('/importExport') }}"  style="text-decoration: none;" class="menu">
+                <button class="btn btn-light menu"> <i class="ancher fa fa-line-chart" aria-hidden="true"></i>&nbsp;Production/Import/Export</button></a>
+             </td>
+             <td class="bdr"><a   href="{{ url('/labDeminWaterExport') }}"  style="text-decoration: none;" class="menu">
+              <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp;Demin Water Export</button></a> 
+              </td>
+              <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+                <button class="btn btn-light menu"> <i class="ancherx fa fa-file-text-o" aria-hidden="true" ></i>&nbsp;Permit Requests</button></a> 
+                </td>
+           </tr>
+        <tr>
+          <td class="bdr"><a   href="{{ url('/dafsouth') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF South</button></a> 
+            </td>
+            <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+              <button class="btn btn-light menu"> <i class="ancherx fa fa-flag" aria-hidden="true"></i>&nbsp; E-PTW</button></a> 
+              </td>
+              <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+                <button class="btn btn-light menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO Feed</button></a> 
+                </td>
+            <td> </td>
+           </tr>
 
-    .glass2 a{
-      border-bottom: 1px solid rgb(189, 187, 187);
-    }
-      .menu{
-    font-size:0.9rem; 
-    font-family: calibri; 
-    color:#2f3542;
-    width:100%;
-    display: block;
-    text-align:left;
-    font-weight: bold;
-    
-      
-    }
-    .menu a{
-     color:#2f3542;
-     text-decoration: none;
-     
-    }
-
-    .ancherx{
-      color:#ee0808;
-     }
-    .ancher{
-      color:#050505;
-     }
-    .btn-light:hover{
-     color:#e2e2e2;
-     background-color: rgb(7, 7, 7);
-     .ancher{
-      color:#0bf00b;
-     }
-    }
-
-     </style>
-<script>
-    Notiflix.Block.Init({
-    fontFamily:"Quicksand",
-    useGoogleFont:true,
-    backgroundColor:"rgba(0,0,0,0.86)",
-    messageColor:"#dfe4ea",
-    svgColor:"#18dcff",
-    svgSize:"80px",
-    messageFontSize:"16px"
-    });
-    //Notiflix.Block.Pulse('.loading-msg', 'Please wait Fetching data from server....');
-
-    // Notiflix Notify Init - global.js
-    Notiflix.Notify.Init({
-      width:'250px',
-      opacity:0.9,
-      fontSize:'12px',
-      timeout:3000,
-      messageMaxLength:200,
-      position:'right-bottom',
-      cssAnimationStyle:"zoom",
-    });
-  Notiflix.Block.Init({
-  fontFamily:"Quicksand",
-  useGoogleFont:true,
-  backgroundColor:"rgba(0,0,0,0.86)",
-  messageColor:"#dfe4ea",
-  svgColor:"#18dcff",
-  svgSize:"80px",
-  messageFontSize:"16px"
-  });
-  //Notiflix.Block.Pulse('.loading-msg', 'Please wait Fetching data from server....');
-  // Notiflix Notify Init - global.js
-  </script>
-<div class="container-fluid">
-<div class="row"> 
-<div class="col">
-<div class="btn-group-vertical glass2">
-  <a   href="{{ url('/swintake') }}"  style="text-decoration: none;" class="menu">
-<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; SW Intake </button></a> 
-<a   href="{{ url('/dafnorth') }}"  style="text-decoration: none;" class="menu">
-<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF North</button></a> 
-  <a   href="{{ url('/dafsouth') }}"  style="text-decoration: none;" class="menu">
-<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; DAF South</button></a> 
-  <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
-<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
-<a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
-  <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF North</button></a>
-  <a   href={{ url('/uf_south') }}  style="text-decoration: none;" class="menu">
-    <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF South</button></a>
-    <a   href="#"  style="text-decoration: none;" class="menu not_ready">
-      <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp; RO Feed</button></a>
-<a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
-<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 Normalization  </button></a>
-<a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
-<button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp; RO1 CIP </button></a>
-<a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
-<button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; RO2 Normalization</button></a>
-
-
-
-
-  <a   href="#"  style="text-decoration: none;" class="menu not_ready">
-    <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Brine</button></a>
-
-<a   href="#"  style="text-decoration: none;" class="menu not_ready">
-<button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post CO2</button></a>
-<a   href="#"  style="text-decoration: none;" class="menu not_ready">
-<button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Lime</button></a>
-<a   href="#"  style="text-decoration: none;" class="menu not_ready">
-<button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Post Cl2</button></a>
-
-<a   href="#"  style="text-decoration: none;" class="menu not_ready">
-  <button class="btn btn-light menu"> <i class="ancherx fa fa-database" aria-hidden="true"></i>&nbsp;Import/Export</button></a>
-
-
-
-<a  href="{{ url('/register') }}"  style="text-decoration: none;" class="menu ">
-
-  
-  <button class="btn btn-light btn-sm menu"> <i class="ancher fa fa-user" aria-hidden="true"></i>&nbsp;Add New User</button></a>
-
-
-<form class="menu" method="POST" action="/logout">
-@csrf
-<button type="submit" class="btn btn-warning btn-sm">
-<i class="fa fa-sign-out" aria-hidden="true" style="color:red;"></i>
-Logout
-</button>
-</form>
-
-
-
-  </div> </div>
-
-
-
-
-
-
-
-
-
-
-
+        <tr><td class="bdr"> <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
+            </td>
+            <td> </td>
+            <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+              <button class="btn btn-light menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO First Pass</button></a> 
+              </td>
+            <td> </td>
+           </tr>
+           <tr><td class="bdr">
+            <a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
+              <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF North</button></a>
+              </td>
+              <td> </td>
+              <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+                <button class="btn btn-light menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO Second Pass</button></a> 
+                </td>
+              <td> </td>
+             </tr>
+             <tr><td class="bdr">
+              <a   href={{ url('/uf_south') }}  style="text-decoration: none;" class="menu">
+                <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF South</button></a>
+             </td>
+             <td> </td>
+             <td class="bdr">
+              </td>
+             <td> </td>
+            </tr>
+            <tr><td class="bdr">
+            </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+           </tr>
+           <tr><td class="bdr">
+            <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
+              <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 Normalization  </button></a>
+           </td>
+           <td> </td>
+           <td> </td>
+           <td> </td>
+          </tr>
+         <tr><td class="bdr">
+          <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true" ></i>&nbsp; RO2 Normalization</button></a>
+         </td>
+         <td> </td>
+         <td> </td>
+         <td> </td>
+        </tr>
+        <tr><td class="bdr">
+          <a   href="{{ url('/brine') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp;Brine Reject</button></a>  
+        </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+       </tr>
+       <tr><td class="bdr">
+        <a   href="{{ url('/PostCO2') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp;Post CO2</button></a>     
+       </td>
+       <td> </td>
+       <td> </td>
+       <td> </td>
+      </tr>
+      <tr><td class="bdr">
+        <a   href="{{ url('/PostLime') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp;Post Lime</button></a>
+       </td>
+       <td> </td>
+       <td> </td>
+       <td> </td>
+      </tr>
+      <tr><td class="bdr">
+        <a  href="{{ url('/PostCl2') }}"  style="text-decoration: none;" class="menu" >
+          <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp;Post Cl2</button></a>
+      </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+     </tr>
+    <tr><td class="bdr">
+      <a   href="#"  style="text-decoration: none;" class="menu not_ready">
+        <button class="btn btn-light menu"> <i class="ancherx fa fa-cloud-download" aria-hidden="true"></i>&nbsp;Data Download</button></a>
+     </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+      </tbody>
+    </table> 
+  </div>
 </div>
-
-
-
-
-  
-  
- 
-
-
-
-
-
-
 
 </div>
 @if(session()->has('message'))
     <script>
       Notiflix.Notify.Info('{{session('message')}}');
     </script>
-
 @endif
 
 <script>
@@ -227,7 +181,35 @@ $('.not_ready').click(function(){
 
 </script>
 
-
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav">
+        <li class="nav-item" style="margin-top:8px">
+         
+          <form class="" method="POST" action="/logout" >
+            @csrf
+            <button type="submit" class="badge bg-light text-dark">
+            <i class="fa fa-sign-out" aria-hidden="true" style="color:rgb(121, 119, 119);"></i>Logout</button>
+            </form> 
+        </li>
+        <li class="nav-item dropup">
+          <a class="nav-link" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true" style="color:rgb(121, 119, 119);"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown10">
+            <li><a  href="{{ url('/register') }}"  style="text-decoration: none;" class="dropdown-item menu ">
+             <i class="ancher fa fa-user-plus" aria-hidden="true"></i>&nbsp;Add New User</a></li>
+            <li><a class="dropdown-item" href="#">User Profile</a></li>
+            <li><a class="dropdown-item" href="#">
+              <i class="fa fa-key" aria-hidden="true"></i>&nbsp;Change Password</a></li>
+            <li><a class="dropdown-item" href="#">Admin</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 </body>
 </html>
