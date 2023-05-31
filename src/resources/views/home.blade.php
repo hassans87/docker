@@ -66,7 +66,7 @@
             <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
               <button class="btn btn-light menu"> <i class="ancherx fa fa-flag" aria-hidden="true"></i>&nbsp; E-PTW</button></a> 
               </td>
-              <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+              <td class="bdr"><a   href="{{ url('/labRoFeed_x') }}"  style="text-decoration: none;" class="menu not_ready">
                 <button class="btn btn-light menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO Feed</button></a> 
                 </td>
             <td> </td>
@@ -75,8 +75,10 @@
         <tr><td class="bdr"> <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
           <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; SCF</button></a>
             </td>
-            <td> </td>
-            <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+            <td class="bdr"> <a   href="{{ url('/BlendingTank') }}"  style="text-decoration: none;" class="menu">
+              <button class="btn btn-light menu"> <i class="ancher fa fa-square" aria-hidden="true"></i>&nbsp; Blending Tank</button></a> </td>
+
+            <td class="bdr"><a   href="{{ url('/labFirstPass_x') }}"  style="text-decoration: none;" class="menu not_ready">
               <button class="btn btn-light menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO First Pass</button></a> 
               </td>
             <td> </td>
@@ -85,8 +87,9 @@
             <a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
               <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF North</button></a>
               </td>
-              <td> </td>
-              <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
+              <td><a   href={{ url('/RO1Conductvity') }} style="text-decoration: none;" class="menu">
+                <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp;RO1 EC</button></a> </td>
+              <td class="bdr"><a   href="{{ url('/labSecondPass_x') }}"  style="text-decoration: none;" class="menu not_ready">
                 <button class="btn btn-light menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO Second Pass</button></a> 
                 </td>
               <td> </td>
@@ -95,7 +98,18 @@
               <a   href={{ url('/uf_south') }}  style="text-decoration: none;" class="menu">
                 <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; UF South</button></a>
              </td>
+             <td><a   href={{ url('/RO2Conductvity') }} style="text-decoration: none;" class="menu">
+              <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp;RO2 EC</button></a> </td>
+             <td class="bdr">
+              </td>
              <td> </td>
+            </tr>
+            <tr><td class="bdr">
+              <a   href={{ url('/ROfeed') }}  style="text-decoration: none;" class="menu">
+                <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO Feed</button></a>
+             </td>
+             <td> <a   href={{ url('/RO1DPI') }}  style="text-decoration: none;" class="menu">
+              <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 DPI</button></a> </td>
              <td class="bdr">
               </td>
              <td> </td>
@@ -110,7 +124,8 @@
             <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
               <button class="btn btn-light menu"> <i class="ancher fa fa-database" aria-hidden="true"></i>&nbsp; RO1 Normalization  </button></a>
            </td>
-           <td> </td>
+           <td><a   href={{ url('/onlineDBNPA') }}  style="text-decoration: none;" class="menu">
+            <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true"></i>&nbsp;DBNPA Dosing Test</button></a> </td>
            <td> </td>
            <td> </td>
           </tr>

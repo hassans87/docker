@@ -472,7 +472,7 @@ south_sdi:{
 north_orp202:{
         unit:" mV",
         name:"ORP-202 NL",
-        yAxis:7,
+        yAxis:3,
         arrFlr:1,
         valFixTo:0,
         sum:false
@@ -487,15 +487,15 @@ north_orp_206:{
         },
 south_orp_202:{
         unit:" mV",
-        name:"ORP-202 NL",
-        yAxis:7,
+        name:"ORP-202 SL",
+        yAxis:3,
         arrFlr:1,
         valFixTo:0,
         sum:false
         },
 south_orp206:{
         unit:" mV",
-        name:"ORP-206 NL",
+        name:"ORP-206 SL",
         yAxis:7,
         arrFlr:1,
         valFixTo:0,
@@ -687,11 +687,11 @@ plotExpTitleColor: $('#pen_export_title').val()}
 var stack0=["recovery"];
 var stack1=["sbsrate_nl","ansrate_nl","dbnparate_nl","sbsdafrate_sl", "ferricrate_sl","sbsrate_sl","ansrate_sl","dbnparate_sl","ferricrate_nl","sbsdafrate_nl"];
 var stack2=["north_press","south_pressure"];
-var stack3 = ["sbsflow_nl","ansflow_nl","dbnpaflow_nl","sbsdaf_sl","ferricflow_sl","sbsflow_sl","ansflow_sl","sbsdaf_nl","dbnpaflow_sl","ferricflow_nl"];
+var stack3 = ["north_orp202","south_orp_202"];
 var stack4=["north_turbidity","south_turbidity"];
 var stack5=["rofeed_nl","north_lineflow","north_brineflow","rofeed_sl","south_lineflow","south_brineflow","daf_nlflow","daf_slflow"];
 var stack6=["north_sdi","south_sdi"];
-var stack7=["north_orp202","north_orp_206","south_orp_202","south_orp206"];
+var stack7=["north_orp_206","south_orp206"];
 var stack8=["north_uv254","south_uv254"];
 var stack9=["north_hc","south_hc"];
 var stack10=["north_temp","south_temp"];
@@ -981,12 +981,12 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //labels: false,
                             //opposite: true
                             },   
-                            { //[3]  chemical flow
-                            //   min:0, 
-                            //   max:100,  
+                            { //[3]  ORP-202
+                            min:200, 
+                            max:700,  
                             tickAmount: 11,
                             visible:axis_Y3,
-                            // opposite:true, 
+                            opposite:true, 
                             tickWidth: 1,      
                             gridLineWidth: 0,
                             crosshair: {color:'#ffffff',
@@ -998,7 +998,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             enabled: true,
                             //format: '{value}',
                             formatter:function(){return Math.ceil(this.value)},           
-                            style: {color:'#1e272e',
+                            style: {color:'#8e44ad',
                                 fontWeight: 'bold',}
                             },
                             title: {
@@ -1007,7 +1007,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             offset: 15,
                             rotation: 0,
                             y: -10,
-                            text: 'L/h',
+                            text: 'mV',
                             style: {
                                 color:'#1e272e',
                                 fontWeight: 'bold',
@@ -1133,8 +1133,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             },
     
                             { //[7] ORP
-                            min: 200,
-                            max:700,
+                            min:150,
+                            max:400,
                             tickAmount: 11,
                             visible:axis_Y7, 
                             tickWidth: 1,
@@ -1148,7 +1148,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             enabled: true,
                             format: '{value}',
                             formatter: function() {return (this.value).toFixed(0);},                     
-                            style: {color:'#1e272e',
+                            style: {color:'#009432',
                             fontWeight: 'bold',}
                             },
                             title: {
@@ -1240,7 +1240,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             visible:axis_Y10, 
                             tickWidth: 1,
                             gridLineWidth: 0,
-                            opposite:true,
+                            opposite:false,
                             crosshair: {color:'#ffffff',
                             dashStyle: 'Dot',
                             width:1.5,

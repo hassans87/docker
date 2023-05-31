@@ -566,7 +566,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:20, 
-        text: 'UF North Data From',
+        text: 'UF North Average Permeability, Flux and TMP',
         style: {color: plotParam.plotExpTitleColor,
         font: '18px "Calibri", Verdana, sans-serif',
         fontWeight:'bold'

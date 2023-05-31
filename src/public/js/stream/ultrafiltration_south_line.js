@@ -567,7 +567,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:20, 
-        text: 'UF South Data From',
+        text: 'UF South Average Permeability, Flux and TMP',
         style: {color: plotParam.plotExpTitleColor,
         font: '18px "Calibri", Verdana, sans-serif',
         fontWeight:'bold'
@@ -1242,7 +1242,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                           fillOpacity: 0.17,
                                                           },
 
-                                                           {   name:s6Param.ufSkid.toUpperCase()+' '+st[s6Param.ufData]['name'],
+                                                           {   name:st[s6Param.ufData]['name'],
                                                               type:s6Param.chartType,
                                                               visible:s6Param.series,
                                                               showInLegend: d6,
@@ -1279,7 +1279,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                           fillOpacity: 0.17,
                                                           },      
 
-                                                        {   name:s7Param.ufSkid.toUpperCase()+' '+st[s7Param.ufData]['name'],
+                                                        {   name:st[s7Param.ufData]['name'],
                                                               type:s7Param.chartType,
                                                               visible:s7Param.series,
                                                               showInLegend: d7,

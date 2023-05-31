@@ -890,7 +890,9 @@
       </tbody>
     </table>  	
    
-  
+    <div style="margin-bottom:100px">
+
+    </div>
   
   
   <!-- Modal chart global settings-->

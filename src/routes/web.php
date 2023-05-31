@@ -11,7 +11,7 @@ use App\Http\Controllers\DAFNorthSouth;
 use App\Http\Controllers\UltraFiltration;
 use App\Http\Controllers\PostTreatment;
 use App\Http\Controllers\ROFeedQuality;
-
+use App\Http\Controllers\OperationDCS;
 /* 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,7 +48,17 @@ Route::get('/PostLime', function () {return view('post_lime');})->middleware('au
 Route::get('/labCoolingWaterExport', function () {return view('lab_export_cw');})->middleware('auth');
 Route::get('/labDeminWaterExport', function () {return view('lab_export_dw');})->middleware('auth');
 Route::get('/labRoFeed', function () {return view('lab_rofeed');})->middleware('auth');
-
+//Operations Routes
+Route::get('/RO1Conductvity', function () {return view('ro1dcs_ec');})->middleware('auth');
+Route::POST('/RO1Conductvity', [OperationDCS::class, 'ro1ECfromDCS'])->middleware('auth');
+Route::get('/RO2Conductvity', function () {return view('ro2dcs_ec');})->middleware('auth');
+Route::POST('/RO2Conductvity', [OperationDCS::class, 'ro2ECfromDCS'])->middleware('auth');
+Route::get('/RO1DPI', function () {return view('ro1dcs_dpi');})->middleware('auth');
+Route::POST('/RO1DPI', [OperationDCS::class, 'ro1DPIfromDCS'])->middleware('auth');
+Route::get('/BlendingTank', function () {return view('blending_tnk');})->middleware('auth');
+Route::POST('/BlendingTank', [PostTreatment::class, 'permeateBlendingTank'])->middleware('auth');
+Route::get('/onlineDBNPA', function () {return view('dbnpa_onlinetest');})->middleware('auth');
+Route::POST('/onlineDBNPA', [OperationDCS::class, 'onlineDBNPAtest'])->middleware('auth');
 //Maintenance Routes
 Route::get('/DefectsMain', function () {return view('defects_menu');})->middleware('auth');
 

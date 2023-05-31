@@ -3,15 +3,22 @@ queryStream();
 setInterval(function () {$("head title").html($("head title").html().substring(1) + $("head title").html().substring(0,1));}, 400);
 $('.query_fire').click(function(){queryStream();})
 $('.query').change(function(){
-    //    queryStream();
-Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
+       // queryStream();
+        Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
-
+$('#info').click(function(){
+Notiflix.Report.Info('Information!','Database avaialbe from 01-01-2016 to 30-11-2022, base interval is 1 hour from Violink source, Export server can handle up to 1000 data points more than this will throw an error','Close');
+;})
+$('#export_data').click(function(){
+window.location.replace("./data_export_ro2.php");
+;})
+$('#custom_query').click(function(){
+window.location.replace("./ro2_normalization_qustom.php");
+;})
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
     this.ufData = $('#ufdata'+target).val();
-
 }
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
@@ -21,7 +28,7 @@ function ChartParam(target){
                     this.yAxis = $('#y_axis'+target).is(':checked');
                     this.chartType = $('#chart_type'+target).val();
                     this.lineWidth = parseFloat($('#line_width'+target).val());
-                    this.markerWeight =   parseFloat($('#marker'+target).val());
+                    this.markerWeight = parseFloat($('#marker'+target).val());
                     this.markerShape = $('#marker_shape'+target).val();
                     this.modalColor = $(".modelheader"+target).css({'background-color':this.pen});
                     this.modalTitle = $('#seriestitle'+target).html('Series '+target+': '+$("#ufdata"+target+" option:selected").text());
@@ -99,7 +106,6 @@ fetch(window.location.href,
 .then(response =>response.text())
 .then((data) =>{
 try{
-    
 let dataStream = JSON.parse(data);
 let date =dataStream[0];
 let dataSeries1 = dataStream[1]; 
@@ -109,6 +115,7 @@ let dataSeries4 = dataStream[4];
 let dataSeries5 = dataStream[5];
 let dataSeries6 = dataStream[6];
 let dataSeries7 = dataStream[7];
+
 //date modification
 let date22 = [];
 let datex = [];      
@@ -208,173 +215,97 @@ $( ".chart_render" ).change(function(){renderedChart();});
 $( ".filter" ).click(function(){renderedChart();});
 function renderedChart(){
 const st = {
-p1_pt:{
-        unit:" bar",
-        name:"Pump1 Pressure",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-p2_pt:{
-        unit:" bar",
-        name:"Pump2 Pressure",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-p3_pt:{
-        unit:" bar",
-        name:"Pump3 Pressure",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-p4_pt:{
-        unit:" bar",
-        name:"Pump4 Pressure",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-p5_pt:{
-        unit:" bar",
-        name:"Pump5 Pressure",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-p6_pt:{
-        unit:" bar",
-        name:"Pump6 Pressure",
-        yAxis:2,
-        arrFlr:1,
-        valFixTo:1,
-        sum:false
-        },
-p1_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"22A Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
+                                ro41a:{
+                                unit:" bar",
+                                name:"41A dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41b:{
+                                unit:" bar",
+                                name:"41B dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41c:{
+                                unit:" bar",
+                                name:"41C dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41d:{
+                                unit:" bar",
+                                name:"41D dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41e:{
+                                unit:" bar",
+                                name:"41E dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41f:{
+                                unit:" bar",
+                                name:"41F dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41g:{
+                                unit:" bar",
+                                name:"41G dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41h:{
+                                unit:" bar",
+                                name:"41H dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41i:{
+                                unit:" bar",
+                                name:"41I dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41j:{
+                                unit:" bar",
+                                name:"41J dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                },
+                                ro41k:{
+                                unit:" bar",
+                                name:"41K dp",
+                                yAxis:2,
+                                arrFlr:0.5,
+                                valFixTo:1,
+                                sum:false
+                                }
+          
 
-p2_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"22B Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
-
-p3_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"22C Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
- 
- p4_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"22D Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
- 
- p5_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"22E Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
- 
- p6_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"22F Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
- tot_flow:{
-        unit:" m<sup>3</sup>/h",
-        name:"Total Inlet Flow",
-        yAxis:5,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        },
-  p1_dpi:{
-        unit:" bar",
-        name:"SCF-1 DPI",
-        yAxis:1,
-        arrFlr:1,
-        valFixTo:2,
-        sum:false
-        },
-  p2_dpi:{
-        unit:" bar",
-        name:"SCF-2 DPI",
-        yAxis:1,
-        arrFlr:1,
-        valFixTo:2,
-        sum:false
-        },
-  p3_dpi:{
-        unit:" bar",
-        name:"SCF-3 DPI",
-        yAxis:1,
-        arrFlr:1,
-        valFixTo:2,
-        sum:false
-        },
-  p4_dpi:{
-        unit:" bar",
-        name:"SCF-4 DPI",
-        yAxis:1,
-        arrFlr:1,
-        valFixTo:2,
-        sum:false
-        },
-  p5_dpi:{
-        unit:" bar",
-        name:"SCF-5 DPI",
-        yAxis:1,
-        arrFlr:1,
-        valFixTo:2,
-        sum:false
-        },
-  p6_dpi:{
-        unit:" bar",
-        name:"SCF-6 DPI",
-        yAxis:1,
-        arrFlr:1,
-        valFixTo:2,
-        sum:false
-        },
-  nb_pump_running:{
-        unit:" ",
-        name:"Number of Pumps Online",
-        yAxis:8,
-        arrFlr:1,
-        valFixTo:0,
-        sum:false
-        }
 }
-
 
 let s1Param = new ChartParam(1);
 let s2Param = new ChartParam(2);
@@ -417,6 +348,7 @@ let plotParam = {
 dateFrom:$('#start_date').val(),
 dateTo: $('#end_date').val(), 
 bayline: "43",
+roSkid: $('#skidx').val(),
 interval:$('#invt').val(),
 ufqry:" ",
 chartBackground:$('#pen_main').val(),
@@ -428,35 +360,23 @@ plotExpWidth:$('#export_width').val(),
 plotExpHeight:$('#export_height').val(),
 plotExpBackground:$('#pen_export').val(),
 plotExpTitleColor: $('#pen_export_title').val()}  
-var stack0=["spare"];
-var stack1=["p1_dpi","p2_dpi","p3_dpi","p4_dpi","p5_dpi","p6_dpi"];
-var stack2=["p1_pt","p2_pt","p3_pt","p4_pt","p5_pt","p6_pt"];
-var stack3 = ["ferric_flow_tot"];
-var stack4=["daf_inlet_turbidity","daf_flr_turb"];
-var stack5=["p1_flow","p2_flow","p3_flow","p4_flow","p5_flow","p6_flow","tot_flow"];
-var stack6=["north_sdi","south_sdi"];
-var stack7=["daf_inlet_orp"];
-var stack8=["nb_pump_running"];
-var stack9=["north_hc","south_hc"];
-var stack10=["north_temp","south_temp"];
-var stack11=["north_chlorine","south_cl2"];
-var stack12=["daf_inlet_ec"];
-var stack13=["daf_inlet_ph","daf_flr_ph"];
-var mainYaxis=(plotParam.yAxis || s1Param.isY && (stack0.includes(s1Param.ufData))||s2Param.isY && (stack0.includes(s2Param.ufData))||s3Param.isY && (stack0.includes(s3Param.ufData))||s4Param.isY && (stack0.includes(s4Param.ufData))||s5Param.isY && (stack0.includes(s5Param.ufData))||s6Param.isY && (stack0.includes(s6Param.ufData))||s7Param.isY && (stack0.includes(s7Param.ufData)))? true: false;
-     var axis_Y1=(s1Param.isY && (stack1.includes(s1Param.ufData))||s2Param.isY && (stack1.includes(s2Param.ufData))||s3Param.isY && (stack1.includes(s3Param.ufData))||s4Param.isY && (stack1.includes(s4Param.ufData))||s5Param.isY && (stack1.includes(s5Param.ufData))||s6Param.isY && (stack1.includes(s6Param.ufData))||s7Param.isY && (stack1.includes(s7Param.ufData)))? true: false;
-      var axis_Y2=(s1Param.isY && (stack2.includes(s1Param.ufData))||s2Param.isY && (stack2.includes(s2Param.ufData))||s3Param.isY && (stack2.includes(s3Param.ufData))||s4Param.isY && (stack2.includes(s4Param.ufData))||s5Param.isY && (stack2.includes(s5Param.ufData))||s6Param.isY && (stack2.includes(s6Param.ufData))||s7Param.isY && (stack2.includes(s7Param.ufData)))? true: false; 
-         var axis_Y3 =(s1Param.isY && (stack3.includes(s1Param.ufData))||s2Param.isY && (stack3.includes(s2Param.ufData))||s3Param.isY && (stack3.includes(s3Param.ufData))||s4Param.isY && (stack3.includes(s4Param.ufData))||s5Param.isY && (stack3.includes(s5Param.ufData))||s6Param.isY && (stack3.includes(s6Param.ufData))||s7Param.isY && (stack3.includes(s7Param.ufData)))? true: false; 
-var axis_Y4 =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (stack4.includes(s2Param.ufData))||s3Param.isY && (stack4.includes(s3Param.ufData))||s4Param.isY && (stack4.includes(s4Param.ufData))||s5Param.isY && (stack4.includes(s5Param.ufData))||s6Param.isY && (stack4.includes(s6Param.ufData))||s7Param.isY && (stack4.includes(s7Param.ufData)))? true: false; 
-   var axis_Y5 =(s1Param.isY && (stack5.includes(s1Param.ufData))||s2Param.isY && (stack5.includes(s2Param.ufData))||s3Param.isY && (stack5.includes(s3Param.ufData))||s4Param.isY && (stack5.includes(s4Param.ufData))||s5Param.isY && (stack5.includes(s5Param.ufData))||s6Param.isY && (stack5.includes(s6Param.ufData))||s7Param.isY && (stack5.includes(s7Param.ufData)))? true: false; 
-    var axis_Y6  =(s1Param.isY && (stack6.includes(s1Param.ufData))||s2Param.isY && (stack6.includes(s2Param.ufData))||s3Param.isY && (stack6.includes(s3Param.ufData))||s4Param.isY && (stack6.includes(s4Param.ufData))||s5Param.isY && (stack6.includes(s5Param.ufData))||s6Param.isY && (stack6.includes(s6Param.ufData))||s7Param.isY && (stack6.includes(s7Param.ufData)))? true: false; 
-    var axis_Y7  =(s1Param.isY && (stack7.includes(s1Param.ufData))||s2Param.isY && (stack7.includes(s2Param.ufData))||s3Param.isY && (stack7.includes(s3Param.ufData))||s4Param.isY && (stack7.includes(s4Param.ufData))||s5Param.isY && (stack7.includes(s5Param.ufData))||s6Param.isY && (stack7.includes(s6Param.ufData))||s7Param.isY && (stack7.includes(s7Param.ufData)))? true: false; 
-    var axis_Y8  =(s1Param.isY && (stack8.includes(s1Param.ufData))||s2Param.isY && (stack8.includes(s2Param.ufData))||s3Param.isY && (stack8.includes(s3Param.ufData))||s4Param.isY && (stack8.includes(s4Param.ufData))||s5Param.isY && (stack8.includes(s5Param.ufData))||s6Param.isY && (stack8.includes(s6Param.ufData))||s7Param.isY && (stack8.includes(s7Param.ufData)))? true: false; 
-    var axis_Y9 =(s1Param.isY && (stack9.includes(s1Param.ufData))||s2Param.isY && (stack9.includes(s2Param.ufData))||s3Param.isY && (stack9.includes(s3Param.ufData))||s4Param.isY && (stack9.includes(s4Param.ufData))||s5Param.isY && (stack9.includes(s5Param.ufData))||s6Param.isY && (stack9.includes(s6Param.ufData))||s7Param.isY && (stack9.includes(s7Param.ufData)))? true: false; 
-    var axis_Y10=(s1Param.isY && (stack10.includes(s1Param.ufData))||s2Param.isY && (stack10.includes(s2Param.ufData))||s3Param.isY && (stack10.includes(s3Param.ufData))||s4Param.isY && (stack10.includes(s4Param.ufData))||s5Param.isY && (stack10.includes(s5Param.ufData))||s6Param.isY && (stack10.includes(s6Param.ufData))||s7Param.isY && (stack10.includes(s7Param.ufData)))? true: false; 
-    var axis_Y11=(s1Param.isY && (stack11.includes(s1Param.ufData))||s2Param.isY && (stack11.includes(s2Param.ufData))||s3Param.isY && (stack11.includes(s3Param.ufData))||s4Param.isY && (stack11.includes(s4Param.ufData))||s5Param.isY && (stack11.includes(s5Param.ufData))||s6Param.isY && (stack11.includes(s6Param.ufData))||s7Param.isY && (stack11.includes(s7Param.ufData)))? true: false; 
-    var axis_Y12=(s1Param.isY && (stack12.includes(s1Param.ufData))||s2Param.isY && (stack12.includes(s2Param.ufData))||s3Param.isY && (stack12.includes(s3Param.ufData))||s4Param.isY && (stack12.includes(s4Param.ufData))||s5Param.isY && (stack12.includes(s5Param.ufData))||s6Param.isY && (stack12.includes(s6Param.ufData))||s7Param.isY && (stack12.includes(s7Param.ufData)))? true: false; 
-    var axis_Y13=(s1Param.isY && (stack13.includes(s1Param.ufData))||s2Param.isY && (stack13.includes(s2Param.ufData))||s3Param.isY && (stack13.includes(s3Param.ufData))||s4Param.isY && (stack13.includes(s4Param.ufData))||s5Param.isY && (stack13.includes(s5Param.ufData))||s6Param.isY && (stack13.includes(s6Param.ufData))||s7Param.isY && (stack13.includes(s7Param.ufData)))? true: false; 
-    
+var stack0=["brine_tnk1","brine_tnk2"];
+var stack1=["brine_temp"];
+var stack2=["ro41a","ro41b","ro41c","ro41d","ro41e","ro41f","ro41g","ro41h","ro41i","ro41j","ro41k"];
+var stack3 = ["brine_ph"];
+var stack4=["brine_turb"];
+var stack5=["brine_frc"];
+var stack6=["brine_pres"];
+var stack7=["brine_flow"]; 
+var yAxis0=(plotParam.yAxis || s1Param.isY && (stack0.includes(s1Param.ufData))||s2Param.isY && (stack0.includes(s2Param.ufData))||s3Param.isY && (stack0.includes(s3Param.ufData))||s4Param.isY && (stack0.includes(s4Param.ufData))||s5Param.isY && (stack0.includes(s5Param.ufData))||s6Param.isY && (stack0.includes(s6Param.ufData))||s7Param.isY && (stack0.includes(s7Param.ufData)))? true: false;
+var yAxis1=(s1Param.isY && (stack1.includes(s1Param.ufData))||s2Param.isY && (stack1.includes(s2Param.ufData))||s3Param.isY && (stack1.includes(s3Param.ufData))||s4Param.isY && (stack1.includes(s4Param.ufData))||s5Param.isY && (stack1.includes(s5Param.ufData))||s6Param.isY && (stack1.includes(s6Param.ufData))||s7Param.isY && (stack1.includes(s7Param.ufData)))? true: false;
+var yAxis2=(s1Param.isY && (stack2.includes(s1Param.ufData))||s2Param.isY && (stack2.includes(s2Param.ufData))||s3Param.isY && (stack2.includes(s3Param.ufData))||s4Param.isY && (stack2.includes(s4Param.ufData))||s5Param.isY && (stack2.includes(s5Param.ufData))||s6Param.isY && (stack2.includes(s6Param.ufData))||s7Param.isY && (stack2.includes(s7Param.ufData)))? true: false; 
+var yAxis3=(s1Param.isY && (stack3.includes(s1Param.ufData))||s2Param.isY && (stack3.includes(s2Param.ufData))||s3Param.isY && (stack3.includes(s3Param.ufData))||s4Param.isY && (stack3.includes(s4Param.ufData))||s5Param.isY && (stack3.includes(s5Param.ufData))||s6Param.isY && (stack3.includes(s6Param.ufData))||s7Param.isY && (stack3.includes(s7Param.ufData)))? true: false; 
+var yAxis4=(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (stack4.includes(s2Param.ufData))||s3Param.isY && (stack4.includes(s3Param.ufData))||s4Param.isY && (stack4.includes(s4Param.ufData))||s5Param.isY && (stack4.includes(s5Param.ufData))||s6Param.isY && (stack4.includes(s6Param.ufData))||s7Param.isY && (stack4.includes(s7Param.ufData)))? true: false; 
+var yAxis5=(s1Param.isY && (stack5.includes(s1Param.ufData))||s2Param.isY && (stack5.includes(s2Param.ufData))||s3Param.isY && (stack5.includes(s3Param.ufData))||s4Param.isY && (stack5.includes(s4Param.ufData))||s5Param.isY && (stack5.includes(s5Param.ufData))||s6Param.isY && (stack5.includes(s6Param.ufData))||s7Param.isY && (stack5.includes(s7Param.ufData)))? true: false; 
+var yAxis6=(s1Param.isY && (stack6.includes(s1Param.ufData))||s2Param.isY && (stack6.includes(s2Param.ufData))||s3Param.isY && (stack6.includes(s3Param.ufData))||s4Param.isY && (stack6.includes(s4Param.ufData))||s5Param.isY && (stack6.includes(s5Param.ufData))||s6Param.isY && (stack6.includes(s6Param.ufData))||s7Param.isY && (stack6.includes(s7Param.ufData)))? true: false; 
+var yAxis7=(s1Param.isY && (stack7.includes(s1Param.ufData))||s2Param.isY && (stack7.includes(s2Param.ufData))||s3Param.isY && (stack7.includes(s3Param.ufData))||s4Param.isY && (stack7.includes(s4Param.ufData))||s5Param.isY && (stack7.includes(s5Param.ufData))||s6Param.isY && (stack7.includes(s6Param.ufData))||s7Param.isY && (stack7.includes(s7Param.ufData)))? true: false; 
+
 Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         Highcharts.chart('plot_window', {
         chart: {
@@ -499,26 +419,25 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         //  this.update({scrollbar: {enabled: true}});
         }}},  
         title: {
-        align: 'center',
-        x:35,
-        y:30, 
-        text: 'Self-Cleaning Filter',
-        //+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
-        style: {color: plotParam.plotExpTitleColor,
-        font: '17px "Calibri", Verdana, sans-serif',
-        fontWeight:'bold'
-        }},
+            align: 'center',
+            x:35,
+            y:30, 
+            text: 'RO First Pass DPI',
+            style: {color: plotParam.plotExpTitleColor,
+            font: '18px "Calibri", Verdana, sans-serif',
+            fontWeight:'bold'
+            }},
         exporting: {
         printMaxWidth: 1000,
-         allowHTML: false,
+        allowHTML: false,
        // url: "http://localhost:7801",
         fallbackToExportServer: false,
-        filename:'SWRO-SADARA SCF'+ ' '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
+        filename:'SADARA-SWRO RO1_dpi'+' '+datex[0] + " To "+datex[datex.length-1],
         enabled: true,
         buttons: {
             contextButton: {
                 align: 'right',
-                x:-40
+                x:-50
         }},
         chartOptions: {
         title: {
@@ -550,12 +469,10 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         tooltip: { 
         //headerFormat: '{point.key}',      
         shared: true,
-        outside:false,
-        crosshair: [true, true],
-        split: false,
-        hideDelay:1000      
+        outside: true,
+        crosshairs: true,
+        split: false,      
         },
-
         credits: {enabled: false},
         boost: {enabled: true,useGPUTranslations: true,usePreallocated: true},
         plotOptions: {
@@ -564,555 +481,327 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         states: {inactive: {opacity: 1}}
         }},
                 
-                        xAxis: [ // hidden primary x-axis
-                        {     
-                        // type: "datetime",        
-                        categories:datex,
-                        lineColor: '#8395a7',
-                        allowDecimals: false,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label: {
-                        enabled: true,
-                        backgroundColor: '#ffffff',
-
-                        }
-                        },
-                        labels: {enabled:false }, },
-                        {
-                        // type: "datetime", Secondary 
+                      xAxis: [ // hidden primary x-axis
+                                {     
+                                // type: "datetime",        
+                                categories:datex,
+                                lineColor: '#8395a7',
+                                allowDecimals: false, 
+                                crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},   
+                                labels: {enabled:false }, },
+                      {
+                       // type: "datetime", Secondary 
                         categories:date22,
-                        lineColor: '#8395a7',
-                        lineWidth: 1.5,
-                        linkedTo: 0,
-                        tickWidth: 1,
+                         lineColor: '#8395a7',
+                         lineWidth: 1.5,
+                         linkedTo: 0,
+                         tickWidth: 1,
                         tickColor:"gray",
                         gridLineColor:plotParam.gridColor,
                         visible: true,
                         tickInterval:tickcal,
-                        //  reversed: false,
+                      //  crosshair: true,
+                      //  reversed: false,
                         opposite: false,
                         gridLineWidth:0.3,
                         labels: {
-                        rotation:0,
-                        // useHTML: true,
-                        style: {
-                        color: 'black',
-                        fontSize:10,
-                        overflow:'none'
-
-                        }
+                              rotation:0,
+                             // useHTML: true,
+                               style: {
+                                  color: 'black',
+                                  fontSize:10,
+                                  overflow:'none'
+                                  
+                              }
+                          },
+                          title: {  
+                            rotation: 0,
+                            text: 'Span ' +dates_diff_cal+' Days, '+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
+                            style: {
+                                color:'#0984e3',
+                                font: '14px "Calibri", Verdana, sans-serif'
+                            }
                         },
-                        title: {  
-                        rotation: 0,
-                        text: 'Span ' +dates_diff_cal+' Days '+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs',
-                        style: {
-                        color:'#0984e3',
-                        font: '14px "Calibri", Verdana, sans-serif'
-                        }
-                        },
-                        }
-                        ],
+                    }
+                      ],
                     
                         yAxis: [
-                            { // Main Y-axis
-                                //softMin: 0,
-                                //  softMax:100 ,
-                                min:0, max:100,     
-                                tickPositions: [0, 10, 20,30, 40,50, 60,70,80,90,100],
-                                visible:true, 
-                                tickWidth: 0,
-                                tickColor:"red",   
-                                lineColor: 'gray',
-                                lineWidth:2,
-                                gridLineWidth:0.3,
-                                crosshair: {color:'#ffffff',
-                                dashStyle: 'Dot',
-                                width:1.5,
-                                label: {
-                                enabled: true,
-                                backgroundColor: '#ffffff',
-                                }
-                                },
-                                gridLineColor: plotParam.gridColor,      
-                                labels: {
-                                enabled: mainYaxis,
+                        { // Main Y-axis
+                            //softMin: 0,
+                          //  softMax:100 ,
+                          min:0, max:100,     
+                          tickPositions: [0, 10, 20,30, 40,50, 60,70,80,90,100],
+                          visible:true, 
+                          tickWidth: 0,
+                          tickColor:"red",   
+                          lineColor: 'gray',
+                          lineWidth:2,
+                          gridLineWidth:0.3,
+                          crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                          gridLineColor: plotParam.gridColor,      
+                            labels: {
+                                enabled: yAxis0,
                                 format: '{value}',
                                 style: {
-                                color:'black',
-                                backgroundColor: '#000000',
-                                fontWeight:'bold'
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
+                                    backgroundColor: '#000000',
+                    
                                 }
-                                },
-                                title: {
-                                enabled:mainYaxis,
+                            },
+                            title: {
+                                enabled:yAxis0,
                                 align: 'high',
                                 offset: 15,
                                 rotation: 0,
                                 y: -10,
                                 text: '%',
                                 style: {
-                                color:'#1e272e',
-                                fontWeight:'bold'
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
                                 }
-                                },
-                                //labels: false,
-                                },
-                        { //  [1] DPI
-                        min:0, 
-                        max:0.6,     
-                        visible:axis_Y1, 
-                        tickWidth: 1, 
-                        tickAmount: 11,  
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
+                            },
+                            //labels: false,
                         },
-                        labels: {
+                        
+                    
+                        { //  [1]    for brine temp
+                         min:15, 
+                        max:45,     
+                          visible:yAxis1, 
+                          tickWidth: 1, 
+                          tickAmount: 11,  
+                         gridLineWidth: 0,
+                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                          labels: {
+                                enabled: true,
+                                format: '{value}',
+                               // formatter: function() {
+                                //    return Math.ceil(this.value);
+                               //   },
+                                style: { color:'#1e272e',
+                                fontWeight:'bold',}
+                            },
+                            title: {
+                                useHTML: true,
+                                align: 'high',
+                                offset: 15,
+                                rotation: 0,
+                                y: -10,
+                                text: '°C',
+                                style: {
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
+                                }
+                            },
+                            //labels: false,
+                            //opposite: true
+                        },
+        { //  [2] brine_ec
+                min:1,
+                max:3,
+             tickAmount: 11,
+              visible:yAxis2, 
+              tickWidth: 1,      
+             gridLineWidth: 0,
+             opposite:false,
+             crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+              labels: {
+                    enabled: true, 
+                    format: '{value}',
+                   // formatter: function() {
+                    //    return Math.ceil(this.value);
+                  //    },
+                  style: { color:'#1e272e',
+                  fontWeight:'bold',}
+                },
+                title: {
+                    useHTML: true,
+                    align: 'high',
+                    offset: 15,
+                    rotation: 0,
+                    y: -10,
+                    text: 'Bar',
+                    style: {
+                        color:'#1e272e',
+                        fontWeight:'bold',
+                    }
+                },
+                //labels: false,
+                //opposite: true
+            },   
+    
+            { //[3]  brine pH
+                min:4, 
+                 max:12,  
+                  tickAmount: 11,
+                  visible:yAxis3,
+                 // opposite:true, 
+                  tickWidth: 1,      
+                 gridLineWidth: 0,
+                 crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                  labels: {
                         enabled: true,
                         format: '{value}',
-                        // formatter: function() {
-                        //    return Math.ceil(this.value);
-                        //   },
-                        style: {
-                            color:'black',
-                            backgroundColor: '#000000',
-                            fontWeight:'bold'
-                            }
-                        },
-                        title: {
+                       // formatter:function(){return Math.ceil(this.value)},           
+                      style: { color:'#1e272e',
+                      fontWeight:'bold',}
+                    },
+                    title: {
                         useHTML: true,
                         align: 'high',
                         offset: 15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'DPI',
-                        style: {
-                            color:'#1e272e',
-                            fontWeight:'bold'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },
-                        { //  [2] Pressure
-                        min:0,
-                        max:6,
-                        tickAmount: 11,
-                        visible:axis_Y2,
-                        opposite: true, 
-                        tickWidth: 1,      
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true, 
-                        format: '{value}',
-                        // formatter: function() {
-                        //    return Math.ceil(this.value);
-                        //    },
-                        style: {
-                            color:'black',
-                            backgroundColor: '#000000',
-                            fontWeight:'bold'
-                            }
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset: 10,
-                        rotation: 0,
-                        y: -10,
-                        text: 'bar',
-                        style: {
-                            color:'#1e272e',
-                            fontWeight:'bold'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },   
-                        { //[3]  chemical flow
-                        //   min:0, 
-                        //   max:100,  
-                        tickAmount: 11,
-                        visible:axis_Y3,
-                        // opposite:true, 
-                        tickWidth: 1,      
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        //format: '{value}',
-                        formatter:function(){return Math.ceil(this.value)},           
-                        //  style: {color:temperature_color,}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset: 15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'L/h',
-                        style: {
-                        color:'#c0392b'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },
-               
-                        { //[4] Turbidity
-                        min:0, 
-                        max:10,                
-                        visible:axis_Y4, 
-                        tickWidth: 1, 
-                        tickAmount: 11,                 
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true, 
-                        format: '{value}',                       
-                        style: {color:'#636e72',}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset: 15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'NTU',
-                        style: {
-                            color:'#0984e3',
-                            font: '14px "Calibri", Verdana, sans-serif'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },
-                   
-                        { //[5]  Flow Rate
-                       // min:3500,
-                        //max:17000,
-                        visible:axis_Y5, 
-                        tickWidth: 1,
-                        tickAmount: 11,    
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        //format: '{value}', 
-                        formatter:function(){return Math.ceil(this.value)},
-                        style: {
-                            color:'black',
-                            backgroundColor: '#000000',
-                            fontWeight:'bold'
-                            }
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:5,
-                        rotation: 0,
-                        y: -10,
-                        text: 'm<sup>3</sup>/h',
-                        style: {
-                            color:'#1e272e',
-                            fontWeight:'bold'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },
-      
-                        { //[6] SDI
-                        min:0,
-                        max:5,
-                        tickAmount: 11, 
-                        visible:axis_Y6, 
-                        tickWidth: 1,      
-                        // lineColor:pen1,
-                        // lineWidth:2,
-                        // minorTickInterval: 'auto',
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label: {
-                        enabled: true,
-                        backgroundColor: '#ffffff',
-
-                        }
-                        },
-                        labels: {
-                        enabled: true, 
-                        format: '{value}', 
-                        // formatter:function(){return Math.ceil(this.value)},           
-                        style: {color:'#2d3436',}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'SDI',
-                        style: {
-                        color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },
-
-                        { //[7] ORP
-                        min: 200,
-                        max:900,
-                        tickAmount: 11,
-                        visible:axis_Y7, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        format: '{value}',
-                        formatter: function() {return (this.value).toFixed(0);},                     
-                        style: {color:'#2d3436',}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:10,
-                        rotation: 0,
-                        y: -10,
-                        text: 'mV',
-                        style: {
-                        color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true
-                        },
-                        { //[8] number of working daf
-                        min:0,
-                        max:10,
-                        tickAmount: 11,
-                        visible:axis_Y8, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        format: '{value}',                  
-                        style:{color:'#2d3436'}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'N',
-                        style: {
-                        color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true 
-                        },   
-                        { //[9] HC 
-                        min:5,
-                        max:40,
-                        tickAmount: 11,
-                        visible:axis_Y9, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        format: '{value}',                                                
-                        style:{color:'#2d3436'}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'ppb',
-                        style: {
-                        color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true 
-                        },   
-
-                        { //[10] Temp C 
-                        min:18,
-                        max:40,
-                        tickAmount: 11,
-                        visible:axis_Y10, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        //format: '{value}',
-                         formatter: function() {return (this.value).toFixed(0);},        
-                        style:{color:'#2d3436'}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
-                        rotation: 0,
-                        y: -10,
-                        text: '°C',
-                        style: {
-                        color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true 
-                        },
-                        { //[11] FRC 
-                        min:0.01,
-                        max:0.11,
-                        tickAmount: 11,
-                        visible:axis_Y11, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        format: '{value}',
-
-                        style:{color:'#2d3436'}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'ppm',
-                        style: {
-                        color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true 
-                        },
-                        { //[12] EC
-                        min:45,
-                        max:70,
-                        tickAmount: 11,
-                        visible:axis_Y12, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        //format: '{value}', 
-                        formatter: function() {return (this.value).toFixed(0);},                                  
-                        style:{color:'#2d3436'}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
-                        rotation: 0,
-                        y: -10,
-                        text: 'EC',
-                        style: {
-                           color:'#2d3436'
-                        }
-                        },
-                        //labels: false,
-                        //opposite: true 
-                        },
-                        { //[13] pH
-                        min:6,
-                        max:11,
-                        tickAmount: 11,
-                        visible:axis_Y13, 
-                        tickWidth: 1,
-                        gridLineWidth: 0,
-                        crosshair: {color:'#ffffff',
-                        dashStyle: 'Dot',
-                        width:1.5,
-                        label:{enabled: true,backgroundColor: '#ffffff',}
-                        },
-                        labels: {
-                        enabled: true,
-                        format: '{value}',
-                                         
-                        style:{color:'#2d3436'}
-                        },
-                        title: {
-                        useHTML: true,
-                        align: 'high',
-                        offset:15,
                         rotation: 0,
                         y: -10,
                         text: 'pH',
                         style: {
-                        color:'#2d3436'
+                            color:'#1e272e',
+                            fontWeight:'bold',
                         }
+                    },
+                    //labels: false,
+                    //opposite: true
+                },
+               
+            { //[4] Brine Turbidity
+                    min:0, 
+                    max:10,                
+                      visible:yAxis4, 
+                      tickWidth: 1, 
+                      tickAmount: 11,                 
+                     gridLineWidth: 0,
+                     crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                      labels: {
+                            enabled: true, 
+                            format: '{value}',                       
+                            style: { color:'#1e272e',
+                            fontWeight:'bold',}
+                        },
+                        title: {
+                            useHTML: true,
+                            align: 'high',
+                            offset: 15,
+                            rotation: 0,
+                            y: -10,
+                            text: 'NTU',
+                            style: {
+                                color:'#1e272e',
+                                fontWeight:'bold',
+                            }
                         },
                         //labels: false,
-                        //opposite: true 
-                        },            
-                                  
-                        ],
+                        //opposite: true
+                    },
+                   
+                    { //[5]  Brine FRC
+                        min:0,
+                        max:5,
+                          visible:yAxis5, 
+                          tickWidth: 1,
+                          tickAmount: 11,    
+                         gridLineWidth: 0,
+                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                          labels: {
+                                enabled: true,
+                                format: '{value}', 
+                                //formatter:function(){return Math.ceil(this.value)},
+                                         
+                                style: { color:'#1e272e',
+                                fontWeight:'bold',}
+                            },
+                            title: {
+                                useHTML: true,
+                                align: 'high',
+                                offset:15,
+                                rotation: 0,
+                                y: -10,
+                                text: 'ppm',
+                                style: {
+                                    color:'#1e272e',
+                                    fontWeight:'bold',
+                                }
+                            },
+                            //labels: false,
+                            //opposite: true
+                        },
+      
+                        { //[6] Brine Press
+                            min:0,
+                            max:4,
+                           tickAmount: 11, 
+                            visible:yAxis6,
+                            opposite:false, 
+                            tickWidth: 1, 
+                            crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},       
+                             // lineColor:pen1,
+                            // lineWidth:2,
+                           // minorTickInterval: 'auto',
+                             gridLineWidth: 0,
+                              labels: {
+                                    enabled: true, //is_temperature,
+                                    format: '{value}', 
+                                  // formatter:function(){return Math.ceil(this.value)},
+                                   // formatter: function() {return (this.value/1000).toFixed(1)+' K';}, 
+                                             
+                                    style: { color:'#1e272e',
+                                    fontWeight:'bold',}
+                                },
+                                title: {
+                                    useHTML: true,
+                                    align: 'high',
+                                    offset:15,
+                                    rotation: 0,
+                                    y: -10,
+                                    text: 'bar',
+                                    style: {
+                                        color:'#1e272e',
+                                        fontWeight:'bold',
+                                    }
+                                },
+                                //labels: false,
+                                //opposite: true
+                            },
+    
+                            { //[7] Brine flow calc
+                               min: 0,
+                              //max:,
+                                tickAmount: 11,
+                                visible:yAxis7, 
+                                tickWidth: 1,
+                                 gridLineWidth: 0,
+                                 crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                label: {enabled: true, backgroundColor: '#ffffff'}},  
+                                  labels: {
+                                        enabled: true,
+                                     //  format: '{value}',
+               formatter: function() {return (this.value/1000).toFixed(1)+' K';},                       
+                                        style: { color:'#1e272e',
+                                        fontWeight:'bold',}
+                                    },
+                                    title: {
+                                        useHTML: true,
+                                        align: 'high',
+                                        offset:10,
+                                        rotation: 0,
+                                        y: -10,
+                                        text: 'm<sup>3</sup>/h',
+                                        style: {
+                                            color:'#1e272e',
+                                    fontWeight:'bold',
+                                        }
+                                    },
+                                    //labels: false,
+                                    //opposite: true
+                                }
+                        ],   
                         series: [  
                     
                                                         {  
@@ -1124,20 +813,23 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
                                                               yAxis:st[s1Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span><small>{series.name}: </small><b>{point.y}</b> <br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small>{point.y}<br> ',
                                                                 shared: true,
-                                                                useHTML: true,
-                                                                hideDelay:1000,
-                                                                stickyTracking:true,                                           
+                                                                useHTML: true,                                           
                                                                valueSuffix: st[s1Param.ufData]['unit'],
                                                               },
                                                               color:s1Param.pen,
                                                                     marker: {
                                                                     symbol: s1Param.markerShape,
                                                                     radius: s1Param.markerWeight,
-                                                                    states: {hover:{enabled:false}}},
+                                                                    states: {
+                                                                              hover: {
+                                                                                  enabled: false
+                                                                              }
+                                                                          }
+                                                                         },
                                                                    dataLabels: {
                                                                    enabled: s1Param.lable,
                                                                    style: {
@@ -1158,13 +850,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s2Param.chartType=="scatter")?0:s2Param.lineWidth,
                                                               yAxis:st[s2Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
-                                                                useHTML: true,
-                                                                hideDelay:1000,
-                                                                stickyTracking:true,                                           
+                                                                useHTML: true,                                           
                                                                valueSuffix: st[s2Param.ufData]['unit'],
                                                               },
                                                               color:s2Param.pen,
@@ -1188,7 +878,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                                   },
                                                           fillOpacity: 0.17,
                                                           },
-                                   {  
+                                                                                                                
+                                                        {  
                                                               name:st[s3Param.ufData]['name'],
                                                               type:s3Param.chartType,
                                                               visible:s3Param.series,
@@ -1197,9 +888,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s3Param.chartType=="scatter")?0: s3Param.lineWidth,
                                                               yAxis:st[s3Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix: st[s3Param.ufData]['unit'],
@@ -1234,9 +925,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s4Param.chartType=="scatter")?0: s4Param.lineWidth,
                                                               yAxis:st[s4Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small> <b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s4Param.ufData]['unit'],
@@ -1271,9 +962,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s5Param.chartType=="scatter")?0: s5Param.lineWidth,
                                                               yAxis:st[s5Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                               crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s5Param.ufData]['unit'],
@@ -1308,9 +999,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s6Param.chartType=="scatter")?0: s6Param.lineWidth,
                                                               yAxis:st[s6Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                               crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s6Param.ufData]['unit'],
@@ -1345,9 +1036,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               lineWidth:(s7Param.chartType=="scatter")?0: s7Param.lineWidth,
                                                               yAxis:st[s7Param.ufData]['yAxis'],
                                                               tooltip: {
-                                                                crosshair:[true, true],
+                                                                crosshairs: true,
                                                                 headerFormat: '{point.key}<br>',
-                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                                pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}:</small>{point.y}<br>',
                                                                 shared: true,
                                                                 useHTML: true,                                           
                                                                valueSuffix:st[s7Param.ufData]['unit'],
@@ -1372,8 +1063,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                                    color:s7Param.pen,                  
                                                                   },
                                                           fillOpacity: 0.17,
-                                                          }                                                                                       
-                                                       
+                                                          }          
 
                         ]
                     

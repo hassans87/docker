@@ -20,7 +20,7 @@
   <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
-<title> Brine Reject Parameters </title>
+<title>RO1 EC from DCS </title>
 </head>
 <body style="font-family: calibri;" class="">
 <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
@@ -44,15 +44,17 @@
                    &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#d99608" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
   <select class="query form-control form-control-sm form-select" id="ufdata1">
-  <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-  <option value="brine_ec">15Z_AT_003 Conductivity   &nbsp;</option>
-  <option value="brine_ph">15Z_AT_004 pH   &nbsp;</option>
-  <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-  <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-  <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-  <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-  <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-  <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+    <option value="a_ait_301" selected>41A Conductivity&nbsp;</option>
+    <option value="b_ait_301">41B Conductivity&nbsp;</option>
+    <option value="c_ait_301">41C Conductivity&nbsp;</option>
+    <option value="d_ait_301">41D Conductivity&nbsp;</option>
+    <option value="e_ait_301">41E Conductivity&nbsp;</option>
+    <option value="f_ait_301">41F Conductivity&nbsp;</option>
+    <option value="g_ait_301">41G Conductivity&nbsp;</option>
+    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+    <option value="k_ait_301">41K Conductivity&nbsp;</option>
    </select>
                       </div>
                   </div></td><td style="text-align: center;">
@@ -149,15 +151,17 @@
                     &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#302df0" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata2">
-                    <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-                    <option value="brine_ec" selected>15Z_AT_003 Conductivity   &nbsp;</option>
-                    <option value="brine_ph">15Z_AT_004 pH   &nbsp;</option>
-                    <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-                    <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-                    <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-                    <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-                    <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-                    <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+                    <option value="a_ait_301" >41A Conductivity&nbsp;</option>
+                    <option value="b_ait_301" selected>41B Conductivity&nbsp;</option>
+                    <option value="c_ait_301">41C Conductivity&nbsp;</option>
+                    <option value="d_ait_301">41D Conductivity&nbsp;</option>
+                    <option value="e_ait_301">41E Conductivity&nbsp;</option>
+                    <option value="f_ait_301">41F Conductivity&nbsp;</option>
+                    <option value="g_ait_301">41G Conductivity&nbsp;</option>
+                    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+                    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+                    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+                    <option value="k_ait_301">41K Conductivity&nbsp;</option>
                   </select>
                   </div>  
   
@@ -185,7 +189,7 @@
             <option value="spline">Line</option>
             <option value="areaspline">Area </option>          
             <option value="column">Column </option> 
-            <option value="scatter" selected="">Scatter </option>            
+            <option value="scatter" selected="">Scatter </option>        
           </select>  
       </div>
     </div>
@@ -252,15 +256,17 @@
                     &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="#cf0202" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata3">
-                    <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-                    <option value="brine_ec">15Z_AT_003 Conductivity   &nbsp;</option>
-                    <option value="brine_ph" selected>15Z_AT_004 pH   &nbsp;</option>
-                    <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-                    <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-                    <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-                    <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-                    <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-                    <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+                    <option value="a_ait_301" >41A Conductivity&nbsp;</option>
+                    <option value="b_ait_301">41B Conductivity&nbsp;</option>
+                    <option value="c_ait_301" selected>41C Conductivity&nbsp;</option>
+                    <option value="d_ait_301">41D Conductivity&nbsp;</option>
+                    <option value="e_ait_301">41E Conductivity&nbsp;</option>
+                    <option value="f_ait_301">41F Conductivity&nbsp;</option>
+                    <option value="g_ait_301">41G Conductivity&nbsp;</option>
+                    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+                    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+                    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+                    <option value="k_ait_301">41K Conductivity&nbsp;</option>
                       </select>
                   </div>   </div>
                   </td><td style="text-align: center;">
@@ -356,15 +362,17 @@
                     &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#0eade1" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata4" style="display: none;">
-                    <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-                    <option value="brine_ec">15Z_AT_003 Conductivity   &nbsp;</option>
-                    <option value="brine_ph">15Z_AT_004 pH   &nbsp;</option>
-                    <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-                    <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-                    <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-                    <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-                    <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-                    <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+                    <option value="a_ait_301" >41A Conductivity&nbsp;</option>
+                    <option value="b_ait_301">41B Conductivity&nbsp;</option>
+                    <option value="c_ait_301">41C Conductivity&nbsp;</option>
+                    <option value="d_ait_301" selected>41D Conductivity&nbsp;</option>
+                    <option value="e_ait_301">41E Conductivity&nbsp;</option>
+                    <option value="f_ait_301">41F Conductivity&nbsp;</option>
+                    <option value="g_ait_301">41G Conductivity&nbsp;</option>
+                    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+                    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+                    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+                    <option value="k_ait_301">41K Conductivity&nbsp;</option>
                   </select>
                   </div>  
   </div>
@@ -459,15 +467,17 @@
                     &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="#f5ed05" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata5" style="display: none;">
-                    <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-                    <option value="brine_ec">15Z_AT_003 Conductivity   &nbsp;</option>
-                    <option value="brine_ph">15Z_AT_004 pH   &nbsp;</option>
-                    <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-                    <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-                    <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-                    <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-                    <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-                    <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+                    <option value="a_ait_301" >41A Conductivity&nbsp;</option>
+                    <option value="b_ait_301">41B Conductivity&nbsp;</option>
+                    <option value="c_ait_301">41C Conductivity&nbsp;</option>
+                    <option value="d_ait_301">41D Conductivity&nbsp;</option>
+                    <option value="e_ait_301" selected>41E Conductivity&nbsp;</option>
+                    <option value="f_ait_301">41F Conductivity&nbsp;</option>
+                    <option value="g_ait_301">41G Conductivity&nbsp;</option>
+                    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+                    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+                    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+                    <option value="k_ait_301">41K Conductivity&nbsp;</option>
                       </select>
                   </div>  
    </div>
@@ -566,15 +576,17 @@
                     &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#e27d08" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata6" style="display: none;">
-                    <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-                    <option value="brine_ec">15Z_AT_003 Conductivity   &nbsp;</option>
-                    <option value="brine_ph">15Z_AT_004 pH   &nbsp;</option>
-                    <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-                    <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-                    <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-                    <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-                    <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-                    <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+                    <option value="a_ait_301" >41A Conductivity&nbsp;</option>
+                    <option value="b_ait_301">41B Conductivity&nbsp;</option>
+                    <option value="c_ait_301">41C Conductivity&nbsp;</option>
+                    <option value="d_ait_301">41D Conductivity&nbsp;</option>
+                    <option value="e_ait_301">41E Conductivity&nbsp;</option>
+                    <option value="f_ait_301" selected>41F Conductivity&nbsp;</option>
+                    <option value="g_ait_301">41G Conductivity&nbsp;</option>
+                    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+                    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+                    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+                    <option value="k_ait_301">41K Conductivity&nbsp;</option>
                       </select>
                   </div> </div>
                  </td><td style="text-align: center;">
@@ -669,15 +681,17 @@
                     &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#0717ed" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata7" style="display: none;">
-                    <option value="brine_temp">15Z_TIT_003 Temperature &nbsp;</option>
-                    <option value="brine_ec">15Z_AT_003 Conductivity   &nbsp;</option>
-                    <option value="brine_ph">15Z_AT_004 pH   &nbsp;</option>
-                    <option value="brine_turb">15Z_AT_005 Turbidity  &nbsp;</option>
-                    <option value="brine_frc"> 15Z_AT_006 FRC  &nbsp;</option>
-                    <option value="brine_tnk1">  15Z_LI_001 Tank-1 Level &nbsp;</option>
-                    <option value="brine_tnk2"> 15Z_LI_002 Tank-2 Level  &nbsp;</option>
-                    <option value="brine_pres">11Z-PT_010 Pressure  &nbsp;</option>
-                    <option value="brine_flow">11Z_FI_969 Flow Calculated  &nbsp;</option>
+                    <option value="a_ait_301" >41A Conductivity&nbsp;</option>
+                    <option value="b_ait_301">41B Conductivity&nbsp;</option>
+                    <option value="c_ait_301">41C Conductivity&nbsp;</option>
+                    <option value="d_ait_301">41D Conductivity&nbsp;</option>
+                    <option value="e_ait_301">41E Conductivity&nbsp;</option>
+                    <option value="f_ait_301">41F Conductivity&nbsp;</option>
+                    <option value="g_ait_301" selected>41G Conductivity&nbsp;</option>
+                    <option value="h_ait_301">41H Conductivity&nbsp;</option>
+                    <option value="i_ait_301">41I Conductivity&nbsp;</option>
+                    <option value="j_ait_301">41J Conductivity&nbsp;</option>
+                    <option value="k_ait_301">41K Conductivity&nbsp;</option>
                   </select>
                   </div> </div>
                  </td><td style="text-align: center;">
@@ -851,7 +865,7 @@
   
   <x-footer_level1 /> 
   
-  <script type="text/javascript" src="{{asset('js/stream/brine_reject.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/stream/ro1ec_dcs.js') }}"></script>
   
   </body>
 </html>
