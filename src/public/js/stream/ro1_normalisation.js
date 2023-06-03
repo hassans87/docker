@@ -148,26 +148,26 @@ dataSeries6 = dataSeries6.map(parseFloat);
 dataSeries7 = dataSeries7.map(parseFloat);   
 
 function seriesLook(dv,series){
-if(dv){
-$("#pen"+series).show(900);
-$("#ufdata"+series).show(1200);
-$("#panel"+series).show(900);
-$("#data_length"+series).show(900); 
-$("#data_max"+series).show(900); 
-$("#data_min"+series).show(900); 
-$("#data_avg"+series).show(900);
-$(".tr"+series).addClass("table-light").removeClass("table-secondary");
-}else{
-$("#pen"+series).hide(900);
-$("#ufdata"+series).hide(1200);
-$("#panel"+series).hide(900); 
-$("#data_length"+series).hide(900); 
-$("#data_max"+series).hide(900); 
-$("#data_min"+series).hide(900); 
-$("#data_avg"+series).hide(900);
-$(".tr"+series).removeClass("table-light") .addClass("table-secondary");
-$("#unit"+series).html(" ");
-}}
+    if(dv){
+    $("#pen"+series).show(900);
+    $("#ufdata"+series).show(1200);
+    $("#panel"+series).show(900);
+    $("#data_length"+series).show(900); 
+    $("#data_max"+series).show(900); 
+    $("#data_min"+series).show(900); 
+    $("#data_avg"+series).show(900);
+    $(".tr"+series).addClass("table-light").removeClass("table-secondary");
+    }else{
+    $("#pen"+series).hide(900);
+    $("#ufdata"+series).hide(1200);
+    $("#panel"+series).hide(900); 
+    $("#data_length"+series).hide(900); 
+    $("#data_max"+series).hide(900); 
+    $("#data_min"+series).hide(900); 
+    $("#data_avg"+series).hide(900);
+    $(".tr"+series).removeClass("table-light") .addClass("table-secondary");
+    $("#unit"+series).html(" ");
+    }}
 
 function seriesData(stream,series,go,valLimit,offset,unit,sum){
 if(go&&stream.length>=1){
@@ -219,6 +219,7 @@ $( ".apply_changes" ).click(function(){renderedChart();});
 function renderedChart(){
 $(".apply_changes").addClass("btn-secondary").removeClass("btn-danger");
 $( ".apply_changes" ).prop('disabled', true); 
+$( ".filter" ).click(function(){renderedChart();});
 const st = {
 dpi_906:{
         unit:" bar",
@@ -831,7 +832,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         
                     
                         { //  [1]    bar for DP
-                         min:1.5, 
+                         min:1.3, 
                          max:3,     
                           visible:dpX_Yaxis, 
                           tickWidth: 1, 
