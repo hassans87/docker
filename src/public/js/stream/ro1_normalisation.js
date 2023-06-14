@@ -71,7 +71,7 @@ let plotParam = {
 dateFrom:$('#start_date').val(),
 dateTo: $('#end_date').val(),
 ufqry:$('#skidx').val(),
-interval:$('#invt').val() 
+interval:$('#invt').val()
 }
 
 
@@ -587,6 +587,7 @@ dateTo: $('#end_date').val(),
 bayline: "41",
 roSkid: $('#skidx').val(), 
 ufqry:" ",
+intv:$('#invt').val(), 
 chartBackground:$('#pen_main').val(),
 plotWidth:screen.availWidth * 0.95,
 legendShow: $('#is_legend').is(':checked'),
@@ -595,7 +596,82 @@ gridColor: $('#pen_grid').val(),
 plotExpWidth:$('#export_width').val(),
 plotExpHeight:$('#export_height').val(),
 plotExpBackground:$('#pen_export').val(),
-plotExpTitleColor: $('#pen_export_title').val()}  
+plotExpTitleColor: $('#pen_export_title').val(),
+plotTitle:$('#chart_title').val()
+
+}
+let confYaxis  = {
+ y1Title:$('#yaxis_heading1').val(),
+ y1TitleCol:$('#yaxis_title_color1').val(),
+ y1RangeCol:$('#yaxis_color1').val(),
+ y1Opposite:$('#yaxis_opposite1').is(':checked'),
+ y1min:parseFloat($('#yaxis_min1').val()),
+ y1max:parseFloat($('#yaxis_max1').val()),
+
+ y2Title:$('#yaxis_heading2').val(),
+ y2TitleCol:$('#yaxis_title_color2').val(),
+ y2RangeCol:$('#yaxis_color2').val(),
+ y2Opposite:$('#yaxis_opposite2').is(':checked'),
+ y2min:parseFloat($('#yaxis_min2').val()),
+ y2max:parseFloat($('#yaxis_max2').val()),
+
+ y3Title:$('#yaxis_heading3').val(),
+ y3TitleCol:$('#yaxis_title_color3').val(),
+ y3RangeCol:$('#yaxis_color3').val(),
+ y3Opposite:$('#yaxis_opposite3').is(':checked'),
+ y3min:parseFloat($('#yaxis_min3').val()),
+ y3max:parseFloat($('#yaxis_max3').val()),
+
+ y4Title:$('#yaxis_heading4').val(),
+ y4TitleCol:$('#yaxis_title_color4').val(),
+ y4RangeCol:$('#yaxis_color4').val(),
+ y4Opposite:$('#yaxis_opposite4').is(':checked'),
+ y4min:parseFloat($('#yaxis_min4').val()),
+ y4max:parseFloat($('#yaxis_max4').val()),
+
+ y5Title:$('#yaxis_heading5').val(),
+ y5TitleCol:$('#yaxis_title_color5').val(),
+ y5RangeCol:$('#yaxis_color5').val(),
+ y5Opposite:$('#yaxis_opposite5').is(':checked'),
+ y5min:parseFloat($('#yaxis_min5').val()),
+ y5max:parseFloat($('#yaxis_max5').val()),
+
+ y6Title:$('#yaxis_heading6').val(),
+ y6TitleCol:$('#yaxis_title_color6').val(),
+ y6RangeCol:$('#yaxis_color6').val(),
+ y6Opposite:$('#yaxis_opposite6').is(':checked'),
+ y6min:parseFloat($('#yaxis_min6').val()),
+ y6max:parseFloat($('#yaxis_max6').val()),
+
+ y7Title:$('#yaxis_heading7').val(),
+ y7TitleCol:$('#yaxis_title_color7').val(),
+ y7RangeCol:$('#yaxis_color7').val(),
+ y7Opposite:$('#yaxis_opposite7').is(':checked'),
+ y7min:parseFloat($('#yaxis_min7').val()),
+ y7max:parseFloat($('#yaxis_max7').val()),
+
+ y8Title:$('#yaxis_heading8').val(),
+ y8TitleCol:$('#yaxis_title_color8').val(),
+ y8RangeCol:$('#yaxis_color8').val(),
+ y8Opposite:$('#yaxis_opposite8').is(':checked'),
+ y8min:parseFloat($('#yaxis_min8').val()),
+ y8max:parseFloat($('#yaxis_max8').val()),
+
+ y9Title:$('#yaxis_heading9').val(),
+ y9TitleCol:$('#yaxis_title_color9').val(),
+ y9RangeCol:$('#yaxis_color9').val(),
+ y9Opposite:$('#yaxis_opposite9').is(':checked'),
+ y9min:parseFloat($('#yaxis_min9').val()),
+ y9max:parseFloat($('#yaxis_max9').val()),
+
+ y10Title:$('#yaxis_heading10').val(),
+ y10TitleCol:$('#yaxis_title_color10').val(),
+ y10RangeCol:$('#yaxis_color10').val(),
+ y10Opposite:$('#yaxis_opposite10').is(':checked'),
+ y10min:parseFloat($('#yaxis_min10').val()),
+ y10max:parseFloat($('#yaxis_max10').val()),
+
+}
 var stack0=["recovery"];
 var stack1=["dpi_906","per_pres_pt312","per_ro_pres"];
 var stack2=["feed_pres_pt108","conc_pres_pt307","feed_brine_ro_press","net_driving_press"];
@@ -621,8 +697,195 @@ var reject_erimix =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.is
     var tempCYaxis=(s1Param.isY && (stack10.includes(s1Param.ufData))||s2Param.isY && (stack10.includes(s2Param.ufData))||s3Param.isY && (stack10.includes(s3Param.ufData))||s4Param.isY && (stack10.includes(s4Param.ufData))||s5Param.isY && (stack10.includes(s5Param.ufData))||s6Param.isY && (stack10.includes(s6Param.ufData))||s7Param.isY && (stack10.includes(s7Param.ufData)))? true: false; 
     var dayYaxis  =(s1Param.isY && (stack11.includes(s1Param.ufData))||s2Param.isY && (stack11.includes(s2Param.ufData))||s3Param.isY && (stack11.includes(s3Param.ufData))||s4Param.isY && (stack11.includes(s4Param.ufData))||s5Param.isY && (stack11.includes(s5Param.ufData))||s6Param.isY && (stack11.includes(s6Param.ufData))||s7Param.isY && (stack11.includes(s7Param.ufData)))? true: false; 
 
+    const setting = new URLSearchParams({date1: plotParam.dateFrom,date2:plotParam.dateTo,
+    plotbg:plotParam.chartBackground, 
+    grid:plotParam.gridColor,
+    invt:plotParam.intv,
+    dbpage:'ro1_norm', 
+    isLegend:plotParam.legendShow,
+    isYaxis:plotParam.yAxis  ,
+    expoWidth:plotParam.plotExpWidth ,
+    expoHeight:plotParam.plotExpHeight ,
+    expobg:plotParam.plotExpBackground ,
+    expotitle:plotParam.plotExpTitleColor,
+    plotTitle:plotParam.plotTitle,
+    y1title:confYaxis.y1Title,
+    y1titlecolor:confYaxis.y1TitleCol,
+    y1rangecolor:confYaxis.y1RangeCol,
+    y1opposite:confYaxis.y1Opposite,
+    y1min:confYaxis.y1min,
+    y1max:confYaxis.y1max,
+
+    y2title:confYaxis.y2Title,
+    y2titlecolor:confYaxis.y2TitleCol,
+    y2rangecolor:confYaxis.y2RangeCol,
+    y2opposite:confYaxis.y2Opposite,
+    y2min:confYaxis.y2min,
+    y2max:confYaxis.y2max,
+
+    y3title:confYaxis.y3Title,
+    y3titlecolor:confYaxis.y3TitleCol,
+    y3rangecolor:confYaxis.y3RangeCol,
+    y3opposite:confYaxis.y3Opposite,
+    y3min:confYaxis.y3min,
+    y3max:confYaxis.y3max,
+
+    y4title:confYaxis.y4Title,
+    y4titlecolor:confYaxis.y4TitleCol,
+    y4rangecolor:confYaxis.y4RangeCol,
+    y4opposite:confYaxis.y4Opposite,
+    y4min:confYaxis.y4min,
+    y4max:confYaxis.y4max,
+
+    y5title:confYaxis.y5Title,
+    y5titlecolor:confYaxis.y5TitleCol,
+    y5rangecolor:confYaxis.y5RangeCol,
+    y5opposite:confYaxis.y5Opposite,
+    y5min:confYaxis.y5min,
+    y5max:confYaxis.y5max,
+
+    y6title:confYaxis.y6Title,
+    y6titlecolor:confYaxis.y6TitleCol,
+    y6rangecolor:confYaxis.y6RangeCol,
+    y6opposite:confYaxis.y6Opposite,
+    y6min:confYaxis.y6min,
+    y6max:confYaxis.y6max,
+
+    y7title:confYaxis.y7Title,
+    y7titlecolor:confYaxis.y7TitleCol,
+    y7rangecolor:confYaxis.y7RangeCol,
+    y7opposite:confYaxis.y7Opposite,
+    y7min:confYaxis.y7min,
+    y7max:confYaxis.y7max,
+
+    y8title:confYaxis.y8Title,
+    y8titlecolor:confYaxis.y8TitleCol,
+    y8rangecolor:confYaxis.y8RangeCol,
+    y8opposite:confYaxis.y8Opposite,
+    y8min:confYaxis.y8min,
+    y8max:confYaxis.y8max,
+
+    y9title:confYaxis.y9Title,
+    y9titlecolor:confYaxis.y9TitleCol,
+    y9rangecolor:confYaxis.y9RangeCol,
+    y9opposite:confYaxis.y9Opposite,
+    y9min:confYaxis.y9min,
+    y9max:confYaxis.y9max,
+
+    y10title:confYaxis.y10Title,
+    y10titlecolor:confYaxis.y10TitleCol,
+    y10rangecolor:confYaxis.y10RangeCol,
+    y10opposite:confYaxis.y10Opposite,
+    y10min:confYaxis.y10min,
+    y10max:confYaxis.y10max,
+
+    isline1:s1Param.series,
+    pen1:s1Param.pen,
+    ufGroup:"x",
+    skid1:plotParam.roSkid,
+    qdata1:s1Param.ufData,
+    yaxis1: s1Param.yAxis,
+    charttype1:s1Param.chartType,
+    lineWidth1:s1Param.lineWidth,
+    markerWg1:s1Param.markerWeight,
+    markerSp1:s1Param.markerShape,
+    dataLb1:s1Param.lable,
+    offst1:"x",
+    offmn1:"x",
+    offmx1:"x",
+    
+    isline2:s2Param.series,
+    pen2:s2Param.pen,
+    skid2:"x",
+    qdata2:s2Param.ufData,
+    yaxis2: s2Param.yAxis,
+    charttype2:s2Param.chartType,
+    lineWidth2:s2Param.lineWidth,
+    markerWg2:s2Param.markerWeight,
+    markerSp2:s2Param.markerShape,
+    dataLb2:s2Param.lable,
+    offst2:"x",
+    offmn2:"x",
+    offmx2:"x",
+    
+    isline3:s3Param.series,
+    pen3:s3Param.pen,
+    skid3:"x",
+    qdata3:s3Param.ufData,
+    yaxis3: s3Param.yAxis,
+    charttype3:s3Param.chartType,
+    lineWidth3:s3Param.lineWidth,
+    markerWg3:s3Param.markerWeight,
+    markerSp3:s3Param.markerShape,
+    dataLb3:s3Param.lable,
+    offst3:"x",
+    offmn3:"x",
+    offmx3:"x",
+    
+    isline4:s4Param.series,
+    pen4:s4Param.pen,
+    skid4:"x",
+    qdata4:s4Param.ufData,
+    yaxis4: s4Param.yAxis,
+    charttype4:s4Param.chartType,
+    lineWidth4:s4Param.lineWidth,
+    markerWg4:s4Param.markerWeight,
+    markerSp4:s4Param.markerShape,
+    dataLb4:s4Param.lable,
+    offst4:"x",
+    offmn4:"x",
+    offmx4:"x",
+    isline5:s5Param.series,
+    pen5:s5Param.pen,
+    skid5:"x",
+    qdata5:s5Param.ufData,
+    yaxis5: s5Param.yAxis,
+    charttype5:s5Param.chartType,
+    lineWidth5:s5Param.lineWidth,
+    markerWg5:s5Param.markerWeight,
+    markerSp5:s5Param.markerShape,
+    dataLb5:s5Param.lable,
+    offst5:"x",
+    offmn5:"x",
+    offmx5:"x",
+    isline6:s6Param.series,
+    pen6:s6Param.pen,
+    skid6:"x",
+    qdata6:s6Param.ufData,
+    yaxis6: s6Param.yAxis,
+    charttype6:s6Param.chartType,
+    lineWidth6:s6Param.lineWidth,
+    markerWg6:s6Param.markerWeight,
+    markerSp6:s6Param.markerShape,
+    dataLb6:s6Param.lable,
+    offst6:"x",
+    offmn6:"x",
+    offmx6:"x",
+    isline7:s7Param.series,
+    pen7:s7Param.pen,
+    skid7:"x",
+    qdata7:s7Param.ufData,
+    yaxis7: s7Param.yAxis,
+    charttype7:s7Param.chartType,
+    lineWidth7:s7Param.lineWidth,
+    markerWg7:s7Param.markerWeight,
+    markerSp7:s7Param.markerShape,
+    dataLb7:s7Param.lable,
+    offst7:"x",
+    offmn7:"x",
+    offmx7:"x",
+    
+    });
 
 
+fetch(window.location.href,    
+{method:'PUT',
+body:setting,
+headers:{"x-CSRF-TOKEN":csrfToken}
+})
+.then(response =>response.text())
+.then((data) =>{
+    console.log(data);})
 
 Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         Highcharts.chart('plot_window', {
@@ -669,9 +932,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:30, 
-        text: 'RO First Pass Skid: 41'+plotParam.roSkid.toUpperCase(),
+        text: plotParam.plotTitle +' '+plotParam.roSkid.toUpperCase(),
         style: {color: plotParam.plotExpTitleColor,
-        font: '18px "Calibri", Verdana, sans-serif',
+        font: '"18px" "Calibri", Verdana, sans-serif',
         fontWeight:'bold'
         }},
   
@@ -828,16 +1091,15 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 }
                             },
                             //labels: false,
-                        },
-                        
-                    
+                        },                 
                         { //  [1]    bar for DP
-                         min:1.3, 
-                         max:3,     
+                         min:confYaxis.y1min, 
+                         max:confYaxis.y1max,     
                           visible:dpX_Yaxis, 
                           tickWidth: 1, 
                           tickAmount: 11,  
                          gridLineWidth: 0,
+                         opposite:confYaxis.y1Opposite,
                         crosshair: {color:'#ffffff',
                                         dashStyle: 'Dot',
                                         width:1.5,
@@ -854,7 +1116,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 //    return Math.ceil(this.value);
                                //   },
                                style:{
-                                color:'#ff3838',
+                                color:confYaxis.y1RangeCol,
                                 fontWeight:'bold',
                                 backgroundColor: '#000000',
                             }
@@ -865,9 +1127,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 offset: 15,
                                 rotation: 0,
                                 y: -10,
-                                text: 'bar',
+                                text:confYaxis.y1Title,
                                 style: {
-                                    color:'#1e272e',
+                                    color:confYaxis.y1TitleCol,
                                     fontWeight:'bold',
                                 }
                             },
@@ -875,10 +1137,13 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //opposite: true
                         },
         { //  [2] Flow 
+            min:confYaxis.y2min, 
+            max:confYaxis.y2max, 
              tickAmount: 11,
               visible:flowY, 
               tickWidth: 1,      
              gridLineWidth: 0,
+             opposite:confYaxis.y2Opposite,
         crosshair: {color:'#ffffff',
                         dashStyle: 'Dot',
                         width:1.5,
@@ -895,7 +1160,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                     //    return Math.ceil(this.value);
                   //    },
                   style:{
-                    color:'#1e272e',
+                    color:confYaxis.y2RangeCol,
                     fontWeight:'bold',
                     backgroundColor: '#000000',
                 }
@@ -906,9 +1171,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                     offset: 15,
                     rotation: 0,
                     y: -10,
-                    text: 'm<sup>3</sup>/h',
+                    text:confYaxis.y2Title,
                     style: {
-                        color:'#1e272e',
+                        color:confYaxis.y2TitleCol,
                         fontWeight:'bold',
                     }
                 },
@@ -917,11 +1182,11 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
             },   
     
             { //[3]  Pressure
-                 //   min:0, 
-                 //   max:100,  
+                min:confYaxis.y3min, 
+                max:confYaxis.y3max, 
                   tickAmount: 11,
                   visible:pr_Yaxis,
-                 opposite:true, 
+                  opposite:confYaxis.y3Opposite, 
                   tickWidth: 1,      
                  gridLineWidth: 0,
                         crosshair: {color:'#ffffff',
@@ -938,7 +1203,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         //format: '{value}',
                         formatter:function(){return Math.ceil(this.value)},           
                         style:{
-                            color:'#1e272e',
+                            color:confYaxis.y3RangeCol,
                             fontWeight:'bold',
                             backgroundColor: '#000000',
                         }
@@ -949,9 +1214,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         offset: 15,
                         rotation: 0,
                         y: -10,
-                        text: 'Bar',
+                        text:confYaxis.y3Title,
                         style: {
-                            color:'#1e272e',
+                            color:confYaxis.y3TitleCol,
                             fontWeight:'bold',
                         }
                     },
@@ -960,11 +1225,12 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                 },
                
             { //[4] Salt Rejection      
-                        min:95, 
-                        max:100,                
+                min:confYaxis.y4min, 
+                max:confYaxis.y4max,                 
                         visible:reject_erimix, 
                         tickWidth: 1, 
-                        opposite:true,
+                         color:confYaxis.y1RangeCol,
+                        opposite:confYaxis.y4Opposite,
                         tickAmount: 11,                 
                         gridLineWidth: 0,
                         crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
@@ -973,7 +1239,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             enabled: true, 
                             format: '{value}',                       
                             style:{
-                                color:'#1e272e',
+                                color:confYaxis.y4RangeCol,
                                 fontWeight:'bold',
                                 backgroundColor: '#000000',
                             }
@@ -984,9 +1250,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             offset: 15,
                             rotation: 0,
                             y: -10,
-                            text: 'R-%',
+                            text:confYaxis.y4Title,
                             style: {
-                                color:'#1e272e',
+                                color:confYaxis.y4TitleCol,
                                 fontWeight:'bold',
                             }
                         },
@@ -995,8 +1261,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                     },
                    
                     { //[5]  Salt Passage
-                                min:0, 
-                                max:5, 
+                        min:confYaxis.y5min, 
+                        max:confYaxis.y5max, 
+                        opposite:confYaxis.y5Opposite,
                                 visible:salt_pas_y, 
                                 tickWidth: 1,
                                 tickAmount: 11,    
@@ -1008,7 +1275,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 format: '{value}', 
 
                                 style:{
-                                    color:'#1e272e',
+                                    color:confYaxis.y5RangeCol,
                                     fontWeight:'bold',
                                     backgroundColor: '#000000',
                                 }
@@ -1019,9 +1286,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                 offset:15,
                                 rotation: 0,
                                 y: -10,
-                                text: 'P-%',
+                                text:confYaxis.y5Title,
                                 style: {
-                                    color:'#1e272e',
+                                    color:confYaxis.y5TitleCol,
                                     fontWeight:'bold',
                                 }
                             },
@@ -1030,6 +1297,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         },
       
                         { //[6] high EC
+                            min:confYaxis.y6min, 
+                            max:confYaxis.y6max, 
+                            opposite:confYaxis.y6Opposite,
                            tickAmount: 11, 
                             visible:ecHYaxis, 
                             tickWidth: 1,      
@@ -1047,7 +1317,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                       }, 
                                              
                                       style:{
-                                        color:'#1e272e',
+                                        color:confYaxis.y6RangeCol,
                                         fontWeight:'bold',
                                         backgroundColor: '#000000',
                                     }
@@ -1058,9 +1328,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                     offset:15,
                                     rotation: 0,
                                     y: -10,
-                                    text: 'SW-EC',
+                                    text:confYaxis.y6Title,
                                     style: {
-                                        color:'#1e272e',
+                                        color:confYaxis.y6TitleCol,
                                     fontWeight:'bold',
                                     }
                                 },
@@ -1069,8 +1339,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             },
     
                             { //[7] low EC
-                               // min: 0,
-                              //  max: 2,
+                                min:confYaxis.y7min, 
+                                max:confYaxis.y7max,
+                                opposite:confYaxis.y7Opposite, 
                                 tickAmount: 11,
                                 visible:ecLYaxis, 
                                 tickWidth: 1,
@@ -1085,7 +1356,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                             return (this.value/1000).toFixed(1)+' K';
                                           },                       
                                           style:{
-                                            color:'#1e272e',
+                                            color:confYaxis.y7RangeCol,
                                             fontWeight:'bold',
                                             backgroundColor: '#000000',
                                         }
@@ -1096,9 +1367,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         offset:10,
                                         rotation: 0,
                                         y: -10,
-                                        text: 'P-EC',
+                                        text:confYaxis.y7Title,
                                         style: {
-                                            color:'#1e272e',
+                                            color:confYaxis.y7TitleCol,
                                             fontWeight:'bold',
                                         }
                                     },
@@ -1106,8 +1377,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                     //opposite: true
                                 },
                                 { //[8] TDS
-                                  //  min:1,
-                                  //  max:14,
+                                    min:confYaxis.y8min, 
+                                    max:confYaxis.y8max, 
+                                    opposite:confYaxis.y8Opposite,
                                     tickAmount: 11,
                                     visible:tdsYaxis, 
                                     tickWidth: 1,
@@ -1120,7 +1392,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                                                    
                                                      
                                             style:{
-                                                color:'#1e272e',
+                                                color:confYaxis.y8RangeCol,
                                                 fontWeight:'bold',
                                                 backgroundColor: '#000000',
                                             }
@@ -1131,9 +1403,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                             offset:15,
                                             rotation: 0,
                                             y: -10,
-                                            text: 'TDS',
+                                            text:confYaxis.y8Title,
                                             style: {
-                                                color:'#1e272e',
+                                                color:confYaxis.y8TitleCol,
                                                 fontWeight:'bold',
                                             }
                                         },
@@ -1141,6 +1413,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                         //opposite: true 
                                     },   
                                     { //[9] Temp. F 
+                                        min:confYaxis.y9min, 
+                                        max:confYaxis.y9max, 
+                                        opposite:confYaxis.y9Opposite,
                                         tickAmount: 11,
                                        visible:tempFYaxis, 
                                        tickWidth: 1,
@@ -1149,7 +1424,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                enabled: true,
                                                format: '{value}',                                                
                                                style:{
-                                                color:'#1e272e',
+                                                color:confYaxis.y9RangeCol,
                                                 fontWeight:'bold',
                                                 backgroundColor: '#000000',
                                             }
@@ -1160,9 +1435,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                offset:15,
                                                rotation: 0,
                                                y: -10,
-                                               text: '°F',
+                                               text:confYaxis.y9Title,
                                                style: {
-                                                color:'#1e272e',
+                                                color:confYaxis.y9TitleCol,
                                                 fontWeight:'bold',
                                                }
                                            },
@@ -1171,6 +1446,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                        },   
 
                                    { //[10] Temp C 
+                                    min:confYaxis.y10min, 
+                                    max:confYaxis.y10max,
+                                    opposite:confYaxis.y10Opposite, 
                                         tickAmount: 11,
                                        visible:tempCYaxis, 
                                        tickWidth: 1,
@@ -1182,7 +1460,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                               format: '{value}',
                                                                                          
                                               style:{
-                                                color:'#1e272e',
+                                                color:confYaxis.y10RangeCol,
                                                 fontWeight:'bold',
                                                 backgroundColor: '#000000',
                                             }
@@ -1193,9 +1471,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                offset:15,
                                                rotation: 0,
                                                y: -10,
-                                               text: '°C',
+                                               text:confYaxis.y10Title,
                                                style: {
-                                                color:'#1e272e',
+                                                color:confYaxis.y10TitleCol,
                                                 fontWeight:'bold',
                                                }
                                            },
@@ -1272,7 +1550,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries1x,                                          
                                                              lineWidth:(s1Param.chartType=="scatter")?0: s1Param.lineWidth,
                                                               yAxis:st[s1Param.ufData]['yAxis'],
-                                                             className:s1Param.chartType,
+                                                             //className:s1Param.chartType,
                                                               tooltip: {
                                                                 crosshairs: [true, true],
                                                                 headerFormat: '{point.key}<br>',
@@ -1310,7 +1588,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               data: dataSeries2x,                                          
                                                               lineWidth:(s2Param.chartType=="scatter")?0:s2Param.lineWidth,
                                                               yAxis:st[s2Param.ufData]['yAxis'],
-                                                              className:s2Param.chartType,
+                                                            //  className:s2Param.chartType,
                                                               tooltip: {
                                                                 crosshairs: [true, true],
                                                                 headerFormat: '{point.key}<br>',

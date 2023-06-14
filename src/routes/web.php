@@ -35,7 +35,9 @@ Route::get('/scf', function () {return view('self_cleaning_filters');})->middlew
 Route::get('/uf_north', function () {return view('uf_north_line');})->middleware('auth');
 Route::get('/uf_south', function () {return view('uf_south_line');})->middleware('auth');
 Route::get('/ROfeed', function () {return view('ro_feed');})->middleware('auth');
-Route::get('/ro1norm', function () {return view('ro1_normalisation');})->middleware('auth');
+
+Route::get('/ro1norm', [RO1Normalisation::class, 'viewRO1Normalization'])->middleware('auth');
+Route::PUT('/ro1norm', [PageSettings::class, 'savePref']);
 Route::get('/ro2norm', function () {return view('ro2_normalisation');})->middleware('auth');
 Route::get('/ro1_cip', [PageSettings::class, 'settings'])->middleware('auth');
 Route::get('/importExport', function () {return view('import_export');})->middleware('auth');
@@ -43,7 +45,8 @@ Route::get('/brine', function () {return view('brine_break');})->middleware('aut
 Route::get('/PostCO2', function () {return view('post_co2');})->middleware('auth');
 Route::get('/PostCl2', function () {return view('post_cl2');})->middleware('auth');
 Route::get('/PostLime', function () {return view('post_lime');})->middleware('auth');
-
+Route::GET('/dataExportVeolinkCare', [PageSettings::class, 'testme'])->middleware('auth');
+Route::PUT('/dataExportVeolinkCare', [PageSettings::class, 'savePref']);
 //Lab Routes
 Route::get('/labCoolingWaterExport', function () {return view('lab_export_cw');})->middleware('auth');
 Route::get('/labDeminWaterExport', function () {return view('lab_export_dw');})->middleware('auth');

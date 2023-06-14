@@ -170,8 +170,8 @@
       <td> </td>
      </tr>
     <tr><td class="bdr">
-      <a   href="#"  style="text-decoration: none;" class="menu not_ready">
-        <button class="btn btn-light menu"> <i class="ancherx fa fa-cloud-download" aria-hidden="true"></i>&nbsp;Data Download</button></a>
+      <a   href="{{ url('/dataExportVeolinkCare') }}"  style="text-decoration: none;" class="menu">
+        <button class="btn btn-light menu"> <i class="ancher fa fa-cloud-download" aria-hidden="true"></i>&nbsp;Data Download</button></a>
      </td>
      <td> </td>
      <td> </td>

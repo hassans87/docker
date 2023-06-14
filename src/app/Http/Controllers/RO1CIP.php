@@ -4,6 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class RO1CIP extends Controller
 {
+
+    
+
+
+
+
+
+
     public function cipRoList(Request $request)
     {
         $col1 = $request->ufdata1;

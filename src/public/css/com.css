@@ -1,3 +1,8 @@
+.text-center {
+  text-align: center !important;
+}
+
+
 .main-chk{
     width:20px; 
     height:25px; 
@@ -49,19 +54,19 @@
     animation: dash 3.5s linear infinite;
 }
 
-.spline {
-    stroke-dasharray: 4;
+.splinex {
+  stroke-dasharray: 4;
     stroke-dashoffset: 50;
     animation: dash 3.5s linear infinite;
 }
 
-.scatter {
+.scatterx {
   animation: blink 2s infinite;
    animation-fill-mode: both;
 }
 
-.areaspline{
-    stroke-dasharray: 4;
+.areasplinex{
+  stroke-dasharray: 4;
     stroke-dashoffset: 50;
     animation: dash 3.5s linear infinite;
 }

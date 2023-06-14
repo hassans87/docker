@@ -500,7 +500,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         y:35,
         floating: true,
         borderWidth: 0,
-        backgroundColor:'rgba(255, 255, 255, 0.9)'
+        backgroundColor:'rgba(255, 255, 255, 0.4)'
         },    
         tooltip: { 
         //headerFormat: '{point.key}',      
@@ -604,8 +604,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         
                     
                         { //  [1]    cylinder weights
-                         min:600, 
-                        max:1500,     
+                         min:500, 
+                        max:1600,     
                           visible:yAxis1, 
                           tickWidth: 1, 
                           tickAmount: 11,  
@@ -776,6 +776,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             visible:yAxis6,
                             opposite:false, 
                             tickWidth: 1, 
+                            opposite:true,
                             crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
                                 label: {enabled: true, backgroundColor: '#ffffff'}},       
                              // lineColor:pen1,
