@@ -23,7 +23,8 @@
 <title>RO First Pass </title>
 </head>
 <body>
-  <?php  $ddx = $dex[0]->pref;
+  <?php  
+  $ddx = $dex[0]->pref;
   $param =json_decode($ddx); 
   $colors =array("#ff3838","#17c0eb","#32ff7e","#c56cf0","#ffaf40","#FC427B","#55E6C1","#25CCF7");
   function userPref($dbparam){
@@ -42,7 +43,16 @@
   }
   
   ?>
+
+  <div id="graph">
     <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+    <div class="progress col-4 ms-2" id="yield"> 
+      
+      
+    </div>
+
+
+
               <table class="table-sm table-responsive table-light table-bordered">
                 <thead class="badge-light3d">
                   <tr>
@@ -62,8 +72,8 @@
                               <div class="col-auto "><input type="checkbox" class="query series-chk filter" id="line1" 
                                 <?php if($param->isline1 == 'true'){echo 'checked';}?>>
                                &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="<?php try{echo $param->pen1;}catch(Throwable $e){echo $colors[0];}  ?>" class="chart_render series-color"> &nbsp; </div>
-                              <div class="col-auto">
-              <select class="query form-control form-control-sm form-select input-group-sm" id="ufdata1">
+              <div class="col-auto input-group-sm">
+              <select class="query form-control form-select input-group-sm" id="ufdata1">
               <option value="dpi_906" {{serInd("dpi_906",$param->qdata1)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
               <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata1)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
               <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata1)}}>Salt Rejection </option>
@@ -110,7 +120,7 @@
                                                         <!-- Button trigger modal series 1-->
                                                   <span id="panel1">
                                                   <span class="model1 badge badge-light3d" data-bs-toggle="modal" data-bs-target="#modal1">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i> </span> </span>
+                                                  ⚙️</span> </span>
 
 
 
@@ -198,8 +208,8 @@
                               <td><div class="input-group">
                               <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2"  <?php if($param->isline2 == 'true'){echo 'checked';}?>>
                                 &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="{{userPref($param->pen2)}}" class="chart_render series-color"> &nbsp; </div>
-                              <div class="col-auto">
-                               <select class="query form-control form-control-sm form-select" id="ufdata2">
+                              <div class="col-auto input-group-sm">
+                               <select class="query form-control form-select" id="ufdata2">
                                 <option value="dpi_906" {{serInd("dpi_906",$param->qdata2)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
                                 <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata2)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
                                 <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata2)}}>Salt Rejection </option>
@@ -248,7 +258,7 @@
                                                         <!-- Button trigger modal series 2-->
                                                   <span id="panel2">
                                                   <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series2">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+                                                  ⚙️</span> </span>
 
                  <!-- Modal series 2-->
               <div class="modal fade" id="modal-series2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -332,8 +342,8 @@
                               <td><div class="input-group">
                               <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line3" <?php if($param->isline3 == 'true'){echo 'checked';}?>>
                                 &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="{{$param->pen3}}" class="chart_render series-color"> &nbsp; </div>
-                              <div class="col-auto">
-                               <select class="query form-control form-control-sm form-select" id="ufdata3">
+                              <div class="col-auto input-group-sm">
+                               <select class="query form-control form-select" id="ufdata3">
                                 <option value="dpi_906" {{serInd("dpi_906",$param->qdata3)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
                                 <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata3)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
                                 <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata3)}}>Salt Rejection </option>
@@ -380,7 +390,7 @@
                                                         <!-- Button trigger modal series 3-->
                                                   <span id="panel3">
                                                   <span type="" class="badge badge-light3d" data-bs-toggle="modal" data-bs-target="#modal-series3">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+                                                  ⚙️</span> </span>
 
 
 
@@ -467,8 +477,8 @@
                               <td><div class="input-group">
                               <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line4" <?php if($param->isline4 == 'true'){echo 'checked';}?>>
                                 &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="{{$param->pen4}}" class="chart_render series-color" style="display: none;"> &nbsp; </div>
-                              <div class="col-auto">
-                               <select class="query form-control form-control-sm form-select" id="ufdata4" style="display: none;">
+                              <div class="col-auto input-group-sm">
+                               <select class="query form-control form-select" id="ufdata4" style="display: none;">
                                 <option value="dpi_906" {{serInd("dpi_906",$param->qdata4)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
                                 <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata4)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
                                 <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata4)}}>Salt Rejection </option>
@@ -516,7 +526,7 @@
                                                         <!-- Button trigger modal series 4-->
                                                   <span id="panel4" style="display: none;">
                                                   <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series4">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+                                                  ⚙️</span> </span>
               <!-- Modal series 4-->
               <div class="modal fade" id="modal-series4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -601,8 +611,8 @@
                               <td><div class="input-group">
                               <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line5" <?php if($param->isline5 == 'true'){echo 'checked';}?>>
                                 &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="{{$param->pen5}}" class="chart_render series-color" style="display: none;"> &nbsp; </div>
-                              <div class="col-auto">
-                               <select class="query form-control form-control-sm form-select" id="ufdata5" style="display: none;">
+                              <div class="col-auto input-group-sm">
+                               <select class="query form-control form-select" id="ufdata5" style="display: none;">
                                 <option value="dpi_906" {{serInd("dpi_906",$param->qdata5)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
                                 <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata5)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
                                 <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata5)}}>Salt Rejection </option>
@@ -650,7 +660,7 @@
                                                         <!-- Button trigger modal series 5-->
                                                   <span id="panel5" style="display: none;">
                                                   <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series5">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+                                                  ⚙️</span> </span>
               <!-- Modal series 5-->
               <div class="modal fade" id="modal-series5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -739,8 +749,8 @@
                               <td><div class="input-group">
                               <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line6" <?php if($param->isline6 == 'true'){echo 'checked';}?>>
                                 &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="{{$param->pen6}}" class="chart_render series-color" style="display: none;"> &nbsp; </div>
-                              <div class="col-auto">
-                              <select class="query form-control form-control-sm form-select" id="ufdata6" style="display: none;">
+                              <div class="col-auto input-group-sm">
+                              <select class="query form-control form-select" id="ufdata6" style="display: none;">
                                 <option value="dpi_906" {{serInd("dpi_906",$param->qdata6)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
                                 <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata6)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
                                 <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata6)}}>Salt Rejection </option>
@@ -787,7 +797,7 @@
                                                         <!-- Button trigger modal series 6-->
                                                   <span id="panel6" style="display: none;">
                                                   <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series6">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+                                                  ⚙️</span> </span>
               <!-- Modal series 6-->
               <div class="modal fade" id="modal-series6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -873,8 +883,8 @@
                               <td><div class="input-group">
                               <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line7" <?php if($param->isline7 == 'true'){echo 'checked';}?>>
                                 &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="{{$param->pen7}}" class="chart_render series-color" style="display: none;"> &nbsp; </div>
-                              <div class="col-auto">
-                              <select class="query form-control form-control-sm form-select" id="ufdata7" style="display: none;">
+                              <div class="col-auto input-group-sm">
+                              <select class="query form-control form-select" id="ufdata7" style="display: none;">
                                 <option value="dpi_906" {{serInd("dpi_906",$param->qdata7)}}  style="background-color:rgba(255,121,121,0.4);">DP (Head Loss)  &nbsp;&nbsp;</option>
                                 <option value="norm_perm_flow" {{serInd("norm_perm_flow",$param->qdata7)}}>Normalized Permeate Flow &nbsp;&nbsp;</option>
                                 <option value="norm_per_salt_rej" {{serInd("norm_per_salt_rej",$param->qdata7)}}>Salt Rejection </option>
@@ -921,7 +931,7 @@
                                                         <!-- Button trigger modal series 5-->
                                                   <span id="panel7" style="display: none;">
                                                   <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series7">
-                                                  <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+                                                  ⚙️</span> </span>
               <!-- Modal series 5-->
               <div class="modal fade" id="modal-series7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -1007,6 +1017,8 @@
 
                   </tbody>
                 </table>
+  </div>
+
                 <div style="margin-bottom:100px">
 
                 </div>
@@ -1022,14 +1034,14 @@
                       <div class="modal-body">
 
                 <div class="row mb-2">
-                    <label for="pen_main" class="col-sm-5 col-form-label">Background Color <i class="fa fa-eyedropper" aria-hidden="true"></i></label>
+                    <label for="pen_main" class="col-sm-5 col-form-label">🎨 Background Color </label>
                     <div class="col-sm-4">
                      <input type="color" id="pen_main" name="chart_background" value="{{$param->plotbg}}" class="chart_render series-color">
                     </div>
                 </div>
 
                 <div class="row mb-2">
-                    <label for="pen_grid" class="col-sm-5 col-form-label">Grid Lines Color <i class="fa fa-eyedropper" aria-hidden="true"></i></label>
+                    <label for="pen_grid" class="col-sm-5 col-form-label">🎨 Grid Lines Color </label>
                     <div class="col-sm-4">
                      <input type="color" id="pen_grid" name="grid_background" value="{{$param->grid}}" class="chart_render series-color">
                     </div>
@@ -1049,19 +1061,19 @@
                 </div>
 
                 <div class="row mb-2">
-                    <label for="export_width" class="col-sm-5 col-form-label">Export Width &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+                    <label for="export_width" class="col-sm-5 col-form-label">Export Width </label>
                     <div class="col-sm-4">
                       <input type="number" id="export_width" class="chart_render form-control" min="500" step="50" value="{{$param->expoWidth}}">
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+                    <label for="export_height" class="col-sm-5 col-form-label">Export Height </label>
                     <div class="col-sm-4">
                        <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="{{$param->expoHeight}}">
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="pen_export" class="col-sm-6 col-form-label">Export Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+                    <label for="pen_export" class="col-sm-6 col-form-label">🪂 Export Background Color</label>
                     <div class="col-sm-4">
                        <input type="color" id="pen_export" name="chart_background_export" value="{{$param->expobg}}" class="chart_render series-color">
                     </div>
@@ -1073,7 +1085,7 @@
                   </div>
               </div>
                 <div class="row mb-2">
-                    <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+                    <label for="pen_export_title" class="col-sm-5 col-form-label">🎨 Title Color</label>
                     <div class="col-sm-4">
                       <input type="color" id="pen_export_title" name="chart_background_title" value="{{$param->expotitle}}" class="chart_render series-color">
                     </div>
@@ -1104,8 +1116,8 @@
                           <tr style="text-align: center; vertical-align:middle;">
                           <th>Assign to</th>
                           <th>Title</th>
-                          <th>Title Color </th>
-                          <th>Range Color </th>
+                          <th>🎨 Title Color </th>
+                          <th>🎨 Range Color </th>
                           <th>Show oppsite</th>
                           <th>Min Range </th>
                           <th>Max Range </th>
@@ -1117,8 +1129,8 @@
                               <td > <input type="color" id="yaxis_title_color1" name="yaxis_title_color1" value="{{$param->y1titlecolor}}" class="chart_render series-color"></td>
                               <td > <input type="color" id="yaxis_color1" name="yaxis_color1" value="{{$param->y1rangecolor}}" class="chart_render series-color"></td>
                               <td > <input type="checkbox" id="yaxis_opposite1" name="yaxis_opposite1" class="chart_render main-chk" {{checkIf($param->y1opposite)}}> </td>
-                              <td > <input type="number" id="yaxis_min1" name="yaxis_min1" class="chart_render form-control form-control-sm" value="{{$param->y1min}}" step="0.1" > </td>
-                              <td > <input type="number" id="yaxis_max1" name="yaxis_max1" class="chart_render form-control form-control-sm" value="{{$param->y1max}}" step="0.1" > </td>
+                              <td > <input type="number" id="yaxis_min1" name="yaxis_min1" class="chart_render form-control form-control-sm" value="{{$param->y1min}}" step="0.1" maxlength="4" size="4"> </td>
+                              <td > <input type="number" id="yaxis_max1" name="yaxis_max1" class="chart_render form-control form-control-sm" value="{{$param->y1max}}" step="0.1" maxlength="4" size="4"> </td>
                             </tr>
 
                             <tr style="text-align: center; vertical-align:middle;">
@@ -1215,6 +1227,7 @@
 
 
                 </div>
+
                       <div class="modal-footer">
                         <span>These configurations are applicable to individual user only </span>
                         <button type="button" class="btn btn-sm btn-secondary apply_changes" >Apply Changes</button>
@@ -1229,72 +1242,52 @@
 
 
 
-                <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.8)">
-                  <div class="container-fluid">
+                <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+                  <div class="container-fluid" >
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                      <ul class="navbar-nav">
+                      <ul class="navbar-nav" >
                         <li class="nav-item" style="margin-top:8px">
                         </li>
-                        <li class="nav-item dropup">
-                          <a class="nav-link" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bars" aria-hidden="true" style="color:rgb(121, 119, 119);"></i>
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="dropdown10">
-                            <li><a  href="{{ url('/register') }}"  style="text-decoration: none;" class="dropdown-item menu ">
-                             <i class="ancher fa fa-user-plus" aria-hidden="true"></i>&nbsp;Add New User</a></li>
-                            <li><a class="dropdown-item" href="#">User Profile</a></li>
-                            <li><a class="dropdown-item" href="#">
-                              <i class="fa fa-key" aria-hidden="true"></i>&nbsp;Change Password</a></li>
-                            <li><a class="dropdown-item" href="#">Admin</a></li>
-                            <li>
-                              <form class="" method="POST" action="/logout" >
-                                  @csrf
-                                  <button type="submit" class="dropdown-item menu">
-                                  <i class="fa fa-sign-out" aria-hidden="true" style="color:rgb(18, 17, 17);"></i> &nbsp;Logout</button>
-                                  </form> 
-                          </li>
-                          </ul>
-                        </li>
                         <li class="nav-item">
-                          <div class="col-auto" style="margin-right:5px;">
+                          <div class="col-auto" style="margin-right:3px;">
                               <a href="{{ url('/home') }}"> 
-                                  <button class="btn form-control btn-sm badge-light3d">Home &nbsp;
-                                      <i class="fa fa-home" aria-hidden="true" style="color:black;"></i></button></a>
+                                  <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span> &nbsp; Home &nbsp;
+                                      </button></a>
                               </div>
                         </li>
                         <li class="nav-item">
-                          <div class="col-auto" style="margin-right:5px;">
+                          <div class="col-auto" style="margin-right:3px;">
                               <!-- Button trigger modal -->   
                           <div class="input-group">
-                          <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;">Global &nbsp;<i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span>
+                          <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
                           </div>
                   </div> </li>
                   <li class="nav-item">
-                    <div class="col-auto" style="margin-right:5px;">
+                    <div class="col-auto" style="margin-right:3px;">
                         <!-- Button trigger modal -->   
                     <div class="input-group">
-                    <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#conf_yaxix" style="margin-bottom:3px;">Y-Axis &nbsp;<i class="fa fa-arrows-v" aria-hidden="true" style="color:black;"></i></span>
+                    <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#conf_yaxix" style="margin-bottom:3px;"><span style="font-size: 14px;"> 📐 </span> Y-Axis </span>
                     </div>
             </div> </li>
                   <li class="nav-item">
-                  <div class="col-auto" style="margin-right:8px;">
+                  <div class="col-auto" style="margin-right:3px;">
                     <div class="input-group input-group-sm">
-                      <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
+                      <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ From</div>
               
                       <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="{{$param->date1 }}" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
                     </div>
                   </div> </li>
                   <li class="nav-item">
-                  <div class="col-auto" style="margin-right:5px;">
+                  <div class="col-auto" style="margin-right:3px;">
                     <div class="input-group input-group-sm">
-                      <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
+                      <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ To</div>
                       <input type="date" name="end_date" id="end_date" value="{{$param->date2}}" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
                     </div>
                   </div> </li>
                   <li class="nav-item">
-                      <div class="col-auto" style="margin-right:5px;">
+                      <div class="col-auto" style="margin-right:3px;">
                           <div class="input-group input-group-sm">
-                          <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">Skid &nbsp;<i class="fa fa-tag" aria-hidden="true" style="color:black;"></i></div>
+                          <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm"><span style="font-size: 14px;"> 🏷️  </span> Skid</div>
                           <select class="query form-control form-control-sm form-select" id="skidx" style="background-color:#dff9fb;">
                               <option value="a" {{serInd("a",$param->skid1)}}> 41-A</option>
                               <option value="b" {{serInd("b",$param->skid1)}}>41-B</option>
@@ -1310,36 +1303,44 @@
                             </select>
                           </div>
                       </div> </li>
-          
                   <li class="nav-item">
-                      <div class="col-auto" style="margin-right:5px;">
+                      <div class="col-auto" style="margin-right:3px;">
                           <div class="input-group input-group-sm">
-                          <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">Data Interval &nbsp;<i class="fa fa-clock-o" aria-hidden="true" style="color:black;"></i></div>
+                          <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🕝 Interval</div>
                           <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
-                            <option value="0.7" {{serInd("0.7",$param->invt)}}>1 Hour</option>
-                            <option value="1.8" {{serInd("1.8",$param->invt)}}>2 Hours</option>
-                            <option value="3.7" {{serInd("3.7",$param->invt)}}>4 Hours</option>
-                            <option value="5.7" {{serInd("5.7",$param->invt)}}>6 Hours</option>    
-                            <option value="7.7" {{serInd("7.7",$param->invt)}}>8 Hours</option>  
-                            <option value="11" {{serInd("11",$param->invt)}}>12 Hours</option>
-                            <option value="23" {{serInd("23",$param->invt)}}>24 Hours</option>
-                            <option value="47" {{serInd("47",$param->invt)}}>48 Hours</option>    
+                            <option value="0.7" {{serInd("0.7",$param->invt)}}>1 hr</option>
+                            <option value="1.8" {{serInd("1.8",$param->invt)}}>2 hrs</option>
+                            <option value="3.7" {{serInd("3.7",$param->invt)}}>4 Hrs</option>
+                            <option value="5.7" {{serInd("5.7",$param->invt)}}>6 Hrs</option>    
+                            <option value="7.7" {{serInd("7.7",$param->invt)}}>8 Hrs</option>  
+                            <option value="11" {{serInd("11",$param->invt)}}>12 Hrs</option>
+                            <option value="23" {{serInd("23",$param->invt)}}>24 Hrs</option>
+                            <option value="47" {{serInd("47",$param->invt)}}>48 Hrs</option>    
                             </select>
                           </div>
                       </div> </li>
                   <li class="nav-item">
-                  <div class="col-auto" style="margin-right:15px;">
+                  <div class="col-auto" style="margin-right:3px;">
                     <div class="input-group input-group-sm">
                       <button id="trigger" class="query_fire btn btn-warning btn-sm">
-                        <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</button>
+                       <span style="font-size: 14px;"> 🚀 </span> &nbsp;Query</button>
                     </div>
                   </div>
                         </li>
+                            <li class="nav-item">
+                              <div class="col-auto" style="margin-right:3px;">
+                                <div class="input-group input-group-sm">
+                                  <a href="{{url('/ro1dataExport') }}">
+                                    <button id="trigger_tb" class="btn badge-light3d btn-sm">
+                                      <span style="font-size: 14px;"> 📦 </span> Data Table</button>
+</a>
+                                </div>
+                              </div> 
                       </ul>
                     </div>
                   </div>
                 </nav>
-    <script type="text/javascript" src="{{asset('js/stream/ro1_normalisation.js') }}"></script>
+<script type="text/javascript" src="{{asset('js/stream/ro1_normalisation.js') }}"></script>
 
 </body>
 </html>

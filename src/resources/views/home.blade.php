@@ -23,10 +23,10 @@
   <table class="table-borderless align-middle mb-0 mt-0">
     <thead class="badge-light3d">
       <tr>
-          <th class="bdr">&nbsp;<i class="fa fa-television" aria-hidden="true"></i> &nbsp;VeoLink</th>
-          <th class="bdr">&nbsp;<i class="fa fa-cube" aria-hidden="true"></i>&nbsp;Operation &nbsp;&nbsp;</th>        
-          <th class="bdr">&nbsp;<i class="fa fa-flask" aria-hidden="true"></i>&nbsp;Laboratory&nbsp;&nbsp;</th>
-          <th class="bdr">&nbsp;<i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Maintenance&nbsp;&nbsp;</th>
+          <th class="bdr">&nbsp;<span style="font-size: 18px;"> 🖥️ </span> &nbsp;VeoLink</th>
+          <th class="bdr">&nbsp;<span style="font-size: 18px;"> 🦺 </span>&nbsp;Operation &nbsp;&nbsp;</th>        
+          <th class="bdr">&nbsp;<span style="font-size: 18px;"> ⚗️ </span>&nbsp;Laboratory&nbsp;&nbsp;</th>
+          <th> <span style="font-size: 18px;"> 🧰 </span>&nbsp;Maintenance&nbsp;&nbsp;</th>
       </tr>
       </thead>
         <tbody> 
@@ -41,7 +41,7 @@
             <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp;Cooling Water Export</button></a> 
             </td>
             <td class="bdr"><a   href="{{ url('/DefectsMain') }}" style="text-decoration: none;" class="menu">
-              <button class="btn btn-light menu"> <i class="ancherx fa fa-file-text-o" aria-hidden="true" ></i>&nbsp;Defects</button></a> 
+              <button class="btn btn-light menu"> 📢&nbsp;Defects</button></a> 
               </td>
         </tr>
         <tr>
@@ -56,7 +56,7 @@
               <button class="btn btn-light menu"> <i class="ancher fa fa-flask" aria-hidden="true" ></i>&nbsp;Demin Water Export</button></a> 
               </td>
               <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
-                <button class="btn btn-light menu"> <i class="ancherx fa fa-file-text-o" aria-hidden="true" ></i>&nbsp;Permit Requests</button></a> 
+                <button class="btn btn-light menu">🧾 &nbsp;Permit Requests</button></a> 
                 </td>
            </tr>
         <tr>
@@ -170,8 +170,7 @@
       <td> </td>
      </tr>
     <tr><td class="bdr">
-      <a   href="{{ url('/dataExportVeolinkCare') }}"  style="text-decoration: none;" class="menu">
-        <button class="btn btn-light menu"> <i class="ancher fa fa-cloud-download" aria-hidden="true"></i>&nbsp;Data Download</button></a>
+      
      </td>
      <td> </td>
      <td> </td>
@@ -196,7 +195,7 @@ $('.not_ready').click(function(){
 
 </script>
 
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav">
@@ -204,7 +203,7 @@ $('.not_ready').click(function(){
          
           <form class="" method="POST" action="/logout" >
             @csrf
-            <button type="submit" class="badge bg-light text-dark">
+            <button type="submit" class="badge badge-light3d text-dark">
             <i class="fa fa-sign-out" aria-hidden="true" style="color:rgb(121, 119, 119);"></i>Logout</button>
             </form> 
         </li>

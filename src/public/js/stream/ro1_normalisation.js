@@ -2,11 +2,9 @@ queryStream();
 
 //$('.tensor-flow,.rednder').change(function(){queryStream();})
 setInterval(function () {$("head title").html($("head title").html().substring(1) + $("head title").html().substring(0,1));}, 400);
-$('.query_fire').click(function(){queryStream();})
-$('.query').change(function(){
-     //   queryStream();
-Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
-})
+$('.query_fire').click(function(){
+    queryStream();})
+
 $('#export_data').click(function(){
 //window.location.replace("./data_export_ro1.php");
 ;})
@@ -64,17 +62,15 @@ if(query_days_calc >600){
     $( "#trigger" ).prop( "disabled", false );
     $("#trigger").removeClass("btn-danger") .addClass("btn-warning"); }
     ;})
-
+ 
 function queryStream(){
 Notiflix.Block.Pulse('body', 'Please Wait, feteching query data'); 
 let plotParam = {
-dateFrom:$('#start_date').val(),
-dateTo: $('#end_date').val(),
+dateFrom:$('#start_date').val()+" 00:00:00",
+dateTo: $('#end_date').val()+ " 00:00:00",
 ufqry:$('#skidx').val(),
 interval:$('#invt').val()
 }
-
-
 let s1Param = new Stream(1);
 let s2Param = new Stream(2);
 let s3Param = new Stream(3);
@@ -114,7 +110,30 @@ let dataSeries4 = dataStream[4];
 let dataSeries5 = dataStream[5];
 let dataSeries6 = dataStream[6];
 let dataSeries7 = dataStream[7];
-//console.log(dataSeries3);
+let dataSeries8 = dataStream[8];
+dataSeries8 = dataSeries8.map(parseFloat);
+//plotParam.dateFrom
+//plotParam.dateTo
+function dateDifferaneYield(dt1, dt2){
+    var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+    console.log(diff);
+  diff /= (60 * 60);
+  console.log(diff);
+  return Math.abs(Math.round(diff));
+}
+
+let dtqryx = dateDifferaneYield(new Date(plotParam.dateFrom), new Date(plotParam.dateTo));
+
+let db_hours = 0;
+for (var i in dataSeries8){
+    if(dataSeries8[i]){
+db_hours++;
+    }   
+}
+//dtqryx = db_hours;
+console.log(plotParam.dateFrom);
+console.log(dtqryx);
+$("#yield").html('<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated text-dark" role="progressbar" style="width:'+((db_hours/dtqryx)*100).toFixed(2)+'%;" aria-valuenow="'+((db_hours/dtqryx)*100).toFixed(2)+'" aria-valuemin="0" aria-valuemax="100">Yield: '+((db_hours/dtqryx)*100).toFixed(2)+' %</div>');
 //date modification
 let date22 = [];
 let datex = [];      
@@ -217,6 +236,7 @@ $(".apply_changes").addClass("btn-danger").removeClass("btn-secondary");
 $( ".apply_changes" ).prop('disabled', false);  });
 $( ".apply_changes" ).click(function(){renderedChart();});
 function renderedChart(){
+
 $(".apply_changes").addClass("btn-secondary").removeClass("btn-danger");
 $( ".apply_changes" ).prop('disabled', true); 
 $( ".filter" ).click(function(){renderedChart();});
@@ -543,6 +563,9 @@ net_driving_press:{
         sum:false
         }
 }
+
+
+
 
 let s1Param = new ChartParam(1);
 let s2Param = new ChartParam(2);
@@ -886,9 +909,9 @@ headers:{"x-CSRF-TOKEN":csrfToken}
 .then(response =>response.text())
 .then((data) =>{
     console.log(data);})
-
+   
 Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
-        Highcharts.chart('plot_window', {
+   var testx=Highcharts.chart('plot_window', {
         chart: {
         //height:1200,
         //width:1600,
@@ -1809,7 +1832,18 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         ]
                     
                     
-                      } ) }
+                      } ) 
+                        
+                    
+                    
+                      
+                      $('#dwn_pdf').click(function(){
+                        testx.exportChart({type:"application/pdf"});
+                    } )                    
+                    }
+                    $('#dwn_png').click(function(){
+                        testx.exportChart({type:"image/jpeg"});
+                    } ) 
 $("#plot_window").css({'background-color':'white'});
 }catch(err){
     Notiflix.Report.Warning('Failure',' '+err,'Close');

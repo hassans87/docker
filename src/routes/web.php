@@ -12,6 +12,8 @@ use App\Http\Controllers\UltraFiltration;
 use App\Http\Controllers\PostTreatment;
 use App\Http\Controllers\ROFeedQuality;
 use App\Http\Controllers\OperationDCS;
+use App\Http\Controllers\DataExport;
+use App\Http\Controllers\Defects;
 /* 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,15 +40,22 @@ Route::get('/ROfeed', function () {return view('ro_feed');})->middleware('auth')
 
 Route::get('/ro1norm', [RO1Normalisation::class, 'viewRO1Normalization'])->middleware('auth');
 Route::PUT('/ro1norm', [PageSettings::class, 'savePref']);
+Route::GET('/ro1dataExport', [RO1Normalisation::class, 'ro1DataExpView'])->middleware('auth');
+Route::POST('/ro1dataExport', [RO1Normalisation::class, 'ro1DataExportTable'])->middleware('auth');
 Route::get('/ro2norm', function () {return view('ro2_normalisation');})->middleware('auth');
-Route::get('/ro1_cip', [PageSettings::class, 'settings'])->middleware('auth');
+Route::get('/ro1_cip', [RO1Normalisation::class, 'ro1CIP'])->middleware('auth');
 Route::get('/importExport', function () {return view('import_export');})->middleware('auth');
 Route::get('/brine', function () {return view('brine_break');})->middleware('auth');
 Route::get('/PostCO2', function () {return view('post_co2');})->middleware('auth');
 Route::get('/PostCl2', function () {return view('post_cl2');})->middleware('auth');
 Route::get('/PostLime', function () {return view('post_lime');})->middleware('auth');
-Route::GET('/dataExportVeolinkCare', [PageSettings::class, 'testme'])->middleware('auth');
-Route::PUT('/dataExportVeolinkCare', [PageSettings::class, 'savePref']);
+
+// data download GET requests
+Route::GET('/dataExportVeolinkCare', [DataExport::class, 'dataMainpage'])->middleware('auth');
+
+// data download PUT request
+Route::GET('/dataExportVeolinkCare', [DataExport::class, 'ro1DataTableView'])->middleware('auth');
+Route::PUT('/dataExportVeolinkCare', [DataExport::class, 'roFirstDataEp'])->middleware('auth');
 //Lab Routes
 Route::get('/labCoolingWaterExport', function () {return view('lab_export_cw');})->middleware('auth');
 Route::get('/labDeminWaterExport', function () {return view('lab_export_dw');})->middleware('auth');
@@ -63,9 +72,14 @@ Route::POST('/BlendingTank', [PostTreatment::class, 'permeateBlendingTank'])->mi
 Route::get('/onlineDBNPA', function () {return view('dbnpa_onlinetest');})->middleware('auth');
 Route::POST('/onlineDBNPA', [OperationDCS::class, 'onlineDBNPAtest'])->middleware('auth');
 //Maintenance Routes
-Route::get('/DefectsMain', function () {return view('defects_menu');})->middleware('auth');
-
-
+ROUTE::GET('/DefectsMain',[Defects::class, 'defectMainView'])->middleware('auth');
+ROUTE::GET('/addnewDefect',[Defects::class, 'newDefectView'])->middleware('auth');
+ROUTE::GET('/defectReview/{id}',[Defects::class, 'defectReviewLoading'])->middleware('auth');
+ROUTE::POST('/newDefectSubmission',[Defects::class, 'addNewDefectData'])->middleware('auth');
+ROUTE::GET('/raw_defects_list',[Defects::class, 'rawDefectsList'])->middleware('auth');
+ROUTE::GET('/mdrf_defects_list',[Defects::class, 'mdrfDefectsList'])->middleware('auth');
+ROUTE::GET('/mdrfReview/{id}',[Defects::class, 'ReviewMDRFLoading'])->middleware('auth');
+//Route::GET('/raw_defects_list', function () {return view('raw_defects_list');})->middleware('auth');
 // forgot passward handler
 Route::get('forgot-password', [PasswardController::class, 'forgotPassword'])->name('forgot-password');
 Route::get('forgot-password/{token}', [PasswardController::class, 'forgotPasswordValidate']);

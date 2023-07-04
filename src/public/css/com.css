@@ -1,7 +1,24 @@
 .text-center {
   text-align: center !important;
 }
-
+.wdt{
+  background-color: #ffffff; 
+}
+.green{
+background-color: #a3f4bd87; 
+}
+.ff{
+background-color: #abe8edb0; 
+}
+.mf{
+background-color: #4bcefa8e; 
+}
+.dbn{
+background-color: #ef8ccca0; 
+}
+.cip{
+background-color: #eccb6895;
+}
 
 .main-chk{
     width:20px; 
