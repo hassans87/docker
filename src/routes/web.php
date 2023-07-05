@@ -12,7 +12,6 @@ use App\Http\Controllers\UltraFiltration;
 use App\Http\Controllers\PostTreatment;
 use App\Http\Controllers\ROFeedQuality;
 use App\Http\Controllers\OperationDCS;
-use App\Http\Controllers\DataExport;
 use App\Http\Controllers\Defects;
 /* 
 |--------------------------------------------------------------------------
@@ -50,12 +49,6 @@ Route::get('/PostCO2', function () {return view('post_co2');})->middleware('auth
 Route::get('/PostCl2', function () {return view('post_cl2');})->middleware('auth');
 Route::get('/PostLime', function () {return view('post_lime');})->middleware('auth');
 
-// data download GET requests
-Route::GET('/dataExportVeolinkCare', [DataExport::class, 'dataMainpage'])->middleware('auth');
-
-// data download PUT request
-Route::GET('/dataExportVeolinkCare', [DataExport::class, 'ro1DataTableView'])->middleware('auth');
-Route::PUT('/dataExportVeolinkCare', [DataExport::class, 'roFirstDataEp'])->middleware('auth');
 //Lab Routes
 Route::get('/labCoolingWaterExport', function () {return view('lab_export_cw');})->middleware('auth');
 Route::get('/labDeminWaterExport', function () {return view('lab_export_dw');})->middleware('auth');
