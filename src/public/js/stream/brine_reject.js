@@ -653,7 +653,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                
             { //[4] Brine Turbidity
                     min:0, 
-                    max:10,                
+                    max:10,
+                    opposite:true,                
                       visible:yAxis4, 
                       tickWidth: 1, 
                       tickAmount: 11,                 

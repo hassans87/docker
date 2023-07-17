@@ -75,9 +75,18 @@ class Defects extends Controller
     }
     public function ReviewMDRFLoading(Request $request)
     {
+        $defectqry = $request->id;
+        $defectMaxRange = intval(DB::table('defect_cm_db')->count());
+        if ($defectqry < 1) {
+            return redirect('/mdrfReview/1')->with('message', "{$defectqry} out of Databse range !");
+        }
+        if ($defectqry > $defectMaxRange) {
+            return redirect('/mdrfReview/' . $defectMaxRange)->with('message', "{$defectqry} out of Database range !");
+        } else {
             $dex = DB::table('defect_cm_db')
-                ->where('mdrf_nb', '=', $request->id)
+                ->where('mdrf_nb', '=', $defectqry)
                 ->get();
             return view('mdrf_view', ["dex" => $dex]);
-                }
+        }
+    }
 }

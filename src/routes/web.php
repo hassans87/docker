@@ -99,7 +99,9 @@ Route::POST('/labCoolingWaterExport', [PostTreatment::class, 'labCoolingWaterExp
 Route::POST('/labDeminWaterExport', [PostTreatment::class, 'labDeminWaterExport'])->middleware('auth');
 Route::POST('/labRoFeed', [PostTreatment::class, 'labDeminWaterExport'])->middleware('auth');
 //user login/loutout, new user request
+Route::middleware(['throttle:3,1'])->group(function () {
 ROUTE::POST('/users/authenticate',[UserController::class, 'authenticate']);
 Route::get('/register', [UserController::class, 'create'])->middleware('auth');
 Route::POST('/users', [UserController::class, 'store'])->middleware('auth');
+});
 Route::POST('/logout', [UserController::class, 'logout'])->middleware('auth');

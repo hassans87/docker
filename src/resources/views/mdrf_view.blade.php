@@ -106,11 +106,11 @@
                         @enderror
                     </div>
                     <div class="col-sm-4">
-                        <label for="pidnumber" class="form-label">PID Number</label>
+                        <label for="pidnumber" class="form-label">Defect Priority</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text"><i class="fa fa-map" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control form-control-sm" name="pidnumber"
-                                id="pidnumber" required="" value="{{ $dex[0]->defect_discipline }}">
+                            <input type="text" class="form-control form-control-sm" name="defect_priority"
+                                id="defect_priority" required="" value="{{ $dex[0]->defect_priority }}">
                         </div>
                         @error('pidnumber')
                             <p class="text-danger">{{ $message }}</p>
@@ -118,19 +118,19 @@
 
                     </div>
                     <div class="col-sm-4">
-                        <label for="name" class="form-label">Raised By</label>
+                        <label for="name" class="form-label">Defect Discipline</label>
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fa fa-user-circle-o"
+                            <span class="input-group-text"><i class="fa fa-suitcase"
                                     aria-hidden="true"></i></span>
-                            <input type="text" class="form-control form-control-sm" name="raised_by"
-                                id="raised_by" required="" value="{{ $dex[0]->i_date }}">
+                            <input type="text" class="form-control form-control-sm" name="defect_discipline"
+                                id="defect_discipline" required="" value="{{ $dex[0]->defect_discipline }}">
                         </div>
                         @error('raised_by')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-sm-4">
-                        <label for="eventdate" class="form-label">Date</label>
+                        <label for="eventdate" class="form-label">Issue Date</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                             <input type="date" class="form-control form-control-sm" name="event_date"
@@ -143,7 +143,7 @@
                     <div class="col-sm-12">
                         <label for="desciption" class="form-label">Description</label>
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fa fa-pencil-square-o"
+                            <span class="input-group-text"><i class="fa fa-info-circle"
                                     aria-hidden="true"></i></span>
                             <textarea rows="8" class="form-control form-control-sm" name="desciption" id="desciption" required="">{{ $dex[0]->defect_discription }}</textarea>
                             @error('desciption')
@@ -152,26 +152,110 @@
                         </div>
                     </div>
 
-                </div>
+                    <div class="col-sm-4">
+                        <label for="name" class="form-label">Type of Shutdown</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-power-off"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="type_of_shutdown"
+                                id="type_of_shutdown" required="" value="{{ $dex[0]->type_of_shutdown }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="name" class="form-label">Shutdown Equipment</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-power-off"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="shutdown_equipment"
+                                id="shutdown_equipment" required="" value="{{ $dex[0]->shutdown_equipment }}">
+                        </div>
+                        @error('raised_by')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="eventdate" class="form-label">Action By</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-wrench" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="action_by"
+                                id="action_by" required="" value="{{ $dex[0]->action_by }}">
+                        </div>
+                        @error('event_date')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
 
+                    <div class="col-sm-4">
+                        <label for="name" class="form-label">Status</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-ticket"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="status"
+                                id="status" required="" value="{{ $dex[0]->status }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="name" class="form-label">Preliminary Close</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-calendar"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="preliminary_close"
+                                id="preliminary_close" required="" value="{{ $dex[0]->preliminary_close }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="eventdate" class="form-label">Date Close</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="date_close"
+                                id="date_close" required="" value="{{ $dex[0]->date_close }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="desciption" class="form-label">Spares Used</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></span>
+                            <textarea rows="8" class="form-control form-control-sm" name="spare_cons_used" id="spare_cons_used" required="">{{ $dex[0]->spare_cons_used }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="name" class="form-label">Warranty Item</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-certificate"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="warranty_item"
+                                id="warranty_item" required="" value="{{ $dex[0]->warranty_item }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="name" class="form-label">Engineer Manhours</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-clock-o"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="eng_manhours"
+                                id="eng_manhours" required="" value="{{ $dex[0]->eng_manhours }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="eventdate" class="form-label">Technician Manhours</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control form-control-sm" name="tech_manhours"
+                                id="tech_manhours" required="" value="{{ $dex[0]->tech_manhours }}">
+                        </div>
+                    </div>
+
+
+                </div>
                 <br class="my-4">
                 <button class="btn btn-warning btn-sm" type="submit">💾 &nbsp;Update</button>
-                <a href="{{ url('/defectdelete', $dex[0]->mdrf_nb) }}">
-                    <span class="btn btn-danger btn-sm">🗑️ &nbsp;Delete</span> </a>
-
-                <a href="{{ url('/raw_defects_list') }}">
+                <a href="{{ url('/mdrf_defects_list') }}">
                     <span class="btn btn-dark btn-sm">❌ &nbsp;Cancel</span> </a>
             </form>
         </div>
 
     </div>
-    @if (session()->has('message'))
-        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show">
-            <script>
-                Notiflix.Notify.Success('{{ session('message') }}');
-            </script>
-        </div>
-    @endif
 
 
 
@@ -239,10 +323,24 @@
 
 </body>
 
+@if(session()->has('message'))
+    <script>
+Notiflix.Report.Failure(
+'Error',
+'"{{session('message')}}" <br/>',
+'Close',
+);
+    </script>
+@endif
+
+
+
+
 <script>
     $('#search_trigger').click(function() {
         let fx1 = $('#search_mdrf').val();
-        window.location.replace("./"+fx1);
+        if(fx1>=1){ 
+        window.location.replace("./"+fx1); }
     })
 </script>
 
