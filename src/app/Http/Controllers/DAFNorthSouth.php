@@ -2,8 +2,78 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Exception;
 class DAFNorthSouth extends Controller
 {
+    public function dafNorthView()
+    {
+        $userx = Auth::user()->name;
+        $dex = DB::table('user_pref')->select('pref')
+            ->where('page_id', '=', 'ro1_norm')
+            ->where('user_name', '=', $userx)
+            ->exists();
+        if ($dex) {
+            $userx = Auth::user()->name;
+            $dex = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', $userx)
+                ->get();
+            return view('daf_north', ["dex" => $dex]);
+        } else {
+            $dexs = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', 'Sajid Hassan')
+                ->get();
+            return view('daf_north', ["dex" => $dexs]);
+        }
+    }
+
+    public function dafSouthView()
+    {
+        $userx = Auth::user()->name;
+        $dex = DB::table('user_pref')->select('pref')
+            ->where('page_id', '=', 'ro1_norm')
+            ->where('user_name', '=', $userx)
+            ->exists();
+        if ($dex) {
+            $userx = Auth::user()->name;
+            $dex = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', $userx)
+                ->get();
+            return view('daf_south', ["dex" => $dex]);
+        } else {
+            $dexs = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', 'Sajid Hassan')
+                ->get();
+            return view('daf_south', ["dex" => $dexs]);
+        }
+    }
+    public function scfView()
+    {
+        $userx = Auth::user()->name;
+        $dex = DB::table('user_pref')->select('pref')
+            ->where('page_id', '=', 'ro1_norm')
+            ->where('user_name', '=', $userx)
+            ->exists();
+        if ($dex) {
+            $userx = Auth::user()->name;
+            $dex = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', $userx)
+                ->get();
+            return view('self_cleaning_filters', ["dex" => $dex]);
+        } else {
+            $dexs = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', 'Sajid Hassan')
+                ->get();
+            return view('self_cleaning_filters', ["dex" => $dexs]);
+        }
+    }
+
     //north line data fetch
     public function dafNorthLine(Request $request)
     {

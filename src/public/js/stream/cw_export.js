@@ -733,8 +733,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //opposite: true
                         },
         { //  [2] Temperature
-                min:10,
-                max:42,
+                min:12,
+                max:40,
              tickAmount: 11,
               visible:yAxis2, 
               tickWidth: 1,      
@@ -905,7 +905,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             },
     
                             { //[7] LSI
-                               min:0,
+                               min:-0.3,
                               max:0.3,
                                 tickAmount: 11,
                                 visible:yAxis7, 

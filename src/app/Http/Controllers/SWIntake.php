@@ -2,9 +2,37 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
+use Exception;
 class SWIntake extends Controller
 {
+    public function swintakeView()
+    {
+        $userx = Auth::user()->name;
+        $dex = DB::table('user_pref')->select('pref')
+            ->where('page_id', '=', 'ro1_norm')
+            ->where('user_name', '=', $userx)
+            ->exists();
+        if ($dex) {
+            $userx = Auth::user()->name;
+            $dex = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', $userx)
+                ->get();
+            return view('sw_intake', ["dex" => $dex]);
+        } else {
+            $dexs = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', 'Sajid Hassan')
+                ->get();
+            return view('sw_intake', ["dex" => $dexs]);
+        }
+    }
+
+
+
+
+
     public function seawaterIntake(Request $request)
     {
         $data1 = $request->ufdata1;

@@ -129,8 +129,7 @@
   </form>
   <div class="mb-2 text-center">
   <a href="{{ url('/home') }}">
-    <button class="bg-gray-400 text-black rounded py-2 px-4 hover:bg-lime-400">Home &nbsp;<i class="fa fa-home"
-            aria-hidden="true" style="color:black;"></i></button></a> </div>
+    <button class="bg-gray-400 text-black rounded py-2 px-4 hover:bg-lime-400">🏠 Home</button></a> </div>
 </div>
 </main>
 </body>

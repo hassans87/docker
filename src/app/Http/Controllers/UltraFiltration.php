@@ -2,8 +2,57 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Exception;
 class UltraFiltration extends Controller
 {
+    public function ufNorthView()
+    {
+        $userx = Auth::user()->name;
+        $dex = DB::table('user_pref')->select('pref')
+            ->where('page_id', '=', 'ro1_norm')
+            ->where('user_name', '=', $userx)
+            ->exists();
+        if ($dex) {
+            $userx = Auth::user()->name;
+            $dex = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', $userx)
+                ->get();
+            return view('uf_north_line', ["dex" => $dex]);
+        } else {
+            $dexs = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', 'Sajid Hassan')
+                ->get();
+            return view('uf_north_line', ["dex" => $dexs]);
+        }
+    }
+
+    public function ufSouthView()
+    {
+        $userx = Auth::user()->name;
+        $dex = DB::table('user_pref')->select('pref')
+            ->where('page_id', '=', 'ro1_norm')
+            ->where('user_name', '=', $userx)
+            ->exists();
+        if ($dex) {
+            $userx = Auth::user()->name;
+            $dex = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', $userx)
+                ->get();
+            return view('uf_south_line', ["dex" => $dex]);
+        } else {
+            $dexs = DB::table('user_pref')->select('pref')
+                ->where('page_id', '=', 'ro1_norm')
+                ->where('user_name', '=', 'Sajid Hassan')
+                ->get();
+            return view('uf_south_line', ["dex" => $dexs]);
+        }
+    }
+
+
     public function ufNorthSkids(Request $request)
     {
             $data1 = $request->ufGroup . $request->skid1 .'_'. $request->ufdata1;

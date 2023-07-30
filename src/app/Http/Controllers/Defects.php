@@ -69,7 +69,7 @@ class Defects extends Controller
     {
         $dex = DB::table('defect_cm_db')
             ->orderBy('i_date', 'desc')
-            ->limit('100')
+            ->limit('500')
             ->get();
         return view('mdrf_defect_list', ["dex" => $dex]);
     }

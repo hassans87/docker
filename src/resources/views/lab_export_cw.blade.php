@@ -46,13 +46,13 @@
                    &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#d99608" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
   <select class="query form-control form-control-sm form-select" id="ufdata1">
-    <option value="turb_lab" selected="" class="lab">Turbidity Lab </option>
+    <option value="turb_lab" class="lab">Turbidity Lab </option>
     <option value="turb_ait200a" class="dcs">Turbidity Online AIT_200A </option>
     <option value="turb_ait200b" class="dcs">Turbidity Online AIT_200B </option>
     <option value="ph_lab" class="lab">pH Lab </option>
     <option value="ph_201a" class="dcs">pH Online AIT_201A </option>
     <option value="ph_201b" class="dcs">pH Online AIT_201B </option>
-    <option value="frc_lab" selected="" class="lab">FRC Lab </option>
+    <option value="frc_lab"  class="lab">FRC Lab </option>
     <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
     <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
     <option value="ec_lab" class="lab">Conductivity Lab </option>
@@ -65,7 +65,7 @@
     <option value="ca_lab" class="lab">Ca Lab </option>
     <option value="tds_lab" class="lab">TDS Lab </option>
     <option value="chloride_lab" class="lab">Chloride Lab </option>
-    <option value="lsi_lab" class="lab">LSI Lab </option>
+    <option value="lsi_lab" selected="" class="lab">LSI Lab </option>
     <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
  </select>
                       </div>
@@ -291,7 +291,7 @@
                     <option value="frc_lab" class="lab">FRC Lab </option>
                     <option value="frc_ait203a" class="dcs">FRC Online AIC_203A </option>
                     <option value="frc_ait203b" class="dcs">FRC Online AIC_203B </option>
-                    <option value="ec_lab" selected="" class="lab">Conductivity Lab </option>
+                    <option value="ec_lab"  class="lab">Conductivity Lab </option>
                     <option value="ec_ait202a" class="dcs">Conductivity Online AIT_202A </option>
                     <option value="ec_ait202b" class="dcs">Conductivity Online AIT_202B </option>
                     <option value="tot_alk" class="lab">Total Alkalinity Lab</option>
@@ -302,7 +302,7 @@
                     <option value="tds_lab" class="lab">TDS Lab </option>
                     <option value="chloride_lab" class="lab">Chloride Lab </option>
                     <option value="lsi_lab" class="lab">LSI Lab </option>
-                    <option value="temp_ti202" class="dcs">Temperature Online TI_202 </option>
+                    <option value="temp_ti202" selected="" class="dcs">Temperature Online TI_202 </option>
                       </select>
                   </div>   </div>
                   </td><td style="text-align: center;">
@@ -393,8 +393,8 @@
   </tr>
   <tr class="tr4 table-secondary">      
                   <td><div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line4"> 
-                    &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#0eade1" class="chart_render series-color" style="display: none;"> &nbsp; </div>
+                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line4" checked=""> 
+                    &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#32ff7e" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata4" style="display: none;">
                     <option value="turb_lab"  class="lab">Turbidity Lab </option>
@@ -910,13 +910,13 @@
   <div class="row mb-2">
       <label for="export_height" class="col-sm-5 col-form-label">Export Height &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-         <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="600"> 
+         <input type="number" id="export_height" class="chart_render form-control" min="400" step="50" value="700"> 
       </div>
   </div>
   <div class="row mb-2">
       <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-         <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
+         <input type="color" id="pen_export" name="chart_background_export" value="#ffffff" class="chart_render series-color">
       </div>
   </div>
   <div class="row mb-2">
@@ -936,7 +936,59 @@
     </div>
   </div>
   
-  <x-footer_level2 /> 
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+    <div class="container-fluid" >
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav" >
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <a href="{{ url('/home') }}"> 
+                    <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span> &nbsp; Home &nbsp;
+                        </button></a>
+                </div>
+          </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <!-- Button trigger modal -->   
+            <div class="input-group">
+            <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
+            </div>
+    </div> </li>
+    <li class="nav-item">
+      <div class="col-auto" style="margin-right:3px;">
+          <!-- Button trigger modal -->   
+      <div class="input-group">
+      <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#conf_yaxix" style="margin-bottom:3px;"><span style="font-size: 14px;"> 📐 </span> Y-Axis </span>
+      </div>
+  </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ From</div>
+  
+        <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2016-12-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ To</div>
+        <input type="date" name="end_date" id="end_date" value="2023-07-27" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <button id="trigger" class="query_fire btn btn-warning btn-sm">
+         <span style="font-size: 14px;"> 🚀 </span> &nbsp;Query</button>
+      </div>
+    </div>
+          </li>
+  
+        </ul>
+      </div>
+    </div>
+  </nav>
    
   <script type="text/javascript" src="{{asset('js/stream/cw_export.js') }}"></script>
   

@@ -24,6 +24,26 @@
 </head>
 <body>
   <body>
+    <?php  
+    $ddx = $dex[0]->pref;
+    $param =json_decode($ddx); 
+    $colors =array("#ff3838","#17c0eb","#32ff7e","#c56cf0","#ffaf40","#FC427B","#55E6C1","#25CCF7");
+    function userPref($dbparam){
+      try{echo $dbparam;}catch(Throwable $e){}
+    }
+    function serInd($sd,$sdx){
+      if($sd==$sdx){
+        return 'selected="""';
+      }
+    }
+  
+    function checkIf($sdx){
+      if($sdx=="true"){
+        return 'checked="""';
+      }
+    }
+    
+    ?>
   <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
    <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
@@ -1040,7 +1060,83 @@
   </div>
 
 
-  <x-footer_level1 /> 
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+    <div class="container-fluid" >
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav" >
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <a href="{{ url('/home') }}"> 
+                    <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span> &nbsp; Home &nbsp;
+                        </button></a>
+                </div>
+          </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <!-- Button trigger modal -->   
+            <div class="input-group">
+            <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
+            </div>
+    </div> </li>
+    <li class="nav-item">
+      <div class="col-auto" style="margin-right:3px;">
+          <!-- Button trigger modal -->   
+      <div class="input-group">
+      <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#conf_yaxix" style="margin-bottom:3px;"><span style="font-size: 14px;"> 📐 </span> Y-Axis </span>
+      </div>
+  </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ From</div>
+  
+        <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="{{$param->date1 }}" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ To</div>
+        <input type="date" name="end_date" id="end_date" value="{{$param->date2}}" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+        <div class="col-auto" style="margin-right:3px;">
+            <div class="input-group input-group-sm">
+            <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🕝 Interval</div>
+            <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
+              <option value="0.7" {{serInd("0.7",$param->invt)}}>1 hr</option>
+              <option value="1.8" {{serInd("1.8",$param->invt)}}>2 hrs</option>
+              <option value="3.7" {{serInd("3.7",$param->invt)}}>4 Hrs</option>
+              <option value="5.7" {{serInd("5.7",$param->invt)}}>6 Hrs</option>    
+              <option value="7.7" {{serInd("7.7",$param->invt)}}>8 Hrs</option>  
+              <option value="11" {{serInd("11",$param->invt)}}>12 Hrs</option>
+              <option value="23" {{serInd("23",$param->invt)}}>24 Hrs</option>
+              <option value="47" {{serInd("47",$param->invt)}}>48 Hrs</option>    
+              </select>
+            </div>
+        </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <button id="trigger" class="query_fire btn btn-warning btn-sm">
+         <span style="font-size: 14px;"> 🚀 </span> &nbsp;Query</button>
+      </div>
+    </div>
+          </li>
+              <li class="nav-item">
+                <div class="col-auto" style="margin-right:3px;">
+                  <div class="input-group input-group-sm">
+                    <a href="{{url('/ro1dataExport') }}">
+                      <button id="trigger_tb" class="btn badge-light3d btn-sm">
+                        <span style="font-size: 14px;"> 📦 </span> Data Table</button>
+  </a>
+                  </div>
+                </div> 
+        </ul>
+      </div>
+    </div>
+  </nav>
 <script type="text/javascript" src="{{asset('js/stream/ultrafiltration_south_line.js') }}"></script>
 </body>
 </html>
