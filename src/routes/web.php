@@ -42,8 +42,10 @@ Route::get('/scf',[DAFNorthSouth::class, 'scfView'])->middleware('auth');
 Route::get('/uf_north', [UltraFiltration::class, 'ufNorthView'])->middleware('auth');
 Route::get('/uf_south', [UltraFiltration::class, 'ufSouthView'])->middleware('auth');
 
+Route::get('/ro2norm', [RO2Normalisation::class, 'viewRO2Normalization'])->middleware('auth');
+
 Route::get('/ROfeed', function () {return view('ro_feed');})->middleware('auth');
-Route::get('/ro2norm', function () {return view('ro2_normalisation');})->middleware('auth');
+
 Route::get('/ro1_cip', [RO1Normalisation::class, 'ro1CIP'])->middleware('auth');
 Route::get('/importExport', function () {return view('import_export');})->middleware('auth');
 Route::get('/brine', function () {return view('brine_break');})->middleware('auth');

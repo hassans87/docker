@@ -86,8 +86,8 @@
                                     value="<?php try {
                                         echo $param->pen1;
                                     } catch (Throwable $e) {
-                                        echo $colors[0];
-                                    } ?>" class="chart_render series-color"> &nbsp; </div>
+                                        echo $colors[0];} ?>" 
+                                        class="chart_render series-color"> &nbsp; </div>
                             <div class="col-auto input-group-sm">
                                 <select class="query form-control form-select input-group-sm" id="ufdata1">
                                     <option value="dpi_906" {{ serInd('dpi_906', $param->qdata1) }}
@@ -1691,7 +1691,7 @@
     </div>
 
 
-    <div class="modal fade" id="sajid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade modal-lg" id="sajid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1774,7 +1774,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary apply_changes">Apply Changes</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                 </div>
             </div>
@@ -2006,7 +2006,7 @@
                 <div class="modal-footer">
                     <span>These configurations are applicable to individual user only </span>
                     <button type="button" class="btn btn-sm btn-secondary apply_changes">Apply Changes</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
 
                 </div>
             </div>
