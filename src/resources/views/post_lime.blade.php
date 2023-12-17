@@ -44,10 +44,11 @@
                    &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#d99608" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
   <select class="query form-control form-control-sm form-select" id="ufdata1">
-    <option value="silo1_weigh" selected="">Silo-1 Weigh </option>
+    <option value="silo1_weigh"  selected="">Silo-1 Weigh </option>
     <option value="silo2_weigh" >Silo-2 Weigh </option>
     <option value="silicate_tnk_114" >Silicate Storage Tank-1 </option>
     <option value="silicate_tnk_124" >Silicate Storage Tank-2 </option>
+    <option value="poly_xsp_101">Polymer Dosing Rate </option>
     <option value="sat1_ft_101" >Saturator-1 Inlet Flow </option>
     <option value="sat1_sic_201" >Saturator-1 Polymer Dosing Pump Stroke</option>
     <option value="sat1_at_102" >Saturator-1 Lime Water Conductivity</option>
@@ -292,7 +293,7 @@
                     <option value="silicate_tnk_124" >Silicate Storage Tank-2 </option>
                     <option value="sat1_ft_101" >Saturator-1 Inlet Flow </option>
                     <option value="sat1_sic_201" >Saturator-1 Polymer Dosing Pump Stroke</option>
-                    <option value="sat1_at_102" selected="">Saturator-1 Lime Water Conductivity</option>
+                    <option value="sat1_at_102" >Saturator-1 Lime Water Conductivity</option>
                     <option value="sat1_at_113" >Saturator-1 Lime Water Turbidity </option>
                     <option value="sat1_lic_114" >Saturator-1 Lime Water Tank Level</option>
                     <option value="sat2_ft_201" >Saturator-2 Inlet Flow </option>
@@ -309,7 +310,7 @@
                     <option value="blending_fic100" >Bledning Tank Flow </option>
                     <option value="limewater_cw" >Lime Water Flow </option>
                     <option value="cw_dosing_sp" >Lime Water Dosing Rate </option>
-                    <option value="cw_alk_inlet" >CW Inlet Alkalinity </option>
+                    <option value="cw_alk_inlet" selected="">CW Inlet Alkalinity </option>
                     <option value="sludge_tnk131" >Lime Sludge Tank-1</option>
                     <option value="sludge_tnk231">Lime Sludge Tank-2</option>
                       </select>
@@ -414,7 +415,7 @@
                     <option value="sat1_ft_101" >Saturator-1 Inlet Flow </option>
                     <option value="sat1_sic_201" >Saturator-1 Polymer Dosing Pump Stroke</option>
                     <option value="sat1_at_102" >Saturator-1 Lime Water Conductivity</option>
-                    <option value="sat1_at_113" selected="">Saturator-1 Lime Water Turbidity </option>
+                    <option value="sat1_at_113" >Saturator-1 Lime Water Turbidity </option>
                     <option value="sat1_lic_114" >Saturator-1 Lime Water Tank Level</option>
                     <option value="sat2_ft_201" >Saturator-2 Inlet Flow </option>
                     <option value="sat2_sic_202" >Saturator-2 Polymer Dosing Pump Stroke</option>
@@ -429,7 +430,7 @@
                     <option value="cw_ft613_tot_daily" >CW Lime Daily Totalizer</option>
                     <option value="blending_fic100" >Bledning Tank Flow </option>
                     <option value="limewater_cw" >Lime Water Flow </option>
-                    <option value="cw_dosing_sp" >Lime Water Dosing Rate </option>
+                    <option value="cw_dosing_sp" selected="">Lime Water Dosing Rate </option>
                     <option value="cw_alk_inlet" >CW Inlet Alkalinity </option>
                     <option value="sludge_tnk131" >Lime Sludge Tank-1</option>
                     <option value="sludge_tnk231">Lime Sludge Tank-2</option>
@@ -544,10 +545,10 @@
                     <option value="sat3_ft_301" >Saturator-3 Inlet Flow </option>
                     <option value="sat3_sic_301" >Saturator-3 Polymer Dosing Pump Stroke</option>
                     <option value="sat3_at_302" >Saturator-3 Lime Water Conductivity</option>
-                    <option value="sat3_at_313" >Saturator-3 Lime Water Turbidity </option>
+                    <option value="sat3_at_313" selected="">Saturator-3 Lime Water Turbidity </option>
                     <option value="sat3_lic_314" >Saturator-3 Lime Water Tank Level</option>
                     <option value="cw_ft613_tot_daily" >CW Lime Daily Totalizer</option>
-                    <option value="blending_fic100" selected="">Bledning Tank Flow </option>
+                    <option value="blending_fic100" >Bledning Tank Flow </option>
                     <option value="limewater_cw" >Lime Water Flow </option>
                     <option value="cw_dosing_sp" >Lime Water Dosing Rate </option>
                     <option value="cw_alk_inlet" >CW Inlet Alkalinity </option>

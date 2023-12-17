@@ -48,7 +48,7 @@ $('.tensor-flow,.rednder').change(function(){
     let fx1 = $('#start_date').val();
     let fx2 = $('#end_date').val();
 let query_days_calc = getNumberOfDays(fx1,fx2);
-if(query_days_calc >600){
+if(query_days_calc >6000){
     $( ".query_fire" ).prop( "disabled", true); 
     $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 

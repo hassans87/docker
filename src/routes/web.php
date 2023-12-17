@@ -116,6 +116,8 @@ Route::post('forgot-password', [PasswardController::class, 'resetPassword'])->na
 Route::put('reset-password', [PasswardController::class, 'updatePassword'])->name('reset-password');
 
 //Post Requests for data
+Route::POST('/checkpoint',  [UserController::class, 'checkme'])->name('login.check');
+
 Route::POST('/swintake', [SWIntake::class, 'seawaterIntake'])->name('seawater.intake')->middleware('auth');
 Route::POST('/dafnorth', [DAFNorthSouth::class, 'dafNorthLine'])->name('dafnorth')->middleware('auth');
 Route::POST('/dafsouth', [DAFNorthSouth::class, 'dafSouthLine'])->name('dafsorth')->middleware('auth');

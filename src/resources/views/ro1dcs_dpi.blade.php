@@ -55,6 +55,7 @@
     <option value="ro41i">41I DPI&nbsp;</option>
     <option value="ro41j">41J DPI&nbsp;</option>
     <option value="ro41k">41K DPI&nbsp;</option>
+    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
    </select>
                       </div>
                   </div></td><td style="text-align: center;">
@@ -162,6 +163,7 @@
                     <option value="ro41i">41I DPI&nbsp;</option>
                     <option value="ro41j">41J DPI&nbsp;</option>
                     <option value="ro41k">41K DPI&nbsp;</option>
+                    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
                   </select>
                   </div>  
   
@@ -267,6 +269,7 @@
                     <option value="ro41i">41I DPI&nbsp;</option>
                     <option value="ro41j">41J DPI&nbsp;</option>
                     <option value="ro41k">41K DPI&nbsp;</option>
+                    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
                       </select>
                   </div>   </div>
                   </td><td style="text-align: center;">
@@ -373,6 +376,7 @@
                     <option value="ro41i">41I DPI&nbsp;</option>
                     <option value="ro41j">41J DPI&nbsp;</option>
                     <option value="ro41k">41K DPI&nbsp;</option>
+                    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
                   </select>
                   </div>  
   </div>
@@ -478,6 +482,7 @@
                     <option value="ro41i">41I DPI&nbsp;</option>
                     <option value="ro41j">41J DPI&nbsp;</option>
                     <option value="ro41k">41K DPI&nbsp;</option>
+                    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
                       </select>
                   </div>  
    </div>
@@ -587,6 +592,7 @@
                     <option value="ro41i">41I DPI&nbsp;</option>
                     <option value="ro41j">41J DPI&nbsp;</option>
                     <option value="ro41k">41K DPI&nbsp;</option>
+                    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
                       </select>
                   </div> </div>
                  </td><td style="text-align: center;">
@@ -692,6 +698,7 @@
                     <option value="ro41i">41I DPI&nbsp;</option>
                     <option value="ro41j">41J DPI&nbsp;</option>
                     <option value="ro41k">41K DPI&nbsp;</option>
+                    <option value="feed_temp">Feed Water Temperature &nbsp;</option>
                   </select>
                   </div> </div>
                  </td><td style="text-align: center;">

@@ -302,7 +302,15 @@ const st = {
             arrFlr:0.5,
             valFixTo:1,
             sum:false
-            }
+            },
+            feed_temp:{
+                unit:"°C",
+                name:"Feed Water Temp.",
+                yAxis:3,
+                arrFlr:0.5,
+                valFixTo:2,
+                sum:false
+                }
 
 }
 
@@ -362,7 +370,7 @@ plotExpTitleColor: $('#pen_export_title').val()}
 var stack0=["brine_tnk1","brine_tnk2"];
 var stack1=["brine_temp"];
 var stack2=["a_ait_301","b_ait_301","c_ait_301","d_ait_301","e_ait_301","f_ait_301","g_ait_301","h_ait_301","i_ait_301","j_ait_301","k_ait_301"];
-var stack3 = ["brine_ph"];
+var stack3 = ["feed_temp"];
 var stack4=["brine_turb"];
 var stack5=["brine_frc"];
 var stack6=["brine_pres"];
@@ -862,7 +870,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         },
         { //  [2] brine_ec
                 min:1000,
-                max:4500,
+                max:5000,
              tickAmount: 11,
               visible:yAxis2, 
               tickWidth: 1,      
@@ -895,12 +903,12 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                 //opposite: true
             },   
     
-            { //[3]  brine pH
-                min:4, 
-                 max:12,  
+            { //[3]  Feed water Temp.
+                min:20, 
+                 max:35,  
                   tickAmount: 11,
                   visible:yAxis3,
-                 // opposite:true, 
+                 opposite:true, 
                   tickWidth: 1,      
                  gridLineWidth: 0,
                  crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
@@ -918,7 +926,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         offset: 15,
                         rotation: 0,
                         y: -10,
-                        text: 'pH',
+                        text: '°C',
                         style: {
                             color:'#1e272e',
                             fontWeight:'bold',

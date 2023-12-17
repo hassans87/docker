@@ -302,7 +302,15 @@ const st = {
                                 arrFlr:0.5,
                                 valFixTo:1,
                                 sum:false
-                                }
+                                },
+                                feed_temp:{
+                                    unit:"°C",
+                                    name:"Feed Water Temp.",
+                                    yAxis:3,
+                                    arrFlr:0.5,
+                                    valFixTo:2,
+                                    sum:false
+                                    }
           
 
 }
@@ -363,7 +371,7 @@ plotExpTitleColor: $('#pen_export_title').val()}
 var stack0=["brine_tnk1","brine_tnk2"];
 var stack1=["brine_temp"];
 var stack2=["ro41a","ro41b","ro41c","ro41d","ro41e","ro41f","ro41g","ro41h","ro41i","ro41j","ro41k"];
-var stack3 = ["brine_ph"];
+var stack3 = ["feed_temp"];
 var stack4=["brine_turb"];
 var stack5=["brine_frc"];
 var stack6=["brine_pres"];
@@ -829,7 +837,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         
                     
                         { //  [1]    for brine temp
-                         min:15, 
+                         min:25, 
                         max:45,     
                           visible:yAxis1, 
                           tickWidth: 1, 
@@ -862,8 +870,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //opposite: true
                         },
         { //  [2] brine_ec
-                min:1,
-                max:3,
+                min:1.2,
+                max:3.3,
              tickAmount: 11,
               visible:yAxis2, 
               tickWidth: 1,      
@@ -896,12 +904,12 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                 //opposite: true
             },   
     
-            { //[3]  brine pH
-                min:4, 
-                 max:12,  
+            { //[3] Feed Temp
+                min:15, 
+                 max:40,  
                   tickAmount: 11,
                   visible:yAxis3,
-                 // opposite:true, 
+                 opposite:true, 
                   tickWidth: 1,      
                  gridLineWidth: 0,
                  crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
@@ -919,7 +927,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         offset: 15,
                         rotation: 0,
                         y: -10,
-                        text: 'pH',
+                        text: '°C',
                         style: {
                             color:'#1e272e',
                             fontWeight:'bold',

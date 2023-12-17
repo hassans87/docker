@@ -170,7 +170,8 @@
         <a  href="{{ url('/PostCl2') }}"  style="text-decoration: none;" class="menu" >
           <button class="btn btn-light menu"> 📀&nbsp;Post Cl2</button></a>
       </td>
-      <td> </td>
+      <td class="menu" >
+        <button class="btn btn-light menu" id="checkme"> 📀&nbsp;Login Check</button> </td>
       <td> </td>
       <td> </td>
      </tr>
@@ -187,6 +188,10 @@
 </div>
 
 </div>
+<div style="display:none; background-color:aqua;" id="checkin">
+  <button class="btn btn-sm btn-danger" >Log in </button>
+    </div>
+
 @if(session()->has('message'))
     <script>
       Notiflix.Notify.Info('{{session('message')}}');
@@ -194,9 +199,19 @@
 @endif
 
 <script>
+
+
+
 $('.not_ready').click(function(){
   Notiflix.Report.Failure('Database built in progress','Close');
   ;})
+
+  $('#checkme').click(function(){
+  Notiflix.Report.Info('Session expired','Login again session has been expired!','/google.com');
+  
+    window.location.replace("./swintake")
+ 
+  ;});
 
 </script>
 

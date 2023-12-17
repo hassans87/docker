@@ -68,4 +68,17 @@ class UserController extends Controller
         }
         return back()->withErrors(['username' => 'Invalid Credentials!'])->onlyInput('username');
     }
+
+    public function checkme() {
+        if(Auth::check()) {
+            //user is logged in
+            return true;
+        }return false;
+     }
+     
+
+
+
+
+
 }

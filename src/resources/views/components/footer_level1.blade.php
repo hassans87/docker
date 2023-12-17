@@ -44,14 +44,14 @@
           <div class="input-group input-group-sm">
             <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
     
-            <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-03-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
+            <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-08-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
           </div>
         </div> </li>
         <li class="nav-item">
         <div class="col-auto" style="margin-right:5px;">
           <div class="input-group input-group-sm">
             <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
-            <input type="date" name="end_date" id="end_date" value="2023-03-31" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+            <input type="date" name="end_date" id="end_date" value="2023-08-31" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
           </div>
         </div> </li>
 

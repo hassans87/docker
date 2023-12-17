@@ -816,6 +816,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         max:45,     
                           visible:yAxis1, 
                           tickWidth: 1, 
+                          opposite:true,
                           tickAmount: 11,  
                          gridLineWidth: 0,
                          crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,

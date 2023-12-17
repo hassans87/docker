@@ -363,6 +363,14 @@ const st = {
     cw_dosing_sp: {
         unit: " mg/L",
         name: "CW Lime Dosing Rate",
+        yAxis: 10,
+        arrFlr: 0.5,
+        valFixTo: 1,
+        sum: false,
+    },
+    poly_xsp_101: {
+        unit: " mg/L",
+        name: "Polymer Dosing Rate",
         yAxis: 4,
         arrFlr: 0.5,
         valFixTo: 1,
@@ -370,8 +378,8 @@ const st = {
     },
     cw_alk_inlet: {
         unit: " mg/L",
-        name: "CW Inlet Alkalinity",
-        yAxis: 4,
+        name: "CW outlet Alkalinity",
+        yAxis: 10,
         arrFlr: 0.5,
         valFixTo: 1,
         sum: false,
@@ -483,12 +491,13 @@ var stack0=["silicate_tnk_114","silicate_tnk_124","sludge_tnk131","sludge_tnk231
 var stack1=["silo1_weigh","silo2_weigh"];
 var stack2=["sat1_at_102","sat2_at_202","sat3_at_302"];
 var stack3 = ["sat1_at_113","sat2_at_213","sat3_at_313"]; 
-var stack4=["cw_dosing_sp","cw_alk_inlet"];
+var stack4=["poly_xsp_101"];
 var stack5=["sat1_ft_101","sat2_ft_201","sat3_ft_301","blending_fic100","limewater_cw"];
 var stack6=["cw_ft613_tot_daily",];
 var stack7=["cw_dos_sp_line1","cw_dos_sp_line2"]; 
 var stack8=["cw_lsi_901"]; 
 var stack9=["cw_motive_flow"]; 
+var stack10=["cw_dosing_sp","cw_alk_inlet"]; 
 var yAxis0=(plotParam.yAxis || s1Param.isY && (stack0.includes(s1Param.ufData))||s2Param.isY && (stack0.includes(s2Param.ufData))||s3Param.isY && (stack0.includes(s3Param.ufData))||s4Param.isY && (stack0.includes(s4Param.ufData))||s5Param.isY && (stack0.includes(s5Param.ufData))||s6Param.isY && (stack0.includes(s6Param.ufData))||s7Param.isY && (stack0.includes(s7Param.ufData)))? true: false;
 var yAxis1=(s1Param.isY && (stack1.includes(s1Param.ufData))||s2Param.isY && (stack1.includes(s2Param.ufData))||s3Param.isY && (stack1.includes(s3Param.ufData))||s4Param.isY && (stack1.includes(s4Param.ufData))||s5Param.isY && (stack1.includes(s5Param.ufData))||s6Param.isY && (stack1.includes(s6Param.ufData))||s7Param.isY && (stack1.includes(s7Param.ufData)))? true: false;
 var yAxis2=(s1Param.isY && (stack2.includes(s1Param.ufData))||s2Param.isY && (stack2.includes(s2Param.ufData))||s3Param.isY && (stack2.includes(s3Param.ufData))||s4Param.isY && (stack2.includes(s4Param.ufData))||s5Param.isY && (stack2.includes(s5Param.ufData))||s6Param.isY && (stack2.includes(s6Param.ufData))||s7Param.isY && (stack2.includes(s7Param.ufData)))? true: false; 
@@ -498,7 +507,9 @@ var yAxis5=(s1Param.isY && (stack5.includes(s1Param.ufData))||s2Param.isY && (st
 var yAxis6=(s1Param.isY && (stack6.includes(s1Param.ufData))||s2Param.isY && (stack6.includes(s2Param.ufData))||s3Param.isY && (stack6.includes(s3Param.ufData))||s4Param.isY && (stack6.includes(s4Param.ufData))||s5Param.isY && (stack6.includes(s5Param.ufData))||s6Param.isY && (stack6.includes(s6Param.ufData))||s7Param.isY && (stack6.includes(s7Param.ufData)))? true: false; 
 var yAxis7=(s1Param.isY && (stack7.includes(s1Param.ufData))||s2Param.isY && (stack7.includes(s2Param.ufData))||s3Param.isY && (stack7.includes(s3Param.ufData))||s4Param.isY && (stack7.includes(s4Param.ufData))||s5Param.isY && (stack7.includes(s5Param.ufData))||s6Param.isY && (stack7.includes(s6Param.ufData))||s7Param.isY && (stack7.includes(s7Param.ufData)))? true: false; 
 var yAxis8=(s1Param.isY && (stack8.includes(s1Param.ufData))||s2Param.isY && (stack8.includes(s2Param.ufData))||s3Param.isY && (stack8.includes(s3Param.ufData))||s4Param.isY && (stack8.includes(s4Param.ufData))||s5Param.isY && (stack8.includes(s5Param.ufData))||s6Param.isY && (stack8.includes(s6Param.ufData))||s7Param.isY && (stack8.includes(s7Param.ufData)))? true: false; 
-var yAxis9=(s1Param.isY && (stack9.includes(s1Param.ufData))||s2Param.isY && (stack9.includes(s2Param.ufData))||s3Param.isY && (stack9.includes(s3Param.ufData))||s4Param.isY && (stack9.includes(s4Param.ufData))||s5Param.isY && (stack9.includes(s5Param.ufData))||s6Param.isY && (stack9.includes(s6Param.ufData))||s7Param.isY && (stack9.includes(s7Param.ufData)))? true: false; 
+var yAxis9=(s1Param.isY && (stack9.includes(s1Param.ufData))||s2Param.isY && (stack9.includes(s2Param.ufData))||s3Param.isY && (stack9.includes(s3Param.ufData))||s4Param.isY && (stack9.includes(s4Param.ufData))||s5Param.isY && (stack9.includes(s5Param.ufData))||s6Param.isY && (stack9.includes(s6Param.ufData))||s7Param.isY && (stack9.includes(s7Param.ufData)))? true: false;
+var yAxis10=(s1Param.isY && (stack10.includes(s1Param.ufData))||s2Param.isY && (stack10.includes(s2Param.ufData))||s3Param.isY && (stack10.includes(s3Param.ufData))||s4Param.isY && (stack10.includes(s4Param.ufData))||s5Param.isY && (stack10.includes(s5Param.ufData))||s6Param.isY && (stack10.includes(s6Param.ufData))||s7Param.isY && (stack10.includes(s7Param.ufData)))? true: false; 
+
 
 
 let confYaxis  = {
@@ -1054,8 +1065,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                 },
                
             { //[4] mg/L dosing
-                    min:5, 
-                    max:70,                
+                    min:0, 
+                    max:0.9,                
                       visible:yAxis4, 
                       tickWidth: 1, 
                       tickAmount: 11,                 
@@ -1249,7 +1260,38 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                              },
                                              //labels: false,
                                              //opposite: true
-                                         }
+                                         },
+                                         { //[10]  Alk vs Dosing rate mg/L dosing
+                                            min:10, 
+                                            max:80,                
+                                              visible:yAxis10, 
+                                              tickWidth: 1, 
+                                              tickAmount: 11,                 
+                                             gridLineWidth: 0,
+                                             opposite:true,
+                                             crosshair: {color:'#ffffff',dashStyle: 'Dot',width:1.5,
+                                                        label: {enabled: true, backgroundColor: '#ffffff'}},  
+                                              labels: {
+                                                    enabled: true, 
+                                                    format: '{value}',                       
+                                                    style: { color:'#1e272e',
+                                                    fontWeight:'bold',}
+                                                },
+                                                title: {
+                                                    useHTML: true,
+                                                    align: 'high',
+                                                    offset: 15,
+                                                    rotation: 0,
+                                                    y: -10,
+                                                    text: 'mg/L',
+                                                    style: {
+                                                        color:'#1e272e',
+                                                        fontWeight:'bold',
+                                                    }
+                                                },
+                                                //labels: false,
+                                                //opposite: true
+                                            }
                         ],   
                         series: [  
                     
