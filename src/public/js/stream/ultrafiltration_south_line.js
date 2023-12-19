@@ -396,7 +396,7 @@ avg_permeability:{
 },
 avg_flux:{
         unit:" lmh",
-        name:"Flux",
+        name:"Avg. Flux",
         yAxis:5,
         minOffset:10,
         maxOffset:80,
@@ -405,7 +405,7 @@ avg_flux:{
 },
 avg_tmp:{
         unit:" Bar",
-        name:"TMP",
+        name:"Avg. TMP",
         yAxis:2,
         minOffset:-4,
         maxOffset:4,

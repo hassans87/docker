@@ -60,7 +60,7 @@
         <tbody> 
   <tr class="tr1 table-light">      
                   <td>       <div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="series-chk filter" id="line1" checked="">
+                  <div class="col-auto"><input type="checkbox" class="series-chk filter" id="line1" >
                    &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#dc0462" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha1">
@@ -193,7 +193,7 @@
   </tr>
   <tr class="tr2 table-light">      
                   <td><div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2" checked=""> 
+                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2" > 
                     &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#09aa9f" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha2">
@@ -328,7 +328,7 @@
   </tr>
   <tr class="tr3 table-light">      
                   <td><div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line3" checked=""> 
+                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line3" > 
                     &nbsp;3 &nbsp;<input type="color" id="pen3" name="pen3" value="#d707f2" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha3">
@@ -595,11 +595,11 @@
   </tr>
   <tr class="tr5 table-secondary">      
                   <td><div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line5"> 
+                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line5" checked=""> 
                     &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="#283de2" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha5" disabled="" style="display: none;">
-                  <option value="31" selected="">31</option>  
+                  <option value="" selected="">31</option>  
                   </select>
                   </div>  
                   <div class="col-auto"> 
@@ -609,7 +609,7 @@
                                     <option value="uv_254">UV-254</option>           
                                     <option value="n_skids">Number of Skids</option> 
                                     <option value="online_skids_flow">Total Flow</option>
-                                    <option value="avg_permeability">Average Permeability</option> 
+                                    <option value="avg_permeability" selected="">Average Permeability</option> 
                                     <option value="avg_flux">Average Flux</option>
                                     <option value="avg_tmp">Average TMP</option>           
                                       
@@ -720,11 +720,11 @@
   
   <tr class="tr6 table-secondary">      
                   <td><div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line6"> 
+                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line6" checked=""> 
                     &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#2ce614" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha6" disabled="" style="display: none;">
-                  <option value="31" selected="">31</option>  
+                  <option value="" selected="">31</option>  
                   </select>
                   </div>  
                   <div class="col-auto"> 
@@ -843,11 +843,11 @@
   
   <tr class="tr7 table-secondary">      
                   <td><div class="input-group">
-                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line7"> 
+                  <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line7" checked=""> 
                     &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#d41c53" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha7" disabled="" style="display: none;">
-                  <option value="31" selected="">31</option>
+                  <option value="" selected="">31</option>
                   </select>
                   </div>  
                   <div class="col-auto"> 
@@ -1039,7 +1039,7 @@
   <div class="row mb-2">
       <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-         <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
+         <input type="color" id="pen_export" name="chart_background_export" value="#F2F2F2" class="chart_render series-color">
       </div>
   </div>
   <div class="row mb-2">

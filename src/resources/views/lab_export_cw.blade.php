@@ -916,7 +916,7 @@
   <div class="row mb-2">
       <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-         <input type="color" id="pen_export" name="chart_background_export" value="#ffffff" class="chart_render series-color">
+         <input type="color" id="pen_export" name="chart_background_export" value="#F2F2F2" class="chart_render series-color">
       </div>
   </div>
   <div class="row mb-2">
