@@ -171,7 +171,7 @@
           <button class="btn btn-light menu"> 📀&nbsp;Post Cl2</button></a>
       </td>
       <td class="menu" >
-        <button class="btn btn-light menu" id="checkme"> 📀&nbsp;Login Check</button> </td>
+        </td>
       <td> </td>
       <td> </td>
      </tr>
