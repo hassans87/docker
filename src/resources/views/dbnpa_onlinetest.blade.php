@@ -51,7 +51,7 @@
                   <div class="col-auto"> 
   <select class="query form-control form-control-sm form-select" id="ufdata1">
     <option value="x" disabled class="pheading">RO Feed Chemicals Dosing   &nbsp;</option>
-    <option value="north_dbnpa_flow" selected>DBNPA North Line Flow &nbsp;</option>
+    <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
     <option value="south_dbnpa_flow">DBNPA South Line Flow   &nbsp;</option>
     <option value="north_dbnpa_rate" >DBNPA North Line Dosing rate &nbsp;</option>
     <option value="south_dbnpa_rate">DBNPA South Line Dosing rate &nbsp;</option>
@@ -60,7 +60,7 @@
     <option value="north_sbs_rate" >SBS North Line Dosing rate &nbsp;</option>
     <option value="south_sbs_rate">SBS South Line Dosing rate &nbsp;</option>
     <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
-    <option value="a_dpi">41A DPI-906   &nbsp;</option>
+    <option value="a_dpi" selected>41A DPI-906   &nbsp;</option>
     <option value="b_dpi">41B DPI-906   &nbsp;</option>
     <option value="c_dpi">41C DPI-906   &nbsp;</option>
     <option value="d_dpi">41D DPI-906   &nbsp;</option>
@@ -123,7 +123,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modelheader1" style="background-color: rgb(217, 150, 8);">
-          <h5 class="modal-title" id="seriestitle1">Series 1: Filtrated Water Turbidity   &nbsp;</h5>
+          <h5 class="modal-title" id="seriestitle1">&nbsp;</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -133,8 +133,8 @@
       <label for="chart_type1" class="chart_render col-sm-4 col-form-label">Chart Type</label>
       <div class="col-sm-4">
         <select class="chart_render form-control form-select" id="chart_type1">
-            <option value="spline">Line</option>
-            <option value="areaspline" selected="">Area </option>          
+            <option value="spline" selected="">Line</option>
+            <option value="areaspline" >Area </option>          
             <option value="column">Column </option> 
             <option value="scatter" >Scatter </option>          
           </select>  
@@ -144,13 +144,13 @@
     <div class="row mb-2">
       <label for="line_width1" class="col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width1" class="chart_render rednder form-control" value="0.5" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width1" class="chart_render rednder form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker1" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker1" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker1" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -200,12 +200,12 @@
   <tr class="tr2 table-light">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2" checked=""> 
-                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#302df0" class="chart_render series-color"> &nbsp; </div>
+                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#0652DD" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata2">
                     <option value="x" disabled class="pheading">RO Feed Chemicals Dosing   &nbsp;</option>
     <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
-    <option value="south_dbnpa_flow" selected>DBNPA South Line Flow   &nbsp;</option>
+    <option value="south_dbnpa_flow" >DBNPA South Line Flow   &nbsp;</option>
     <option value="north_dbnpa_rate" >DBNPA North Line Dosing rate &nbsp;</option>
     <option value="south_dbnpa_rate">DBNPA South Line Dosing rate &nbsp;</option>
     <option value="north_sbs_flow" >SBS North Line Flow &nbsp;</option>
@@ -214,7 +214,7 @@
     <option value="south_sbs_rate">SBS South Line Dosing rate &nbsp;</option>
     <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
     <option value="a_dpi">41A DPI-906   &nbsp;</option>
-    <option value="b_dpi">41B DPI-906   &nbsp;</option>
+    <option value="b_dpi" selected="">41B DPI-906   &nbsp;</option>
     <option value="c_dpi">41C DPI-906   &nbsp;</option>
     <option value="d_dpi">41D DPI-906   &nbsp;</option>
     <option value="e_dpi">41E DPI-906   &nbsp;</option>
@@ -284,10 +284,10 @@
       <label for="chart_type2" class="col-sm-4 col-form-label">Chart Type</label>
       <div class="col-sm-4">
         <select class="chart_render form-control form-select" id="chart_type2">
-            <option value="spline">Line</option>
+            <option value="spline" selected="">Line</option>
             <option value="areaspline">Area </option>          
             <option value="column">Column </option> 
-            <option value="scatter" selected="">Scatter </option>        
+            <option value="scatter">Scatter </option>        
           </select>  
       </div>
     </div>
@@ -295,13 +295,13 @@
     <div class="row mb-2">
       <label for="line_width1" class="col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width2" class="chart_render form-control" value="1.8" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width2" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker1" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker2" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker2" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -364,8 +364,8 @@
                     <option value="south_sbs_rate">SBS South Line Dosing rate &nbsp;</option>
                     <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
                     <option value="a_dpi">41A DPI-906   &nbsp;</option>
-                    <option value="b_dpi" selected>41B DPI-906   &nbsp;</option>
-                    <option value="c_dpi">41C DPI-906   &nbsp;</option>
+                    <option value="b_dpi">41B DPI-906   &nbsp;</option>
+                    <option value="c_dpi" selected="">41C DPI-906   &nbsp;</option>
                     <option value="d_dpi">41D DPI-906   &nbsp;</option>
                     <option value="e_dpi">41E DPI-906   &nbsp;</option>
                     <option value="f_dpi">41F DPI-906   &nbsp;</option>
@@ -447,13 +447,13 @@
     <div class="row mb-2">
       <label for="line_width3" class="chart_render col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width3" class="rednder form-control" value="1.2" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width3" class="rednder form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker3" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker3" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker3" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -516,8 +516,8 @@
                     <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
                     <option value="a_dpi">41A DPI-906   &nbsp;</option>
                     <option value="b_dpi" >41B DPI-906   &nbsp;</option>
-                    <option value="c_dpi" selected>41C DPI-906   &nbsp;</option>
-                    <option value="d_dpi">41D DPI-906   &nbsp;</option>
+                    <option value="c_dpi" >41C DPI-906   &nbsp;</option>
+                    <option value="d_dpi" selected="">41D DPI-906   &nbsp;</option>
                     <option value="e_dpi">41E DPI-906   &nbsp;</option>
                     <option value="f_dpi">41F DPI-906   &nbsp;</option>
                     <option value="g_dpi">41G DPI-906   &nbsp;</option>
@@ -596,13 +596,13 @@
     <div class="row mb-2">
       <label for="line_width4" class="col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width4" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width4" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker4" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker4" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker4" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -668,7 +668,7 @@
                     <option value="b_dpi" >41B DPI-906   &nbsp;</option>
                     <option value="c_dpi">41C DPI-906   &nbsp;</option>
                     <option value="d_dpi">41D DPI-906   &nbsp;</option>
-                    <option value="e_dpi" selected>41E DPI-906   &nbsp;</option>
+                    <option value="e_dpi" selected="">41E DPI-906   &nbsp;</option>
                     <option value="f_dpi">41F DPI-906   &nbsp;</option>
                     <option value="g_dpi">41G DPI-906   &nbsp;</option>
                     <option value="h_dpi">41H DPI-906   &nbsp;</option>
@@ -746,13 +746,13 @@
     <div class="row mb-2">
       <label for="line_width5" class="col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width5" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width5" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker5" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker5" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker5" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -806,7 +806,7 @@
   <tr class="tr6 table-secondary">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line6" checked=""> 
-                    &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#e27d08" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
+                    &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#12CBC4" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata6" style="display: none;">
                     <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
@@ -823,8 +823,8 @@
                     <option value="c_dpi">41C DPI-906   &nbsp;</option>
                     <option value="d_dpi">41D DPI-906   &nbsp;</option>
                     <option value="e_dpi" >41E DPI-906   &nbsp;</option>
-                    <option value="f_dpi">41F DPI-906   &nbsp;</option>
-                    <option value="g_dpi" selected>41G DPI-906   &nbsp;</option>
+                    <option value="f_dpi" selected="">41F DPI-906   &nbsp;</option>
+                    <option value="g_dpi" >41G DPI-906   &nbsp;</option>
                     <option value="h_dpi">41H DPI-906   &nbsp;</option>
                     <option value="i_dpi">41I DPI-906   &nbsp;</option>
                     <option value="j_dpi">41J DPI-906   &nbsp;</option>
@@ -899,13 +899,13 @@
     <div class="row mb-2">
       <label for="line_width6" class="col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width6" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width6" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker6" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker6" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker6" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -956,7 +956,7 @@
   <tr class="tr7 table-secondary">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line7" checked=""> 
-                    &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#0717ed" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
+                    &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#009432" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select" id="ufdata7" style="display: none;">
                     <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
@@ -974,9 +974,9 @@
                     <option value="d_dpi">41D DPI-906   &nbsp;</option>
                     <option value="e_dpi" >41E DPI-906   &nbsp;</option>
                     <option value="f_dpi">41F DPI-906   &nbsp;</option>
-                    <option value="g_dpi" >41G DPI-906   &nbsp;</option>
-                    <option value="h_dpi">41H DPI-906   &nbsp;</option>
-                    <option value="i_dpi" selected>41I DPI-906   &nbsp;</option>
+                    <option value="g_dpi" selected="">41G DPI-906   &nbsp;</option>
+                    <option value="h_dpi" >41H DPI-906   &nbsp;</option>
+                    <option value="i_dpi" >41I DPI-906   &nbsp;</option>
                     <option value="j_dpi">41J DPI-906   &nbsp;</option>
                     <option value="k_dpi">41K DPI-906   &nbsp;</option>
                     <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
@@ -1048,13 +1048,13 @@
     <div class="row mb-2">
       <label for="line_width7" class="col-sm-4 col-form-label">Line Width</label>
       <div class="col-sm-4">
-      <input type="number" id="line_width7" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+      <input type="number" id="line_width7" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
       </div>
     </div>
      <div class="row mb-2">
       <label for="marker7" class="col-sm-4 col-form-label">Marker Weight</label>
       <div class="col-sm-4">
-      <input type="number" id="marker7" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+      <input type="number" id="marker7" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
       </div>
     </div>
      <div class="row mb-2">
@@ -1123,9 +1123,9 @@
       <option value="e_dpi" >41E DPI-906   &nbsp;</option>
       <option value="f_dpi">41F DPI-906   &nbsp;</option>
       <option value="g_dpi" >41G DPI-906   &nbsp;</option>
-      <option value="h_dpi">41H DPI-906   &nbsp;</option>
+      <option value="h_dpi" selected="">41H DPI-906   &nbsp;</option>
       <option value="i_dpi" >41I DPI-906   &nbsp;</option>
-      <option value="j_dpi" selected>41J DPI-906   &nbsp;</option>
+      <option value="j_dpi" >41J DPI-906   &nbsp;</option>
       <option value="k_dpi">41K DPI-906   &nbsp;</option>
       <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
       <option value="a_saltrejection">41A Salt Rejection &nbsp;</option>
@@ -1196,13 +1196,13 @@
 <div class="row mb-2">
 <label for="line_width8" class="col-sm-4 col-form-label">Line Width</label>
 <div class="col-sm-4">
-<input type="number" id="line_width8" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+<input type="number" id="line_width8" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
 </div>
 </div>
 <div class="row mb-2">
 <label for="marker8" class="col-sm-4 col-form-label">Marker Weight</label>
 <div class="col-sm-4">
-<input type="number" id="marker8" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+<input type="number" id="marker8" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
 </div>
 </div>
 <div class="row mb-2">
@@ -1251,7 +1251,7 @@
   </tr>
   <tr class="tr9 table-secondary">      
     <td><div class="input-group">
-    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line9"> 
+    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line9" checked> 
       &nbsp;9 &nbsp;<input type="color" id="pen9" name="pen9" value="#e84393" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
     <div class="col-auto"> 
     <select class="query form-control form-control-sm form-select" id="ufdata9" style="display: none;">
@@ -1272,12 +1272,12 @@
       <option value="f_dpi">41F DPI-906   &nbsp;</option>
       <option value="g_dpi" >41G DPI-906   &nbsp;</option>
       <option value="h_dpi">41H DPI-906   &nbsp;</option>
-      <option value="i_dpi" >41I DPI-906   &nbsp;</option>
+      <option value="i_dpi" selected="">41I DPI-906   &nbsp;</option>
       <option value="j_dpi">41J DPI-906   &nbsp;</option>
       <option value="k_dpi">41K DPI-906   &nbsp;</option>
       <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
       <option value="a_saltrejection">41A Salt Rejection &nbsp;</option>
-      <option value="b_saltrejection" selected>41B Salt Rejection &nbsp;</option>
+      <option value="b_saltrejection" >41B Salt Rejection &nbsp;</option>
       <option value="c_saltrejection">41C Salt Rejection &nbsp;</option>
       <option value="d_saltrejection">41D Salt Rejection &nbsp;</option>
       <option value="e_saltrejection">41E Salt Rejection &nbsp;</option>
@@ -1344,13 +1344,13 @@
 <div class="row mb-2">
 <label for="line_width9" class="col-sm-4 col-form-label">Line Width</label>
 <div class="col-sm-4">
-<input type="number" id="line_width9" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+<input type="number" id="line_width9" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
 </div>
 </div>
 <div class="row mb-2">
 <label for="marker9" class="col-sm-4 col-form-label">Marker Weight</label>
 <div class="col-sm-4">
-<input type="number" id="marker9" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+<input type="number" id="marker9" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
 </div>
 </div>
 <div class="row mb-2">
@@ -1399,8 +1399,8 @@
   </tr>
   <tr class="tr10 table-secondary">      
     <td><div class="input-group">
-    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line10"> 
-      &nbsp;10<input type="color" id="pen10" name="pen10" value="#00b894" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
+    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line10" checked> 
+      &nbsp;10<input type="color" id="pen10" name="pen10" value="#C4E538" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
     <div class="col-auto"> 
     <select class="query form-control form-control-sm form-select" id="ufdata10" style="display: none;">
       <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
@@ -1421,12 +1421,12 @@
       <option value="g_dpi" >41G DPI-906   &nbsp;</option>
       <option value="h_dpi">41H DPI-906   &nbsp;</option>
       <option value="i_dpi" >41I DPI-906   &nbsp;</option>
-      <option value="j_dpi">41J DPI-906   &nbsp;</option>
+      <option value="j_dpi" selected="">41J DPI-906   &nbsp;</option>
       <option value="k_dpi">41K DPI-906   &nbsp;</option>
       <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
       <option value="a_saltrejection">41A Salt Rejection &nbsp;</option>
       <option value="b_saltrejection">41B Salt Rejection &nbsp;</option>
-      <option value="c_saltrejection" selected>41C Salt Rejection &nbsp;</option>
+      <option value="c_saltrejection" >41C Salt Rejection &nbsp;</option>
       <option value="d_saltrejection">41D Salt Rejection &nbsp;</option>
       <option value="e_saltrejection">41E Salt Rejection &nbsp;</option>
       <option value="f_saltrejection">41F Salt Rejection &nbsp;</option>
@@ -1492,13 +1492,13 @@
 <div class="row mb-2">
 <label for="line_width10" class="col-sm-4 col-form-label">Line Width</label>
 <div class="col-sm-4">
-<input type="number" id="line_width10" class="chart_render form-control" value="1.5" min="0" max="4" step="0.1">  
+<input type="number" id="line_width10" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
 </div>
 </div>
 <div class="row mb-2">
 <label for="marker10" class="col-sm-4 col-form-label">Marker Weight</label>
 <div class="col-sm-4">
-<input type="number" id="marker10" class="chart_render form-control" value="2.5" min="0" step="0.1" max="4"> 
+<input type="number" id="marker10" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
 </div>
 </div>
 <div class="row mb-2">
@@ -1545,6 +1545,459 @@
                   <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit10"> </span> </td>
         
   </tr>
+
+  <tr class="tr11 table-secondary">      
+    <td><div class="input-group">
+    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line11" checked> 
+      &nbsp;11<input type="color" id="pen11" name="pen11" value="#2c3e50" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
+    <div class="col-auto"> 
+    <select class="query form-control form-control-sm form-select" id="ufdata11" style="display: none;">
+      <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
+      <option value="south_dbnpa_flow" >DBNPA South Line Flow   &nbsp;</option>
+      <option value="north_dbnpa_rate" >DBNPA North Line Dosing rate &nbsp;</option>
+      <option value="south_dbnpa_rate">DBNPA South Line Dosing rate &nbsp;</option>
+      <option value="north_sbs_flow" >SBS North Line Flow &nbsp;</option>
+      <option value="south_sbs_flow">SBS South Line Flow   &nbsp;</option>
+      <option value="north_sbs_rate" >SBS North Line Dosing rate &nbsp;</option>
+      <option value="south_sbs_rate">SBS South Line Dosing rate &nbsp;</option>
+      <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
+      <option value="a_dpi">41A DPI-906   &nbsp;</option>
+      <option value="b_dpi" >41B DPI-906   &nbsp;</option>
+      <option value="c_dpi">41C DPI-906   &nbsp;</option>
+      <option value="d_dpi">41D DPI-906   &nbsp;</option>
+      <option value="e_dpi" >41E DPI-906   &nbsp;</option>
+      <option value="f_dpi">41F DPI-906   &nbsp;</option>
+      <option value="g_dpi" >41G DPI-906   &nbsp;</option>
+      <option value="h_dpi">41H DPI-906   &nbsp;</option>
+      <option value="i_dpi" >41I DPI-906   &nbsp;</option>
+      <option value="j_dpi" >41J DPI-906   &nbsp;</option>
+      <option value="k_dpi" selected="">41K DPI-906   &nbsp;</option>
+      <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
+      <option value="a_saltrejection">41A Salt Rejection &nbsp;</option>
+      <option value="b_saltrejection">41B Salt Rejection &nbsp;</option>
+      <option value="c_saltrejection" >41C Salt Rejection &nbsp;</option>
+      <option value="d_saltrejection">41D Salt Rejection &nbsp;</option>
+      <option value="e_saltrejection">41E Salt Rejection &nbsp;</option>
+      <option value="f_saltrejection">41F Salt Rejection &nbsp;</option>
+      <option value="g_saltrejection">41G Salt Rejection &nbsp;</option>
+      <option value="h_saltrejection">41H Salt Rejection &nbsp;</option>
+      <option value="i_saltrejection">41I Salt Rejection &nbsp;</option>
+      <option value="j_saltrejection">41J Salt Rejection &nbsp;</option>
+      <option value="k_saltrejection">41K Salt Rejection &nbsp;</option>
+      <option value="x" class="pheading" disabled>RO Skids Rear EC  &nbsp;</option>
+      <option value="a_rear_ec">41A Rear EC &nbsp;</option>
+      <option value="b_rear_ec">41B Rear EC &nbsp;</option>
+      <option value="c_rear_ec">41C Rear EC &nbsp;</option>
+      <option value="d_rear_ec">41D Rear EC &nbsp;</option>
+      <option value="e_rear_ec">41E Rear EC &nbsp;</option>
+      <option value="f_rear_ec">41F Rear EC &nbsp;</option>
+      <option value="g_rear_ec">41G Rear EC &nbsp;</option>
+      <option value="h_rear_ec">41H Rear EC &nbsp;</option>
+      <option value="i_rear_ec">41I Rear EC &nbsp;</option>
+      <option value="j_rear_ec">41J Rear EC &nbsp;</option>
+      <option value="k_rear_ec">41K Rear EC &nbsp;</option>
+      <option value="x" class="pheading" disabled>RO Feed &nbsp;</option>
+      <option value="north_rofeed"> RO North Line Flow &nbsp;</option>
+      <option value="south_rofeed">RO South Line Flow &nbsp;</option>
+      <option value="north_orp206">North Line ORP-206 &nbsp;</option>
+      <option value="north_orp_202">North Line ORP-202 &nbsp;</option>
+      <option value="south_orp206">South Line ORP-206 &nbsp;</option>
+      <option value="south_orp202">South Line ORP-202 &nbsp;</option>
+      <option value="north_temp">North Line Temp. &nbsp;</option>
+      <option value="south_temp">South Line Temp.&nbsp;</option>
+      <option value="north_ec">North Line EC &nbsp;</option>
+      <option value="south_ec">South Line EC &nbsp;</option>
+      <option value="plant_capacity">Plant Capacity Factor &nbsp;</option>
+    </select>
+    </div> </div>
+   </td><td style="text-align: center;">
+         
+                              <!-- Button trigger modal series 11-->
+                        <span id="panel11" style="display: none;">
+                        <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series11">
+                        <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+<!-- Modal series 11-->
+<div class="modal fade" id="modal-series11" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header modelheader11" style="background-color: rgb(7, 23, 237);">
+<h5 class="modal-title" id="seriestitle10">  &nbsp;</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+<div class="row mb-2">
+<label for="chart_type11" class="col-sm-4 col-form-label">Chart Type</label>
+<div class="col-sm-4">
+<select class="chart_render form-control form-select" id="chart_type11">
+<option value="spline" selected="">Line</option>
+<option value="areaspline">Area </option>          
+<option value="column">Column </option> 
+<option value="scatter">Scatter </option>        
+</select>  
+</div>
+</div>
+
+<div class="row mb-2">
+<label for="line_width11" class="col-sm-4 col-form-label">Line Width</label>
+<div class="col-sm-4">
+<input type="number" id="line_width11" class="chart_render form-control" value="2.0" min="0" max="4" step="0.1">  
+</div>
+</div>
+<div class="row mb-2">
+<label for="marker11" class="col-sm-4 col-form-label">Marker Weight</label>
+<div class="col-sm-4">
+<input type="number" id="marker11" class="chart_render form-control" value="0.5" min="0" step="0.1" max="4"> 
+</div>
+</div>
+<div class="row mb-2">
+<label for="marker_shape11" class="col-sm-4 col-form-label">Marker Shape</label>
+<div class="col-sm-4">
+<select id="marker_shape11" class="chart_render form-control form-select">
+<option value="circle">Circle </option>
+<option value="square">Square </option>
+<option value="triangle" selected="">Trianlge </option>
+<option value="diamond">Diamond </option>
+</select>
+</div>
+</div>
+<div class="row mb-2">
+<div class="input-group">
+
+<input type="checkbox" class="chart_render form-check-input col-auto" id="dt_label11"> 
+<label for="dt_label11" class="form-check-label col-auto">&nbsp; Show Data Labels</label>
+</div>
+</div>
+
+<div class="row mb-2">
+<div class="input-group">
+<input type="checkbox" class="chart_render form-check-input col-auto" id="y_axis11">
+<label for="y_axis11" class="form-check-label col-auto">&nbsp; Show Y-axis</label>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+</div>
+</div>
+</div>
+</div>
+<!-- modal end here  11-->
+  
+                   </div></td>
+                  
+                     
+                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length11" style="display: none;"></span></td>
+                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max11" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min11" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg11" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit11"> </span> </td>
+        
+  </tr>
+
+  <tr class="tr12 table-secondary">      
+    <td><div class="input-group">
+    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line12" checked> 
+      &nbsp;12<input type="color" id="pen12" name="pen12" value="#FFC312" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
+    <div class="col-auto"> 
+    <select class="query form-control form-control-sm form-select" id="ufdata12" style="display: none;">
+      <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
+      <option value="south_dbnpa_flow" >DBNPA South Line Flow   &nbsp;</option>
+      <option value="north_dbnpa_rate" >DBNPA North Line Dosing rate &nbsp;</option>
+      <option value="south_dbnpa_rate">DBNPA South Line Dosing rate &nbsp;</option>
+      <option value="north_sbs_flow" >SBS North Line Flow &nbsp;</option>
+      <option value="south_sbs_flow">SBS South Line Flow   &nbsp;</option>
+      <option value="north_sbs_rate" >SBS North Line Dosing rate &nbsp;</option>
+      <option value="south_sbs_rate">SBS South Line Dosing rate &nbsp;</option>
+      <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
+      <option value="a_dpi">41A DPI-906   &nbsp;</option>
+      <option value="b_dpi" >41B DPI-906   &nbsp;</option>
+      <option value="c_dpi">41C DPI-906   &nbsp;</option>
+      <option value="d_dpi">41D DPI-906   &nbsp;</option>
+      <option value="e_dpi" >41E DPI-906   &nbsp;</option>
+      <option value="f_dpi">41F DPI-906   &nbsp;</option>
+      <option value="g_dpi" >41G DPI-906   &nbsp;</option>
+      <option value="h_dpi">41H DPI-906   &nbsp;</option>
+      <option value="i_dpi" >41I DPI-906   &nbsp;</option>
+      <option value="j_dpi" >41J DPI-906   &nbsp;</option>
+      <option value="k_dpi" >41K DPI-906   &nbsp;</option>
+      <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
+      <option value="a_saltrejection">41A Salt Rejection &nbsp;</option>
+      <option value="b_saltrejection">41B Salt Rejection &nbsp;</option>
+      <option value="c_saltrejection" >41C Salt Rejection &nbsp;</option>
+      <option value="d_saltrejection">41D Salt Rejection &nbsp;</option>
+      <option value="e_saltrejection">41E Salt Rejection &nbsp;</option>
+      <option value="f_saltrejection">41F Salt Rejection &nbsp;</option>
+      <option value="g_saltrejection">41G Salt Rejection &nbsp;</option>
+      <option value="h_saltrejection">41H Salt Rejection &nbsp;</option>
+      <option value="i_saltrejection">41I Salt Rejection &nbsp;</option>
+      <option value="j_saltrejection">41J Salt Rejection &nbsp;</option>
+      <option value="k_saltrejection">41K Salt Rejection &nbsp;</option>
+      <option value="x" class="pheading" disabled>RO Skids Rear EC  &nbsp;</option>
+      <option value="a_rear_ec">41A Rear EC &nbsp;</option>
+      <option value="b_rear_ec">41B Rear EC &nbsp;</option>
+      <option value="c_rear_ec">41C Rear EC &nbsp;</option>
+      <option value="d_rear_ec">41D Rear EC &nbsp;</option>
+      <option value="e_rear_ec">41E Rear EC &nbsp;</option>
+      <option value="f_rear_ec">41F Rear EC &nbsp;</option>
+      <option value="g_rear_ec">41G Rear EC &nbsp;</option>
+      <option value="h_rear_ec">41H Rear EC &nbsp;</option>
+      <option value="i_rear_ec">41I Rear EC &nbsp;</option>
+      <option value="j_rear_ec">41J Rear EC &nbsp;</option>
+      <option value="k_rear_ec">41K Rear EC &nbsp;</option>
+      <option value="x" class="pheading" disabled>RO Feed &nbsp;</option>
+      <option value="north_rofeed"> RO North Line Flow &nbsp;</option>
+      <option value="south_rofeed">RO South Line Flow &nbsp;</option>
+      <option value="north_orp206">North Line ORP-206 &nbsp;</option>
+      <option value="north_orp_202">North Line ORP-202 &nbsp;</option>
+      <option value="south_orp206">South Line ORP-206 &nbsp;</option>
+      <option value="south_orp202">South Line ORP-202 &nbsp;</option>
+      <option value="north_temp" selected="">North Line Temp. &nbsp;</option>
+      <option value="south_temp">South Line Temp.&nbsp;</option>
+      <option value="north_ec">North Line EC &nbsp;</option>
+      <option value="south_ec">South Line EC &nbsp;</option>
+      <option value="plant_capacity">Plant Capacity Factor &nbsp;</option>
+      <option value="feed_side_dbnpa">DBNPA-Feed &nbsp;</option>
+      
+    </select>
+    </div> </div>
+   </td><td style="text-align: center;">
+         
+                              <!-- Button trigger modal series 12-->
+                        <span id="panel12" style="display: none;">
+                        <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series12">
+                        <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+<!-- Modal series 12-->
+<div class="modal fade" id="modal-series12" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header modelheader12" style="background-color: rgb(7, 23, 237);">
+<h5 class="modal-title" id="seriestitle12">  &nbsp;</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+<div class="row mb-2">
+<label for="chart_type12" class="col-sm-4 col-form-label">Chart Type</label>
+<div class="col-sm-4">
+<select class="chart_render form-control form-select" id="chart_type12">
+<option value="spline" >Line</option>
+<option value="areaspline">Area </option>          
+<option value="column">Column </option> 
+<option value="scatter" selected="">Scatter </option>        
+</select>  
+</div>
+</div>
+
+<div class="row mb-2">
+<label for="line_width12" class="col-sm-4 col-form-label">Line Width</label>
+<div class="col-sm-4">
+<input type="number" id="line_width12" class="chart_render form-control" value="0" min="0" max="4" step="0.1">  
+</div>
+</div>
+<div class="row mb-2">
+<label for="marker12" class="col-sm-4 col-form-label">Marker Weight</label>
+<div class="col-sm-4">
+<input type="number" id="marker12" class="chart_render form-control" value="4" min="0" step="0.1" max="4"> 
+</div>
+</div>
+<div class="row mb-2">
+<label for="marker_shape12" class="col-sm-4 col-form-label">Marker Shape</label>
+<div class="col-sm-4">
+<select id="marker_shape12" class="chart_render form-control form-select">
+<option value="circle">Circle </option>
+<option value="square">Square </option>
+<option value="triangle" >Trianlge </option>
+<option value="diamond" selected="">Diamond </option>
+</select>
+</div>
+</div>
+<div class="row mb-2">
+<div class="input-group">
+
+<input type="checkbox" class="chart_render form-check-input col-auto" id="dt_label12"> 
+<label for="dt_label12" class="form-check-label col-auto">&nbsp; Show Data Labels</label>
+</div>
+</div>
+
+<div class="row mb-2">
+<div class="input-group">
+<input type="checkbox" class="chart_render form-check-input col-auto" id="y_axis12" checked>
+<label for="y_axis12" class="form-check-label col-auto">&nbsp; Show Y-axis</label>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+</div>
+</div>
+</div>
+</div>
+<!-- modal end here  12-->
+  
+                   </div></td>
+                  
+                     
+                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length12" style="display: none;"></span></td>
+                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max12" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min12" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg12" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit12"> </span> </td>
+        
+  </tr>
+
+
+
+  <tr class="tr13 table-secondary">      
+    <td><div class="input-group">
+    <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line13"> 
+      &nbsp;13<input type="color" id="pen13" name="pen13" value="#00b894" class="chart_render series-color" style="display: none;"> &nbsp; </div> 
+    <div class="col-auto"> 
+    <select class="query form-control form-control-sm form-select" id="ufdata13" style="display: none;">
+      <option value="north_dbnpa_flow" >DBNPA North Line Flow &nbsp;</option>
+      <option value="south_dbnpa_flow" >DBNPA South Line Flow   &nbsp;</option>
+      <option value="north_dbnpa_rate" >DBNPA North Line Dosing rate &nbsp;</option>
+      <option value="south_dbnpa_rate">DBNPA South Line Dosing rate &nbsp;</option>
+      <option value="north_sbs_flow" >SBS North Line Flow &nbsp;</option>
+      <option value="south_sbs_flow">SBS South Line Flow   &nbsp;</option>
+      <option value="north_sbs_rate" >SBS North Line Dosing rate &nbsp;</option>
+      <option value="south_sbs_rate">SBS South Line Dosing rate &nbsp;</option>
+      <option value="none" disabled class="pheading">RO skids DPI   &nbsp;</option>
+      <option value="a_dpi">41A DPI-906   &nbsp;</option>
+      <option value="b_dpi" >41B DPI-906   &nbsp;</option>
+      <option value="c_dpi">41C DPI-906   &nbsp;</option>
+      <option value="d_dpi">41D DPI-906   &nbsp;</option>
+      <option value="e_dpi" >41E DPI-906   &nbsp;</option>
+      <option value="f_dpi">41F DPI-906   &nbsp;</option>
+      <option value="g_dpi" >41G DPI-906   &nbsp;</option>
+      <option value="h_dpi">41H DPI-906   &nbsp;</option>
+      <option value="i_dpi" >41I DPI-906   &nbsp;</option>
+      <option value="j_dpi" >41J DPI-906   &nbsp;</option>
+      <option value="k_dpi" >41K DPI-906   &nbsp;</option>
+      <option value="x" class="pheading" disabled>Salt Rejection  &nbsp;</option>
+      <option value="a_saltrejection">41A Salt Rejection &nbsp;</option>
+      <option value="b_saltrejection">41B Salt Rejection &nbsp;</option>
+      <option value="c_saltrejection" >41C Salt Rejection &nbsp;</option>
+      <option value="d_saltrejection">41D Salt Rejection &nbsp;</option>
+      <option value="e_saltrejection">41E Salt Rejection &nbsp;</option>
+      <option value="f_saltrejection">41F Salt Rejection &nbsp;</option>
+      <option value="g_saltrejection">41G Salt Rejection &nbsp;</option>
+      <option value="h_saltrejection">41H Salt Rejection &nbsp;</option>
+      <option value="i_saltrejection">41I Salt Rejection &nbsp;</option>
+      <option value="j_saltrejection">41J Salt Rejection &nbsp;</option>
+      <option value="k_saltrejection">41K Salt Rejection &nbsp;</option>
+      <option value="x" class="pheading" disabled>RO Skids Rear EC  &nbsp;</option>
+      <option value="a_rear_ec">41A Rear EC &nbsp;</option>
+      <option value="b_rear_ec">41B Rear EC &nbsp;</option>
+      <option value="c_rear_ec">41C Rear EC &nbsp;</option>
+      <option value="d_rear_ec">41D Rear EC &nbsp;</option>
+      <option value="e_rear_ec">41E Rear EC &nbsp;</option>
+      <option value="f_rear_ec">41F Rear EC &nbsp;</option>
+      <option value="g_rear_ec">41G Rear EC &nbsp;</option>
+      <option value="h_rear_ec">41H Rear EC &nbsp;</option>
+      <option value="i_rear_ec">41I Rear EC &nbsp;</option>
+      <option value="j_rear_ec">41J Rear EC &nbsp;</option>
+      <option value="k_rear_ec">41K Rear EC &nbsp;</option>
+      <option value="x" class="pheading" disabled>RO Feed &nbsp;</option>
+      <option value="north_rofeed"> RO North Line Flow &nbsp;</option>
+      <option value="south_rofeed">RO South Line Flow &nbsp;</option>
+      <option value="north_orp206">North Line ORP-206 &nbsp;</option>
+      <option value="north_orp_202">North Line ORP-202 &nbsp;</option>
+      <option value="south_orp206">South Line ORP-206 &nbsp;</option>
+      <option value="south_orp202">South Line ORP-202 &nbsp;</option>
+      <option value="north_temp" selected="">North Line Temp. &nbsp;</option>
+      <option value="south_temp">South Line Temp.&nbsp;</option>
+      <option value="north_ec">North Line EC &nbsp;</option>
+      <option value="south_ec">South Line EC &nbsp;</option>
+      <option value="plant_capacity">Plant Capacity Factor &nbsp;</option>
+      <option value="brine_side_dbnpa">DBNPA-Brine &nbsp;</option>
+    </select>
+    </div> </div>
+   </td><td style="text-align: center;">
+         
+                              <!-- Button trigger modal series 12-->
+                        <span id="panel13" style="display: none;">
+                        <span type="" class="badge badge-light3d badge-pill" data-bs-toggle="modal" data-bs-target="#modal-series13">
+                        <i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span> </span>
+<!-- Modal series 13-->
+<div class="modal fade" id="modal-series13" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header modelheader13" style="background-color: rgb(7, 23, 237);">
+<h5 class="modal-title" id="seriestitle13">  &nbsp;</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+<div class="row mb-2">
+<label for="chart_type13" class="col-sm-4 col-form-label">Chart Type</label>
+<div class="col-sm-4">
+<select class="chart_render form-control form-select" id="chart_type13">
+<option value="spline" >Line</option>
+<option value="areaspline">Area </option>          
+<option value="column">Column </option> 
+<option value="scatter" selected="">Scatter </option>        
+</select>  
+</div>
+</div>
+
+<div class="row mb-2">
+<label for="line_width13" class="col-sm-4 col-form-label">Line Width</label>
+<div class="col-sm-4">
+<input type="number" id="line_width13" class="chart_render form-control" value="0" min="0" max="4" step="0.1">  
+</div>
+</div>
+<div class="row mb-2">
+<label for="marker13" class="col-sm-4 col-form-label">Marker Weight</label>
+<div class="col-sm-4">
+<input type="number" id="marker13" class="chart_render form-control" value="4" min="0" step="0.1" max="4"> 
+</div>
+</div>
+<div class="row mb-2">
+<label for="marker_shape13" class="col-sm-4 col-form-label">Marker Shape</label>
+<div class="col-sm-4">
+<select id="marker_shape13" class="chart_render form-control form-select">
+<option value="circle">Circle </option>
+<option value="square" selected="">Square </option>
+<option value="triangle" >Trianlge </option>
+<option value="diamond">Diamond </option>
+</select>
+</div>
+</div>
+<div class="row mb-2">
+<div class="input-group">
+
+<input type="checkbox" class="chart_render form-check-input col-auto" id="dt_label13"> 
+<label for="dt_label13" class="form-check-label col-auto">&nbsp; Show Data Labels</label>
+</div>
+</div>
+
+<div class="row mb-2">
+<div class="input-group">
+<input type="checkbox" class="chart_render form-check-input col-auto" id="y_axis13">
+<label for="y_axis13" class="form-check-label col-auto">&nbsp; Show Y-axis</label>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+</div>
+</div>
+</div>
+</div>
+<!-- modal end here  13-->
+  
+                   </div></td>
+                  
+                     
+                  <td style="text-align: center; background-color: black; color:#3edbf0; "> <span id="data_length13" style="display: none;"></span></td>
+                  <td style="text-align: center; background-color: black; color:#f21170; "> <span id="data_max13" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min13" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg13" style="display: none;"></span> </td>
+                  <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit13"> </span> </td>
+        
+  </tr>
+
       </tbody>
     </table>  	
    
@@ -1614,7 +2067,12 @@
         <input type="color" id="pen_export_title" name="chart_background_title" value="#c61010" class="chart_render series-color">
       </div>
   </div>
-  
+  <div class="row mb-2">
+    <label for="chr_title" class="col-sm-5 col-form-label">Title &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+    <div class="col-sm-4">
+      <input type="text" id="chr_title" name="chr_title" value="EC & DP" class="chart_render series-color">
+    </div>
+</div>
   
   </div>
         <div class="modal-footer">
@@ -1671,14 +2129,14 @@
       <div class="input-group input-group-sm">
         <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
 
-        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-05-29 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
+        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-11-24 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">
     <div class="col-auto" style="margin-right:5px;">
       <div class="input-group input-group-sm">
         <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
-        <input type="datetime-local" name="end_date" id="end_date" value="2023-05-31 06:00" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+        <input type="datetime-local" name="end_date" id="end_date" value="2023-12-31 06:00" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">
@@ -1689,6 +2147,34 @@
       </div>
     </div>
           </li>
+
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:15px;">
+              <div class="input-group input-group-sm">
+                <button id="dpi_query" class="btn btn-danger btn-sm form-check">
+                  <i class="fa fa-sliders" aria-hidden="true" style="color:black;"></i>&nbsp; Skid Dpi</button>
+              </div>
+            </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="col-auto" style="margin-right:15px;">
+                      <div class="input-group input-group-sm">
+                        <button id="ec_query" class="btn btn-primary btn-sm form-check">
+                          <i class="fa fa-sliders" aria-hidden="true" style="color:black;"></i>&nbsp; Skid EC</button>
+                      </div>
+                    </div>
+                          </li>
+
+                          <li class="nav-item">
+                            <div class="col-auto" style="margin-right:15px;">
+                              <div class="input-group input-group-sm">
+                                <button id="salt_rejection_query" class="btn btn-info btn-sm form-check">
+                                  <i class="fa fa-sliders" aria-hidden="true" style="color:black;"></i>&nbsp; Salt Rejection</button>
+                              </div>
+                            </div>
+                                  </li>
+
+
         </ul>
       </div>
     </div>

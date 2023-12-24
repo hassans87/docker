@@ -127,7 +127,7 @@
               <button class="btn btn-light menu"> 📀&nbsp; RO1 Normalization  </button></a>
            </td>
            <td><a   href={{ url('/onlineDBNPA') }}  style="text-decoration: none;" class="menu">
-            <button class="btn btn-light menu"> 🧪&nbsp;DBNPA Dosing Test</button></a> </td>
+            <button class="btn btn-light menu"> 🧪&nbsp;DBNPA Dosing</button></a> </td>
            <td> </td>
            <td> </td>
           </tr>

@@ -14,6 +14,125 @@ $(".query").change(function () {
     Notiflix.Notify.Info("Changes detected, Press Query Button to apply");
 });
 
+//skid DP query selector
+$("#dpi_query").click(function(){skidDpiQuery();});
+$("#ec_query").click(function () {skidECQuery();});
+$("#salt_rejection_query").click(function () {skidSaltRejectionQuery();});
+function skidDpiQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", true );
+$("#line8").prop( "checked", true );
+$("#line9").prop( "checked", true );
+$("#line10").prop( "checked", true );
+$("#line11").prop( "checked", true );
+$("#line12").prop( "checked", true );
+$("#line13").prop( "checked", true );
+$('#ufdata1 option[value=a_dpi]').prop('selected', true);
+$('#ufdata2 option[value=b_dpi]').prop('selected', true);
+$('#ufdata3 option[value=c_dpi]').prop('selected', true);
+$('#ufdata4 option[value=d_dpi]').prop('selected', true);
+$('#ufdata5 option[value=e_dpi]').prop('selected', true);
+$('#ufdata6 option[value=f_dpi]').prop('selected', true);
+$('#ufdata7 option[value=g_dpi]').prop('selected', true);
+$('#ufdata8 option[value=h_dpi]').prop('selected', true);
+$('#ufdata9 option[value=i_dpi]').prop('selected', true);
+$('#ufdata10 option[value=j_dpi]').prop('selected', true);
+$('#ufdata11 option[value=k_dpi]').prop('selected', true);
+$('#ufdata12 option[value=feed_side_dbnpa]').prop('selected', true);
+$('#ufdata13 option[value=brine_side_dbnpa]').prop('selected', true);
+$('#chart_type12 option[value=scatter]').prop('selected', true);
+$('#chart_type13 option[value=scatter]').prop('selected', true); 
+$('#marker12').attr('value', '4.0');
+$('#pen12').attr('value', '#3498db');
+$('#pen13').attr('value', '#27ae60');
+$('#marker13').attr('value', '4.0');
+$('#line_width12').attr('value', '0');
+$('#line_width13').attr('value', '0');
+$('#chr_title').attr('value', 'Skids DP');
+queryStream();
+}
+function skidECQuery(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", true );
+    $("#line6").prop( "checked", true );
+    $("#line7").prop( "checked", true );
+    $("#line8").prop( "checked", true );
+    $("#line9").prop( "checked", true );
+    $("#line10").prop( "checked", true );
+    $("#line11").prop( "checked", true );
+    $("#line12").prop( "checked", true );
+    $("#line13").prop( "checked", false );
+    $('#ufdata1 option[value=a_rear_ec]').prop('selected', true);
+    $('#ufdata2 option[value=b_rear_ec]').prop('selected', true);
+    $('#ufdata3 option[value=c_rear_ec]').prop('selected', true);
+    $('#ufdata4 option[value=d_rear_ec]').prop('selected', true);
+    $('#ufdata5 option[value=e_rear_ec]').prop('selected', true);
+    $('#ufdata6 option[value=f_rear_ec]').prop('selected', true);
+    $('#ufdata7 option[value=g_rear_ec]').prop('selected', true);
+    $('#ufdata8 option[value=h_rear_ec]').prop('selected', true);
+    $('#ufdata9 option[value=i_rear_ec]').prop('selected', true);
+    $('#ufdata10 option[value=j_rear_ec]').prop('selected', true);
+    $('#ufdata11 option[value=k_rear_ec]').prop('selected', true);
+    $('#ufdata12 option[value=north_temp]').prop('selected', true);
+    $('#chart_type12 option[value=spline]').prop('selected', true);
+    $('#chart_type13 option[value=scatter]').prop('selected', true);
+    $('#pen12').attr('value', '#f39c12');
+    $('#marker12').attr('value', '0');
+    $('#marker13').attr('value', '0');
+    $('#line_width12').attr('value', '1.5');
+    $('#line_width13').attr('value', '1');
+    $('#chr_title').attr('value', 'Skids Condcuctivity');
+    queryStream();
+    
+    }
+
+    // salt rejection button 
+    function skidSaltRejectionQuery(){ 
+        $("#line1").prop( "checked", true );
+        $("#line2").prop( "checked", true );
+        $("#line3").prop( "checked", true );
+        $("#line4").prop( "checked", true );
+        $("#line5").prop( "checked", true );
+        $("#line6").prop( "checked", true );
+        $("#line7").prop( "checked", true );
+        $("#line8").prop( "checked", true );
+        $("#line9").prop( "checked", true );
+        $("#line10").prop( "checked", true );
+        $("#line11").prop( "checked", true );
+        $("#line12").prop( "checked", true );
+        $("#line13").prop( "checked", true );
+        $('#ufdata1 option[value=a_saltrejection]').prop('selected', true);
+        $('#ufdata2 option[value=b_saltrejection]').prop('selected', true);
+        $('#ufdata3 option[value=c_saltrejection]').prop('selected', true);
+        $('#ufdata4 option[value=d_saltrejection]').prop('selected', true);
+        $('#ufdata5 option[value=e_saltrejection]').prop('selected', true);
+        $('#ufdata6 option[value=f_saltrejection]').prop('selected', true);
+        $('#ufdata7 option[value=g_saltrejection]').prop('selected', true);
+        $('#ufdata8 option[value=h_saltrejection]').prop('selected', true);
+        $('#ufdata9 option[value=i_saltrejection]').prop('selected', true);
+        $('#ufdata10 option[value=j_saltrejection]').prop('selected', true);
+        $('#ufdata11 option[value=k_saltrejection]').prop('selected', true);
+        $('#ufdata12 option[value=feed_side_dbnpa]').prop('selected', true);
+        $('#ufdata13 option[value=brine_side_dbnpa]').prop('selected', true);
+        $('#chart_type12 option[value=scatter]').prop('selected', true);
+        $('#chart_type13 option[value=scatter]').prop('selected', true); 
+        $('#marker12').attr('value', '4.0');
+        $('#pen12').attr('value', '#3498db');
+        $('#pen13').attr('value', '#27ae60');
+        $('#marker13').attr('value', '4.0');
+        $('#line_width12').attr('value', '0');
+        $('#line_width13').attr('value', '0');
+        $('#chr_title').attr('value', 'Salt Rejection %');
+        queryStream();
+        }
 // constructor function
 function Stream(target) {
     this.series = $("#line" + target).is(":checked");
@@ -93,8 +212,9 @@ function queryStream() {
         dateTo: $("#end_date").val(),
         ufqry: $("#skidx").val(),
         interval: $("#invt").val(),
+        title:$("#chr_title").val(),
     };
-
+    
     let s1Param = new Stream(1);
     let s2Param = new Stream(2);
     let s3Param = new Stream(3);
@@ -105,6 +225,10 @@ function queryStream() {
     let s8Param = new Stream(8);
     let s9Param = new Stream(9);
     let s10Param = new Stream(10);
+    let s11Param = new Stream(11);
+    let s12Param = new Stream(12);
+    let s13Param = new Stream(13);
+    
 
     let d1 = s1Param.series;
     let d2 = s2Param.series;
@@ -116,6 +240,9 @@ function queryStream() {
     let d8 = s8Param.series;
     let d9 = s9Param.series;
     let d10 = s10Param.series;
+    let d11 = s11Param.series;
+    let d12 = s12Param.series;
+    let d13 = s13Param.series;
     let date1 = plotParam.dateFrom;
     let date2 = plotParam.dateTo;
     const csrfToken = document.head.querySelector(
@@ -137,6 +264,9 @@ function queryStream() {
         ufdata8: s8Param.ufData,
         ufdata9: s9Param.ufData,
         ufdata10: s10Param.ufData,
+        ufdata11: s11Param.ufData,
+        ufdata12: s12Param.ufData,
+        ufdata13: s13Param.ufData,
         d1: d1,
         d2: d2,
         d3: d3,
@@ -147,6 +277,9 @@ function queryStream() {
         d8: d8,
         d9: d9,
         d10: d10,
+        d11:d11,
+        d12:d12,
+        d13:d13
     });
     fetch(window.location.href, {
         method: "POST",
@@ -168,6 +301,9 @@ function queryStream() {
                 let dataSeries8 = dataStream[8];
                 let dataSeries9 = dataStream[9];
                 let dataSeries10 = dataStream[10];
+                let dataSeries11 = dataStream[11];
+                let dataSeries12 = dataStream[12];
+                let dataSeries13 = dataStream[13];
                 //date modification
                 let date22 = [];
                 let datex = [];
@@ -210,7 +346,7 @@ function queryStream() {
                 // x-axis interval calculations
                 let tickcal = 0;
                 let date_length = date22.length;
-                let core_factor = date_length / 15;
+                let core_factor = date_length / 18;
                 tickcal = Math.round(core_factor);
                 tickcal = parseInt(tickcal);
 
@@ -224,6 +360,9 @@ function queryStream() {
                 dataSeries8 = dataSeries8.map(parseFloat);
                 dataSeries9 = dataSeries9.map(parseFloat);
                 dataSeries10 = dataSeries10.map(parseFloat);
+                dataSeries11 = dataSeries11.map(parseFloat);
+                dataSeries12 = dataSeries12.map(parseFloat);
+                dataSeries13 = dataSeries13.map(parseFloat);
 
                 function seriesLook(dv, series) {
                     if (dv) {
@@ -373,7 +512,7 @@ function queryStream() {
                     const st = {
                         a_dpi: {
                             unit: " bar",
-                            name: "41A dp",
+                            name: "41A",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -381,7 +520,7 @@ function queryStream() {
                         },
                         b_dpi: {
                             unit: " bar",
-                            name: "41B dp",
+                            name: "41B",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -389,7 +528,7 @@ function queryStream() {
                         },
                         c_dpi: {
                             unit: " bar",
-                            name: "41C dp",
+                            name: "41C",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -397,7 +536,7 @@ function queryStream() {
                         },
                         d_dpi: {
                             unit: " bar",
-                            name: "41D dp",
+                            name: "41D",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -405,7 +544,7 @@ function queryStream() {
                         },
                         e_dpi: {
                             unit: " bar",
-                            name: "41E dp",
+                            name: "41E",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -413,7 +552,7 @@ function queryStream() {
                         },
                         f_dpi: {
                             unit: " bar",
-                            name: "41F dp",
+                            name: "41F",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -421,7 +560,7 @@ function queryStream() {
                         },
                         g_dpi: {
                             unit: " bar",
-                            name: "41G dp",
+                            name: "41G",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -429,7 +568,7 @@ function queryStream() {
                         },
                         h_dpi: {
                             unit: " bar",
-                            name: "41H dp",
+                            name: "41H",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -437,7 +576,7 @@ function queryStream() {
                         },
                         i_dpi: {
                             unit: " bar",
-                            name: "41I dp",
+                            name: "41I",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -445,7 +584,7 @@ function queryStream() {
                         },
                         j_dpi: {
                             unit: " bar",
-                            name: "41J dp",
+                            name: "41J",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -453,7 +592,7 @@ function queryStream() {
                         },
                         k_dpi: {
                             unit: " bar",
-                            name: "41K dp",
+                            name: "41K",
                             yAxis: 2,
                             arrFlr: 0.1,
                             valFixTo: 2,
@@ -526,6 +665,25 @@ function queryStream() {
                             sum: false,
                         },
 
+
+                        brine_side_dbnpa: {
+                            unit: " PPM",
+                            name: "DBNPA-Brine",
+                            yAxis: 1,
+                            arrFlr: 1,
+                            valFixTo: 1,
+                            sum: false,
+                        },
+                        feed_side_dbnpa: {
+                            unit: " PPM",
+                            name: "DBNPA-Feed",
+                            yAxis: 1,
+                            arrFlr: 1,
+                            valFixTo: 1,
+                            sum: false,
+                        },
+
+
                         north_sbs_rate: {
                             unit: " PPM",
                             name: "SBS NL dosing Rate",
@@ -546,7 +704,7 @@ function queryStream() {
 
                         a_saltrejection: {
                             unit: " %",
-                            name: "41A Salt Rejection",
+                            name: "41A",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -554,7 +712,7 @@ function queryStream() {
                         },
                         b_saltrejection: {
                             unit: " %",
-                            name: "41B Salt Rejection",
+                            name: "41B",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -562,7 +720,7 @@ function queryStream() {
                         },
                         c_saltrejection: {
                             unit: " %",
-                            name: "41C Salt Rejection",
+                            name: "41C",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -570,7 +728,7 @@ function queryStream() {
                         },
                         d_saltrejection: {
                             unit: " %",
-                            name: "41D Salt Rejection",
+                            name: "41D",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -578,7 +736,7 @@ function queryStream() {
                         },
                         e_saltrejection: {
                             unit: " %",
-                            name: "41E Salt Rejection",
+                            name: "41E",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -586,7 +744,7 @@ function queryStream() {
                         },
                         f_saltrejection: {
                             unit: " %",
-                            name: "41F Salt Rejection",
+                            name: "41F",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -594,7 +752,7 @@ function queryStream() {
                         },
                         g_saltrejection: {
                             unit: " %",
-                            name: "41G Salt Rejection",
+                            name: "41G",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -602,7 +760,7 @@ function queryStream() {
                         },
                         h_saltrejection: {
                             unit: " %",
-                            name: "41H Salt Rejection",
+                            name: "41H",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -610,7 +768,7 @@ function queryStream() {
                         },
                         i_saltrejection: {
                             unit: " %",
-                            name: "41I Salt Rejection",
+                            name: "41I",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -618,7 +776,7 @@ function queryStream() {
                         },
                         j_saltrejection: {
                             unit: " %",
-                            name: "41J Salt Rejection",
+                            name: "41J",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -626,7 +784,7 @@ function queryStream() {
                         },
                         k_saltrejection: {
                             unit: " %",
-                            name: "41K Salt Rejection",
+                            name: "41K",
                             yAxis: 4,
                             arrFlr: 1,
                             valFixTo: 1,
@@ -634,7 +792,7 @@ function queryStream() {
                         },
                         a_rear_ec: {
                             unit: " uS/cm",
-                            name: "41A EC",
+                            name: "41A",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -643,7 +801,7 @@ function queryStream() {
 
                         b_rear_ec: {
                             unit: " uS/cm",
-                            name: "41B EC",
+                            name: "41B",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -652,7 +810,7 @@ function queryStream() {
 
                         c_rear_ec: {
                             unit: " uS/cm",
-                            name: "41C EC",
+                            name: "41C",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -660,7 +818,7 @@ function queryStream() {
                         },
                         d_rear_ec: {
                             unit: " uS/cm",
-                            name: "41D EC",
+                            name: "41D",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -668,7 +826,7 @@ function queryStream() {
                         },
                         e_rear_ec: {
                             unit: " uS/cm",
-                            name: "41E EC",
+                            name: "41E",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -676,7 +834,7 @@ function queryStream() {
                         },
                         f_rear_ec: {
                             unit: " uS/cm",
-                            name: "41F EC",
+                            name: "41F",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -684,7 +842,7 @@ function queryStream() {
                         },
                         g_rear_ec: {
                             unit: " uS/cm",
-                            name: "41G EC",
+                            name: "41G",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -692,7 +850,7 @@ function queryStream() {
                         },
                         h_rear_ec: {
                             unit: " uS/cm",
-                            name: "41H EC",
+                            name: "41H",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -700,7 +858,7 @@ function queryStream() {
                         },
                         i_rear_ec: {
                             unit: " uS/cm",
-                            name: "41I EC",
+                            name: "41I",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -708,7 +866,7 @@ function queryStream() {
                         },
                         j_rear_ec: {
                             unit: " uS/cm",
-                            name: "41J EC",
+                            name: "41J",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -716,7 +874,7 @@ function queryStream() {
                         },
                         k_rear_ec: {
                             unit: " uS/cm",
-                            name: "41K EC",
+                            name: "41K",
                             yAxis: 6,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -758,7 +916,7 @@ function queryStream() {
 
                         north_temp: {
                             unit: " °C",
-                            name: "Temperature NL",
+                            name: "Feed Water Temp.",
                             yAxis: 10,
                             arrFlr: 1,
                             valFixTo: 2,
@@ -808,7 +966,9 @@ function queryStream() {
                     let s8Param = new ChartParam(8);
                     let s9Param = new ChartParam(9);
                     let s10Param = new ChartParam(10);
-
+                    let s11Param = new ChartParam(11);
+                    let s12Param = new ChartParam(12);
+                    let s13Param = new ChartParam(13);
                     let dataTrain1 = dataSeries1;
                     let dataTrain2 = dataSeries2;
                     let dataTrain3 = dataSeries3;
@@ -819,6 +979,9 @@ function queryStream() {
                     let dataTrain8 = dataSeries8;
                     let dataTrain9 = dataSeries9;
                     let dataTrain10 = dataSeries10;
+                    let dataTrain11 = dataSeries11;
+                    let dataTrain12 = dataSeries12;
+                    let dataTrain13 = dataSeries13;
                     seriesLook(s1Param.series, 1);
                     seriesLook(s2Param.series, 2);
                     seriesLook(s3Param.series, 3);
@@ -829,6 +992,9 @@ function queryStream() {
                     seriesLook(s8Param.series, 8);
                     seriesLook(s9Param.series, 9);
                     seriesLook(s10Param.series, 10);
+                    seriesLook(s11Param.series, 11);
+                    seriesLook(s12Param.series, 12);
+                    seriesLook(s13Param.series, 13);
                     seriesData(
                         dataSeries1,
                         1,
@@ -919,6 +1085,36 @@ function queryStream() {
                         st[s10Param.ufData]["unit"],
                         st[s10Param.ufData]["sum"]
                     );
+
+                    seriesData(
+                        dataSeries11,
+                        11,
+                        s11Param.series,
+                        st[s11Param.ufData]["valFixTo"],
+                        st[s11Param.ufData]["arrFlr"],
+                        st[s11Param.ufData]["unit"],
+                        st[s11Param.ufData]["sum"]
+                    );
+
+                    seriesData(
+                        dataSeries12,
+                        12,
+                        s12Param.series,
+                        st[s12Param.ufData]["valFixTo"],
+                        st[s12Param.ufData]["arrFlr"],
+                        st[s12Param.ufData]["unit"],
+                        st[s12Param.ufData]["sum"]
+                    );
+                    seriesData(
+                        dataSeries13,
+                        13,
+                        s13Param.series,
+                        st[s13Param.ufData]["valFixTo"],
+                        st[s13Param.ufData]["arrFlr"],
+                        st[s13Param.ufData]["unit"],
+                        st[s13Param.ufData]["sum"]
+                    );
+
                     let dataSeries1x = dataTrain1;
                     let dataSeries2x = dataTrain2;
                     let dataSeries3x = dataTrain3;
@@ -929,6 +1125,9 @@ function queryStream() {
                     let dataSeries8x = dataTrain8;
                     let dataSeries9x = dataTrain9;
                     let dataSeries10x = dataTrain10;
+                    let dataSeries11x = dataTrain11;
+                    let dataSeries12x = dataTrain12;
+                    let dataSeries13x = dataTrain13;
 
                     let plotParam = {
                         dateFrom: $("#start_date").val(),
@@ -945,12 +1144,16 @@ function queryStream() {
                         plotExpHeight: $("#export_height").val(),
                         plotExpBackground: $("#pen_export").val(),
                         plotExpTitleColor: $("#pen_export_title").val(),
+                        title:$("#chr_title").val(),
+
                     };
                     var stack0 = ["plant_capacity"];
                     var stack1 = [
                         "north_dbnpa_rate",
                         "south_dbnpa_rate",
                         "north_sbs_rate",
+                        "brine_side_dbnpa",
+                        "feed_side_dbnpa"
                     ];
                     var stack2 = [
                         "a_dpi",
@@ -1023,7 +1226,8 @@ function queryStream() {
                         (s4Param.isY && stack1.includes(s4Param.ufData)) ||
                         (s5Param.isY && stack1.includes(s5Param.ufData)) ||
                         (s6Param.isY && stack1.includes(s6Param.ufData)) ||
-                        (s7Param.isY && stack1.includes(s7Param.ufData))
+                        (s7Param.isY && stack1.includes(s7Param.ufData))||
+                        (s12Param.isY && stack1.includes(s12Param.ufData))
                             ? true
                             : false;
                     var axis_Y2 =
@@ -1073,7 +1277,8 @@ function queryStream() {
                         (s4Param.isY && stack6.includes(s4Param.ufData)) ||
                         (s5Param.isY && stack6.includes(s5Param.ufData)) ||
                         (s6Param.isY && stack6.includes(s6Param.ufData)) ||
-                        (s7Param.isY && stack6.includes(s7Param.ufData))
+                        (s7Param.isY && stack6.includes(s7Param.ufData)) ||
+                        (s12Param.isY && stack6.includes(s12Param.ufData))
                             ? true
                             : false;
                     var axis_Y7 =
@@ -1113,7 +1318,8 @@ function queryStream() {
                         (s4Param.isY && stack10.includes(s4Param.ufData)) ||
                         (s5Param.isY && stack10.includes(s5Param.ufData)) ||
                         (s6Param.isY && stack10.includes(s6Param.ufData)) ||
-                        (s7Param.isY && stack10.includes(s7Param.ufData))
+                        (s7Param.isY && stack10.includes(s7Param.ufData))||
+                        (s12Param.isY && stack10.includes(s12Param.ufData))
                             ? true
                             : false;
                     var axis_Y11 =
@@ -1204,14 +1410,14 @@ function queryStream() {
                             },
                         },
                         title: {
-                            align: "center",
-                            x: 35,
+                            align: "left",
+                            x: 45,
                             y: 30,
-                            text: "DBNPA Dosing Test",
+                            text: plotParam.title,
                             //'+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
                             style: {
                                 color: plotParam.plotExpTitleColor,
-                                font: '17px "Calibri", Verdana, sans-serif',
+                                font: '18px "Calibri", Verdana, sans-serif',
                                 fontWeight: "bold",
                             },
                         },
@@ -1231,7 +1437,7 @@ function queryStream() {
                             buttons: {
                                 contextButton: {
                                     align: "right",
-                                    x: -40,
+                                    x: 0,
                                 },
                             },
                             chartOptions: {
@@ -1254,13 +1460,27 @@ function queryStream() {
                         },
                         legend: {
                             layout: "horizontal",
-                            align: "center",
+                            align: "right",
                             enabled: plotParam.legendShow,
                             verticalAlign: "top",
-                            x: 10,
-                            y: 35,
+                            x: -35,
+                            y: -1,
+                            itemStyle: {
+                                fontSize: "13px",
+                                fontWeight: "normal",
+                                fontFamily: "BLKFort-Book, Arial, Sans-Serif",
+                                color: "#000000",
+                            },
+                            labelFormatter: function () {
+                                return this.name;
+                            },
+                            borderRadius: 5,
+                            borderWidth: 1,
                             floating: true,
-                            borderWidth: 0,
+                            borderWidth: 1,
+                            style: {
+                                fontWeight: "bold",
+                            },
                             backgroundColor: "rgba(255, 255, 255, 0.9)",
                         },
                         tooltip: {
@@ -1431,8 +1651,8 @@ function queryStream() {
                             },
                             {
                                 //  [2] DPI
-                                min: 1,
-                                max: 3,
+                                min: 1.5,
+                                max: 3.4,
                                 tickAmount: 11,
                                 visible: axis_Y2,
                                 tickWidth: 1,
@@ -1604,11 +1824,11 @@ function queryStream() {
                             {
                                 //[6] rear EC
                                 min: 500,
-                                max: 3500,
+                                max: 5500,
                                 tickAmount: 11,
                                 visible: axis_Y6,
                                 tickWidth: 1,
-                                opposite: true,
+                                opposite: false,
                                 // lineColor:pen1,
                                 // lineWidth:2,
                                 // minorTickInterval: 'auto',
@@ -1782,13 +2002,13 @@ function queryStream() {
 
                             {
                                 //[10] Temp C
-                                min: 18,
-                                max: 40,
+                                min: 15,
+                                max: 30,
                                 tickAmount: 11,
                                 visible: axis_Y10,
                                 tickWidth: 1,
                                 gridLineWidth: 0,
-                                opposite: false,
+                                opposite: true,
                                 crosshair: {
                                     color: "#ffffff",
                                     dashStyle: "Dot",
@@ -1976,8 +2196,10 @@ function queryStream() {
                                 },
                                 color: s1Param.pen,
                                 marker: {
+                                    enabled: true,
                                     symbol: s1Param.markerShape,
                                     radius: s1Param.markerWeight,
+
                                     states: { hover: { enabled: false } },
                                 },
                                 dataLabels: {
@@ -2361,7 +2583,137 @@ function queryStream() {
                                     color: s10Param.pen,
                                 },
                                 fillOpacity: 0.17,
-                            }
+                            },
+                                // 11
+                            {
+                                name: st[s11Param.ufData]["name"],
+                                type: s11Param.chartType,
+                                visible: s11Param.series,
+                                showInLegend: s11Param.series,
+                                data: dataSeries11x,
+                                lineWidth:
+                                    s11Param.chartType == "scatter"
+                                        ? 0
+                                        : s11Param.lineWidth,
+                                yAxis: st[s11Param.ufData]["yAxis"],
+                                tooltip: {
+                                    crosshair: [true, true],
+                                    headerFormat: "{point.key}<br>",
+                                    pointFormat:
+                                        '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                    shared: true,
+                                    useHTML: true,
+                                    valueSuffix: st[s11Param.ufData]["unit"],
+                                },
+                                color: s11Param.pen,
+                                marker: {
+                                    symbol: s11Param.markerShape,
+                                    radius: s11Param.markerWeight,
+                                    states: {
+                                        hover: {
+                                            enabled: false,
+                                        },
+                                    },
+                                },
+                                dataLabels: {
+                                    enabled: s11Param.lable,
+                                    style: {
+                                        fontWeight: "normal",
+                                        textShadow: false,
+                                        textOutline: false,
+                                    },
+                                    color: s11Param.pen,
+                                },
+                                fillOpacity: 0.17,
+                            },
+
+                            //12
+
+                            {
+                                name: st[s12Param.ufData]["name"],
+                                type: s12Param.chartType,
+                                visible: s12Param.series,
+                                showInLegend: s12Param.series,
+                                data: dataSeries12x,
+                                dashStyle: 'shortdot',
+                                lineWidth:
+                                    s12Param.chartType == "scatter"
+                                        ? 0
+                                        : s12Param.lineWidth,
+                                yAxis: st[s12Param.ufData]["yAxis"],
+                                tooltip: {
+                                    crosshair: [true, true],
+                                    headerFormat: "{point.key}<br>",
+                                    pointFormat:
+                                        '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                    shared: true,
+                                    useHTML: true,
+                                    valueSuffix: st[s12Param.ufData]["unit"],
+                                },
+                                color: s12Param.pen,
+                                marker: {
+                                    symbol: s12Param.markerShape,
+                                    radius: s12Param.markerWeight,
+                                    states: {
+                                        hover: {
+                                            enabled: false,
+                                        },
+                                    },
+                                },
+                                dataLabels: {
+                                    enabled: s12Param.lable,
+                                    style: {
+                                        fontWeight: "normal",
+                                        textShadow: false,
+                                        textOutline: false,
+                                    },
+                                    color: s12Param.pen,
+                                },
+                                fillOpacity: 0.17,
+                            },
+
+                            //13
+                            {
+                                name: st[s13Param.ufData]["name"],
+                                type: s13Param.chartType,
+                                visible: s13Param.series,
+                                showInLegend: s13Param.series,
+                                data: dataSeries13x,
+                                lineWidth:
+                                    s13Param.chartType == "scatter"
+                                        ? 0
+                                        : s13Param.lineWidth,
+                                yAxis: st[s13Param.ufData]["yAxis"],
+                                tooltip: {
+                                    crosshair: [true, true],
+                                    headerFormat: "{point.key}<br>",
+                                    pointFormat:
+                                        '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                    shared: true,
+                                    useHTML: true,
+                                    valueSuffix: st[s13Param.ufData]["unit"],
+                                },
+                                color: s13Param.pen,
+                                marker: {
+                                    symbol: s13Param.markerShape,
+                                    radius: s13Param.markerWeight,
+                                    states: {
+                                        hover: {
+                                            enabled: false,
+                                        },
+                                    },
+                                },
+                                dataLabels: {
+                                    enabled: s12Param.lable,
+                                    style: {
+                                        fontWeight: "normal",
+                                        textShadow: false,
+                                        textOutline: false,
+                                    },
+                                    color: s12Param.pen,
+                                },
+                                fillOpacity: 0.17,
+                            },
                         ],
                     });
                 }

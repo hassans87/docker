@@ -1025,8 +1025,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //labels: false,
                         },                 
                         { //  [1]    bar for DP
-                            min:0, 
-                           max:3.5,     
+                            min:0.5, 
+                           max:4.5,     
                              visible:dpX_Yaxis, 
                              tickWidth: 1, 
                              tickAmount: 11,  

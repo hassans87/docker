@@ -61,7 +61,7 @@
   <tr class="tr1 table-light">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line1" checked="">
-                   &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#d99608" class="chart_render series-color"> &nbsp; </div>
+                   &nbsp;1 &nbsp;<input type="color" id="pen1" name="pen1" value="#20bf6b" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
   <select class="query form-control form-control-sm form-select" id="ufdata1">
   <option value="working_daf">Number of working DAF &nbsp;</option>
@@ -189,7 +189,7 @@
   <tr class="tr2 table-light">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line2" checked=""> 
-                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#302df0" class="chart_render series-color"> &nbsp; </div>
+                    &nbsp;2 &nbsp;<input type="color" id="pen2" name="pen2" value="#4b7bec" class="chart_render series-color"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata2">
   <option value="working_daf">Number of working DAF &nbsp;</option>
@@ -442,7 +442,7 @@
   <tr class="tr4 table-secondary">      
                   <td><div class="input-group">
                   <div class="col-auto"><input type="checkbox" class="query series-chk filter" id="line4"> 
-                    &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#0eade1" class="chart_render series-color" style="display: none;"> &nbsp; </div>
+                    &nbsp;4 &nbsp;<input type="color" id="pen4" name="pen4" value="#a55eea" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                    <select class="query form-control form-control-sm form-select" id="ufdata4" style="display: none;">
   <option value="working_daf">Number of working DAF &nbsp;</option>
@@ -1018,8 +1018,13 @@
         <input type="color" id="pen_export_title" name="chart_background_title" value="#c61010" class="chart_render series-color">
       </div>
   </div>
-  
-  
+  <div class="row mb-2">
+    <label for="pen_export_title" class="col-sm-5 col-form-label">Title &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+    <div class="col-sm-4">
+      <input type="text" id="chr_title" name="chr_title" value="DAF North Line" class="chart_render series-color">
+    </div>
+</div>
+    
   </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -1092,15 +1097,32 @@
       </div>
     </div>
           </li>
-              <li class="nav-item">
-                <div class="col-auto" style="margin-right:3px;">
-                  <div class="input-group input-group-sm">
-                    <a href="{{url('/ro1dataExport') }}">
-                      <button id="trigger_tb" class="btn badge-light3d btn-sm">
-                        <span style="font-size: 14px;"> 📦 </span> Data Table</button>
-  </a>
+                <li class="nav-item">
+                  <div class="col-auto" style="margin-right:3px;">
+                    <div class="input-group input-group-sm">
+                      <button id="daf_flow_btn" class="btn btn-primary btn-sm">
+                       <span style="font-size: 14px;"> 〽 </span> &nbsp;Feed Flow</button>
+                    </div>
                   </div>
-                </div> 
+                        </li>
+                        <li class="nav-item">
+                          <div class="col-auto" style="margin-right:3px;">
+                            <div class="input-group input-group-sm">
+                              <button id="daf_pres_btn" class="btn btn-danger btn-sm">
+                               <span style="font-size: 14px;">🫧 </span> &nbsp;Balloon Pressure</button>
+                            </div>
+                          </div>
+                                </li>
+
+                                <li class="nav-item">
+                                  <div class="col-auto" style="margin-right:3px;">
+                                    <div class="input-group input-group-sm">
+                                      <button id="daf_pcv_btn" class="btn btn-info btn-sm">
+                                       <span style="font-size: 14px;">🗜️ </span> &nbsp;PCV</button>
+                                    </div>
+                                  </div>
+                                        </li>
+                
         </ul>
       </div>
     </div>

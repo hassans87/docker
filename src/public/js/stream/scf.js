@@ -6,6 +6,43 @@ $('.query').change(function(){
     //    queryStream();
 Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
+//buttons query selector
+$("#scf_pres_btn").click(function(){scfPresQuery();});
+$("#scf_dpi_btn").click(function () {scfDpiQuery();});
+function scfPresQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=p1_pt]').prop('selected', true);
+$('#ufdata2 option[value=p2_pt]').prop('selected', true);
+$('#ufdata3 option[value=p3_pt]').prop('selected', true);
+$('#ufdata4 option[value=p4_pt]').prop('selected', true);
+$('#ufdata5 option[value=p5_pt]').prop('selected', true);
+$('#ufdata6 option[value=p6_pt]').prop('selected', true);
+$('#chr_title').attr('value', 'UF Feed Pumps Pressure');
+queryStream();
+}
+function scfDpiQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=p1_dpi]').prop('selected', true);
+$('#ufdata2 option[value=p2_dpi]').prop('selected', true);
+$('#ufdata3 option[value=p3_dpi]').prop('selected', true);
+$('#ufdata4 option[value=p4_dpi]').prop('selected', true);
+$('#ufdata5 option[value=p5_dpi]').prop('selected', true);
+$('#ufdata6 option[value=p6_dpi]').prop('selected', true);
+$('#chr_title').attr('value', 'SCF DPI');
+queryStream();
+}
 
 // constructor function 
 function Stream(target){
@@ -319,7 +356,7 @@ p3_flow:{
         },
   p1_dpi:{
         unit:" bar",
-        name:"SCF-1 DPI",
+        name:"SCF-1",
         yAxis:1,
         arrFlr:1,
         valFixTo:2,
@@ -327,7 +364,7 @@ p3_flow:{
         },
   p2_dpi:{
         unit:" bar",
-        name:"SCF-2 DPI",
+        name:"SCF-2",
         yAxis:1,
         arrFlr:1,
         valFixTo:2,
@@ -335,7 +372,7 @@ p3_flow:{
         },
   p3_dpi:{
         unit:" bar",
-        name:"SCF-3 DPI",
+        name:"SCF-3",
         yAxis:1,
         arrFlr:1,
         valFixTo:2,
@@ -343,7 +380,7 @@ p3_flow:{
         },
   p4_dpi:{
         unit:" bar",
-        name:"SCF-4 DPI",
+        name:"SCF-4",
         yAxis:1,
         arrFlr:1,
         valFixTo:2,
@@ -351,7 +388,7 @@ p3_flow:{
         },
   p5_dpi:{
         unit:" bar",
-        name:"SCF-5 DPI",
+        name:"SCF-5",
         yAxis:1,
         arrFlr:1,
         valFixTo:2,
@@ -359,7 +396,7 @@ p3_flow:{
         },
   p6_dpi:{
         unit:" bar",
-        name:"SCF-6 DPI",
+        name:"SCF-6",
         yAxis:1,
         arrFlr:1,
         valFixTo:2,
@@ -427,6 +464,7 @@ gridColor: $('#pen_grid').val(),
 plotExpWidth:$('#export_width').val(),
 plotExpHeight:$('#export_height').val(),
 plotExpBackground:$('#pen_export').val(),
+title:$('#chr_title').val(),
 plotExpTitleColor: $('#pen_export_title').val()}  
 var stack0=["spare"];
 var stack1=["p1_dpi","p2_dpi","p3_dpi","p4_dpi","p5_dpi","p6_dpi"];
@@ -763,7 +801,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:30, 
-        text: 'Self-Cleaning Filter',
+        text: plotParam.title,
         //+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
         style: {color: plotParam.plotExpTitleColor,
         font: '17px "Calibri", Verdana, sans-serif',

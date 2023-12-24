@@ -6,6 +6,61 @@ $('.query').change(function(){
     //    queryStream();
 Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
+//buttons query selector
+$("#daf_flow_btn").click(function(){dafFlowQuery();});
+$("#daf_pres_btn").click(function () {dafPressureQuery();});
+$("#daf_pcv_btn").click(function () {dafPCVQuery();});
+function dafFlowQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_flow]').prop('selected', true);
+$('#ufdata2 option[value=b_flow]').prop('selected', true);
+$('#ufdata3 option[value=c_flow]').prop('selected', true);
+$('#ufdata4 option[value=d_flow]').prop('selected', true);
+$('#ufdata5 option[value=e_flow]').prop('selected', true);
+$('#ufdata6 option[value=f_flow]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Feed Flow');
+queryStream();
+}
+function dafPressureQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_spray_pres]').prop('selected', true);
+$('#ufdata2 option[value=b_spray_pres]').prop('selected', true);
+$('#ufdata3 option[value=c_spray_pres]').prop('selected', true);
+$('#ufdata4 option[value=d_spray_pres]').prop('selected', true);
+$('#ufdata5 option[value=e_spray_pres]').prop('selected', true);
+$('#ufdata6 option[value=f_spray_pres]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Spray Block Balloon Pressure');
+queryStream();
+}
+function dafPCVQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_pcv]').prop('selected', true);
+$('#ufdata2 option[value=b_pcv]').prop('selected', true);
+$('#ufdata3 option[value=c_pcv]').prop('selected', true);
+$('#ufdata4 option[value=d_pcv]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line PCV');
+queryStream();
+}
 
 // constructor function 
 function Stream(target){
@@ -66,9 +121,10 @@ let plotParam = {
 dateFrom:$('#start_date').val(),
 dateTo: $('#end_date').val(),
 ufqry:$('#skidx').val(),
-interval:$('#invt').val() 
+interval:$('#invt').val(),
+title:$('#chr_title').val()
 }
-
+console.log(plotParam.title);
 
 let s1Param = new Stream(1);
 let s2Param = new Stream(2);
@@ -523,6 +579,7 @@ gridColor: $('#pen_grid').val(),
 plotExpWidth:$('#export_width').val(),
 plotExpHeight:$('#export_height').val(),
 plotExpBackground:$('#pen_export').val(),
+title:$('#chr_title').val(),
 plotExpTitleColor: $('#pen_export_title').val()}  
 var stack0=["a_pcv","b_pcv","c_pcv","d_pcv","e_pcv","f_pcv","daf_turbiduty_removal","pre_tank_level"];
 var stack1=["spare","xxxxx"];
@@ -864,7 +921,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:30, 
-        text: 'DAF North Filtration and Sludge',
+        text: plotParam.title,
         //'+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
         style: {color: plotParam.plotExpTitleColor,
         font: '17px "Calibri", Verdana, sans-serif',

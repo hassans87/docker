@@ -247,8 +247,8 @@
       <label for="marker_shape2" class="col-sm-4 col-form-label">Marker Shape</label>
       <div class="col-sm-4">
        <select id="marker_shape2" class="chart_render form-control form-select">
-            <option value="circle">Circle </option>
-            <option value="square" selected="">Square </option>
+            <option value="circle" selected="">Circle </option>
+            <option value="square" >Square </option>
             <option value="triangle">Trianlge </option>
             <option value="diamond">Diamond </option>
       </select>
@@ -363,10 +363,10 @@
       <label for="marker_shape3" class="chart_render col-sm-4 col-form-label">Marker Shape</label>
       <div class="col-sm-4">
        <select id="marker_shape3" class="chart_render form-control form-select">
-            <option value="circle">Circle </option>
+            <option value="circle" selected="">Circle </option>
             <option value="square">Square </option>
             <option value="triangle">Trianlge </option>
-            <option value="diamond" selected="">Diamond </option>
+            <option value="diamond">Diamond </option>
       </select>
       </div>
     </div>
@@ -476,9 +476,9 @@
       <label for="marker_shape4" class="col-sm-4 col-form-label">Marker Shape</label>
       <div class="col-sm-4">
        <select id="marker_shape4" class="chart_render form-control form-select">
-            <option value="circle">Circle </option>
+            <option value="circle" selected="">Circle </option>
             <option value="square">Square </option>
-            <option value="triangle" selected="">Trianlge </option>
+            <option value="triangle">Trianlge </option>
             <option value="diamond">Diamond </option>
       </select>
       </div>
@@ -590,9 +590,9 @@
       <label for="marker_shape5" class="col-sm-4 col-form-label">Marker Shape</label>
       <div class="col-sm-4">
        <select id="marker_shape5" class="chart_render form-control form-select">
-             <option value="circle">Circle </option>
+             <option value="circle" selected="">Circle </option>
             <option value="square">Square </option>
-            <option value="triangle" selected="">Trianlge </option>
+            <option value="triangle">Trianlge </option>
             <option value="diamond">Diamond </option>
       </select>
       </div>
@@ -707,9 +707,9 @@
       <label for="marker_shape6" class="col-sm-4 col-form-label">Marker Shape</label>
       <div class="col-sm-4">
        <select id="marker_shape6" class="chart_render form-control form-select">
-             <option value="circle">Circle </option>
+             <option value="circle" selected="">Circle </option>
             <option value="square">Square </option>
-            <option value="triangle" selected="">Trianlge </option>
+            <option value="triangle">Trianlge </option>
             <option value="diamond">Diamond </option>
       </select>
       </div>
@@ -820,9 +820,9 @@
       <label for="marker_shape7" class="col-sm-4 col-form-label">Marker Shape</label>
       <div class="col-sm-4">
        <select id="marker_shape7" class="chart_render form-control form-select">
-             <option value="circle">Circle </option>
+             <option value="circle" selected="">Circle </option>
             <option value="square">Square </option>
-            <option value="triangle" selected="">Trianlge </option>
+            <option value="triangle" >Trianlge </option>
             <option value="diamond">Diamond </option>
       </select>
       </div>
@@ -925,7 +925,7 @@
       <div class="row mb-2">
           <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
           <div class="col-sm-4">
-             <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
+             <input type="color" id="pen_export" name="chart_background_export" value="#F2F2F2" class="chart_render series-color">
           </div>
       </div>
       <div class="row mb-2">
@@ -934,7 +934,12 @@
             <input type="color" id="pen_export_title" name="chart_background_title" value="#ce0d0d" class="chart_render series-color">
           </div>
       </div>
-      
+      <div class="row mb-2">
+        <label for="pen_export_title" class="col-sm-5 col-form-label">Title &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+        <div class="col-sm-4">
+          <input type="text" id="chr_title" name="chr_title" value="UF Feed Pumps and SCF" class="chart_render series-color">
+        </div>
+    </div>
       
       </div>
             <div class="modal-footer">
@@ -1012,15 +1017,22 @@
           </div>
         </div>
               </li>
-                  <li class="nav-item">
-                    <div class="col-auto" style="margin-right:3px;">
-                      <div class="input-group input-group-sm">
-                        <a href="{{url('/ro1dataExport') }}">
-                          <button id="trigger_tb" class="btn badge-light3d btn-sm">
-                            <span style="font-size: 14px;"> 📦 </span> Data Table</button>
-      </a>
-                      </div>
-                    </div> 
+              <li class="nav-item">
+                <div class="col-auto" style="margin-right:3px;">
+                  <div class="input-group input-group-sm">
+                    <button id="scf_pres_btn" class="btn btn-primary btn-sm">
+                     <span style="font-size: 14px;"> 〽 </span> &nbsp;Pressure</button>
+                  </div>
+                </div>
+                      </li>
+                      <li class="nav-item">
+                        <div class="col-auto" style="margin-right:3px;">
+                          <div class="input-group input-group-sm">
+                            <button id="scf_dpi_btn" class="btn btn-danger btn-sm">
+                             <span style="font-size: 14px;">🫧 </span>SCF DPI &nbsp;</button>
+                          </div>
+                        </div>
+                              </li>
             </ul>
           </div>
         </div>

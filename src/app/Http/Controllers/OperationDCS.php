@@ -164,6 +164,9 @@ public function onlineDBNPAtest(Request $request)
                 $data8 = $request->ufdata8;
                 $data9 = $request->ufdata9;
                 $data10 = $request->ufdata10;
+                $data11 = $request->ufdata11;
+                $data12 = $request->ufdata12;
+                $data13 = $request->ufdata13;
                 $bay1 = $request->d1;
                 $bay2 = $request->d2;
                 $bay3 = $request->d3;
@@ -174,8 +177,11 @@ public function onlineDBNPAtest(Request $request)
                 $bay8 = $request->d8;
                 $bay9 = $request->d9;
                 $bay10 = $request->d10;
+                $bay11 = $request->d11;
+                $bay12 = $request->d12;
+                $bay13 = $request->d13;
                 $dinvt = 0.7;
-                $dex = DB::table('rofeed_dbnpa')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7,$data8,$data9,$data10)
+                $dex = DB::table('rofeed_dbnpa')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7,$data8,$data9,$data10,$data11,$data12,$data13)
                 ->whereBetween('i_date',[$request->from,$request->dateto])
                 ->orderBy('i_date', 'asc')
                 ->get();
@@ -190,6 +196,9 @@ public function onlineDBNPAtest(Request $request)
                 $line8=array();
                 $line9=array();
                 $line10=array();
+                $line11=array();
+                $line12=array();
+                $line13=array();
                 $date_interval =strtotime("2016-01-01 15:18:00");
                 foreach ($dex as $row){
                     $ddf = abs(strtotime($row->i_date) - $date_interval)/3600;
@@ -205,7 +214,10 @@ public function onlineDBNPAtest(Request $request)
                         if($bay8=='true'){array_push($line8,$row->$data8);}
                         if($bay9=='true'){array_push($line9,$row->$data9);}
                         if($bay10=='true'){array_push($line10,$row->$data10);}
-                        $stream = [$x_axis,$line1,$line2,$line3,$line4,$line5,$line6,$line7,$line8,$line9,$line10];
+                        if($bay11=='true'){array_push($line11,$row->$data11);}
+                        if($bay12=='true'){array_push($line12,$row->$data12);}
+                        if($bay13=='true'){array_push($line13,$row->$data13);}
+                        $stream = [$x_axis,$line1,$line2,$line3,$line4,$line5,$line6,$line7,$line8,$line9,$line10,$line11,$line12,$line13];
                         $date_interval = strtotime($row->i_date);
                     }}
             return json_encode($stream);
