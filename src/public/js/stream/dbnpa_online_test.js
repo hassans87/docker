@@ -89,7 +89,7 @@ function skidECQuery(){
     $('#marker13').attr('value', '0');
     $('#line_width12').attr('value', '1.5');
     $('#line_width13').attr('value', '1');
-    $('#chr_title').attr('value', 'Skids Condcuctivity');
+    $('#chr_title').attr('value', 'Skids Conductivity');
     queryStream();
     
     }

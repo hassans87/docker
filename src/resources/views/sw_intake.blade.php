@@ -1038,15 +1038,23 @@
     </div>
   </div>
         </li>
-            <li class="nav-item">
-              <div class="col-auto" style="margin-right:3px;">
-                <div class="input-group input-group-sm">
-                  <a href="{{url('/ro1dataExport') }}">
-                    <button id="trigger_tb" class="btn badge-light3d btn-sm">
-                      <span style="font-size: 14px;"> 📦 </span> Data Table</button>
-</a>
-                </div>
-              </div> </li>
+        <li class="nav-item">
+          <div class="col-auto" style="margin-right:3px;">
+            <div class="input-group input-group-sm">
+              <button id="sw_qc_btn" class="btn btn-primary btn-sm">
+               <span style="font-size: 14px;"> 🧪</span> &nbsp;Water QC</button>
+            </div>
+          </div>
+                </li>
+                <li class="nav-item">
+                  <div class="col-auto" style="margin-right:3px;">
+                    <div class="input-group input-group-sm">
+                      <button id="sw_flow_btn" class="btn btn-danger btn-sm">
+                       <span style="font-size: 14px;">🫧 </span>Pumps Flow &nbsp;</button>
+                    </div>
+                  </div>
+                        </li>
+
       </ul>
     </div>
   </div>

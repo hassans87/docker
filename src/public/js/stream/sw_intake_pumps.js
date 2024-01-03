@@ -7,6 +7,60 @@ $('.query').change(function(){
         Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
 
+//buttons query selector
+$("#sw_qc_btn").click(function(){swParam();});
+$("#sw_flow_btn").click(function () {swWtrQC();});
+function swWtrQC(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=p1_flow]').prop('selected', true);
+$('#ufdata2 option[value=p2_flow]').prop('selected', true);
+$('#ufdata3 option[value=p3_flow]').prop('selected', true);
+$('#ufdata4 option[value=p4_flow]').prop('selected', true);
+$('#ufdata5 option[value=p5_flow]').prop('selected', true);
+$('#chr_title').attr('value', 'SW Intake Pumps Flow');
+queryStream();
+}
+function swParam(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=sw_turbidity]').prop('selected', true);
+$('#ufdata2 option[value=sw_temp]').prop('selected', true);
+$('#ufdata3 option[value=sw_ph]').prop('selected', true);
+$('#ufdata4 option[value=sw_chlorine]').prop('selected', true);
+$('#chr_title').attr('value', 'Seawater Quality Monitoring');
+queryStream();
+}
+function dafPCVQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_pcv]').prop('selected', true);
+$('#ufdata2 option[value=b_pcv]').prop('selected', true);
+$('#ufdata3 option[value=c_pcv]').prop('selected', true);
+$('#ufdata4 option[value=d_pcv]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line PCV');
+queryStream();
+}
+
+
+
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
