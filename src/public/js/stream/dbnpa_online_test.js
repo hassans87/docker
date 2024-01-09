@@ -2704,13 +2704,13 @@ function queryStream() {
                                     },
                                 },
                                 dataLabels: {
-                                    enabled: s12Param.lable,
+                                    enabled: s13Param.lable,
                                     style: {
                                         fontWeight: "normal",
                                         textShadow: false,
                                         textOutline: false,
                                     },
-                                    color: s12Param.pen,
+                                    color: s13Param.pen,
                                 },
                                 fillOpacity: 0.17,
                             },

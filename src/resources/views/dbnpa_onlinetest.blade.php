@@ -2129,14 +2129,14 @@
       <div class="input-group input-group-sm">
         <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
 
-        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-11-24 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
+        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-12-08 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">
     <div class="col-auto" style="margin-right:5px;">
       <div class="input-group input-group-sm">
         <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
-        <input type="datetime-local" name="end_date" id="end_date" value="2023-12-31 06:00" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+        <input type="datetime-local" name="end_date" id="end_date" value="2024-01-31 23:59" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">
