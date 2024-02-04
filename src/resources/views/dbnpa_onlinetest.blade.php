@@ -1805,10 +1805,10 @@
 <label for="marker_shape12" class="col-sm-4 col-form-label">Marker Shape</label>
 <div class="col-sm-4">
 <select id="marker_shape12" class="chart_render form-control form-select">
-<option value="circle">Circle </option>
+<option value="circle" selected="">Circle </option>
 <option value="square">Square </option>
 <option value="triangle" >Trianlge </option>
-<option value="diamond" selected="">Diamond </option>
+<option value="diamond" >Diamond </option>
 </select>
 </div>
 </div>
@@ -1957,8 +1957,8 @@
 <label for="marker_shape13" class="col-sm-4 col-form-label">Marker Shape</label>
 <div class="col-sm-4">
 <select id="marker_shape13" class="chart_render form-control form-select">
-<option value="circle">Circle </option>
-<option value="square" selected="">Square </option>
+<option value="circle" selected="">Circle </option>
+<option value="square" >Square </option>
 <option value="triangle" >Trianlge </option>
 <option value="diamond">Diamond </option>
 </select>
@@ -2058,7 +2058,7 @@
   <div class="row mb-2">
       <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-         <input type="color" id="pen_export" name="chart_background_export" value="#F2F2F2" class="chart_render series-color">
+         <input type="color" id="pen_export" name="chart_background_export" value="#FAFAFA" class="chart_render series-color">
       </div>
   </div>
   <div class="row mb-2">
@@ -2129,7 +2129,7 @@
       <div class="input-group input-group-sm">
         <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
 
-        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-12-08 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
+        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2023-12-24 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">

@@ -1,4 +1,5 @@
 queryStream();
+
 //$('.tensor-flow,.rednder').change(function(){queryStream();})
 setInterval(function () {
     $("head title").html(
