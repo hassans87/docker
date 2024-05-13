@@ -142,11 +142,13 @@
          <td> </td>
          <td> </td>
         </tr>
-        <tr><td class="bdr">
+        <tr>
+          <td class="bdr">
           <a   href="{{ url('/brine') }}"  style="text-decoration: none;" class="menu">
             <button class="btn btn-light menu"> 📀&nbsp;Brine Reject</button></a>  
         </td>
-        <td> </td>
+        <td><a   href="{{ url('/normscomparison') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn btn-light menu"> 🔬 &nbsp; RO First Pass Stat</button></a>   </td>
         <td> </td>
         <td> </td>
        </tr>

@@ -937,7 +937,7 @@
       <div class="row mb-2">
         <label for="pen_export_title" class="col-sm-5 col-form-label">Title &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
         <div class="col-sm-4">
-          <input type="text" id="chr_title" name="chr_title" value="UF Feed Pumps and SCF" class="chart_render series-color">
+          <input type="text" id="chr_title" name="chr_title" value="UF Feed Pumps and SCF" class="chart_render">
         </div>
     </div>
       

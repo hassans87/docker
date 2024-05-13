@@ -964,6 +964,12 @@
     <input type="color" id="pen_export_title" name="chart_background_title" value="#1068c6" class="chart_render series-color">
   </div>
 </div>
+<div class="row mb-2">
+  <label for="chr_title" class="col-sm-5 col-form-label">Title &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+  <div class="col-sm-4">
+    <input type="text" id="chr_title" name="chr_title" value="Seawater Intake" class="chart_render">
+  </div>
+</div>
 
 
 </div>

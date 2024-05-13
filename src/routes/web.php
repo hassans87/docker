@@ -60,7 +60,7 @@ Route::get('/RO2Conductvity', function () {return view('ro2dcs_ec');})->middlewa
 Route::get('/RO1DPI', function () {return view('ro1dcs_dpi');})->middleware('auth');
 Route::get('/BlendingTank', function () {return view('blending_tnk');})->middleware('auth');
 Route::get('/onlineDBNPA', function () {return view('dbnpa_onlinetest');})->middleware('auth');
-
+Route::get('/normscomparison', function () {return view('ro_firstpass_comp');})->middleware('auth');
 
 // data export GET requests
 Route::GET('/ro1dataExport', [RO1Normalisation::class, 'ro1DataExpView'])->middleware('auth');
@@ -96,10 +96,6 @@ Route::PUT('/RO1DPI', [PageSettings::class, 'savePref']);
 
 
 
-
-
-
-
 //Maintenance and defects Routes
 ROUTE::GET('/DefectsMain',[Defects::class, 'defectMainView'])->middleware('auth');
 ROUTE::GET('/addnewDefect',[Defects::class, 'newDefectView'])->middleware('auth');
@@ -110,10 +106,10 @@ ROUTE::GET('/mdrf_defects_list',[Defects::class, 'mdrfDefectsList'])->middleware
 ROUTE::GET('/mdrfReview/{id}',[Defects::class, 'ReviewMDRFLoading'])->middleware('auth');
 //Route::GET('/raw_defects_list', function () {return view('raw_defects_list');})->middleware('auth');
 // forgot passward handler
-Route::get('forgot-password', [PasswardController::class, 'forgotPassword'])->name('forgot-password');
-Route::get('forgot-password/{token}', [PasswardController::class, 'forgotPasswordValidate']);
-Route::post('forgot-password', [PasswardController::class, 'resetPassword'])->name('forgot-password');
-Route::put('reset-password', [PasswardController::class, 'updatePassword'])->name('reset-password');
+//Route::get('forgot-password', [PasswardController::class, 'forgotPassword'])->name('forgot-password');
+//Route::get('forgot-password/{token}', [PasswardController::class, 'forgotPasswordValidate']);
+//Route::post('forgot-password', [PasswardController::class, 'resetPassword'])->name('forgot-password');
+//Route::put('reset-password', [PasswardController::class, 'updatePassword'])->name('reset-password');
 
 //Post Requests for data
 Route::POST('/checkpoint',  [UserController::class, 'checkme'])->name('login.check');
@@ -126,6 +122,7 @@ Route::POST('/uf_north', [UltraFiltration::class, 'ufNorthSkids'])->name('ufnort
 Route::POST('/uf_south', [UltraFiltration::class, 'ufSouthSkids'])->name('ufsouth')->middleware('auth');
 Route::POST('/ROfeed', [ROFeedQuality::class, 'roFeedQc'])->name('ro.feed')->middleware('auth');
 Route::POST('/ro1norm', [RO1Normalisation::class, 'firstPassNorms'])->name('ro1.norms')->middleware('auth');
+Route::POST('/normscomparison', [RO1Normalisation::class, 'firstPassComp'])->name('ro1.com')->middleware('auth');
 Route::POST('/ro2norm', [RO2Normalisation::class, 'secondPassNorms'])->name('ro2.norms')->middleware('auth');
 Route::POST('/ro1_cip', [RO1CIP::class, 'cipRoList'])->name('cip.list')->middleware('auth');
 Route::POST('/importExport', [PostTreatment::class, 'importExport'])->middleware('auth');
