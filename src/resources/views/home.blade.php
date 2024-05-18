@@ -32,7 +32,7 @@
         <tbody> 
         <tr >
           <td class="bdr"><a   href="{{ url('/swintake') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn btn-light menu"> 📀&nbsp; SW Intake </button></a> 
+          <button class="btn btn-light menu"> 📈&nbsp; SW Intake </button></a> 
           </td>
             <td class="bdr">
               <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
@@ -46,7 +46,7 @@
         </tr>
         <tr>
           <td class="bdr"><a   href="{{ url('/dafnorth') }}"  style="text-decoration: none;" class="menu">
-            <button class="btn btn-light menu"> 📀&nbsp; DAF North</button></a> 
+            <button class="btn btn-light menu"> 📈&nbsp; DAF North</button></a> 
             </td>
             <td class="bdr">
               <a   href="{{ url('/importExport') }}"  style="text-decoration: none;" class="menu">
@@ -61,7 +61,7 @@
            </tr>
         <tr>
           <td class="bdr"><a   href="{{ url('/dafsouth') }}"  style="text-decoration: none;" class="menu">
-            <button class="btn btn-light menu"> 📀&nbsp; DAF South</button></a> 
+            <button class="btn btn-light menu"> 📈&nbsp; DAF South</button></a> 
             </td>
             <td class="bdr"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
               <button class="btn btn-light menu"> <i class="ancherx fa fa-flag" aria-hidden="true"></i>&nbsp; E-PTW</button></a> 
@@ -75,7 +75,7 @@
            </tr>
 
         <tr><td class="bdr"> <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn btn-light menu"> 📀&nbsp; SCF</button></a>
+          <button class="btn btn-light menu"> 📈&nbsp; SCF</button></a>
             </td>
             <td class="bdr"> <a   href="{{ url('/BlendingTank') }}"  style="text-decoration: none;" class="menu">
               <button class="btn btn-light menu"> 🖥️&nbsp; Blending Tank</button></a> </td>
@@ -87,7 +87,7 @@
            </tr>
            <tr><td class="bdr">
             <a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
-              <button class="btn btn-light menu"> 📀&nbsp; UF North</button></a>
+              <button class="btn btn-light menu">📈&nbsp; UF North</button></a>
               </td>
               <td><a   href={{ url('/RO1Conductvity') }} style="text-decoration: none;" class="menu">
                 <button class="btn btn-light menu"> 🖥️&nbsp;RO1 EC</button></a> </td>
@@ -98,7 +98,7 @@
              </tr>
              <tr><td class="bdr">
               <a   href={{ url('/uf_south') }}  style="text-decoration: none;" class="menu">
-                <button class="btn btn-light menu"> 📀&nbsp; UF South</button></a>
+                <button class="btn btn-light menu"> 📈&nbsp; UF South</button></a>
              </td>
              <td><a   href={{ url('/RO2Conductvity') }} style="text-decoration: none;" class="menu">
               <button class="btn btn-light menu"> 🖥️&nbsp;RO2 EC</button></a> </td>
@@ -108,7 +108,7 @@
             </tr>
             <tr><td class="bdr">
               <a   href={{ url('/ROfeed') }}  style="text-decoration: none;" class="menu">
-                <button class="btn btn-light menu"> 📀&nbsp; RO Feed</button></a>
+                <button class="btn btn-light menu">📈&nbsp; RO Feed</button></a>
              </td>
              <td> <a   href={{ url('/RO1DPI') }}  style="text-decoration: none;" class="menu">
               <button class="btn btn-light menu"> 🖥️&nbsp; RO1 DPI</button></a> </td>
@@ -124,7 +124,7 @@
            </tr>
            <tr><td class="bdr">
             <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
-              <button class="btn btn-light menu"> 📀&nbsp; RO1 Normalization  </button></a>
+              <button class="btn btn-light menu">📈&nbsp; RO1 Normalization  </button></a>
            </td>
            <td><a   href={{ url('/onlineDBNPA') }}  style="text-decoration: none;" class="menu">
             <button class="btn btn-light menu"> 🧪&nbsp;DBNPA Dosing</button></a> </td>
@@ -133,7 +133,7 @@
           </tr>
          <tr><td class="bdr">
           <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
-            <button class="btn btn-light menu"> 📀&nbsp; RO2 Normalization</button></a>
+            <button class="btn btn-light menu"> 📈&nbsp; RO2 Normalization</button></a>
          </td>
          <td>
           <a  href="#"  style="text-decoration: none;" class="menu not_ready">
@@ -145,24 +145,25 @@
         <tr>
           <td class="bdr">
           <a   href="{{ url('/brine') }}"  style="text-decoration: none;" class="menu">
-            <button class="btn btn-light menu"> 📀&nbsp;Brine Reject</button></a>  
+            <button class="btn btn-light menu"> 📈&nbsp;Brine Reject</button></a>  
         </td>
         <td><a   href="{{ url('/normscomparison') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn btn-light menu"> 🔬 &nbsp; RO First Pass Stat</button></a>   </td>
+          <button class="btn btn-light menu"> 🧮 &nbsp; RO1 Data Pipeline </button></a>   </td>
         <td> </td>
         <td> </td>
        </tr>
        <tr><td class="bdr">
         <a   href="{{ url('/PostCO2') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn btn-light menu"> 📀&nbsp;Post CO2</button></a>     
+          <button class="btn btn-light menu"> 📈 &nbsp;Post CO2</button></a>     
        </td>
-       <td> </td>
+       <td class="bdr"><a   href="{{ url('/DataCleansing') }}"  style="text-decoration: none;" class="menu">
+        <button class="btn btn-light menu">  🧹 &nbsp; Data Cleansing</button></a> </td>
        <td> </td>
        <td> </td>
       </tr>
       <tr><td class="bdr">
         <a   href="{{ url('/PostLime') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn btn-light menu"> 📀&nbsp;Post Lime</button></a>
+          <button class="btn btn-light menu"> 📈 &nbsp;Post Lime</button></a>
        </td>
        <td> </td>
        <td> </td>
@@ -170,7 +171,7 @@
       </tr>
       <tr><td class="bdr">
         <a  href="{{ url('/PostCl2') }}"  style="text-decoration: none;" class="menu" >
-          <button class="btn btn-light menu"> 📀&nbsp;Post Cl2</button></a>
+          <button class="btn btn-light menu"> 📈 &nbsp;Post Cl2</button></a>
       </td>
       <td class="menu" >
         </td>

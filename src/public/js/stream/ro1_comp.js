@@ -66,8 +66,8 @@ if(query_days_calc >6000){
 function queryStream(){
 Notiflix.Block.Pulse('body', 'Please Wait, feteching query data'); 
 let plotParam = {
-dateFrom:" 2023-01-01"+" 00:00:00",
-dateTo: "2023-03-01"+ " 00:00:00",
+dateFrom:" 2023-01-01",
+dateTo: "2023-12-01",
 ufqry:$('#skidx').val(),
 interval:1
 }
@@ -87,7 +87,7 @@ let d5 = false;
 let d6 = false;
 let d7 = false;
 let date1 = "2023-01-01";//plotParam.dateFrom;
-let date2 = "2023-12-01";//plotParam.dateTo;
+let date2 = "2023-12-31";//plotParam.dateTo;
 const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
 const query_data = new URLSearchParams({from:plotParam.dateFrom,dateto:plotParam.dateTo,
 ufGroup:plotParam.bayline,datainvt:plotParam.interval,roskid:plotParam.ufqry,ufdata1:s1Param.ufData,ufdata2:s2Param.ufData,ufdata3:s3Param.ufData,ufdata4:s4Param.ufData,ufdata5:s5Param.ufData,ufdata6:s6Param.ufData,ufdata7:s7Param.ufData,
@@ -99,7 +99,7 @@ headers:{"x-CSRF-TOKEN":csrfToken}
 })
 .then(response =>response.text())
 .then((data) =>{
-    console.log(data);
+    //console.log(data);
 try{
 let dataStream = JSON.parse(data);
 let date =dataStream[0];
@@ -114,9 +114,10 @@ let dataSeries8 = dataStream[8];
 dataSeries8 = dataSeries8.map(parseFloat);
 //plotParam.dateFrom
 //plotParam.dateTo
+console.log(date);
 function dateDifferaneYield(dt1, dt2){
     var diff =(dt2.getTime() - dt1.getTime()) / 1000;
-    console.log(diff);
+   // console.log(diff);
   diff /= (60 * 60);
   console.log(diff);
   return Math.abs(Math.round(diff));
@@ -146,7 +147,7 @@ datex.push(series_date_conts);}
 // x-axis interval calculations
 let tickcal = 0;
 let date_length = date22.length;
-let core_factor = date_length/15;
+let core_factor = date_length/12.2;
 tickcal = Math.round(core_factor);
 tickcal= parseInt(tickcal);
 

@@ -141,7 +141,7 @@ class RO1Normalisation extends Controller
 
     public function firstPassComp(Request $request)
     {
-        $data1 = $request->ufdata1;
+        $data1 = "dpi_906";
         $data2 = $request->ufdata2;
         $data3 = $request->ufdata3;
         $data4 = $request->ufdata4;
@@ -157,10 +157,11 @@ class RO1Normalisation extends Controller
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
         $target_skid = '41' . $request->roskid . '_normalization';
-        $dex = DB::table('41a_normalization')->select('query_date','hp_pump_ft101','full_flushing', 'membrane_flushing', 'dbna_flushing', 'cip', $data1)
+        $dex = DB::table('41b_normalization')->select('query_date','hp_pump_ft101','full_flushing', 'membrane_flushing', 'dbna_flushing', 'cip', $data1)
             ->whereBetween('query_date', [$request->from." 00:00:00",$request->dateto." 23:59:00"])
             ->orderBy('query_date', 'asc')
             ->get();
+        $init_date = "2023-01-01 00:00:00";
         $x_axis = array();
         $line1 = array();
         $line2 = array();
@@ -186,9 +187,12 @@ class RO1Normalisation extends Controller
             $cf = (int)$row->cip;
             $is_running = (int)$row->hp_pump_ft101;
             $ddf = abs(strtotime($row->query_date) - $date_interval) / 3600;
-            if (($ddf >= $dinvt and $is_running >= 100) or ($flushing_check and ($ff > 0.5 or $mf > 0.5 or $df > 0.5 or $cf > 0.5))) 
+            array_push($x_axis, $init_date);
+           
+            if (true) 
             {
-                array_push($x_axis, $row->query_date);
+                array_push($x_axis, $init_date);
+                $init_date =date('Y-m-d H:i:s', strtotime($row->query_date. ' + 1 hours')); 
                 if ($bay1 == 'true') {
                     array_push($line1, $row->$data1);
                 }
@@ -212,7 +216,7 @@ class RO1Normalisation extends Controller
                 }
                 array_push($line8, $row->hp_pump_ft101);
                 $stream = [$x_axis, $line1, $line2, $line3, $line4, $line5, $line6, $line7,$line8];
-                $date_interval = strtotime($row->query_date); 
+                $date_interval = strtotime($init_date); 
             }
             
         }

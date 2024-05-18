@@ -20,6 +20,9 @@
   <script type="text/javascript" src="{{asset('js/highcharts11/modules/accessibility.js') }}"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script type="text/javascript" src="{{asset('js/com.js') }}"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
+
 <title> Seawater Intake </title>
 </head>
 <body style="font-family: calibri;">
@@ -987,7 +990,7 @@
         <li class="nav-item">
           <div class="col-auto" style="margin-right:3px;">
               <a href="{{ url('/home') }}"> 
-                  <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span> &nbsp; Home &nbsp;
+                  <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span>
                       </button></a>
               </div>
         </li>
@@ -1066,5 +1069,20 @@
   </div>
 </nav>
 <script type="text/javascript" src="{{asset('js/stream/sw_intake_pumps.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#start_date,#end_date", {
+    minDate: "2016-01",
+    maxDate: "today",
+    dateFormat: "Y-m-d H:i",
+    altInput: true,
+    altFormat: "M J, Y",
+    dateFormat: "Y-m-d",
+    });
+    </script>
+
+
+
+
 </body>
 </html>

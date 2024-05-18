@@ -61,7 +61,8 @@ Route::get('/RO1DPI', function () {return view('ro1dcs_dpi');})->middleware('aut
 Route::get('/BlendingTank', function () {return view('blending_tnk');})->middleware('auth');
 Route::get('/onlineDBNPA', function () {return view('dbnpa_onlinetest');})->middleware('auth');
 Route::get('/normscomparison', function () {return view('ro_firstpass_comp');})->middleware('auth');
-
+Route::get('/DataCleansing', function () {return view('db_data_cleansing');})->middleware('auth');
+Route::get('/DataCleansing/RO1DataCleansing', function () {return view('ro1_data_cleansing');})->middleware('auth');
 // data export GET requests
 Route::GET('/ro1dataExport', [RO1Normalisation::class, 'ro1DataExpView'])->middleware('auth');
 
