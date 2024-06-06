@@ -16,11 +16,37 @@ $(".query").change(function () {
 
 //buttons query selector
 $("#sw_qc_btn").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $("#sw_qc_btn").removeClass("badge-light3d").addClass("btn-danger");
+
     swParam();
 });
 $("#sw_flow_btn").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $("#sw_flow_btn").removeClass("badge-light3d").addClass("btn-danger");
     swWtrQC();
 });
+$("#sw_press_btn").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $("#sw_press_btn").removeClass("badge-light3d").addClass("btn-danger");
+    swPumpsFlow();
+});
+$("#min_flow_btn").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $("#min_flow_btn").removeClass("badge-light3d").addClass("btn-danger");
+    swMinFlowControlPCV();
+});
+$("#hc_uv_btn").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $("#hc_uv_btn").removeClass("badge-light3d").addClass("btn-danger");
+    hCuvCl2();
+});
+$("#line_flow_press").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $("#line_flow_press").removeClass("badge-light3d").addClass("btn-danger");
+    lineFlowPressure();
+});
+
 function swWtrQC() {
     $("#line1").prop("checked", true);
     $("#line2").prop("checked", true);
@@ -50,6 +76,71 @@ function swParam() {
     $("#ufdata3 option[value=sw_ph]").prop("selected", true);
     $("#ufdata4 option[value=sw_chlorine]").prop("selected", true);
     $("#chr_title").attr("value", "Seawater Quality Monitoring");
+    queryStream();
+}
+
+function swPumpsFlow() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", true);
+    $("#line5").prop("checked", true);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=p1_pres]").prop("selected", true);
+    $("#ufdata2 option[value=p2_pres]").prop("selected", true);
+    $("#ufdata3 option[value=p3_pres]").prop("selected", true);
+    $("#ufdata4 option[value=p4_pres]").prop("selected", true);
+    $("#ufdata5 option[value=p5_pres]").prop("selected", true);
+    $("#chr_title").attr("value", "Seawater Pumps Pressure");
+    queryStream();
+}
+function swMinFlowControlPCV() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", false);
+    $("#line4").prop("checked", false);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=pcv_008]").prop("selected", true);
+    $("#ufdata2 option[value=pcv_009]").prop("selected", true);
+    $("#ufdata3 option[value=p3_pres]").prop("selected", true);
+    $("#ufdata4 option[value=p4_pres]").prop("selected", true);
+    $("#ufdata5 option[value=p5_pres]").prop("selected", true);
+    $("#chr_title").attr("value", "Minimum Flow Control PCV");
+    queryStream();
+}
+function hCuvCl2() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", false);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=sw_hc]").prop("selected", true);
+    $("#ufdata2 option[value=sw_uv]").prop("selected", true);
+    $("#ufdata3 option[value=sw_chlorine]").prop("selected", true);
+    $("#ufdata4 option[value=p4_pres]").prop("selected", true);
+    $("#ufdata5 option[value=p5_pres]").prop("selected", true);
+    $("#chr_title").attr("value", "Seawater HC, UV and Cl2");
+    queryStream();
+}
+function lineFlowPressure() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", true);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=line1_press]").prop("selected", true);
+    $("#ufdata2 option[value=line2_press]").prop("selected", true);
+    $("#ufdata3 option[value=sw_line1_flow]").prop("selected", true);
+    $("#ufdata4 option[value=sw_line2_flow]").prop("selected", true);
+    $("#ufdata5 option[value=p5_pres]").prop("selected", true);
+    $("#chr_title").attr("value", "Line-1 and Line-2 Flow-Pressure");
     queryStream();
 }
 

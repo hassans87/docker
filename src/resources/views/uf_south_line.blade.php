@@ -48,6 +48,41 @@
     
     ?>
   <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+
+  <style>
+    .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+      border:1px solid #a4b0be;
+    }
+        </style>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="a">32A</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="b">32B</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="c">32C</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="d">32D</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="e">32E</button>
+      </div>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="f">32F</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="g">32G</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="h">32H</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">32I</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="j">32J</button>
+      </div>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="k">32K</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="l">32L</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="m">32M</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="n">32N</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="o">32O</button>
+      </div>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="short_cutx btn btn-sm badge-light3d" id="avg">Average</button>
+        <button type="button" class="short_cutxa btn btn-sm badge-light3d" id="uf_inlet_qc">UF Inlet Quality</button>
+        <button type="button" class="short_cutxb btn btn-sm badge-light3d" id="uf_inlet_qc">Operation</button>
+      </div>
+
+
+
    <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
       <tr>
@@ -602,7 +637,7 @@
                     &nbsp;5 &nbsp;<input type="color" id="pen5" name="pen5" value="#283de2" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha5" disabled="" style="display: none;">
-                  <option value="" selected="">31</option>  
+                  <option value="" selected="">32</option>  
                   </select>
                   </div>  
                   <div class="col-auto"> 
@@ -727,7 +762,7 @@
                     &nbsp;6 &nbsp;<input type="color" id="pen6" name="pen6" value="#2ce614" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha6" disabled="" style="display: none;">
-                  <option value="" selected="">31</option>  
+                  <option value="" selected="">32</option>  
                   </select>
                   </div>  
                   <div class="col-auto"> 
@@ -850,7 +885,7 @@
                     &nbsp;7 &nbsp;<input type="color" id="pen7" name="pen7" value="#d41c53" class="chart_render series-color" style="display: none;"> &nbsp; </div>
                   <div class="col-auto"> 
                   <select class="query form-control form-control-sm form-select mnbtn" id="alpha7" disabled="" style="display: none;">
-                  <option value="" selected="">31</option>
+                  <option value="" selected="">32</option>
                   </select>
                   </div>  
                   <div class="col-auto"> 
@@ -1127,15 +1162,6 @@
       </div>
     </div>
           </li>
-              <li class="nav-item">
-                <div class="col-auto" style="margin-right:3px;">
-                  <div class="input-group input-group-sm">
-                    <a href="{{url('/ro1dataExport') }}">
-                      <button id="trigger_tb" class="btn badge-light3d btn-sm">
-                        <span style="font-size: 14px;"> 📦 </span> Data Table</button>
-  </a>
-                  </div>
-                </div> 
         </ul>
       </div>
     </div>

@@ -15,13 +15,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript" src="{{ asset('js/com.js') }}"></script>
-   
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
-    
     <title>RO First Pass Data Cleaning </title>
 </head>
 <body class="">
-    <h3 class="text-info"> This page is under development </h3>
+    <div id="show"> </div>
     <br>
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark"
@@ -99,12 +97,12 @@
                                         Where </div>
                                 <select class="query form-control form-control-sm form-select" id="where"
                                     style="background-color:#dff9fb;">
-                                    <option value="a" >DPI</option>
-                                    <option value="b" >HP Feed Flow</option>
-                                    <option value="c" >Rear EC</option>
-                                    <option value="d" >Salt Rejection</option>
-                                    <option value="e" >Salt Passage</option>
-                                    <option value="f" >Permeate Flow</option>
+                                    <option value="dpi" >DPI</option>
+                                    <option value="hP_flow" >HP Feed Flow</option>
+                                    <option value="read_ec" >Rear EC</option>
+                                    <option value="salt_rejection" >Salt Rejection</option>
+                                    <option value="salt_passage" >Salt Passage</option>
+                                    <option value="permeate_flow" >Permeate Flow</option>
                                 </select>
                             </div>
                         </div>
@@ -116,9 +114,9 @@
                                        Condition </div>
                                 <select class="query form-control form-control-sm form-select" id="where_logic"
                                     style="background-color:#dff9fb;">
-                                    <option value="a" >More Than</option>
-                                    <option value="b" >Less Than</option>
-                                    <option value="c" >Between</option>
+                                    <option value="more_than" >More Than</option>
+                                    <option value="less_than" >Less Than</option>
+                                    <option value="between" >Between</option>
                                 </select>
                             </div>
                         </div>
@@ -147,9 +145,6 @@
             </div>
         </div>
     </nav>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr("#start_date,#end_date", {
@@ -160,9 +155,10 @@
     altFormat: "M J, Y",
     dateFormat: "Y-m-d",
     });
-    </script>
- <style>
+</script>
+    
+    <script type="text/javascript" src="{{ asset('js/stream/ro1_data_cleansing.js') }}"></script>
 
-    </style>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.0/b-2.0.0/b-colvis-2.0.0/b-html5-2.0.0/b-print-2.0.0/cr-1.5.4/fc-3.3.3/fh-3.1.9/r-2.2.9/rg-1.1.3/rr-1.2.8/sc-2.0.5/datatables.min.js"></script>
 </body>
 </html>

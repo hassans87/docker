@@ -7,6 +7,157 @@ $('.query').change(function(){
 Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
 //buttons query selector
+$("#daf_flow_btn").click(function(){
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#daf_flow_btn").removeClass("badge-light3d").addClass("btn-danger");
+        dafFlowQuery();});
+$("#daf_pres_btn").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#daf_pres_btn").removeClass("badge-light3d").addClass("btn-danger");
+        dafPressureQuery();});
+$("#daf_pcv_btn").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#daf_pcv_btn").removeClass("badge-light3d").addClass("btn-danger");
+        dafPCVQuery();});  
+$("#daf_inlet_qc").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#daf_inlet_qc").removeClass("badge-light3d").addClass("btn-danger");
+        dafIneltWaterQC();});
+$("#daf_filtrated_qc").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#daf_filtrated_qc").removeClass("badge-light3d").addClass("btn-danger");
+        dafFiltratedWaterQC();});
+$("#sludge_pit").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#sludge_pit").removeClass("badge-light3d").addClass("btn-danger");
+        sludgePit();});
+$("#intermediate_tank").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $("#intermediate_tank").removeClass("badge-light3d").addClass("btn-danger");
+        intermediatetank();});
+
+
+
+function dafFlowQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_flow]').prop('selected', true);
+$('#ufdata2 option[value=b_flow]').prop('selected', true);
+$('#ufdata3 option[value=c_flow]').prop('selected', true);
+$('#ufdata4 option[value=d_flow]').prop('selected', true);
+$('#ufdata5 option[value=e_flow]').prop('selected', true);
+$('#ufdata6 option[value=f_flow]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Feed Flow');
+queryStream();
+}
+function dafPressureQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_spray_pres]').prop('selected', true);
+$('#ufdata2 option[value=b_spray_pres]').prop('selected', true);
+$('#ufdata3 option[value=c_spray_pres]').prop('selected', true);
+$('#ufdata4 option[value=d_spray_pres]').prop('selected', true);
+$('#ufdata5 option[value=e_spray_pres]').prop('selected', true);
+$('#ufdata6 option[value=f_spray_pres]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Spray Block Balloon Pressure');
+queryStream();
+}
+function dafPCVQuery(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=a_pcv]').prop('selected', true);
+$('#ufdata2 option[value=b_pcv]').prop('selected', true);
+$('#ufdata3 option[value=c_pcv]').prop('selected', true);
+$('#ufdata4 option[value=d_pcv]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line PCV');
+queryStream();
+}
+function dafIneltWaterQC(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=daf_inlet_ec]').prop('selected', true);
+$('#ufdata2 option[value=daf_inlet_orp]').prop('selected', true);
+$('#ufdata3 option[value=daf_inlet_turbidity]').prop('selected', true);
+$('#ufdata4 option[value=daf_inlet_ph]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Inlet Water Quality');
+queryStream();
+}
+function dafFiltratedWaterQC(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", false );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=daf_flr_turb]').prop('selected', true);
+$('#ufdata2 option[value=daf_flr_ph]').prop('selected', true);
+$('#ufdata3 option[value=daf_turbiduty_removal]').prop('selected', true);
+$('#ufdata4 option[value=daf_inlet_ph]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Filtrated Water Quality');
+queryStream();
+}
+function sludgePit(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", false );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=sludge_pit_leve]').prop('selected', true);
+$('#ufdata2 option[value=working_daf]').prop('selected', true);
+$('#ufdata3 option[value=daf_inlet_tot_flow]').prop('selected', true);
+$('#ufdata4 option[value=daf_inlet_ph]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Sludge-Flow');
+queryStream();
+}
+function intermediatetank(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", false );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=pre_tank_level]').prop('selected', true);
+$('#ufdata2 option[value=working_daf]').prop('selected', true);
+$('#ufdata3 option[value=daf_inlet_tot_flow]').prop('selected', true);
+$('#ufdata4 option[value=daf_inlet_ph]').prop('selected', true);
+$('#ufdata5 option[value=e_pcv]').prop('selected', true);
+$('#ufdata6 option[value=f_pcv]').prop('selected', true);
+$('#chr_title').attr('value', 'DAF North Line Intermediate Tank');
+queryStream();
+}
+//buttons query selector
 $("#daf_flow_btn").click(function(){dafFlowQuery();});
 $("#daf_pres_btn").click(function () {dafPressureQuery();});
 $("#daf_pcv_btn").click(function () {dafPCVQuery();});
@@ -235,8 +386,9 @@ let avera1 = collection.reduce((a, b) => a + b, 0) / collection.length;
 $("#data_max"+series).html(dmax1.toFixed(valLimit));
 $("#data_min"+series).html(dmin1.toFixed(valLimit));
 $("#data_avg"+series).html(avera1.toFixed(valLimit));}}
-else{Notiflix.Notify.Failure('Series'+series+ ' : check data Query');
-Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
+else{
+Notiflix.Notify.Failure('Series'+series+ ' : check data Query');
+//Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
 $("#data_length"+series).html('0');
 $("#data_max"+series).html('-');
 $("#data_min"+series).html('-');

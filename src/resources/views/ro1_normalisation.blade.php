@@ -56,18 +56,33 @@
 
     <div id="graph">
         <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
-        <div class="progress col-4 ms-2" id="yield">
-
-
-        </div>
-
+        
+        <style>
+            .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+              border:1px solid #a4b0be;
+            }
+                </style>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="a">N1</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="b">N2</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="c">N3</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="d">DPI</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="e">Flow</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="f">Feed Pressure</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="g">Conductivity</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="h">Recovery - Feed EC</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Pressure - Temperature</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Feed Flow - DPI</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Recovery - Salt Passage</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Flux</button>
+              </div>
 
 
         <table class="table-sm table-responsive table-light table-bordered">
             <thead class="badge-light3d">
                 <tr>
                     <th>Series</th>
-                    <th>&nbsp;&nbsp;Settings &nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Settings  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</th>
                     <th>&nbsp;&nbsp;Data Points&nbsp;&nbsp;</th>
                     <th>&nbsp;&nbsp;Max Value &nbsp;&nbsp;</th>
                     <th>&nbsp;&nbsp;Min Value &nbsp;&nbsp;</th>

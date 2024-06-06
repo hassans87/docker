@@ -58,11 +58,29 @@
 
 
     <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+
+    <style>
+        .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+          border:1px solid #a4b0be;
+        }
+            </style>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="norm1">Norm</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="dpi_x">DPI</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="flowx">Flow</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="feed_pressure">Feed Pressure</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="ec_x">Conductivity</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="rec_feedec">Recovery - Feed EC</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="pressure_temp">Pressure - Temperature</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="feedflow_dpi">Feed Flow - DPI</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="rec_saltpassage">Recovery - Salt Passage</button>
+            <button type="button" class="short_cut btn btn-sm badge-light3d" id="flux">Flux</button>
+          </div>
     <table class="table-sm table-responsive table-light table-bordered">
         <thead class="badge-light3d">
             <tr>
                 <th>Series</th>
-                <th>&nbsp;&nbsp;Settings &nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Settings  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</th>
                 <th>&nbsp;&nbsp;Data Points&nbsp;&nbsp;</th>
                 <th>&nbsp;&nbsp;Max Value &nbsp;&nbsp;</th>
                 <th>&nbsp;&nbsp;Min Value &nbsp;&nbsp;</th>
@@ -87,61 +105,61 @@
                                 } ?>" class="chart_render series-color" style="display: none;">
                             &nbsp; </div>
                         <div class="col-auto">
-                            <select class="query form-control form-control-sm form-select" id="ufdata1"
-                                style="display: none;">
-                                <option value="cip" {{ serInd('cip', $param->qdata1) }}> CIP &nbsp;</option>
-                                <option value="dp_stage1_calc" {{ serInd('dp_stage1_calc', $param->qdata1) }}>Stage-1
-                                    DP (Calc) &nbsp;</option>
-                                <option value="dp_stage2_calc" {{ serInd('dp_stage2_calc', $param->qdata1) }}>Stage-2
-                                    DP (Calc) &nbsp;</option>
-                                <option value="dp_total" {{ serInd('dp_total', $param->qdata1) }}> DP Total (calc)
-                                    &nbsp;</option>
-                                <option value="tmp_2nd_pass" {{ serInd('tmp_2nd_pass', $param->qdata1) }}> 2nd Pass TMP
-                                    &nbsp;</option>
-                                <option value="tot_recovery" {{ serInd('tot_recovery', $param->qdata1) }}> Total
-                                    Recovery (Calc) &nbsp;</option>
-                                <option value="perm_flux" {{ serInd('perm_flux', $param->qdata1) }}>2nd Pass Permeate
-                                    Flux &nbsp;</option>
-                                <option value="tds_at_mem_surf" {{ serInd('tds_at_mem_surf', $param->qdata1) }}>TDS at
-                                    Membrane Surface (Calc) &nbsp;</option>
-                                <option value="net_drv_pres" {{ serInd('net_drv_pres', $param->qdata1) }}> 2nd Pass
-                                    NDP: TMP - Δπ &nbsp;</option>
-                                <option value="t_cor_salt_pas" {{ serInd('t_cor_salt_pas', $param->qdata1) }}> Total
-                                    Salt Passage &nbsp;</option>
-                                <option value="tot_permeab" {{ serInd('tot_permeab', $param->qdata1) }}>Total
-                                    Permeability &nbsp;</option>
-                                <option value="feed_wtr_temp" {{ serInd('feed_wtr_temp', $param->qdata1) }}>Feed Water
-                                    Temperature &nbsp;</option>
-                                <option value="feed_cond" {{ serInd('feed_cond', $param->qdata1) }}>Feed Water EC
-                                    &nbsp;</option>
-                                <option value="stage2_cond" {{ serInd('stage2_cond', $param->qdata1) }}>Stage-2
-                                    Permeate EC &nbsp;</option>
-                                <option value="permeate_cond" {{ serInd('permeate_cond', $param->qdata1) }}> Permeate
-                                    Common EC&nbsp;</option>
-                                <option value="feed_pres" {{ serInd('feed_pres', $param->qdata1) }}> Feed Pressure
-                                    PT-105 &nbsp;</option>
-                                <option value="feed_pres_2ndstg" {{ serInd('feed_pres_2ndstg', $param->qdata1) }}>
-                                    Stage-2 Feed Pressure PT-110 &nbsp;</option>
-                                <option value="brine_pres_2ndstg" {{ serInd('brine_pres_2ndstg', $param->qdata1) }}>
-                                    Stage-2 Brine Pressure PT-113 &nbsp;</option>
-                                <option value="stage1_per_pres" {{ serInd('stage1_per_pres', $param->qdata1) }}>Stage-1
-                                    Permeate Pressure PIT-107 &nbsp;</option>
-                                <option value="totalfeed_calc" {{ serInd('totalfeed_calc', $param->qdata1) }}>Total
-                                    Feed Flow FI-903 &nbsp;</option>
-                                <option value="stage1_perm_flow" {{ serInd('stage1_perm_flow', $param->qdata1) }}>
-                                    Stage-1 Permeate Flow FIT-108 &nbsp;</option>
-                                <option value="stage2_perm_flow" {{ serInd('stage2_perm_flow', $param->qdata1) }}>
-                                    Stage-2 Permeate Flow FIT-111 &nbsp;</option>
-                                <option value="total_perm_flow" {{ serInd('total_perm_flow', $param->qdata1) }}>Total
-                                    Permeate Flow (Calc) &nbsp;</option>
-                                <option value="brine_flowrate" {{ serInd('brine_flowrate', $param->qdata1) }}> Brine
-                                    Flowrate FIT-114 &nbsp;</option>
-                                <option value="brine_rofeed" {{ serInd('brine_rofeed', $param->qdata1) }}> Brine to RO
-                                    Feed header&nbsp;</option>
-                                <option value="brine_nl" {{ serInd('brine_nl', $param->qdata1) }}>2nd Pass Brine Flow
-                                    to North Line &nbsp;</option>
-                                <option value="brine_sl" {{ serInd('brine_sl', $param->qdata1) }}>2nd Pass Brine Flow
-                                    to South Line &nbsp;</option>
+        <select class="query form-control form-control-sm form-select" id="ufdata1"
+            style="display: none;">
+            <option value="cip" {{ serInd('cip', $param->qdata1) }}> CIP &nbsp;</option>
+            <option value="dp_stage1_calc" {{ serInd('dp_stage1_calc', $param->qdata1) }}>Stage-1
+                DP (Calc) &nbsp;</option>
+            <option value="dp_stage2_calc" {{ serInd('dp_stage2_calc', $param->qdata1) }}>Stage-2
+                DP (Calc) &nbsp;</option>
+            <option value="dp_total" {{ serInd('dp_total', $param->qdata1) }}> DP Total (calc)
+                &nbsp;</option>
+            <option value="tmp_2nd_pass" {{ serInd('tmp_2nd_pass', $param->qdata1) }}> 2nd Pass TMP
+                &nbsp;</option>
+            <option value="tot_recovery" {{ serInd('tot_recovery', $param->qdata1) }}> Total
+                Recovery (Calc) &nbsp;</option>
+            <option value="perm_flux" {{ serInd('perm_flux', $param->qdata1) }}>2nd Pass Permeate
+                Flux &nbsp;</option>
+            <option value="tds_at_mem_surf" {{ serInd('tds_at_mem_surf', $param->qdata1) }}>TDS at
+                Membrane Surface (Calc) &nbsp;</option>
+            <option value="net_drv_pres" {{ serInd('net_drv_pres', $param->qdata1) }}> 2nd Pass
+                NDP: TMP - Δπ &nbsp;</option>
+            <option value="t_cor_salt_pas" {{ serInd('t_cor_salt_pas', $param->qdata1) }}> Total
+                Salt Passage &nbsp;</option>
+            <option value="tot_permeab" {{ serInd('tot_permeab', $param->qdata1) }}>Total
+                Permeability &nbsp;</option>
+            <option value="feed_wtr_temp" {{ serInd('feed_wtr_temp', $param->qdata1) }}>Feed Water
+                Temperature &nbsp;</option>
+            <option value="feed_cond" {{ serInd('feed_cond', $param->qdata1) }}>Feed Water EC
+                &nbsp;</option>
+            <option value="stage2_cond" {{ serInd('stage2_cond', $param->qdata1) }}>Stage-2
+                Permeate EC &nbsp;</option>
+            <option value="permeate_cond" {{ serInd('permeate_cond', $param->qdata1) }}> Permeate
+                Common EC&nbsp;</option>
+            <option value="feed_pres" {{ serInd('feed_pres', $param->qdata1) }}> Feed Pressure
+                PT-105 &nbsp;</option>
+            <option value="feed_pres_2ndstg" {{ serInd('feed_pres_2ndstg', $param->qdata1) }}>
+                Stage-2 Feed Pressure PT-110 &nbsp;</option>
+            <option value="brine_pres_2ndstg" {{ serInd('brine_pres_2ndstg', $param->qdata1) }}>
+                Stage-2 Brine Pressure PT-113 &nbsp;</option>
+            <option value="stage1_per_pres" {{ serInd('stage1_per_pres', $param->qdata1) }}>Stage-1
+                Permeate Pressure PIT-107 &nbsp;</option>
+            <option value="totalfeed_calc" {{ serInd('totalfeed_calc', $param->qdata1) }}>Total
+                Feed Flow FI-903 &nbsp;</option>
+            <option value="stage1_perm_flow" {{ serInd('stage1_perm_flow', $param->qdata1) }}>
+                Stage-1 Permeate Flow FIT-108 &nbsp;</option>
+            <option value="stage2_perm_flow" {{ serInd('stage2_perm_flow', $param->qdata1) }}>
+                Stage-2 Permeate Flow FIT-111 &nbsp;</option>
+            <option value="total_perm_flow" {{ serInd('total_perm_flow', $param->qdata1) }}>Total
+                Permeate Flow (Calc) &nbsp;</option>
+            <option value="brine_flowrate" {{ serInd('brine_flowrate', $param->qdata1) }}> Brine
+                Flowrate FIT-114 &nbsp;</option>
+            <option value="brine_rofeed" {{ serInd('brine_rofeed', $param->qdata1) }}> Brine to RO
+                Feed header&nbsp;</option>
+            <option value="brine_nl" {{ serInd('brine_nl', $param->qdata1) }}>2nd Pass Brine Flow
+                to North Line &nbsp;</option>
+            <option value="brine_sl" {{ serInd('brine_sl', $param->qdata1) }}>2nd Pass Brine Flow
+                to South Line &nbsp;</option>
                             </select>
                         </div>
                     </div>
@@ -1643,7 +1661,7 @@
                     <div class="col-auto" style="margin-right:3px;">
                         <a href="{{ url('/home') }}">
                             <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span>
-                                &nbsp; Home &nbsp;
+                                  &nbsp;
                             </button></a>
                     </div>
                 </li>
@@ -1735,23 +1753,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <div class="col-auto" style="margin-right:3px;">
-                        <div class="input-group input-group-sm">
-                            <a href="#">
-                                <button id="trigger_tb" class="btn badge-light3d btn-sm">
-                                    <span style="font-size: 14px;"> 📦 </span> Data Table</button>
-                            </a>
-                        </div>
-                    </div>
             </ul>
         </div>
     </div>
 </nav>
-
-
-
-
     <script type="text/javascript" src="{{ asset('js/stream/ro2_normalization.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>

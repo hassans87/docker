@@ -1,4 +1,4 @@
-queryStream();
+normalizationTemp();
 
 //$('.tensor-flow,.rednder').change(function(){queryStream();})
 setInterval(function () {$("head title").html($("head title").html().substring(1) + $("head title").html().substring(0,1));}, 400);
@@ -14,7 +14,437 @@ function Stream(target){
     this.ufData = $('#ufdata'+target).val();
 
 }
+//shortcut button funtions
+$("#norm1").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+normalizationTemp();});
+$("#dpi_x").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+stageDPI();});
+$("#flowx").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidFlowx();});
+$("#feed_pressure").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+feedPressure();});
+$("#ec_x").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+ecStage();});
+$("#rec_feedec").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+recFeedEC();});
+$("#pressure_temp").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+pressTemp();});
+$("#feedflow_dpi").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+feedFlowDPI();});
+$("#rec_saltpassage").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+recSaltPassaage();});
+$("#flux").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidFlux();});
 
+function normalizationTemp(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$("#line8").prop( "checked", false );
+$("#line9").prop( "checked", false );
+$("#line10").prop( "checked", false );
+$("#line11").prop( "checked", false );
+$('#ufdata1 option[value=dp_stage1_calc]').prop('selected', true);
+$('#ufdata2 option[value=dp_stage2_calc]').prop('selected', true);
+$('#ufdata3 option[value=totalfeed_calc]').prop('selected', true);
+$('#ufdata4 option[value=tot_recovery]').prop('selected', true);
+$('#ufdata5 option[value=feed_cond]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+$('#chart_type2 option[value=spline]').prop('selected', true);
+$('#chart_type3 option[value=spline]').prop('selected', true);
+$('#chart_type4 option[value=areaspline]').prop('selected', true);
+$('#chart_type5 option[value=spline]').prop('selected', true);
+$('#chart_type6 option[value=spline]').prop('selected', true);
+$('#chart_type7 option[value=spline]').prop('selected', true);
+$('#chart_type8 option[value=spline]').prop('selected', true);
+$('#chart_type9 option[value=spline]').prop('selected', true);
+$('#chart_type10 option[value=spline]').prop('selected', true);
+$('#chart_type11 option[value=spline]').prop('selected', true);
+$('#pen1').attr('value', '#ff3f34');
+$('#pen2').attr('value', '#ffa801');
+$('#pen3').attr('value', '#0fbcf9');
+$('#pen4').attr('value', '#f8a5c2');
+$('#pen5').attr('value', '#0be881');
+$('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+$('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+$('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+queryStream();
+}
+// dpi funtion
+function stageDPI(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=dp_stage1_calc]').prop('selected', true);
+    $('#ufdata2 option[value=dp_stage2_calc]').prop('selected', true); 
+    $('#ufdata3 option[value=feed_cond]').prop('selected', true);
+    $('#ufdata4 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=areaspline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34');
+    $('#pen2').attr('value', '#ffa801');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#f8a5c2');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+// flow skidFlowx
+function skidFlowx(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata2 option[value=stage1_perm_flow]').prop('selected', true); 
+    $('#ufdata3 option[value=stage2_perm_flow]').prop('selected', true);
+    $('#ufdata4 option[value=brine_flowrate]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#05c46b'); 
+    $('#pen2').attr('value', '#ffa801');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#ff3f34');
+    $('#pen5').attr('value', '#ff3f34');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+// feedPressure
+function feedPressure(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=feed_pres]').prop('selected', true);
+    $('#ufdata2 option[value=feed_pres_2ndstg]').prop('selected', true); 
+    $('#ufdata3 option[value=brine_pres_2ndstg]').prop('selected', true);
+    $('#ufdata4 option[value=stage1_per_pres]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34');
+    $('#pen2').attr('value', '#ffa801');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#f8a5c2');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+// ecStage
+function ecStage(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=feed_cond]').prop('selected', true);
+    $('#ufdata2 option[value=permeate_cond]').prop('selected', true); 
+    $('#ufdata3 option[value=stage2_cond]').prop('selected', true);
+    $('#ufdata4 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34');
+    $('#pen2').attr('value', '#ffa801');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#f8a5c2');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    } 
+//recFeedEC 
+function recFeedEC(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", false );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=feed_cond]').prop('selected', true);
+    $('#ufdata2 option[value=tot_recovery]').prop('selected', true); 
+    $('#ufdata3 option[value=feed_cond]').prop('selected', true);
+    $('#ufdata4 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=areaspline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#0fbcf9'); 
+    $('#pen2').attr('value', '#f8a5c2');
+    $('#pen3').attr('value', '#ffd32a');
+    $('#pen4').attr('value', '#ff3f34');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+//pressTemp 
+function pressTemp(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=feed_pres]').prop('selected', true);
+    $('#ufdata2 option[value=feed_pres_2ndstg]').prop('selected', true); 
+    $('#ufdata3 option[value=feed_wtr_temp]').prop('selected', true); 
+    $('#ufdata4 option[value=feed_cond]').prop('selected', true); 
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34');
+    $('#pen2').attr('value', '#3c40c6');
+    $('#pen3').attr('value', '#ffdd59'); 
+    $('#pen4').attr('value', '#0fbcf9');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+//feedFLowDPI 
+function feedFlowDPI(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=dp_stage1_calc]').prop('selected', true);
+    $('#ufdata2 option[value=dp_stage2_calc]').prop('selected', true); 
+    $('#ufdata3 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata4 option[value=tot_recovery]').prop('selected', true);
+    $('#ufdata5 option[value=tds_at_mem_surf]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=areaspline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34');
+    $('#pen2').attr('value', '#ffa801');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#f8a5c2');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+//recSaltPassaage 
+function recSaltPassaage(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=tot_recovery]').prop('selected', true);
+    $('#ufdata2 option[value=t_cor_salt_pas]').prop('selected', true); 
+    $('#ufdata3 option[value=feed_cond]').prop('selected', true);
+    $('#ufdata4 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=areaspline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34'); 
+    $('#pen2').attr('value', '#0be881');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#f8a5c2');
+    $('#pen5').attr('value', '#00d8d6');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
+//skidFlux
+function skidFlux(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=perm_flux]').prop('selected', true);
+    $('#ufdata2 option[value=tds_at_mem_surf]').prop('selected', true); 
+    $('#ufdata3 option[value=feed_cond]').prop('selected', true);
+    $('#ufdata4 option[value=totalfeed_calc]').prop('selected', true);
+    $('#ufdata5 option[value=dp_total]').prop('selected', true); 
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=areaspline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#pen1').attr('value', '#ff3f34');
+    $('#pen2').attr('value', '#ffa801');
+    $('#pen3').attr('value', '#0fbcf9');
+    $('#pen4').attr('value', '#f8a5c2');
+    $('#pen5').attr('value', '#0be881');
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chart_title').attr('value', 'RO Second Pass Skid 43-');
+    queryStream();
+    }
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
                     this.ufData = $('#ufdata'+target).val();

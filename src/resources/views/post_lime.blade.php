@@ -972,7 +972,83 @@
   
   
   
-  <x-footer_level1 /> 
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+    <div class="container-fluid" >
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav" >
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <a href="{{ url('/home') }}"> 
+                    <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span>
+                        </button></a>
+                </div>
+          </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <!-- Button trigger modal -->   
+            <div class="input-group">
+            <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
+            </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ From</div>
+  
+        <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2024-04-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ To</div>
+        <input type="date" name="end_date" id="end_date" value="2024-04-30" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+        <div class="col-auto" style="margin-right:3px;">
+            <div class="input-group input-group-sm">
+            <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🕝 Interval</div>
+            <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
+              <option value="0.7" selected>1 hr</option>
+              <option value="1.8" >2 hrs</option>
+              <option value="3.7" >4 Hrs</option>
+              <option value="5.7" >6 Hrs</option>    
+              <option value="7.7" >8 Hrs</option>  
+              <option value="11" >12 Hrs</option>
+              <option value="23" >24 Hrs</option>
+              <option value="47" >48 Hrs</option>    
+              </select>
+            </div>
+        </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <button id="trigger" class="query_fire btn btn-warning btn-sm">
+         <span style="font-size: 14px;"> 🚀 </span> &nbsp;Query</button>
+      </div>
+    </div>
+          </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+              <div class="input-group input-group-sm">
+                <button id="saturators_n1" class="btn badge-light3d btn-sm">
+                 <span style="font-size: 14px;">🔦 </span>N1&nbsp;</button>
+              </div>
+            </div>
+                  </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+              <div class="input-group input-group-sm">
+                <button id="saturators_turbidity" class="btn btn-success btn-sm">
+                 <span style="font-size: 14px;">🎚️ </span>Turbidity&nbsp;</button>
+              </div>
+            </div>
+                  </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <script type="text/javascript" src="{{asset('js/stream/post_lime.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>

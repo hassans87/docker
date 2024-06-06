@@ -13,6 +13,242 @@ function Stream(target){
     this.ufData = $('#ufdata'+target).val();
 
 }
+//buttons query selector
+$("#ro_feed_sdi").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedSDI();
+    });
+    $("#ro_feed_orp_north").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedORPNorth();
+    });
+    $("#ro_feed_orp_south").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedORPSouth();
+    });
+// SDI and NTU
+$("#sdi_ntu").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedSDITUrbidity();
+    });
+//roFeedBrineFlow()
+$("#ro2_brine_flow").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedBrineFlow();
+    });
+//roFeedHeaderPressure
+$("#header_pressure").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedHeaderPressure();
+    });
+//roFeedHeadersFlow
+$("#header_flow").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedHeadersFlow();
+    });
+
+//roFeedpHEC
+$("#ph_ec").click(function () {
+        $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+        $(this).removeClass("badge-light3d").addClass("btn-danger");
+        roFeedpHEC();
+    });
+    function roFeedSDI() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", true);
+        $("#line4").prop("checked", true);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_temp]").prop("selected", true);
+        $("#ufdata2 option[value=south_temp]").prop("selected", true);
+        $("#ufdata3 option[value=north_sdi]").prop("selected", true);
+        $("#ufdata4 option[value=south_sdi]").prop("selected", true);
+        $("#chart_type1 option[value=spline]").prop("selected", true);
+        $("#chart_type2 option[value=spline]").prop("selected", true);
+        $("#chart_type3 option[value=areaspline]").prop("selected", true);
+        $("#chart_type4 option[value=areaspline]").prop("selected", true);
+        $("#pen1").attr("value", "#feca57");
+        $("#pen2").attr("value", "#ee5253");
+        $("#pen3").attr("value", "#48dbfb");
+        $("#pen4").attr("value", "#4cd137");
+        $("#line_width1,#line_width2,#line_width3,#line_width4").attr("value", "0.7");
+        $("#chr_title").attr("value", "RO Feed SDI and Temperature");
+        queryStream();
+    }
+    function roFeedORPNorth() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", false);
+        $("#line4").prop("checked", false);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_orp_206]").prop("selected", true);
+        $("#ufdata2 option[value=north_orp202]").prop("selected", true);
+        $("#chart_type1 option[value=scatter]").prop("selected", true);
+        $("#chart_type2 option[value=scatter]").prop("selected", true);
+        $("#line_width1").attr("value", "1");
+        $("#line_width2").attr("value", "1");
+        $("#pen1").attr("value", "#27ae60");
+        $("#pen2").attr("value", "#9b59b6");
+        $("#chr_title").attr("value", "RO Feed North Line ORP");
+        queryStream();
+    }
+    function roFeedORPSouth() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", false);
+        $("#line4").prop("checked", false);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=south_orp206]").prop("selected", true);
+        $("#ufdata2 option[value=south_orp_202]").prop("selected", true);
+        $("#chart_type1 option[value=scatter]").prop("selected", true);
+        $("#chart_type2 option[value=scatter]").prop("selected", true);
+        $("#line_width1").attr("value", "1");
+        $("#line_width2").attr("value", "1");
+        $("#pen1").attr("value", "#27ae60");
+        $("#pen2").attr("value", "#9b59b6");
+        $("#chr_title").attr("value", "RO Feed South Line ORP");
+        queryStream();
+    }
+// SDI vs Turbidity
+function roFeedSDITUrbidity() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", true);
+        $("#line4").prop("checked", true);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_turbidity]").prop("selected", true);
+        $("#ufdata2 option[value=south_turbidity]").prop("selected", true);
+        $("#ufdata3 option[value=north_sdi]").prop("selected", true);
+        $("#ufdata4 option[value=south_sdi]").prop("selected", true);
+        $("#chart_type1 option[value=spline]").prop("selected", true);
+        $("#chart_type2 option[value=spline]").prop("selected", true);
+        $("#chart_type3 option[value=areaspline]").prop("selected", true);
+        $("#chart_type4 option[value=areaspline]").prop("selected", true);
+        $("#pen1").attr("value", "#feca57");
+        $("#pen2").attr("value", "#ee5253");
+        $("#pen3").attr("value", "#48dbfb");
+        $("#pen4").attr("value", "#4cd137");
+        $("#line_width1,#line_width2,#line_width3,#line_width4").attr("value", "0.7");
+        $("#chr_title").attr("value", "RO Feed SDI and Turbidity");
+        queryStream();
+    }
+// ro2_brine_flow
+function roFeedBrineFlow() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", false);
+        $("#line4").prop("checked", false);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_brineflow]").prop("selected", true);
+        $("#ufdata2 option[value=south_brineflow]").prop("selected", true);
+        $("#chart_type1 option[value=scatter]").prop("selected", true);
+        $("#chart_type2 option[value=scatter]").prop("selected", true);
+        $("#chart_type3 option[value=scatter]").prop("selected", true);
+        $("#chart_type4 option[value=scatter]").prop("selected", true);
+        $("#line_width1").attr("value", "1");
+        $("#line_width2").attr("value", "1");
+        $("#marker1,#marker2,#marker3,#marker4").attr("value", "1.5");
+        $("#pen1").attr("value", "#78e08f");
+        $("#pen2").attr("value", "#ffd32a");
+        $("#pen3").attr("value", "#ffd32a");
+        $("#pen4").attr("value", "#fa983a");
+        $("#chr_title").attr("value", "RO Feed Second Pass Brine Flow");
+        queryStream();
+    }
+
+// Header Pressure
+function roFeedHeaderPressure() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", false);
+        $("#line4").prop("checked", false);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_press]").prop("selected", true);
+        $("#ufdata2 option[value=south_pressure]").prop("selected", true);
+        $("#chart_type1 option[value=scatter]").prop("selected", true);
+        $("#chart_type2 option[value=scatter]").prop("selected", true);
+        $("#chart_type3 option[value=scatter]").prop("selected", true);
+        $("#chart_type4 option[value=scatter]").prop("selected", true);
+        $("#line_width1").attr("value", "1");
+        $("#line_width2").attr("value", "1");
+        $("#marker1,#marker2,#marker3,#marker4").attr("value", "1.5");
+        $("#pen1").attr("value", "#ff3f34");
+        $("#pen2").attr("value", "#ffd32a");
+        $("#pen3").attr("value", "#ffd32a");
+        $("#pen4").attr("value", "#fa983a");
+        $("#chr_title").attr("value", "RO Feed Headers Pressure");
+        queryStream();
+    }
+//roFeedHeadersFlow
+function roFeedHeadersFlow() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", false);
+        $("#line4").prop("checked", false);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_lineflow]").prop("selected", true);
+        $("#ufdata2 option[value=south_lineflow]").prop("selected", true);
+        $("#chart_type1 option[value=scatter]").prop("selected", true);
+        $("#chart_type2 option[value=scatter]").prop("selected", true);
+        $("#chart_type3 option[value=scatter]").prop("selected", true);
+        $("#chart_type4 option[value=scatter]").prop("selected", true);
+        $("#line_width1").attr("value", "1");
+        $("#line_width2").attr("value", "1");
+        $("#marker1,#marker2,#marker3,#marker4").attr("value", "1.5");
+        $("#pen1").attr("value", "#0fbcf9");
+        $("#pen2").attr("value", "#0be881");
+        $("#pen3").attr("value", "#ffd32a");
+        $("#pen4").attr("value", "#fa983a");
+        $("#chr_title").attr("value", "RO Feed Headers Flow");
+        queryStream();
+    }
+//roFeedpHEC
+function roFeedpHEC() {
+        $("#line1").prop("checked", true);
+        $("#line2").prop("checked", true);
+        $("#line3").prop("checked", true);
+        $("#line4").prop("checked", true);
+        $("#line5").prop("checked", false);
+        $("#line6").prop("checked", false);
+        $("#line7").prop("checked", false);
+        $("#ufdata1 option[value=north_ph]").prop("selected", true);
+        $("#ufdata2 option[value=south_ph]").prop("selected", true);
+        $("#ufdata3 option[value=north_ec]").prop("selected", true);
+        $("#ufdata4 option[value=south_ec]").prop("selected", true);
+        $("#chart_type1 option[value=spline]").prop("selected", true);
+        $("#chart_type2 option[value=spline]").prop("selected", true);
+        $("#chart_type3 option[value=spline]").prop("selected", true);
+        $("#chart_type4 option[value=spline]").prop("selected", true);
+        $("#pen1").attr("value", "#feca57");
+        $("#pen2").attr("value", "#ee5253");
+        $("#pen3").attr("value", "#48dbfb");
+        $("#pen4").attr("value", "#4cd137");
+        $("#line_width1,#line_width2,#line_width3,#line_width4").attr("value", "0.7");
+        $("#chr_title").attr("value", "RO Feed pH and EC");
+        queryStream();
+    }
+
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
                     this.ufData = $('#ufdata'+target).val();
@@ -49,8 +285,10 @@ if(query_days_calc >12000 ){
     $( ".query_fire" ).prop( "disabled", true); 
     $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 
+    document.getElementById("marquee1").innerHTML = '<marquee class="text-danger" loop="2">Check your query max 600 days query allowed';
     Notiflix.Report.Failure('Query Warning','Check your query, max 600 days query allowed','Close');
 }else if(query_days_calc<0){
+        document.getElementById("marquee1").innerHTML = '<marquee class="text-danger" loop="2"> Invalid date range !';
     $( ".query_fire" ).prop( "disabled", true); 
     $(".query_fire").removeClass("btn-light") .addClass("btn-danger");
     Notiflix.Notify.Failure('Reduce query dates, max 600 days'); 
@@ -66,7 +304,8 @@ let plotParam = {
 dateFrom:$('#start_date').val(),
 dateTo: $('#end_date').val(),
 ufqry:$('#skidx').val(),
-interval:$('#invt').val() 
+interval:$('#invt').val(),
+title:$("#chr_title").val()
 }
 
 
@@ -180,7 +419,7 @@ function seriesLook(dv,series){
     $("#data_avg"+series).html(avera1.toFixed(valLimit));             
     if(sum){$("#sum"+series).show(1000); $("#sum"+series).html(x_sum1.toFixed(valLimit));}else{$("#sum"+series).html(' '); $("#sum"+series).hide(1000);}}
     else{Notiflix.Notify.Failure('Series'+series+ ' : check data Query');
-    Notiflix.Report.Failure('Query Warning','Data Array is empty','Close');
+    document.getElementById("marquee1").innerHTML = '<marquee class="text-danger" loop="2">Series '+series+' No Data Found!</marquee>';
     $("#data_length"+series).html('0');
     $("#data_max"+series).html('-');
     $("#data_min"+series).html('-');
@@ -674,6 +913,7 @@ dateFrom:$('#start_date').val(),
 dateTo: $('#end_date').val(), 
 bayline: "43",
 interval:$('#invt').val(),
+title:$("#chr_title").val(),
 ufqry:" ",
 chartBackground:$('#pen_main').val(),
 plotWidth:screen.availWidth * 0.95,
@@ -784,7 +1024,7 @@ var axis_Y4 =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (
         y10min:parseFloat($('#yaxis_min10').val()),
         y10max:parseFloat($('#yaxis_max10').val()),
        
-       }
+       } 
 
     const setting = new URLSearchParams({date1: plotParam.dateFrom,date2:plotParam.dateTo,
         plotbg:plotParam.chartBackground, 
@@ -1021,7 +1261,7 @@ var axis_Y4 =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (
         align: 'center',
         x:35,
         y:30, 
-        text: 'RO Feed Quality',
+        text: plotParam.title,
         //'+'Data From: '+datex[0] + ' hrs  To: '+datex[datex.length-1]+' hrs' ,
         style: {color: plotParam.plotExpTitleColor,
         font: '17px "Calibri", Verdana, sans-serif',
@@ -1905,7 +2145,8 @@ var axis_Y4 =(s1Param.isY && (stack4.includes(s1Param.ufData))||s2Param.isY && (
                       } ) }
 $("#plot_window").css({'background-color':'white'});
 }catch(err){
-    Notiflix.Report.Warning('Failure',' '+err,'Close');
+    //Notiflix.Report.Warning('Failure',' '+err,'Close');
+    document.getElementById("marquee1").innerHTML = '<marquee class="text-danger" loop="2">'+err+'';
     console.log(err);
     $("#plot_window").html(' ');
     $("#plot_window").css({'background-color':'black'});
@@ -1915,7 +2156,8 @@ Notiflix.Notify.Success('Plot updated')
 Notiflix.Block.Remove('body'); 
    }).catch(error=>{
     Notiflix.Block.Remove('body');
-    Notiflix.Report.Failure('Failure','Details: '+error,'Close');
+    document.getElementById("marquee1").innerHTML = '<marquee class="text-danger" loop="2">'+error+'';
+    //Notiflix.Report.Failure('Failure','Details: '+error,'Close');
     console.log(error);
    })
 

@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Exception;
-
 class RO1Normalisation extends Controller
 {
     public function viewRO1Normalization()
@@ -136,90 +133,89 @@ class RO1Normalisation extends Controller
         return json_encode($stream);
     }
 
+// data cleansing PUT request
+public function firstPassDataCleansing(Request $request)
+    {
+        try {
+        $target_skid = '41a_normalization';
+        $resultx = DB::table($target_skid)
+            ->whereBetween('query_date', [$request->from." 00:00:00",$request->dateto." 23:59:00"])
+            ->orderBy('query_date', 'asc')
+            ->limit(50)
+            ->get();
+            $total_row = $resultx->count();
+                $total_row = $resultx->count();
+                if ($total_row > 0) {
+                    $row = '';
+                    $sr = 1;
+                    $row .= '
+                <div class="" style="horizental-align: center; font-size:10px;">
+                <table id="myTable" class="table table-sm table-dark table-bordered align-center" >
+                <thead>
+                <tr >
+                <th ></th>
+                <th >🗓️</th>
+                <th >Status </th>
+                <th >Rear Permeate Flow</th>
+                <th >Hp pump Flow</th>
+                <th >Feed Pressure PT-108</th>
+                <th >Rear Permeate EC-301  </th> 
+                <th >DPI </th> 
+                <th >Salt Passage  </th> 
+                <th >Salt Rejection </th> 
+                </tr> 
+                    </thead><tbody class="table-hover">';
+                    foreach ($resultx as $result) {
+                            $row .= '
+                <tr>
+                <td style="width:10px;">' . $sr . '</td>  
+                <td style="width: 20px; word-wrap: break-word;">' . date_format(date_create($result->query_date), "d/m/Y H:i") . '</td>
+                <td class=""><button class="badge rounded-pill text-bg-info">View </button></td>
+                <td >' . $result->rear_permeate_ft905 . '</td> 
+                <td >' . $result->hp_pump_ft101 . '</td>
+                <td >' . $result->feed_pres_pt108 . '</td>
+                <td >' . $result->rear_cond_at301 . '</td>
+                <td >' . $result->dpi_906 . '</td>
+                <td >' . $result->norm_per_salt_pas . '</td>
+                <td >' . $result->norm_per_salt_rej . '</td>
+                </tr>
+                ';
+                            $sr++;   
+                    }
+                    '<tbody></table> </div>';
+                    return $row;
+                } else {
+                    return "No Data Found!";
+                }
+            } catch (Exception $e) {
+                return $e;
+            }
+    }
 
 
 
     public function firstPassComp(Request $request)
-    {
+    { 
+        // ->whereNotNull($data1)
         $data1 = "dpi_906";
-        $data2 = $request->ufdata2;
-        $data3 = $request->ufdata3;
-        $data4 = $request->ufdata4;
-        $data5 = $request->ufdata5;
-        $data6 = $request->ufdata6;
-        $data7 = $request->ufdata7;
-        $bay1 = $request->d1;
-        $bay2 = $request->d2;
-        $bay3 = $request->d3;
-        $bay4 = $request->d4;
-        $bay5 = $request->d5;
-        $bay6 = $request->d6;
-        $bay7 = $request->d7;
-        $dinvt = $request->datainvt;
-        $target_skid = '41' . $request->roskid . '_normalization';
-        $dex = DB::table('41b_normalization')->select('query_date','hp_pump_ft101','full_flushing', 'membrane_flushing', 'dbna_flushing', 'cip', $data1)
+        $bay1 = "true";
+        $target_skid = '41a_normalization';
+        $dex = DB::table($target_skid)
             ->whereBetween('query_date', [$request->from." 00:00:00",$request->dateto." 23:59:00"])
             ->orderBy('query_date', 'asc')
             ->get();
-        $init_date = "2023-01-01 00:00:00";
-        $x_axis = array();
+        $bay1 = "true";
         $line1 = array();
-        $line2 = array();
-        $line3 = array();
-        $line4 = array();
-        $line5 = array();
-        $line6 = array();
-        $line7 = array();
-        $line8 = array();
-        $data_check1 = ($bay1 and ($data1 == 'full_flushing' || $data1 == 'membrane_flushing' || $data1 == 'dbna_flushing' || $data1 == 'cip')) ? $data_check = true : false;
-        $data_check2 = ($bay2 and ($data2 == 'full_flushing' || $data2 == 'membrane_flushing' || $data2 == 'dbna_flushing' || $data2 == 'cip')) ? $data_check = true : false;
-        $data_check3 = ($bay3 and ($data3 == 'full_flushing' || $data3 == 'membrane_flushing' || $data3 == 'dbna_flushing' || $data3 == 'cip')) ? $data_check = true : false;
-        $data_check4 = ($bay4 and ($data4 == 'full_flushing' || $data4 == 'membrane_flushing' || $data4 == 'dbna_flushing' || $data4 == 'cip')) ? $data_check = true : false;
-        $data_check5 = ($bay5 and ($data5 == 'full_flushing' || $data5 == 'membrane_flushing' || $data5 == 'dbna_flushing' || $data5 == 'cip')) ? $data_check = true : false;
-        $data_check6 = ($bay6 and ($data6 == 'full_flushing' || $data6 == 'membrane_flushing' || $data6 == 'dbna_flushing' || $data6 == 'cip')) ? $data_check = true : false;
-        $data_check7 = ($bay7 and ($data7 == 'full_flushing' || $data7 == 'membrane_flushing' || $data7 == 'dbna_flushing' || $data7 == 'cip')) ? $data_check = true : false;
-        $flushing_check = ($data_check1 || $data_check2 || $data_check3 || $data_check4 || $data_check5 || $data_check6 || $data_check7) ? true : false;
-        $date_interval = strtotime("2016-01-01 15:18:00");
+        $axis = array();
         foreach ($dex as $row) {
-            $ff = (int)$row->full_flushing;
-            $mf = (int)$row->membrane_flushing;
-            $df = (int)$row->dbna_flushing;
-            $cf = (int)$row->cip;
-            $is_running = (int)$row->hp_pump_ft101;
-            $ddf = abs(strtotime($row->query_date) - $date_interval) / 3600;
-            array_push($x_axis, $init_date);
-           
-            if (true) 
-            {
-                array_push($x_axis, $init_date);
-                $init_date =date('Y-m-d H:i:s', strtotime($row->query_date. ' + 1 hours')); 
+           // array_push($x_axis, $init_date);
                 if ($bay1 == 'true') {
-                    array_push($line1, $row->$data1);
-                }
-                if ($bay2 == 'true') {
-                    array_push($line2, $row->$data2);
-                }
-                if ($bay3 == 'true') {
-                    array_push($line3, $row->$data3);
-                }
-                if ($bay4 == 'true') {
-                    array_push($line4, $row->$data4);
-                }
-                if ($bay5 == 'true') {
-                    array_push($line5, $row->$data5);
-                }
-                if ($bay6 == 'true') {
-                    array_push($line6, $row->$data6);
-                }
-                if ($bay7 == 'true') {
-                    array_push($line7, $row->$data7);
-                }
-                array_push($line8, $row->hp_pump_ft101);
-                $stream = [$x_axis, $line1, $line2, $line3, $line4, $line5, $line6, $line7,$line8];
-                $date_interval = strtotime($init_date); 
-            }
+                    array_push($line1,$row->dpi_906);
+                    array_push($axis,$row->query_date);
+                $stream = [$axis,$line1];
+            }}
             
-        }
+       
         return json_encode($stream);
     }
 

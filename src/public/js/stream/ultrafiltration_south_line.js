@@ -8,6 +8,131 @@ $('.query').change(function(){
         //queryStream();
 //Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
+
+//buttons query selector
+// skid data
+$(".short_cut").click(function () {
+  let ssd = this.id;
+  $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutx").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutxa").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutxb").removeClass("btn-danger").addClass("badge-light3d");
+  $(this).removeClass('badge-light3d').addClass('btn-danger');
+  ufShortCut(ssd);
+});
+// average data trend
+$(".short_cutx").click(function () {
+  $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutxa").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutxb").removeClass("btn-danger").addClass("badge-light3d");
+  $( this ).removeClass('badge-light3d').addClass('btn-danger');
+  avgData();
+});
+// feed water quality button
+$(".short_cutxa").click(function () {
+  $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutx").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutxb").removeClass("btn-danger").addClass("badge-light3d");
+  $( this ).removeClass('badge-light3d').addClass('btn-danger');
+  ufInletQC();
+});
+// skid operation flow number of skids etc
+$(".short_cutxb").click(function () {
+  $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutx").removeClass("btn-danger").addClass("badge-light3d");
+  $(".short_cutxa").removeClass("btn-danger").addClass("badge-light3d");
+  $( this ).removeClass('badge-light3d').addClass('btn-danger');
+  skidsOperation();
+});
+function ufShortCut(tag) {
+  $("#line1").prop("checked", true);
+  $("#line2").prop("checked", true);
+  $("#line3").prop("checked", true);
+  $("#line4").prop("checked", false);
+  $("#line5").prop("checked", false);
+  $("#line6").prop("checked", false);
+  $("#line7").prop("checked", false);
+  $("#alpha1 option[value="+tag+"").prop("selected", true);
+  $("#alpha2 option[value="+tag+"").prop("selected", true);
+  $("#alpha3 option[value="+tag+"").prop("selected", true);
+  $("#ufdata1 option[value=permeability").prop("selected", true);
+  $("#ufdata2 option[value=flux").prop("selected", true);
+  $("#ufdata3 option[value=tmp").prop("selected", true);
+  $("#chart_type1 option[value=scatter]").prop("selected", true);
+  $("#chart_type2 option[value=scatter]").prop("selected", true);
+  $("#chart_type3 option[value=scatter]").prop("selected", true);
+  $("#pen1").attr("value", "#0652DD");
+  $("#pen2").attr("value", "#44bd32");
+  $("#pen3").attr("value", "#e84118");
+  $("#chr_title").attr("value", "UF North Average");
+  queryStream();
+}
+function avgData() {
+  $("#line1").prop("checked", false);
+  $("#line2").prop("checked", false);
+  $("#line3").prop("checked", false);
+  $("#line4").prop("checked", false);
+  $("#line5").prop("checked", true);
+  $("#line6").prop("checked", true);
+  $("#line7").prop("checked", true);
+  $("#ufdata5 option[value=avg_permeability").prop("selected", true);
+  $("#ufdata6 option[value=avg_flux").prop("selected", true);
+  $("#ufdata7 option[value=avg_tmp").prop("selected", true);
+  $("#chart_type1 option[value=scatter]").prop("selected", true);
+  $("#chart_type2 option[value=scatter]").prop("selected", true);
+  $("#chart_type3 option[value=scatter]").prop("selected", true);
+  $("#pen5").attr("value", "#0652DD");
+  $("#pen6").attr("value", "#44bd32");
+  $("#pen7").attr("value", "#e84118");
+  $("#line_width1").attr("value", "0.7");
+  $("#line_width2").attr("value", "0.7");
+  $("#chr_title").attr("value", "UF Skid Performance");
+  queryStream();
+}
+function ufInletQC() {
+  $("#line1").prop("checked", false);
+  $("#line2").prop("checked", false);
+  $("#line3").prop("checked", false);
+  $("#line4").prop("checked", false);
+  $("#line5").prop("checked", true);
+  $("#line6").prop("checked", true);
+  $("#line7").prop("checked", true);
+  $("#ufdata5 option[value=turbidity").prop("selected", true);
+  $("#ufdata6 option[value=frc").prop("selected", true);
+  $("#ufdata7 option[value=uv_254").prop("selected", true);
+  $("#chart_type5 option[value=scatter]").prop("selected", true);
+  $("#chart_type6 option[value=scatter]").prop("selected", true);
+  $("#chart_type7 option[value=scatter]").prop("selected", true);
+  $("#pen5").attr("value", "#fa8231");
+  $("#pen6").attr("value", "#44bd32");
+  $("#pen7").attr("value", "#c56cf0");
+  $("#line_width1").attr("value", "0.7");
+  $("#line_width2").attr("value", "0.7");
+  $("#chr_title").attr("value", "UF Feed Water Quality");
+  queryStream();
+}
+function skidsOperation() {
+  $("#line1").prop("checked", false);
+  $("#line2").prop("checked", false);
+  $("#line3").prop("checked", false);
+  $("#line4").prop("checked", false);
+  $("#line5").prop("checked", true);
+  $("#line6").prop("checked", true);
+  $("#line7").prop("checked", false);
+  $("#ufdata5 option[value=n_skids").prop("selected", true);
+  $("#ufdata6 option[value=online_skids_flow").prop("selected", true);
+  $("#chart_type5 option[value=scatter]").prop("selected", true);
+  $("#chart_type6 option[value=scatter]").prop("selected", true);
+  $("#pen5").attr("value", "#fa8231");
+  $("#pen6").attr("value", "#44bd32");
+  $("#line_width1").attr("value", "0.7");
+  $("#line_width2").attr("value", "0.7");
+  $("#chr_title").attr("value", "UF Skids Flow");
+  queryStream();
+}
+
+
+
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
@@ -369,7 +494,7 @@ frc:{
 },
 online_skids_flow:{
         unit:' m3/h',
-        name:"Flow",
+        name:"Total Flow",
         yAxis:8,
         minOffset:10,
         maxOffset:25000,
@@ -378,7 +503,7 @@ online_skids_flow:{
 },
 n_skids:{
         unit:' ',
-        name:"Skids",
+        name:"Skids in operation",
         yAxis:0,
         minOffset:0,
         maxOffset:30,

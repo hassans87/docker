@@ -46,6 +46,37 @@
   
   ?>
   <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+  <style>
+.short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+  border:1px solid #a4b0be;
+}
+    </style>
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="a">31A</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="b">31B</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="c">31C</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="d">31D</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="e">31E</button>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="f">31F</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="g">31G</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="h">31H</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">31I</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="j">31J</button>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="k">31K</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="l">31L</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="m">31M</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="n">31N</button>
+    <button type="button" class="short_cut btn btn-sm badge-light3d" id="o">31O</button>
+  </div>
+  <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+    <button type="button" class="short_cutx btn btn-sm badge-light3d" id="avg">Average</button>
+    <button type="button" class="short_cutxa btn btn-sm badge-light3d" id="uf_inlet_qc">UF Inlet Quality</button>
+    <button type="button" class="short_cutxb btn btn-sm badge-light3d" id="uf_inlet_qc">Operation</button>
+  </div>
    <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
       <tr>
@@ -92,7 +123,8 @@
                                        
                       </select>
                       </div> </div>
-                  </td><td style="text-align: center;">
+                  </td>
+                  <td style="text-align: center;">
                        
                                             <!-- Button trigger modal series 1-->
                                       <span id="panel1">
@@ -190,7 +222,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min1">0.0</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg1">36.9</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit1"> lmh</span> </td>
-        
+                  
   </tr>
   <tr class="tr2 table-light">      
                   <td><div class="input-group">
@@ -325,7 +357,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min2">1</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg2">10</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit2"> </span> </td>
-        
+                 
   </tr>
   <tr class="tr3 table-light">      
                   <td><div class="input-group">
@@ -460,7 +492,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min3">0.0</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg3">36.9</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit3"> lmh</span> </td>
-        
+                 
   </tr>
   <tr class="tr4 table-secondary">      
                   <td><div class="input-group">
@@ -592,7 +624,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min4" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg4" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit4"> </span> </td>
-        
+                 
   </tr>
   <tr class="tr5 table-secondary">      
                   <td><div class="input-group">
@@ -716,7 +748,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min5" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg5" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit5"> </span> </td>
-        
+                  
   </tr>
   
   <tr class="tr6 table-secondary">      
@@ -839,7 +871,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min6" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg6" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit6"> </span> </td>
-        
+                  
   </tr>
   
   <tr class="tr7 table-secondary">      
@@ -963,7 +995,7 @@
                   <td style="text-align: center; background-color: black; color:#00ead3; "> <span id="data_min7" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#fff600; "> <span id="data_avg7" style="display: none;">-</span> </td>
                   <td style="text-align: center; background-color: black; color:#ffffff; "><span id="unit7"> </span> </td>
-        
+                  
   </tr>
   
       </tbody>
@@ -971,8 +1003,8 @@
    
   
   
-    <div style="margin-bottom:100px">
-
+    <div style="margin-bottom:50px; margin-top:5px;" class="">
+      
     </div>
   
   
@@ -1135,15 +1167,6 @@
       </div>
     </div>
           </li>
-              <li class="nav-item">
-                <div class="col-auto" style="margin-right:3px;">
-                  <div class="input-group input-group-sm">
-                    <a href="{{url('/ro1dataExport') }}">
-                      <button id="trigger_tb" class="btn badge-light3d btn-sm">
-                        <span style="font-size: 14px;"> 📦 </span> Data Table</button>
-  </a>
-                  </div>
-                </div> 
         </ul>
       </div>
     </div>

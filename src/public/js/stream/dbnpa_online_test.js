@@ -1,4 +1,4 @@
-queryStream();
+skidDpiQueryGroup1();
 
 //$('.tensor-flow,.rednder').change(function(){queryStream();})
 setInterval(function () {
@@ -15,49 +15,163 @@ $(".query").change(function () {
     Notiflix.Notify.Info("Changes detected, Press Query Button to apply");
 });
 
-//skid DP query selector
-$("#dpi_query").click(function(){skidDpiQuery();});
-$("#ec_query").click(function () {skidECQuery();});
-$("#salt_rejection_query").click(function () {skidSaltRejectionQuery();});
-function skidDpiQuery(){ 
+//skid DP with new membranes
+$("#g1_dpi_query").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidDpiQueryGroup1();});
+$("#g2_dpi_query").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidDpiQueryGroup2();});
+$("#all_skids_dp").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidDpiQueryAll();});
+
+$("#g1_ec_query").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidECGroup1();});
+$("#g2_ec_query").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidECGroup2();});
+$("#all_skids_ec").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidECAll();});
+$("#dbnpa_dosing_flow").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $(this).removeClass("badge-light3d").addClass("btn-danger");
+    dosingDBNPAFlow();});
+$("#dbnpa_dosing_ppm").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+dosingDBNPAFlowRate();});
+
+$("#all_skids_rej").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidSaltRejectionAll();});
+$("#g1_salt_rejection").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidSaltRejectionGroup1();});
+$("#g2_salt_rejection").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+skidSaltRejectionGroup2();});
+$("#dbnpa_dosing").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+DBNPALab();});
+$("#sbs_dosing").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+SBSROFeed();});
+$("#feed_water_temp").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+temperatureROFeed();});
+$("#plant_capacity_feed_flow").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$(this).removeClass("badge-light3d").addClass("btn-danger");
+plantcapacityFeedFlow();});
+//DBNPALab SBSROFeed temperatureROFeed plantcapacityFeedFlow
+// clear all reset
+$("#reset").click(function () {
+    $(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+    $(this).removeClass("badge-light3d").addClass("btn-danger");
+    resetQuery();});
+function resetQuery(){ 
+    $("#line1").prop( "checked", false );
+    $("#line2").prop( "checked", false );
+    $("#line3").prop( "checked", false );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $("#line12").prop( "checked", false );
+    $("#line13").prop( "checked", false );
+    $('#chr_title').attr('value', '');
+    queryStream();
+}
+function skidDpiQueryGroup1(){ 
 $("#line1").prop( "checked", true );
 $("#line2").prop( "checked", true );
 $("#line3").prop( "checked", true );
 $("#line4").prop( "checked", true );
 $("#line5").prop( "checked", true );
 $("#line6").prop( "checked", true );
-$("#line7").prop( "checked", true );
-$("#line8").prop( "checked", true );
-$("#line9").prop( "checked", true );
-$("#line10").prop( "checked", true );
-$("#line11").prop( "checked", true );
-$("#line12").prop( "checked", true );
-$("#line13").prop( "checked", true );
+$("#line7").prop( "checked", false );
+$("#line8").prop( "checked", false );
+$("#line9").prop( "checked", false );
+$("#line10").prop( "checked", false );
+$("#line11").prop( "checked", false );
 $('#ufdata1 option[value=a_dpi]').prop('selected', true);
 $('#ufdata2 option[value=b_dpi]').prop('selected', true);
 $('#ufdata3 option[value=c_dpi]').prop('selected', true);
-$('#ufdata4 option[value=d_dpi]').prop('selected', true);
-$('#ufdata5 option[value=e_dpi]').prop('selected', true);
-$('#ufdata6 option[value=f_dpi]').prop('selected', true);
-$('#ufdata7 option[value=g_dpi]').prop('selected', true);
-$('#ufdata8 option[value=h_dpi]').prop('selected', true);
-$('#ufdata9 option[value=i_dpi]').prop('selected', true);
-$('#ufdata10 option[value=j_dpi]').prop('selected', true);
-$('#ufdata11 option[value=k_dpi]').prop('selected', true);
-$('#ufdata12 option[value=feed_side_dbnpa]').prop('selected', true);
-$('#ufdata13 option[value=brine_side_dbnpa]').prop('selected', true);
-$('#chart_type12 option[value=scatter]').prop('selected', true);
-$('#chart_type13 option[value=scatter]').prop('selected', true); 
-$('#marker12').attr('value', '4.0');
-$('#pen12').attr('value', '#3498db');
-$('#pen13').attr('value', '#27ae60');
-$('#marker13').attr('value', '4.0');
-$('#line_width12').attr('value', '0');
-$('#line_width13').attr('value', '0');
-$('#chr_title').attr('value', 'Skids DP');
+$('#ufdata4 option[value=h_dpi]').prop('selected', true);
+$('#ufdata5 option[value=j_dpi]').prop('selected', true);
+$('#ufdata6 option[value=k_dpi]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+$('#chart_type2 option[value=spline]').prop('selected', true);
+$('#chart_type3 option[value=spline]').prop('selected', true);
+$('#chart_type4 option[value=spline]').prop('selected', true);
+$('#chart_type5 option[value=spline]').prop('selected', true);
+$('#chart_type6 option[value=spline]').prop('selected', true);
+$('#chart_type7 option[value=spline]').prop('selected', true);
+$('#chart_type8 option[value=spline]').prop('selected', true);
+$('#chart_type9 option[value=spline]').prop('selected', true);
+$('#chart_type10 option[value=spline]').prop('selected', true);
+$('#chart_type11 option[value=spline]').prop('selected', true);
+$('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11,#marker12').attr('value', '1.5');
+$('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11,#line_width12').attr('value', '1.5');
+$('#chr_title').attr('value', 'Skids DP with New Membranes');
 queryStream();
 }
-function skidECQuery(){ 
+//group-2 DP
+function skidDpiQueryGroup2(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", true );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $('#ufdata1 option[value=d_dpi]').prop('selected', true);
+    $('#ufdata2 option[value=e_dpi]').prop('selected', true);
+    $('#ufdata3 option[value=f_dpi]').prop('selected', true);
+    $('#ufdata4 option[value=g_dpi]').prop('selected', true);
+    $('#ufdata5 option[value=i_dpi]').prop('selected', true);
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6').attr('value', '1');
+    $('#chr_title').attr('value', 'Skids DP with old Membranes');
+    queryStream();
+    }
+//All Skids DP
+function skidDpiQueryAll(){ 
     $("#line1").prop( "checked", true );
     $("#line2").prop( "checked", true );
     $("#line3").prop( "checked", true );
@@ -69,34 +183,247 @@ function skidECQuery(){
     $("#line9").prop( "checked", true );
     $("#line10").prop( "checked", true );
     $("#line11").prop( "checked", true );
-    $("#line12").prop( "checked", true );
-    $("#line13").prop( "checked", false );
+    $('#ufdata1 option[value=a_dpi]').prop('selected', true);
+    $('#ufdata2 option[value=b_dpi]').prop('selected', true);
+    $('#ufdata3 option[value=c_dpi]').prop('selected', true);
+    $('#ufdata4 option[value=d_dpi]').prop('selected', true);
+    $('#ufdata5 option[value=e_dpi]').prop('selected', true);
+    $('#ufdata6 option[value=f_dpi]').prop('selected', true);
+    $('#ufdata7 option[value=g_dpi]').prop('selected', true);
+    $('#ufdata8 option[value=h_dpi]').prop('selected', true);
+    $('#ufdata9 option[value=i_dpi]').prop('selected', true);
+    $('#ufdata10 option[value=j_dpi]').prop('selected', true);
+    $('#ufdata11 option[value=k_dpi]').prop('selected', true);
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chr_title').attr('value', 'Skids DP');
+    queryStream();
+    }
+function skidECGroup1(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", true );
+    $("#line6").prop( "checked", true );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
     $('#ufdata1 option[value=a_rear_ec]').prop('selected', true);
     $('#ufdata2 option[value=b_rear_ec]').prop('selected', true);
     $('#ufdata3 option[value=c_rear_ec]').prop('selected', true);
-    $('#ufdata4 option[value=d_rear_ec]').prop('selected', true);
-    $('#ufdata5 option[value=e_rear_ec]').prop('selected', true);
-    $('#ufdata6 option[value=f_rear_ec]').prop('selected', true);
+    $('#ufdata4 option[value=h_rear_ec]').prop('selected', true);
+    $('#ufdata5 option[value=j_rear_ec]').prop('selected', true);
+    $('#ufdata6 option[value=k_rear_ec]').prop('selected', true);
     $('#ufdata7 option[value=g_rear_ec]').prop('selected', true);
     $('#ufdata8 option[value=h_rear_ec]').prop('selected', true);
     $('#ufdata9 option[value=i_rear_ec]').prop('selected', true);
     $('#ufdata10 option[value=j_rear_ec]').prop('selected', true);
     $('#ufdata11 option[value=k_rear_ec]').prop('selected', true);
-    $('#ufdata12 option[value=north_temp]').prop('selected', true);
-    $('#chart_type12 option[value=spline]').prop('selected', true);
-    $('#chart_type13 option[value=scatter]').prop('selected', true);
-    $('#pen12').attr('value', '#f39c12');
-    $('#marker12').attr('value', '0');
-    $('#marker13').attr('value', '0');
-    $('#line_width12').attr('value', '1.5');
-    $('#line_width13').attr('value', '1');
-    $('#chr_title').attr('value', 'Skids Conductivity');
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chr_title').attr('value', 'Skids Conductivity with New Membranes');
     queryStream();
     
     }
-
-    // salt rejection button 
-    function skidSaltRejectionQuery(){ 
+    function skidECGroup2(){ 
+        $("#line1").prop( "checked", true );
+        $("#line2").prop( "checked", true );
+        $("#line3").prop( "checked", true );
+        $("#line4").prop( "checked", true );
+        $("#line5").prop( "checked", true );
+        $("#line6").prop( "checked", false );
+        $("#line7").prop( "checked", false );
+        $("#line8").prop( "checked", false );
+        $("#line9").prop( "checked", false );
+        $("#line10").prop( "checked", false );
+        $("#line11").prop( "checked", false );
+        $('#ufdata1 option[value=d_rear_ec]').prop('selected', true);
+        $('#ufdata2 option[value=e_rear_ec]').prop('selected', true);
+        $('#ufdata3 option[value=f_rear_ec]').prop('selected', true);
+        $('#ufdata4 option[value=g_rear_ec]').prop('selected', true);
+        $('#ufdata5 option[value=i_rear_ec]').prop('selected', true);
+        $('#ufdata6 option[value=a_rear_ec]').prop('selected', true);
+        $('#ufdata7 option[value=b_rear_ec]').prop('selected', true);
+        $('#ufdata8 option[value=c_rear_ec]').prop('selected', true);
+        $('#ufdata9 option[value=h_rear_ec]').prop('selected', true);
+        $('#ufdata10 option[value=j_rear_ec]').prop('selected', true);
+        $('#ufdata11 option[value=k_rear_ec]').prop('selected', true);
+        $('#chart_type1 option[value=spline]').prop('selected', true);
+        $('#chart_type2 option[value=spline]').prop('selected', true);
+        $('#chart_type3 option[value=spline]').prop('selected', true);
+        $('#chart_type4 option[value=spline]').prop('selected', true);
+        $('#chart_type5 option[value=spline]').prop('selected', true);
+        $('#chart_type6 option[value=spline]').prop('selected', true);
+        $('#chart_type7 option[value=spline]').prop('selected', true);
+        $('#chart_type8 option[value=spline]').prop('selected', true);
+        $('#chart_type9 option[value=spline]').prop('selected', true);
+        $('#chart_type10 option[value=spline]').prop('selected', true);
+        $('#chart_type11 option[value=spline]').prop('selected', true);
+        $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+        $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+        $('#chr_title').attr('value', 'Skids Conductivity with Old membranes');
+        queryStream();
+        
+        }
+        function skidECAll(){ 
+            $("#line1").prop( "checked", true );
+            $("#line2").prop( "checked", true );
+            $("#line3").prop( "checked", true );
+            $("#line4").prop( "checked", true );
+            $("#line5").prop( "checked", true );
+            $("#line6").prop( "checked", true );
+            $("#line7").prop( "checked", true );
+            $("#line8").prop( "checked", true );
+            $("#line9").prop( "checked", true );
+            $("#line10").prop( "checked", true );
+            $("#line11").prop( "checked", true );
+            $('#ufdata1 option[value=a_rear_ec]').prop('selected', true);
+            $('#ufdata2 option[value=b_rear_ec]').prop('selected', true);
+            $('#ufdata3 option[value=c_rear_ec]').prop('selected', true);
+            $('#ufdata4 option[value=d_rear_ec]').prop('selected', true);
+            $('#ufdata5 option[value=e_rear_ec]').prop('selected', true);
+            $('#ufdata6 option[value=f_rear_ec]').prop('selected', true);
+            $('#ufdata7 option[value=g_rear_ec]').prop('selected', true);
+            $('#ufdata8 option[value=h_rear_ec]').prop('selected', true);
+            $('#ufdata9 option[value=i_rear_ec]').prop('selected', true);
+            $('#ufdata10 option[value=j_rear_ec]').prop('selected', true);
+            $('#ufdata11 option[value=k_rear_ec]').prop('selected', true);
+            $('#chart_type1 option[value=spline]').prop('selected', true);
+            $('#chart_type2 option[value=spline]').prop('selected', true);
+            $('#chart_type3 option[value=spline]').prop('selected', true);
+            $('#chart_type4 option[value=spline]').prop('selected', true);
+            $('#chart_type5 option[value=spline]').prop('selected', true);
+            $('#chart_type6 option[value=spline]').prop('selected', true);
+            $('#chart_type7 option[value=spline]').prop('selected', true);
+            $('#chart_type8 option[value=spline]').prop('selected', true);
+            $('#chart_type9 option[value=spline]').prop('selected', true);
+            $('#chart_type10 option[value=spline]').prop('selected', true);
+            $('#chart_type11 option[value=spline]').prop('selected', true);
+            $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+            $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+            $('#chr_title').attr('value', 'Skids Conductivity');
+            queryStream();
+            
+            }
+// DBNPA Flow  dbnpa_dosing_ppm
+function dosingDBNPAFlow(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $("#line8").prop( "checked", false );
+    $("#line9").prop( "checked", false );
+    $("#line10").prop( "checked", false );
+    $("#line11").prop( "checked", false );
+    $("#line12").prop( "checked", false );
+    $("#line13").prop( "checked", false );
+    $('#ufdata1 option[value=north_dbnpa_flow]').prop('selected', true);
+    $('#ufdata2 option[value=south_dbnpa_flow]').prop('selected', true);
+    $('#ufdata3 option[value=north_sbs_flow]').prop('selected', true);
+    $('#ufdata4 option[value=south_sbs_flow]').prop('selected', true);
+    $('#ufdata5 option[value=e_rear_ec]').prop('selected', false);
+    $('#ufdata6 option[value=f_rear_ec]').prop('selected', false);
+    $('#ufdata7 option[value=g_rear_ec]').prop('selected', false);
+    $('#ufdata8 option[value=h_rear_ec]').prop('selected', false);
+    $('#ufdata9 option[value=i_rear_ec]').prop('selected', false);
+    $('#ufdata10 option[value=j_rear_ec]').prop('selected', false);
+    $('#ufdata11 option[value=k_rear_ec]').prop('selected', false);
+    $('#ufdata12 option[value=north_temp]').prop('selected', false);
+    $('#chart_type1 option[value=scatter]').prop('selected', true);
+    $('#chart_type2 option[value=scatter]').prop('selected', true);
+    $('#chart_type3 option[value=scatter]').prop('selected', true);
+    $('#chart_type4 option[value=scatter]').prop('selected', true);
+    $('#pen1').attr('value', '#8c7ae6');
+    $('#pen2').attr('value', '#e1b12c');
+    $('#pen3').attr('value', '#EA2027');
+    $('#pen4').attr('value', '#2ed573'); 
+    $('#marker1,#marker2,#marker3,#marker4').attr('value', '3');
+    $('#marker_shape1 option[value=circle]').prop('selected', true);
+    $('#marker_shape2 option[value=circle]').prop('selected', true);
+    $('#marker_shape3 option[value=circle]').prop('selected', true);
+    $('#marker_shape4 option[value=circle]').prop('selected', true);
+    $('#line_width1').attr('value', '1.5');
+    $('#line_width2').attr('value', '1');
+    $('#chr_title').attr('value', 'DBNPA-SBS North and South Line Flow');
+    queryStream();
+    
+    }
+    //DBNPA-SBS Flow rate PPM
+    function dosingDBNPAFlowRate(){ 
+        $("#line1").prop( "checked", true );
+        $("#line2").prop( "checked", true );
+        $("#line3").prop( "checked", true );
+        $("#line4").prop( "checked", true );
+        $("#line5").prop( "checked", false );
+        $("#line6").prop( "checked", false );
+        $("#line7").prop( "checked", false );
+        $("#line8").prop( "checked", false );
+        $("#line9").prop( "checked", false );
+        $("#line10").prop( "checked", false );
+        $("#line11").prop( "checked", false );
+        $("#line12").prop( "checked", false );
+        $("#line13").prop( "checked", false );
+        $('#ufdata1 option[value=north_dbnpa_rate]').prop('selected', true);
+        $('#ufdata2 option[value=south_dbnpa_rate]').prop('selected', true);
+        $('#ufdata3 option[value=north_sbs_rate]').prop('selected', true);
+        $('#ufdata4 option[value=south_sbs_rate]').prop('selected', true);
+        $('#ufdata5 option[value=e_rear_ec]').prop('selected', false);
+        $('#ufdata6 option[value=f_rear_ec]').prop('selected', false);
+        $('#ufdata7 option[value=g_rear_ec]').prop('selected', false);
+        $('#ufdata8 option[value=h_rear_ec]').prop('selected', false);
+        $('#ufdata9 option[value=i_rear_ec]').prop('selected', false);
+        $('#ufdata10 option[value=j_rear_ec]').prop('selected', false);
+        $('#ufdata11 option[value=k_rear_ec]').prop('selected', false);
+        $('#ufdata12 option[value=north_temp]').prop('selected', false);
+        $('#chart_type1 option[value=scatter]').prop('selected', true);
+        $('#chart_type2 option[value=scatter]').prop('selected', true);
+        $('#chart_type3 option[value=scatter]').prop('selected', true);
+        $('#chart_type4 option[value=scatter]').prop('selected', true);
+        $('#pen1').attr('value', '#8c7ae6');
+        $('#pen2').attr('value', '#e1b12c');
+        $('#pen3').attr('value', '#EA2027');
+        $('#pen4').attr('value', '#2ed573'); 
+        $('#marker1,#marker2,#marker3,#marker4').attr('value', '3');
+        $('#marker_shape1 option[value=circle]').prop('selected', true);
+        $('#marker_shape2 option[value=circle]').prop('selected', true);
+        $('#marker_shape3 option[value=circle]').prop('selected', true);
+        $('#marker_shape4 option[value=circle]').prop('selected', true);
+        $('#line_width1').attr('value', '1.5');
+        $('#line_width2').attr('value', '1');
+        $('#chr_title').attr('value', 'DBNPA-SBS North and South Line Flow Rate');
+        queryStream();
+        
+        }
+    // salt rejection  
+    function skidSaltRejectionAll(){ 
         $("#line1").prop( "checked", true );
         $("#line2").prop( "checked", true );
         $("#line3").prop( "checked", true );
@@ -108,8 +435,6 @@ function skidECQuery(){
         $("#line9").prop( "checked", true );
         $("#line10").prop( "checked", true );
         $("#line11").prop( "checked", true );
-        $("#line12").prop( "checked", true );
-        $("#line13").prop( "checked", true );
         $('#ufdata1 option[value=a_saltrejection]').prop('selected', true);
         $('#ufdata2 option[value=b_saltrejection]').prop('selected', true);
         $('#ufdata3 option[value=c_saltrejection]').prop('selected', true);
@@ -121,19 +446,164 @@ function skidECQuery(){
         $('#ufdata9 option[value=i_saltrejection]').prop('selected', true);
         $('#ufdata10 option[value=j_saltrejection]').prop('selected', true);
         $('#ufdata11 option[value=k_saltrejection]').prop('selected', true);
-        $('#ufdata12 option[value=feed_side_dbnpa]').prop('selected', true);
-        $('#ufdata13 option[value=brine_side_dbnpa]').prop('selected', true);
-        $('#chart_type12 option[value=scatter]').prop('selected', true);
-        $('#chart_type13 option[value=scatter]').prop('selected', true); 
-        $('#marker12').attr('value', '4.0');
-        $('#pen12').attr('value', '#3498db');
-        $('#pen13').attr('value', '#27ae60');
-        $('#marker13').attr('value', '4.0');
-        $('#line_width12').attr('value', '0');
-        $('#line_width13').attr('value', '0');
+        $('#chart_type1 option[value=spline]').prop('selected', true);
+        $('#chart_type2 option[value=spline]').prop('selected', true);
+        $('#chart_type3 option[value=spline]').prop('selected', true);
+        $('#chart_type4 option[value=spline]').prop('selected', true);
+        $('#chart_type5 option[value=spline]').prop('selected', true);
+        $('#chart_type6 option[value=spline]').prop('selected', true);
+        $('#chart_type7 option[value=spline]').prop('selected', true);
+        $('#chart_type8 option[value=spline]').prop('selected', true);
+        $('#chart_type9 option[value=spline]').prop('selected', true);
+        $('#chart_type10 option[value=spline]').prop('selected', true);
+        $('#chart_type11 option[value=spline]').prop('selected', true);
+        $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+        $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
         $('#chr_title').attr('value', 'Salt Rejection %');
         queryStream();
         }
+// salt rejection Group-1
+function skidSaltRejectionGroup1(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", true );
+    $("#line6").prop( "checked", true );
+    $("#line7").prop( "checked", true );
+    $("#line8").prop( "checked", true );
+    $("#line9").prop( "checked", true );
+    $("#line10").prop( "checked", true );
+    $("#line11").prop( "checked", true );
+    $('#ufdata1 option[value=a_saltrejection]').prop('selected', true);
+    $('#ufdata2 option[value=b_saltrejection]').prop('selected', true);
+    $('#ufdata3 option[value=c_saltrejection]').prop('selected', true);
+    $('#ufdata4 option[value=d_saltrejection]').prop('selected', true);
+    $('#ufdata5 option[value=e_saltrejection]').prop('selected', true);
+    $('#ufdata6 option[value=f_saltrejection]').prop('selected', true);
+    $('#ufdata7 option[value=g_saltrejection]').prop('selected', true);
+    $('#ufdata8 option[value=h_saltrejection]').prop('selected', true);
+    $('#ufdata9 option[value=i_saltrejection]').prop('selected', true);
+    $('#ufdata10 option[value=j_saltrejection]').prop('selected', true);
+    $('#ufdata11 option[value=k_saltrejection]').prop('selected', true);
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chr_title').attr('value', 'Skids with New Membranes Salt Rejection %');
+    queryStream();
+    }
+// salt rejection Group-2
+function skidSaltRejectionGroup2(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", true );
+    $("#line6").prop( "checked", true );
+    $("#line7").prop( "checked", true );
+    $("#line8").prop( "checked", true );
+    $("#line9").prop( "checked", true );
+    $("#line10").prop( "checked", true );
+    $("#line11").prop( "checked", true );
+    $('#ufdata1 option[value=a_saltrejection]').prop('selected', true);
+    $('#ufdata2 option[value=b_saltrejection]').prop('selected', true);
+    $('#ufdata3 option[value=c_saltrejection]').prop('selected', true);
+    $('#ufdata4 option[value=d_saltrejection]').prop('selected', true);
+    $('#ufdata5 option[value=e_saltrejection]').prop('selected', true);
+    $('#ufdata6 option[value=f_saltrejection]').prop('selected', true);
+    $('#ufdata7 option[value=g_saltrejection]').prop('selected', true);
+    $('#ufdata8 option[value=h_saltrejection]').prop('selected', true);
+    $('#ufdata9 option[value=i_saltrejection]').prop('selected', true);
+    $('#ufdata10 option[value=j_saltrejection]').prop('selected', true);
+    $('#ufdata11 option[value=k_saltrejection]').prop('selected', true);
+    $('#chart_type1 option[value=spline]').prop('selected', true);
+    $('#chart_type2 option[value=spline]').prop('selected', true);
+    $('#chart_type3 option[value=spline]').prop('selected', true);
+    $('#chart_type4 option[value=spline]').prop('selected', true);
+    $('#chart_type5 option[value=spline]').prop('selected', true);
+    $('#chart_type6 option[value=spline]').prop('selected', true);
+    $('#chart_type7 option[value=spline]').prop('selected', true);
+    $('#chart_type8 option[value=spline]').prop('selected', true);
+    $('#chart_type9 option[value=spline]').prop('selected', true);
+    $('#chart_type10 option[value=spline]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#marker1,#marker2,#marker3,#marker4,#marker5,#marker6,#marker7,#marker8,#marker9,#marker10,#marker11').attr('value', '1.5');
+    $('#line_width1,#line_width2,#line_width3,#line_width4,#line_width5,#line_width6,#line_width7,#line_width8,#line_width9,#line_width10,#line_width11').attr('value', '1');
+    $('#chr_title').attr('value', 'Skids with Old Membranes Salt Rejection %');
+    queryStream();
+    }
+// DBNPA series 
+function DBNPALab(){ 
+    $("#line12").prop( "checked", true );
+    $("#line13").prop( "checked", true );
+    $('#ufdata12 option[value=feed_side_dbnpa]').prop('selected', true);
+    $('#ufdata13 option[value=brine_side_dbnpa]').prop('selected', true);
+    $('#chart_type12 option[value=scatter]').prop('selected', true);
+    $('#chart_type13 option[value=scatter]').prop('selected', true); 
+    $('#marker12,#marker13').attr('value', '3.5');
+    $('#pen12').attr('value', '#3498db');
+    $('#pen13').attr('value', '#27ae60');
+    $('#line_width12').attr('value', '0');
+    $('#line_width13').attr('value', '0');
+    queryStream();
+    }
+// DBNPA series
+function SBSROFeed(){ 
+    $("#line12").prop( "checked", true );
+    $("#line13").prop( "checked", true );
+    $('#ufdata12 option[value=north_sbs_rate]').prop('selected', true);
+    $('#ufdata13 option[value=south_sbs_rate]').prop('selected', true);
+    $('#chart_type12 option[value=scatter]').prop('selected', true);
+    $('#chart_type13 option[value=scatter]').prop('selected', true); 
+    $('#marker12,#marker13').attr('value', '2.0');
+    $('#pen12').attr('value', '#3498db');
+    $('#pen13').attr('value', '#27ae60');
+    $('#line_width12').attr('value', '0');
+    $('#line_width13').attr('value', '0');
+    queryStream();
+    }
+function temperatureROFeed(){ 
+    $("#line12").prop( "checked", true );
+    $("#line13").prop( "checked", false );
+    $('#ufdata12 option[value=north_temp]').prop('selected', true);
+    $('#ufdata13 option[value=south_temp]').prop('selected', true);
+    $('#chart_type12 option[value=spline]').prop('selected', true);
+    $('#chart_type13 option[value=spline]').prop('selected', true); 
+    $('#marker12,#marker13').attr('value', '1.0');
+    $('#pen12').attr('value', '#ffc048');
+    $('#pen13').attr('value', '#ffa801');
+    $('#line_width12').attr('value', '1');
+    $('#line_width13').attr('value', '1');
+    queryStream();
+    }
+//Plant Capacity-Feed Flow
+function plantcapacityFeedFlow(){ 
+    $("#line11").prop( "checked", true );
+    $("#line12").prop( "checked", true );
+    $("#line13").prop( "checked", true );
+    $('#ufdata11 option[value=plant_capacity]').prop('selected', true);
+    $('#ufdata12 option[value=north_rofeed]').prop('selected', true);
+    $('#ufdata13 option[value=south_rofeed]').prop('selected', true);
+    $('#chart_type11 option[value=spline]').prop('selected', true);
+    $('#chart_type12 option[value=spline]').prop('selected', true);
+    $('#chart_type13 option[value=spline]').prop('selected', true); 
+    $('#marker11,#marker12,#marker13').attr('value', '1.0');
+    $('#pen11').attr('value', '#ff3f34');
+    $('#pen12').attr('value', '#05c46b');
+    $('#pen13').attr('value', '#0fbcf9');
+    $('#line_width11,#line_width12,#line_width13').attr('value', '1');
+    queryStream();
+    }
 // constructor function
 function Stream(target) {
     this.series = $("#line" + target).is(":checked");
@@ -448,11 +918,7 @@ function queryStream() {
                             Notiflix.Notify.Failure(
                                 "Series" + series + " : check data Query"
                             );
-                            Notiflix.Report.Failure(
-                                "Query Warning",
-                                "Data Array is empty",
-                                "Close"
-                            );
+                            document.getElementById("marquee1").innerHTML = '<marquee class="text-danger" loop="2">Series '+series+' No Data Found!</marquee>';
                             $("#data_length" + series).html("0");
                             $("#data_max" + series).html("-");
                             $("#data_min" + series).html("-");
@@ -634,7 +1100,7 @@ function queryStream() {
                         },
                         north_sbs_flow: {
                             unit: " l/h",
-                            name: "DBNPA SL FLow",
+                            name: "SBS SL FLow",
                             yAxis: 8,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -642,7 +1108,7 @@ function queryStream() {
                         },
                         south_sbs_flow: {
                             unit: " l/h",
-                            name: "DBNPA SL FLow",
+                            name: "SBS SL FLow",
                             yAxis: 8,
                             arrFlr: 1,
                             valFixTo: 0,
@@ -1922,8 +2388,8 @@ function queryStream() {
                             },
                             {
                                 //[8] Chemicals dosing rate
-                                //min:1,
-                                // max:150,
+                                min:1,
+                                max:100,
                                 tickAmount: 11,
                                 visible: axis_Y8,
                                 tickWidth: 1,
@@ -2003,8 +2469,8 @@ function queryStream() {
 
                             {
                                 //[10] Temp C
-                                min: 15,
-                                max: 30,
+                                min: 20,
+                                max: 36,
                                 tickAmount: 11,
                                 visible: axis_Y10,
                                 tickWidth: 1,

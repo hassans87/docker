@@ -46,6 +46,19 @@
   
   ?>
   <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+  <style>
+    .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+      border:1px solid #a4b0be;
+    }
+        </style>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="a">SCF DPI</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="b">Pumps Discharge Pressure</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="c">N- Pumps Flow</button>
+      </div>
+     
+
+
 <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
       <tr>

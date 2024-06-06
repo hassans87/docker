@@ -139,6 +139,9 @@ Route::POST('/RO1Conductvity', [OperationDCS::class, 'ro1ECfromDCS'])->middlewar
 Route::POST('/RO1DPI', [OperationDCS::class, 'ro1DPIfromDCS'])->middleware('auth');
 Route::POST('/BlendingTank', [PostTreatment::class, 'permeateBlendingTank'])->middleware('auth');
 Route::POST('/onlineDBNPA', [OperationDCS::class, 'onlineDBNPAtest'])->middleware('auth');
+// data cleansing requests handling
+Route::POST('/DataCleansing/RO1DataCleansing', [RO1Normalisation::class, 'firstPassDataCleansing'])->middleware('auth');
+
 //user login/loutout, new user request
 Route::middleware(['throttle:3,1'])->group(function () {
 ROUTE::POST('/users/authenticate',[UserController::class, 'authenticate']);

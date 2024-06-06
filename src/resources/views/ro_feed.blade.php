@@ -24,6 +24,22 @@
 </head>
 <body style="font-family: calibri;" class="">
 <figure id="plot_window" class="test_print loading-msg" style="height:95vh;"></figure>
+<style>
+  .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+    border:1px solid #a4b0be;
+  }
+      </style>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="ro_feed_orp_north">ORP North Line</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="ro_feed_orp_south">ORP South Line</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="ro_feed_sdi">SDI-Temperature</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="sdi_ntu">SDI-Turbidity</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="ro2_brine_flow">Second Pass Brine Flow</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="header_pressure">Header Pressure</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="header_flow">North-South Flow</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="ph_ec">pH-EC</button>
+    </div>
+    
   <style>
   .main-chk{
   width:20px; 
@@ -102,60 +118,6 @@
   });
   
   </script>
-  <div class="input-group">
-      <div class="col-auto" style="margin-right:5px;">
-        <a href="{{ url('/home') }}"> 
-            <button class="btn form-control btn-sm badge-light3d">Home &nbsp;<i class="fa fa-home" aria-hidden="true" style="color:black;"></i></button></a>
-  
-  
-  
-        </div>
-               <div class="col-auto" style="margin-right:5px;">
-                      <!-- Button trigger modal -->   
-                  <div class="input-group">
-                  <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;">Global &nbsp;<i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span>
-                  </div>
-     
-  
-          </div>
-          <div class="col-auto" style="margin-right:8px;">
-            <div class="input-group input-group-sm">
-              <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
-      
-              <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2022-10-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
-            </div>
-          </div>
-          <div class="col-auto" style="margin-right:5px;">
-            <div class="input-group input-group-sm">
-              <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
-              <input type="date" name="end_date" id="end_date" value="2023-03-31" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
-            </div>
-          </div>
-          <div class="col-auto" style="margin-right:5px;">
-            <div class="input-group input-group-sm">
-              <div class="input-group-text badge-light3d mnbtn">Data Interval &nbsp;<i class="fa fa-clock-o" aria-hidden="true" style="color:black;"></i></div>
-              <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
-                <option value="0.7" selected="">1 Hour</option>
-                <option value="1.8">2 Hours</option>
-                <option value="3.7">4 Hours</option>
-                <option value="5.7">6 Hours</option>
-                <option value="7.7">8 Hours</option>
-                <option value="11">12 Hours</option>
-                <option value="23">24 Hours</option>
-                <option value="47">48 Hours</option>
-              </select>
-            </div>
-          </div>
-
-
-
-          <div class="col-auto" style="margin-right:15px;">
-            <div class="input-group input-group-sm">
-              <button id="query_fire" class="query_fire btn btn-warning btn-sm form-check">
-                <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</button>
-            </div>
-          </div>
-                  </div>
                   <table class="table-sm table-responsive table-light table-bordered">
                     <thead class="badge-light3d">
                       <tr>
@@ -1091,14 +1053,20 @@
   <div class="row mb-2">
       <label for="pen_export" class="col-sm-5 col-form-label">Background Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-         <input type="color" id="pen_export" name="chart_background_export" value="#000000" class="chart_render series-color">
+         <input type="color" id="pen_export" name="chart_background_export" value="#f5f6fa" class="chart_render series-color">
       </div>
   </div>
   <div class="row mb-2">
       <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-        <input type="color" id="pen_export_title" name="chart_background_title" value="#c61010" class="chart_render series-color">
+        <input type="color" id="pen_export_title" name="chart_background_title" value="#0097e6" class="series-color">
       </div>
+  </div>
+  <div class="row mb-2">
+    <label for="chr_title" class="col-sm-5 col-form-label">Title &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
+    <div class="col-sm-4">
+      <input type="text" id="chr_title" name="chr_title" value="RO Feed Quality" class="">
+    </div>
   </div>
   
   
@@ -1111,10 +1079,77 @@
     </div>
   </div>
   
-
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgb(0, 0, 0); padding-top:2px; padding-bottom:0px;">
+    <div class="container-fluid" >
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav" >
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <a href="{{ url('/home') }}"> 
+                    <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span>
+                        </button></a>
+                </div>
+          </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-right:3px;">
+                <!-- Button trigger modal -->   
+            <div class="input-group">
+            <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
+            </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ From</div>
+  
+        <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2024-05-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ To</div>
+        <input type="date" name="end_date" id="end_date" value="2024-05-31" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+      </div>
+    </div> </li>
+    <li class="nav-item">
+        <div class="col-auto" style="margin-right:3px;">
+            <div class="input-group input-group-sm">
+            <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🕝 Interval</div>
+            <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
+              <option value="0.7" selected>1 hr</option>
+              <option value="1.8" >2 hrs</option>
+              <option value="3.7" >4 Hrs</option>
+              <option value="5.7" >6 Hrs</option>    
+              <option value="7.7" >8 Hrs</option>  
+              <option value="11" >12 Hrs</option>
+              <option value="23" >24 Hrs</option>
+              <option value="47" >48 Hrs</option>    
+              </select>
+            </div>
+        </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
+      <div class="input-group input-group-sm">
+        <button id="trigger" class="query_fire btn btn-warning btn-sm">
+         <span style="font-size: 14px;"> 🚀 </span> &nbsp;Query</button>
+      </div>
+    </div>
+          </li>
+          <li class="nav-item">
+            <div class="col-auto" style="margin-left:25px;">
+              <div class="input-group input-group-sm" id="marquee1">
+                
+              </div>
+            </div>
+                  </li> 
+  
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 <script type="text/javascript" src="{{asset('js/stream/ro_feed_quality.js') }}"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr("#start_date,#end_date", {

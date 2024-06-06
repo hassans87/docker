@@ -809,7 +809,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             },
                             //labels: false,
                         },
-                        
+                           
                     
                         { //  [1]    for brine temp
                          min:15, 

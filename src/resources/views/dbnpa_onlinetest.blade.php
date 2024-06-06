@@ -32,6 +32,32 @@
        
         </style>
 <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+<style>
+  .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+    border:1px solid #a4b0be;
+  }
+      </style>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="g1_dpi_query">Group-1 Skids DP</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="g2_dpi_query">Group-2 Skids DP</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="g1_ec_query">Group-1 Rear EC</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="g2_ec_query">Group-2 Rear EC</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="g1_salt_rejection">Group-1 Salt Rejection</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="g2_salt_rejection">Group-2 Salt Rejection</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="dbnpa_dosing_flow">DBNPA-SBS Dosing Flow</button>
+    </div>
+    <br>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="dbnpa_dosing">DBNPA</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="sbs_dosing">SBS</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="feed_water_temp">Feed Water Temperature</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="all_skids_dp">all skids DP</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="all_skids_ec">all skids EC</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="all_skids_rej">all skids Salt Rejection</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="dbnpa_actual_dosing">DBNPA Actual Dosing Rate</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="plant_capacity_feed_flow">Plant Capacity-Feed Flow</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="reset">Reset</button>
+    </div>
    <table class="table-sm table-responsive table-light table-bordered">
     <thead class="badge-light3d">
       <tr>
@@ -1912,6 +1938,7 @@
       <option value="north_ec">North Line EC &nbsp;</option>
       <option value="south_ec">South Line EC &nbsp;</option>
       <option value="plant_capacity">Plant Capacity Factor &nbsp;</option>
+      <option value="feed_side_dbnpa">DBNPA-Feed &nbsp;</option>
       <option value="brine_side_dbnpa">DBNPA-Brine &nbsp;</option>
     </select>
     </div> </div>
@@ -2066,7 +2093,7 @@
   <div class="row mb-2">
       <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
       <div class="col-sm-4">
-        <input type="color" id="pen_export_title" name="chart_background_title" value="#c61010" class="chart_render series-color">
+        <input type="color" id="pen_export_title" name="chart_background_title" value="#0097e6" class="chart_render series-color">
       </div>
   </div>
   <div class="row mb-2">
@@ -2086,97 +2113,70 @@
   </div>
   
   
-  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.8)">
-    <div class="container-fluid">
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgb(0, 0, 0); padding-top:2px; padding-bottom:0px;">
+    <div class="container-fluid" >
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav">
-          <li class="nav-item" style="margin-top:8px">
-          </li>
-          <li class="nav-item dropup">
-            <a class="nav-link" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-bars" aria-hidden="true" style="color:rgb(121, 119, 119);"></i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown10">
-              <li><a  href="{{ url('/register') }}"  style="text-decoration: none;" class="dropdown-item menu ">
-               <i class="ancher fa fa-user-plus" aria-hidden="true"></i>&nbsp;Add New User</a></li>
-              <li><a class="dropdown-item" href="#">User Profile</a></li>
-              <li><a class="dropdown-item" href="#">
-                <i class="fa fa-key" aria-hidden="true"></i>&nbsp;Change Password</a></li>
-              <li><a class="dropdown-item" href="#">Admin</a></li>
-              <li>
-                <form class="" method="POST" action="/logout" >
-                    @csrf
-                    <button type="submit" class="dropdown-item menu">
-                    <i class="fa fa-sign-out" aria-hidden="true" style="color:rgb(18, 17, 17);"></i> &nbsp;Logout</button>
-                    </form> 
-            </li>
-            </ul>
-          </li>
+        <ul class="navbar-nav" >
           <li class="nav-item">
-            <div class="col-auto" style="margin-right:5px;">
+            <div class="col-auto" style="margin-right:3px;">
                 <a href="{{ url('/home') }}"> 
-                    <button class="btn form-control btn-sm badge-light3d">Home &nbsp;
-                        <i class="fa fa-home" aria-hidden="true" style="color:black;"></i></button></a>
+                    <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span>
+                        </button></a>
                 </div>
           </li>
           <li class="nav-item">
-            <div class="col-auto" style="margin-right:5px;">
+            <div class="col-auto" style="margin-right:3px;">
                 <!-- Button trigger modal -->   
             <div class="input-group">
-            <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;">Global &nbsp;<i class="fa fa-wrench" aria-hidden="true" style="color:black;"></i></span>
+            <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
             </div>
     </div> </li>
     <li class="nav-item">
-    <div class="col-auto" style="margin-right:8px;">
+    <div class="col-auto" style="margin-right:3px;">
       <div class="input-group input-group-sm">
-        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">From</div>
-
-        <input type="datetime-local" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2024-01-10 00:00" min="2016-01-01 00:00" max="2027-11-10 00:00" required="" style="background-color:#dff9fb;">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ From</div>
+  
+        <input type="date" name="start_date" class="tensor-flow form-control form-control-sm" id="start_date" value="2024-05-01" min="2016-01-01" max="2027-11-10" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">
-    <div class="col-auto" style="margin-right:5px;">
+    <div class="col-auto" style="margin-right:3px;">
       <div class="input-group input-group-sm">
-        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">To</div>
-        <input type="datetime-local" name="end_date" id="end_date" value="2024-02-29 23:59" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
+        <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🗓️ To</div>
+        <input type="date" name="end_date" id="end_date" value="2024-05-31" min="2016-01-31" max="2027-03-30" class="tensor-flow form-control form-control-sm" required="" style="background-color:#dff9fb;">
       </div>
     </div> </li>
     <li class="nav-item">
-    <div class="col-auto" style="margin-right:15px;">
+        <div class="col-auto" style="margin-right:3px;">
+            <div class="input-group input-group-sm">
+            <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🕝 Interval</div>
+            <select class="query form-control form-control-sm form-select" id="invt" style="background-color:#dff9fb;">
+              <option value="0.7" selected>1 hr</option>
+              <option value="1.8" >2 hrs</option>
+              <option value="3.7" >4 Hrs</option>
+              <option value="5.7" >6 Hrs</option>    
+              <option value="7.7" >8 Hrs</option>  
+              <option value="11" >12 Hrs</option>
+              <option value="23" >24 Hrs</option>
+              <option value="47" >48 Hrs</option>    
+              </select>
+            </div>  
+        </div> </li>
+    <li class="nav-item">
+    <div class="col-auto" style="margin-right:3px;">
       <div class="input-group input-group-sm">
-        <button id="query_fire" class="query_fire btn btn-warning btn-sm form-check">
-          <i class="fa fa-rocket" aria-hidden="true" style="color:black;"></i>&nbsp; Send Query</button>
+        <button id="trigger" class="query_fire btn btn-warning btn-sm">
+         <span style="font-size: 14px;"> 🚀 </span> &nbsp;Query</button>
       </div>
     </div>
-          </li>
-
+          </li> 
           <li class="nav-item">
-            <div class="col-auto" style="margin-right:15px;">
-              <div class="input-group input-group-sm">
-                <button id="dpi_query" class="btn btn-danger btn-sm form-check">
-                  <i class="fa fa-sliders" aria-hidden="true" style="color:black;"></i>&nbsp; Skid Dpi</button>
+            <div class="col-auto" style="margin-left:25px;">
+              <div class="input-group input-group-sm" id="marquee1">
+                
               </div>
             </div>
-                  </li>
-                  <li class="nav-item">
-                    <div class="col-auto" style="margin-right:15px;">
-                      <div class="input-group input-group-sm">
-                        <button id="ec_query" class="btn btn-primary btn-sm form-check">
-                          <i class="fa fa-sliders" aria-hidden="true" style="color:black;"></i>&nbsp; Skid EC</button>
-                      </div>
-                    </div>
-                          </li>
-
-                          <li class="nav-item">
-                            <div class="col-auto" style="margin-right:15px;">
-                              <div class="input-group input-group-sm">
-                                <button id="salt_rejection_query" class="btn btn-info btn-sm form-check">
-                                  <i class="fa fa-sliders" aria-hidden="true" style="color:black;"></i>&nbsp; Salt Rejection</button>
-                              </div>
-                            </div>
-                                  </li>
-
-
+                  </li> 
         </ul>
       </div>
     </div>

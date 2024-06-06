@@ -46,6 +46,20 @@
   
   ?>
 <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+<style>
+  .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+    border:1px solid #a4b0be;
+  }
+      </style>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="daf_flow_btn">DAF Feed Flow</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="daf_pres_btn">Balloon Pressure</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="daf_pcv_btn">Flow Control PCV</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="daf_inlet_qc">DAF Inlet Water Quality</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="daf_filtrated_qc">DAF Filtrated Water Quality</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="sludge_pit">Sludge PIT</button>
+      <button type="button" class="short_cut btn btn-sm badge-light3d" id="intermediate_tank">Intermediate Tank Level</button>
+    </div>
                   <table class="table-sm table-responsive table-light table-bordered">
                     <thead class="badge-light3d">
                       <tr>
@@ -1096,31 +1110,6 @@
                           </div>
                         </div>
                               </li>
-                              <li class="nav-item">
-                                <div class="col-auto" style="margin-right:3px;">
-                                  <div class="input-group input-group-sm">
-                                    <button id="daf_flow_btn" class="btn btn-primary btn-sm">
-                                     <span style="font-size: 14px;"> 〽 </span> &nbsp;Feed Flow</button>
-                                  </div>
-                                </div>
-                                      </li>
-                                      <li class="nav-item">
-                                        <div class="col-auto" style="margin-right:3px;">
-                                          <div class="input-group input-group-sm">
-                                            <button id="daf_pres_btn" class="btn btn-danger btn-sm">
-                                             <span style="font-size: 14px;">🫧 </span> &nbsp;Balloon Pressure</button>
-                                          </div>
-                                        </div>
-                                              </li>
-              
-                                              <li class="nav-item">
-                                                <div class="col-auto" style="margin-right:3px;">
-                                                  <div class="input-group input-group-sm">
-                                                    <button id="daf_pcv_btn" class="btn btn-info btn-sm">
-                                                     <span style="font-size: 14px;">🗜️ </span> &nbsp;PCV</button>
-                                                  </div>
-                                                </div>
-                                                      </li>
                             </ul>
                           </div>
                         </div>

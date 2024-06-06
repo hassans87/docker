@@ -15,6 +15,69 @@ window.location.replace("./data_export_ro2.php");
 $('#custom_query').click(function(){
 window.location.replace("./ro2_normalization_qustom.php");
 ;})
+//buttons query selector
+$("#saturators_turbidity").click(function () {
+    limeSaturatorsTurbidity();
+});
+$("#saturators_n1").click(function () {
+    limeN1();
+});
+function limeN1() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", true);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=silo1_weigh]").prop("selected", true); 
+    $("#ufdata2 option[value=silo2_weigh]").prop("selected", true); 
+    $("#ufdata3 option[value=cw_alk_inlet]").prop("selected", true); 
+    $("#ufdata4 option[value=cw_dosing_sp]").prop("selected", true); 
+    $("#chart_type1 option[value=spline]").prop("selected", true);
+    $("#chart_type2 option[value=spline]").prop("selected", true);
+    $("#chart_type3 option[value=areaspline]").prop("selected", true);
+    $("#chart_type4 option[value=scatter]").prop("selected", true);
+    $("#line_width1,#line_width2,#line_width3,#line_width4").attr("value", "1.1");
+    $("#line_width3").attr("value", "0.4");
+    $("#chr_title").attr("value", "Post-treatment Lime");
+    $("#pen1").attr("value", "#e74c3c");
+    $("#pen2").attr("value", "#2980b9");
+    $("#pen3").attr("value", "#2ecc71");
+    $("#pen4").attr("value", "#f39c12");
+    queryStream();
+}
+function limeSaturatorsTurbidity() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", true);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=poly_xsp_101]").prop("selected", true); 
+    $("#ufdata2 option[value=sat1_at_113]").prop("selected", true); 
+    $("#ufdata3 option[value=sat2_at_213]").prop("selected", true); 
+    $("#ufdata4 option[value=sat3_at_313]").prop("selected", true); 
+    $("#chart_type1 option[value=scatter]").prop("selected", true);
+    $("#chart_type2 option[value=scatter]").prop("selected", true);
+    $("#chart_type3 option[value=scatter]").prop("selected", true);
+    $("#chart_type4 option[value=scatter]").prop("selected", true);
+    $("#line_width1,#line_width2,#line_width3,#line_width4").attr("value", "1");
+    $("#line_width3").attr("value", "1");
+    $("#chr_title").attr("value", "Lime Saturators Turbidity");
+    $("#pen1").attr("value", "#0fbcf9");
+    $("#pen2").attr("value", "#ff3f34");
+    $("#pen3").attr("value", "#009432");
+    $("#pen4").attr("value", "#f39c12");
+    queryStream();
+}
+
+
+
+
+
+
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');

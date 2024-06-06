@@ -25,7 +25,7 @@
 
 <title> Seawater Intake </title>
 </head>
-<body style="font-family: calibri;">
+<body style="font-family: calibri; background-color:#ffffff;">
   <?php  
   $ddx = $dex[0]->pref;
   $param =json_decode($ddx); 
@@ -49,6 +49,19 @@
 
 
   <figure id="plot_window" class="test_print loading-msg" style="height:93vh;"></figure>
+  <style>
+    .short_cut, .short_cutx, .short_cutxa, .short_cutxb{
+      border:1px solid #a4b0be;
+    }
+        </style>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="sw_qc_btn">Water Quality</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="sw_flow_btn">Pumps Flow</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="sw_press_btn">Pumps Pressure</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="min_flow_btn">Min. Flow PCV</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="hc_uv_btn">HC-UV-Cl2</button>
+        <button type="button" class="short_cut btn btn-sm badge-light3d" id="line_flow_press">Line Flow-Pressure</button>
+      </div>
 <table class="table-sm table-responsive table-light table-bordered">
 <thead class="badge-light3d">
   <tr>
@@ -964,7 +977,7 @@
 <div class="row mb-2">
   <label for="pen_export_title" class="col-sm-5 col-form-label">Title Color &nbsp;<i class="fa fa-download" aria-hidden="true"></i></label>
   <div class="col-sm-4">
-    <input type="color" id="pen_export_title" name="chart_background_title" value="#1068c6" class="chart_render series-color">
+    <input type="color" id="pen_export_title" name="chart_background_title" value="#0097e6" class="chart_render series-color">
   </div>
 </div>
 <div class="row mb-2">
@@ -983,7 +996,7 @@
   </div>
 </div>
 </div>
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 1); padding-top:2px; padding-bottom:0px;">
   <div class="container-fluid" >
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav" >
@@ -998,7 +1011,7 @@
           <div class="col-auto" style="margin-right:3px;">
               <!-- Button trigger modal -->   
           <div class="input-group">
-          <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span>Global </span>
+          <span class="btn btn-sm badge-light3d" data-bs-toggle="modal" data-bs-target="#sajid" style="margin-bottom:3px;"><span style="font-size: 14px;"> ⚙️ </span></span>
           </div>
   </div> </li>
   <li class="nav-item">
@@ -1047,23 +1060,6 @@
     </div>
   </div>
         </li>
-        <li class="nav-item">
-          <div class="col-auto" style="margin-right:3px;">
-            <div class="input-group input-group-sm">
-              <button id="sw_qc_btn" class="btn btn-primary btn-sm">
-               <span style="font-size: 14px;"> 🧪</span> &nbsp;Water QC</button>
-            </div>
-          </div>
-                </li>
-                <li class="nav-item">
-                  <div class="col-auto" style="margin-right:3px;">
-                    <div class="input-group input-group-sm">
-                      <button id="sw_flow_btn" class="btn btn-danger btn-sm">
-                       <span style="font-size: 14px;">🫧 </span>Pumps Flow &nbsp;</button>
-                    </div>
-                  </div>
-                        </li>
-
       </ul>
     </div>
   </div>

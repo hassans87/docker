@@ -7,6 +7,86 @@ $('.query').change(function(){
 Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
 
+//buttons query selector
+$("#energy_consumption").click(function () {
+    energyConsumption();
+});
+$("#water_export").click(function () {
+    waterExport();
+});
+$("#water_offspec").click(function () {
+    waterOffspec();
+});
+function energyConsumption() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", false);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=line1_power]").prop("selected", true);
+    $("#ufdata2 option[value=line2_power]").prop("selected", true); 
+    $("#ufdata3 option[value=total_power]").prop("selected", true);
+    $("#chart_type1 option[value=spline]").prop("selected", true);
+    $("#chart_type2 option[value=spline]").prop("selected", true);
+    $("#chart_type3 option[value=spline]").prop("selected", true);
+    $("#line_width1,#line_width2,#marker1,#marker2").attr("value", "0.7");
+    $("#line_width3,#marker3").attr("value", "1.0");
+    $("#pen1").attr("value", "#45aaf2");
+    $("#pen2").attr("value", "#26de81");
+    $("#pen3").attr("value", "#e84118");
+    $("#chr_title").attr("value", "Power Consumption");
+    queryStream();
+}
+function waterExport() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", false);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=cw_export]").prop("selected", true);
+    $("#ufdata2 option[value=dw_export]").prop("selected", true); 
+    $("#ufdata3 option[value=uw_export]").prop("selected", true);
+    $("#chart_type1 option[value=spline]").prop("selected", true);
+    $("#chart_type2 option[value=spline]").prop("selected", true);
+    $("#chart_type3 option[value=spline]").prop("selected", true);
+    $("#line_width1,#line_width2,#marker1,#marker2").attr("value", "0.7");
+    $("#line_width3,#marker3").attr("value", "0.7");
+    $("#pen3").attr("value", "#45aaf2");
+    $("#pen1").attr("value", "#26de81");
+    $("#pen2").attr("value", "#e84118");
+    $("#chr_title").attr("value", "Water Export to SADARA");
+    queryStream();
+}
+function waterOffspec() {
+    $("#line1").prop("checked", true);
+    $("#line2").prop("checked", true);
+    $("#line3").prop("checked", true);
+    $("#line4").prop("checked", false);
+    $("#line5").prop("checked", false);
+    $("#line6").prop("checked", false);
+    $("#line7").prop("checked", false);
+    $("#ufdata1 option[value=cw_offspec]").prop("selected", true);
+    $("#ufdata2 option[value=dw_offspec]").prop("selected", true); 
+    $("#ufdata3 option[value=uw_offspec]").prop("selected", true);
+    $("#chart_type1 option[value=spline]").prop("selected", true);
+    $("#chart_type2 option[value=spline]").prop("selected", true);
+    $("#chart_type3 option[value=spline]").prop("selected", true);
+    $("#line_width1,#line_width2,#marker1,#marker2").attr("value", "0.7");
+    $("#line_width3,#marker3").attr("value", "0.7");
+    $("#pen3").attr("value", "#45aaf2");
+    $("#pen1").attr("value", "#26de81");
+    $("#pen2").attr("value", "#e84118");
+    $("#chr_title").attr("value", "Off-Spec");
+    queryStream();
+}
+
+
+
+
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
