@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
@@ -41,6 +42,9 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        DB::table('activity_log')->insert([
+            'user_name' => $userx, 'activity' => "Logout", 
+        ]);
         return redirect('/login')->with('message', "{$userx} logged out!");
     }
 
@@ -64,8 +68,15 @@ class UserController extends Controller
         if(auth()->attempt( [filter_var($identity, FILTER_VALIDATE_EMAIL) ? 'email' : 'username' => $identity,'password' => $password])) {
             $request->session()->regenerate();
             $userx = Auth::user()->name;
+            DB::table('activity_log')->insert([
+                'user_name' => $userx, 'activity' => "successfully login", 
+            ]);
             return redirect('/home')->with('message', "Welcome {$userx}, you 're  logged in");
         }
+        
+        DB::table('activity_log')->insert([
+            'user_name' => $identity, 'activity' => "login Attempt Failed!", 
+        ]);
         return back()->withErrors(['username' => 'Invalid Credentials!'])->onlyInput('username');
     }
 
