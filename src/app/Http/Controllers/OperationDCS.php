@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 
 class OperationDCS extends Controller
 {
@@ -23,6 +23,9 @@ class OperationDCS extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "RO1 EC Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         $dex = DB::table('dcs_ro1_ec')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
         ->whereBetween('i_date',[$request->from,$request->dateto])
         ->orderBy('i_date', 'asc')
@@ -70,6 +73,9 @@ class OperationDCS extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "RO2 EC Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         $dex = DB::table('dcs_ro2_ec')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
         ->whereBetween('i_date',[$request->from,$request->dateto])
         ->orderBy('i_date', 'asc')
@@ -119,6 +125,9 @@ class OperationDCS extends Controller
             $bay6 = $request->d6;
             $bay7 = $request->d7;
             $dinvt = $request->datainvt;
+            DB::table('activity_log')->insert([
+                'user_name' => Auth::user()->name, 'activity' => "RO1 DP Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                    ]);
             $dex = DB::table('dcs_ro1_dpi')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
             ->whereBetween('i_date',[$request->from,$request->dateto])
             ->orderBy('i_date', 'asc')
@@ -181,6 +190,9 @@ public function onlineDBNPAtest(Request $request)
                 $bay12 = $request->d12;
                 $bay13 = $request->d13;
                 $dinvt = 0.7;
+                DB::table('activity_log')->insert([
+                    'user_name' => Auth::user()->name, 'activity' => "DBNPA Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                        ]);
                 $dex = DB::table('rofeed_dbnpa')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7,$data8,$data9,$data10,$data11,$data12,$data13)
                 ->whereBetween('i_date',[$request->from,$request->dateto])
                 ->orderBy('i_date', 'asc')

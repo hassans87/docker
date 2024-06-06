@@ -74,6 +74,9 @@ class UltraFiltration extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "UF North Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         //if (DB::table('uf_north')->select('i_date', $data1, $data2, $data3, $data4, $data5, $data6, $data7)
         //    ->whereBetween('i_date', [$request->from, $request->dateto])->exists()
       //  )         {
@@ -143,6 +146,9 @@ class UltraFiltration extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "UF South Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         $dex = DB::table('uf_south')->select('i_date', $data1, $data2, $data3, $data4, $data5, $data6, $data7)
             ->whereBetween('i_date', [$request->from, $request->dateto])
             ->orderBy('i_date', 'asc')

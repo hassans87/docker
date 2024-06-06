@@ -67,6 +67,9 @@ class RO1Normalisation extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "RO1 Norm Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         $target_skid = '41' . $request->roskid . '_normalization';
         $dex = DB::table($target_skid)->select('query_date','hp_pump_ft101','full_flushing', 'membrane_flushing', 'dbna_flushing', 'cip', $data1, $data2, $data3, $data4, $data5, $data6, $data7)
             ->whereBetween('query_date', [$request->from." 00:00:00",$request->dateto." 23:59:00"])

@@ -92,6 +92,9 @@ class DAFNorthSouth extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+        'user_name' => Auth::user()->name, 'activity' => "DAF North Line Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+            ]);
         $dex = DB::table('daf_north')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
         ->whereBetween('i_date',[$request->from,$request->dateto])
         ->orderBy('i_date', 'asc')
@@ -138,6 +141,9 @@ class DAFNorthSouth extends Controller
             $bay6 = $request->d6;
             $bay7 = $request->d7;
             $dinvt = $request->datainvt;
+            DB::table('activity_log')->insert([
+                'user_name' => Auth::user()->name, 'activity' => "DAF South Line Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                    ]);
             $dex = DB::table('daf_south')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
             ->whereBetween('i_date',[$request->from,$request->dateto])
             ->orderBy('i_date', 'asc')
@@ -184,6 +190,9 @@ class DAFNorthSouth extends Controller
                 $bay6 = $request->d6;
                 $bay7 = $request->d7;
                 $dinvt = $request->datainvt;
+                DB::table('activity_log')->insert([
+                    'user_name' => Auth::user()->name, 'activity' => "SCF Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                        ]);
                 $dex = DB::table('self_cleaning_flr')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
                 ->whereBetween('i_date',[$request->from,$request->dateto])
                 ->orderBy('i_date', 'asc')

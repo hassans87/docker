@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class ROFeedQuality extends Controller
 {
     public function roFeedQc(Request $request)
@@ -22,6 +22,9 @@ class ROFeedQuality extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "RO FEED Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         $dex = DB::table('ro_feed_qc')-> select('i_date',$data1,$data2,$data3,$data4,$data5,$data6,$data7)
         ->whereBetween('i_date',[$request->from,$request->dateto])
         ->orderBy('i_date', 'asc')

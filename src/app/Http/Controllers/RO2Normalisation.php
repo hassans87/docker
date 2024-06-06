@@ -51,6 +51,9 @@ class RO2Normalisation extends Controller
         $bay6 = $request->d6;
         $bay7 = $request->d7;
         $dinvt = $request->datainvt;
+        DB::table('activity_log')->insert([
+            'user_name' => Auth::user()->name, 'activity' => "RO2 Norm Query: ".$data1.", ".$data2.", ".$data3.", ".$data4.", ".$data5.", ".$data6.", ".$data7 
+                ]);
         $target_skid = '43' . $request->roskid . '_normalz';
         $dex = DB::table($target_skid)->select('i_date', 'cip', $data1, $data2, $data3, $data4, $data5, $data6, $data7)
             ->whereBetween('i_date', [$request->from . " 00:00:00", $request->dateto . " 23:59:00"])
