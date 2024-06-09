@@ -62,8 +62,8 @@
       </thead>
         <tbody> 
         <tr >
-          <td class="bdrx"><a   href="{{ url('/swintake') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; SW Intake </button></a> 
+          <td class="bdrx" id="btn0"><a   href="{{ url('/swintake') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn text-light btn-outline-dark menu" > 🖥️&nbsp; SW Intake </button></a> 
           </td>
             <td class="bdrx">
               <a  href="{{ url('/ro1_cip') }}"  style="text-decoration: none;" class="menu">
@@ -76,10 +76,10 @@
               </td>
         </tr>
         <tr>
-          <td class="bdrx"><a   href="{{ url('/dafnorth') }}"  style="text-decoration: none;" class="menu">
+          <td class="bdrx" id="btn4"><a   href="{{ url('/dafnorth') }}"  style="text-decoration: none;" class="menu">
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; DAF North</button></a> 
             </td>
-            <td class="bdrx">
+            <td class="bdrx" id="btn5">
               <a   href="{{ url('/importExport') }}"  style="text-decoration: none;" class="menu">
                 <button class="btn text-light btn-outline-dark menu"> 📊&nbsp;Production/Import/Export</button></a>
              </td>
@@ -91,13 +91,13 @@
                 </td>
            </tr>
         <tr>
-          <td class="bdrx"><a   href="{{ url('/dafsouth') }}"  style="text-decoration: none;" class="menu">
+          <td class="bdrx" id="btn6"><a   href="{{ url('/dafsouth') }}"  style="text-decoration: none;" class="menu">
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; DAF South</button></a> 
             </td>
             <td class="bdrx"><a   href="#"  style="text-decoration: none;" class="menu not_ready">
               <button class="btn text-light btn-outline-dark menu"> <i class="ancherx fa fa-flag" aria-hidden="true"></i>&nbsp; E-PTW</button></a> 
               </td>
-              <td class="bdrx"><a   href="{{ url('/labRoFeed_x') }}"  style="text-decoration: none;" class="menu not_ready">
+              <td class="bdrx" id="btn7"><a   href="{{ url('/labRoFeed_x') }}"  style="text-decoration: none;" class="menu not_ready">
                 <button class="btn text-light btn-outline-dark menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO Feed</button></a> 
                 </td>
             <td class="bdrx" ><a   href="#"  style="text-decoration: none;" class="menu not_ready">
@@ -105,18 +105,18 @@
              </td>
            </tr>
 
-        <tr><td class="bdrx"> <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
+        <tr><td class="bdrx" id="btn8"> <a   href="{{ url('/scf') }}"  style="text-decoration: none;" class="menu">
           <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; SCF</button></a>
             </td>
-            <td class="bdrx"> <a   href="{{ url('/BlendingTank') }}"  style="text-decoration: none;" class="menu">
+            <td class="bdrx" id="btn9"> <a   href="{{ url('/BlendingTank') }}"  style="text-decoration: none;" class="menu">
               <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; Blending Tank</button></a> </td>
 
-            <td class="bdrx"><a   href="{{ url('/labFirstPass_x') }}"  style="text-decoration: none;" class="menu not_ready">
+            <td class="bdrx" id="btn10"><a   href="{{ url('/labFirstPass_x') }}"  style="text-decoration: none;" class="menu not_ready">
               <button class="btn text-light btn-outline-dark menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO First Pass</button></a> 
               </td>
             <td> </td>
            </tr>
-           <tr><td class="bdrx">
+           <tr><td class="bdrx" id="btn11">
             <a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
               <button class="btn text-light btn-outline-dark menu">🖥️&nbsp; UF North</button></a>
               </td>
@@ -127,7 +127,7 @@
                 </td>
               <td> </td>
              </tr>
-             <tr><td class="bdrx">
+             <tr><td class="bdrx" id="btn12">
               <a   href={{ url('/uf_south') }}  style="text-decoration: none;" class="menu">
                 <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; UF South</button></a>
              </td>
@@ -137,7 +137,7 @@
               </td>
              <td> </td>
             </tr>
-            <tr><td class="bdrx">
+            <tr><td class="bdrx" id="btn13">
               <a   href={{ url('/ROfeed') }}  style="text-decoration: none;" class="menu">
                 <button class="btn text-light btn-outline-dark menu">🖥️&nbsp; RO Feed</button></a>
              </td>
@@ -153,16 +153,16 @@
             <td> </td>
             <td> </td>
            </tr>
-           <tr><td class="bdrx shimmer">
+           <tr><td class="bdrx" id="btn1">
             <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
               <button class="btn text-light btn-outline-dark menu">🖥️&nbsp; RO1 Normalization  </button></a>
            </td>
-           <td><a   href={{ url('/onlineDBNPA') }}  style="text-decoration: none;" class="menu">
+           <td class="bdrx" id="btn2"><a   href={{ url('/onlineDBNPA') }}  style="text-decoration: none;" class="menu">
             <button class="btn text-light btn-outline-dark menu"> 🧪&nbsp;DBNPA Dosing</button></a> </td>
            <td> </td>
            <td> </td>
           </tr>
-         <tr><td class="bdrx">
+         <tr><td class="bdrx" id="btn3">
           <a  href="{{ url('/ro2norm') }}"  style="text-decoration: none;" class="menu">
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; RO2 Normalization</button></a>
          </td>
@@ -174,7 +174,7 @@
          <td> </td>
         </tr>
         <tr>
-          <td class="bdrx">
+          <td class="bdrx" id="btn14">
           <a   href="{{ url('/brine') }}"  style="text-decoration: none;" class="menu">
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp;Brine Reject</button></a>  
         </td>
@@ -183,7 +183,7 @@
         <td> </td>
         <td> </td>
        </tr>
-       <tr><td class="bdrx">
+       <tr><td class="bdrx" id="btn15">
         <a   href="{{ url('/PostCO2') }}"  style="text-decoration: none;" class="menu">
           <button class="btn text-light btn-outline-dark menu"> 🖥️ &nbsp;Post CO2</button></a>     
        </td>
@@ -192,7 +192,7 @@
        <td> </td>
        <td> </td>
       </tr>
-      <tr><td class="bdrx">
+      <tr><td class="bdrx" id="btn16">
         <a   href="{{ url('/PostLime') }}"  style="text-decoration: none;" class="menu">
           <button class="btn text-light btn-outline-dark menu"> 🖥️ &nbsp;Post Lime</button></a>
        </td>
@@ -200,7 +200,7 @@
        <td> </td>
        <td> </td>
       </tr>
-      <tr><td class="bdrx">
+      <tr><td class="bdrx" id="btn17">
         <a  href="{{ url('/PostCl2') }}"  style="text-decoration: none;" class="menu" >
           <button class="btn text-light btn-outline-dark menu"> 🖥️ &nbsp;Post Cl2</button></a>
       </td>
@@ -246,6 +246,17 @@ $('.not_ready').click(function(){
     window.location.replace("./swintake")
  
   ;});
+
+
+setInterval(shimmer, 4000)
+function shimmer(){
+  let ran = Math.floor(Math.random() * 17);
+  console.log(ran);
+  $(".bdrx").removeClass("shimmer");
+  $("#btn"+ran).addClass("shimmer");
+  
+}
+
 
 </script>
 
