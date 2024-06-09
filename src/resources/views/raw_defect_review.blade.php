@@ -241,7 +241,7 @@
 
     <br>
   
-    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color:rgb(0, 0, 0); padding-top:2px; padding-bottom:0px;">
       <div class="container-fluid" >
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav" >

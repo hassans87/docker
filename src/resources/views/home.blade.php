@@ -23,10 +23,30 @@
     color:rgb(255, 255, 255);
     background-color:rgb(0, 0, 0);
 }
-  .bdrx:hover, a:hover, th:hover{
-    color:rgb(5, 239, 5);
+  .bdrx:hover, a:hover, th:hover{ 
+    color:rgb(5, 239, 5); }
     
+    .shimmer {
+  animation: shimmer 4s linear infinite;
+  background-image: linear-gradient(-70deg, 
+    rgba(255,255,255,0) 46%, 
+    rgba(255,255,255,.8) 50%, 
+    rgba(255,255,255,.8) 52%, 
+    rgba(255,255,255,0) 56%
+  );
+	background-size: 400% 100%;
 }
+
+
+@keyframes shimmer{
+	0% {
+		background-position: 100% 50%;
+	}
+	30% {
+		background-position: 0% 50%;
+	}
+}
+
     </style>
 <div class="">
 <div style="backgound-color:black;">
@@ -133,7 +153,7 @@
             <td> </td>
             <td> </td>
            </tr>
-           <tr><td class="bdrx">
+           <tr><td class="bdrx shimmer">
             <a   href="{{ url('/ro1norm') }}"  style="text-decoration: none;" class="menu">   
               <button class="btn text-light btn-outline-dark menu">🖥️&nbsp; RO1 Normalization  </button></a>
            </td>
@@ -237,13 +257,13 @@ $('.not_ready').click(function(){
           <div class="col-auto" style="margin-right:3px;">
             <form class="" method="POST" action="/logout" >
               @csrf
-              <button type="submit" class="btn btn-sm badge-light3d">
+              <button type="submit" class="btn btn-sm text-light btn-outline-dark">
                 🛑 Logout</button>
               </form> </div>
                     
         </li>
         <li class="nav-item">
-          <a  href="{{ url('/register') }}"  style="text-decoration: none;" class="btn btn-sm badge-light3d">
+          <a  href="{{ url('/register') }}"  style="text-decoration: none;" class="btn btn-sm text-light btn-outline-dark">
             ➕&nbsp;Add New User</a>
         </li>
       </ul>

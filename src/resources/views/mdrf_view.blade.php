@@ -17,6 +17,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link href="{{ asset('css/com.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/com.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
     <title>Update Defect</title>
 </head>
 
@@ -199,7 +201,7 @@
                         <div class="input-group has-validation">
                             <span class="input-group-text"><i class="fa fa-calendar"
                                     aria-hidden="true"></i></span>
-                            <input type="text" class="form-control form-control-sm" name="preliminary_close"
+                            <input type="date" class="form-control form-control-sm" name="preliminary_close"
                                 id="preliminary_close" required="" value="{{ $dex[0]->preliminary_close }}">
                         </div>
                     </div>
@@ -263,42 +265,42 @@
     <br>
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark"
-        style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+        style="background-color:rgb(0, 0, 0); padding-top:2px; padding-bottom:0px;">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item" style="margin-top:8px">
                     </li>
                     <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
+                        <div class="col-auto" style="">
                             <a href="{{ url('/home') }}">
-                                <button class="btn btn-sm badge-light3d">🏠 &nbsp; Home &nbsp;
+                                <button class="btn btn-sm badge-light3d">🏠 &nbsp;
                                 </button></a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
+                        <div class="col-auto" style="">
                             <a href="{{ url('/mdrf_defects_list') }}">
                                 <button class="btn btn-sm badge-light3d">🗂️ &nbsp; Defects &nbsp;
                                 </button></a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
+                        <div class="col-auto" style="">
                             <a href="{{ url('/mdrfReview', $dex[0]->mdrf_nb - 1) }}">
                                 <button class="btn btn-sm badge-light3d">⏪ Previous &nbsp;
                                 </button></a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
+                        <div class="col-auto" style="">
                             <a href="{{ url('/mdrfReview', $dex[0]->mdrf_nb + 1) }}">
                                 <button class="btn btn-sm badge-light3d">⏩ Next &nbsp;
                                 </button></a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
+                        <div class="col-auto" style="">
                             <div class="input-group input-group-sm">
                                 <input type="number" class="form-control" id="search_mdrf" maxlength="5"
                                     size="5">
@@ -309,7 +311,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
+                        <div class="col-auto" style="">
                             <a href="#">
                                 <button class="btn btn-sm badge-light3d">🖨️ Print &nbsp;
                                 </button></a>
@@ -333,7 +335,18 @@ Notiflix.Report.Failure(
     </script>
 @endif
 
-
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#event_date,#preliminary_close,#date_close", {
+  minDate: "2016-01",
+  //maxDate: "today",
+  dateFormat: "Y-m-d",
+  enableTime: false,
+  altInput: true,
+  altFormat: "j-F-Y ",
+  dateFormat: "Y-m-d",
+  });
+  </script>
 
 
 <script>

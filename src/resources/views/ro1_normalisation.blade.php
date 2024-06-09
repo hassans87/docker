@@ -2035,7 +2035,7 @@
 
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark"
-        style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
+        style="background-color:rgba(0, 0, 0, 0.986); padding-top:2px; padding-bottom:0px;">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
@@ -2043,7 +2043,7 @@
                         <div class="col-auto" style="margin-right:3px;">
                             <a href="{{ url('/home') }}">
                                 <button class="btn btn-sm badge-light3d"><span style="font-size: 14px;"> 🏠 </span>
-                                    &nbsp; Home &nbsp;
+                                    &nbsp;
                                 </button></a>
                         </div>
                     </li>
@@ -2053,7 +2053,7 @@
                             <div class="input-group">
                                 <span class="btn btn-sm badge-light3d" data-bs-toggle="modal"
                                     data-bs-target="#sajid" style="margin-bottom:3px;"><span
-                                        style="font-size: 14px;"> ⚙️ </span>Global </span>
+                                        style="font-size: 14px;"> ⚙️ </span></span>
                             </div>
                         </div>
                     </li>

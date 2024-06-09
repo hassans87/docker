@@ -2183,18 +2183,18 @@
   </nav>
   
   <script type="text/javascript" src="{{asset('js/stream/dbnpa_online_test.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-    flatpickr("#start_date,#end_date", {
-    minDate: "2016-01",
-    maxDate: "today",
-    dateFormat: "Y-m-d H:i",
-    enableTime: true,
-    altInput: true,
-    altFormat: "M j, Y H:i",
-    dateFormat: "Y-m-d H:i",
-    });
-    </script>
+  flatpickr("#start_date,#end_date", {
+  minDate: "2016-01",
+  maxDate: "today",
+  dateFormat: "Y-m-d H:i",
+  enableTime: true,
+  altInput: true,
+  altFormat: "M j, Y H:i",
+  dateFormat: "Y-m-d H:i",
+  });
+  </script>
   </body>
 </html>
 
