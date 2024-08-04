@@ -5,7 +5,7 @@ $('.query_fire').click(function(){
 
 
     function queryStream(){
-        Notiflix.Block.Pulse('body', 'Please Wait, feteching query data'); 
+        Notiflix.Block.Pulse('body', 'Please Wait, Compiling'); 
         let plotParam = {
         dateFrom:$('#start_date').val(),
         dateTo: $('#end_date').val(),
@@ -19,11 +19,10 @@ $('.query_fire').click(function(){
         const query_data = new URLSearchParams({
         from:plotParam.dateFrom,
         dateto:plotParam.dateTo,
-        skid:plotParam.skid,
-        whr:plotParam.wherex,
-        cond:plotParam.condition,
-        logicpv:plotParam.logicvalue        
+        skid:plotParam.skid       
         });
+
+        
         fetch(window.location.href,    
         {method:'POST',
         body:query_data,
@@ -32,7 +31,8 @@ $('.query_fire').click(function(){
         .then(response =>response.text())
         .then((data) =>{
             try {
-            $("#show").html(data);
+           // $("#show").html(data);
+            $("#show").append(data);
             console.log(data);
 
 

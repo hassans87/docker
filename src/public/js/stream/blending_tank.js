@@ -802,8 +802,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             //opposite: true
                         },
         { //  [2] brine_ec
-                min:60,
-                max:150,
+                min:70,
+                max:200,
              tickAmount: 11,
               visible:yAxis2, 
               tickWidth: 1,      

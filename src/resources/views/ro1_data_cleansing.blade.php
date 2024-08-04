@@ -21,7 +21,13 @@
 <body class="">
     <div id="show"> </div>
     <br>
-
+    
+<style>
+body{
+    width:100vw;
+    height:95vh;
+}
+    </style>
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark"
         style="background-color:rgba(0, 0, 0, 0.7); padding-top:2px; padding-bottom:0px;">
         <div class="container-fluid">
@@ -90,53 +96,12 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">
-                                        Where </div>
-                                <select class="query form-control form-control-sm form-select" id="where"
-                                    style="background-color:#dff9fb;">
-                                    <option value="dpi" >DPI</option>
-                                    <option value="hP_flow" >HP Feed Flow</option>
-                                    <option value="read_ec" >Rear EC</option>
-                                    <option value="salt_rejection" >Salt Rejection</option>
-                                    <option value="salt_passage" >Salt Passage</option>
-                                    <option value="permeate_flow" >Permeate Flow</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">
-                                       Condition </div>
-                                <select class="query form-control form-control-sm form-select" id="where_logic"
-                                    style="background-color:#dff9fb;">
-                                    <option value="more_than" >More Than</option>
-                                    <option value="less_than" >Less Than</option>
-                                    <option value="between" >Between</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">
-                                        Value </div>
-                                <input type="text" class="form-control form-control-sm" id="where_input"
-                                    style="background-color:#dff9fb;" >
-                                    
-                            </div>
-                        </div>
-                    </li>
+     
                     <li class="nav-item">
                         <div class="col-auto" style="margin-right:3px;">
                             <div class="input-group input-group-sm">
                                 <button id="trigger" class="query_fire btn btn-sm badge-light3d">
-                                    <span style="font-size: 14px;"> 🚀 </span></button>
+                                    <span style="font-size: 14px;"> 🎟️ Data Compiling</span></button>
                             </div>
                         </div>
                     </li>
@@ -156,6 +121,8 @@
     dateFormat: "Y-m-d",
     });
 </script>
+
+
     
     <script type="text/javascript" src="{{ asset('js/stream/ro1_data_cleansing.js') }}"></script>
 

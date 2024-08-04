@@ -2118,8 +2118,8 @@ function queryStream() {
                             },
                             {
                                 //  [2] DPI
-                                min: 1.5,
-                                max: 3.4,
+                                min: 1.6,
+                                max: 3.6,
                                 tickAmount: 11,
                                 visible: axis_Y2,
                                 tickWidth: 1,
@@ -2469,8 +2469,8 @@ function queryStream() {
 
                             {
                                 //[10] Temp C
-                                min: 20,
-                                max: 36,
+                                min: 26,
+                                max:40,
                                 tickAmount: 11,
                                 visible: axis_Y10,
                                 tickWidth: 1,

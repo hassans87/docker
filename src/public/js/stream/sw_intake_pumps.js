@@ -1881,7 +1881,7 @@ function queryStream() {
                                 max: 40,
                                 tickAmount: 11,
                                 visible: axis_Y10,
-                                opposite: true,
+                                opposite: false,
                                 tickWidth: 1,
                                 gridLineWidth: 0,
                                 crosshair: {

@@ -140,54 +140,28 @@ class RO1Normalisation extends Controller
 public function firstPassDataCleansing(Request $request)
     {
         try {
-        $target_skid = '41a_normalization';
-        $resultx = DB::table($target_skid)
-            ->whereBetween('query_date', [$request->from." 00:00:00",$request->dateto." 23:59:00"])
+        $target_skid = '41'. $request->skid . '_normalization';
+        $resultx = DB::table($target_skid)->select('query_date','rear_cond_at301')
+            ->whereBetween('query_date',[$request->from." 00:00:00",$request->dateto." 23:59:00"])
             ->orderBy('query_date', 'asc')
-            ->limit(50)
             ->get();
+            $index=0;
             $total_row = $resultx->count();
-                $total_row = $resultx->count();
                 if ($total_row > 0) {
-                    $row = '';
-                    $sr = 1;
-                    $row .= '
-                <div class="" style="horizental-align: center; font-size:10px;">
-                <table id="myTable" class="table table-sm table-dark table-bordered align-center" >
-                <thead>
-                <tr >
-                <th ></th>
-                <th >🗓️</th>
-                <th >Status </th>
-                <th >Rear Permeate Flow</th>
-                <th >Hp pump Flow</th>
-                <th >Feed Pressure PT-108</th>
-                <th >Rear Permeate EC-301  </th> 
-                <th >DPI </th> 
-                <th >Salt Passage  </th> 
-                <th >Salt Rejection </th> 
-                </tr> 
-                    </thead><tbody class="table-hover">';
                     foreach ($resultx as $result) {
-                            $row .= '
-                <tr>
-                <td style="width:10px;">' . $sr . '</td>  
-                <td style="width: 20px; word-wrap: break-word;">' . date_format(date_create($result->query_date), "d/m/Y H:i") . '</td>
-                <td class=""><button class="badge rounded-pill text-bg-info">View </button></td>
-                <td >' . $result->rear_permeate_ft905 . '</td> 
-                <td >' . $result->hp_pump_ft101 . '</td>
-                <td >' . $result->feed_pres_pt108 . '</td>
-                <td >' . $result->rear_cond_at301 . '</td>
-                <td >' . $result->dpi_906 . '</td>
-                <td >' . $result->norm_per_salt_pas . '</td>
-                <td >' . $result->norm_per_salt_rej . '</td>
-                </tr>
-                ';
-                            $sr++;   
+                    
+                    $monthx=substr($result->query_date, 5,6);
+                    $hour=substr($result->query_date, 11,2);
+                    $db_year= substr($request->from, 0,4);
+                    DB::table('compiler_ro1_ec')
+                    ->whereBetween('query_date', ["2024-".$monthx." ".$hour.":00", "2024-".$monthx." ".$hour.":59"])
+                    ->update([$request->skid."_".$db_year => $result->rear_cond_at301]);
+                    $index++;
                     }
-                    '<tbody></table> </div>';
-                    return $row;
-                } else {
+return "<div style='background-color:black; color:lime; height:7vh;'>Total Records Processed: ".$index.", Year: ". $db_year." Month: ".$monthx. ", Skid: 41-".strtoupper($request->skid)."</div>"
+               ;     
+                }
+                 else {
                     return "No Data Found!";
                 }
             } catch (Exception $e) {
@@ -202,20 +176,33 @@ public function firstPassDataCleansing(Request $request)
         // ->whereNotNull($data1)
         $data1 = "dpi_906";
         $bay1 = "true";
-        $target_skid = '41a_normalization';
-        $dex = DB::table($target_skid)
-            ->whereBetween('query_date', [$request->from." 00:00:00",$request->dateto." 23:59:00"])
+        $dx1 = $request->skid."_2024";
+        $dx2 = $request->skid."_2023";
+        $dx3 = $request->skid."_2022";
+        $dx4 = $request->skid."_2021";
+        $target_skid= $request->skid."_2024";
+        $target_db = 'compiler_ro1_ec';
+        $dex = DB::table($target_db)->select("query_date",$target_skid,$dx1,$dx2,$dx3,$dx4)
+            ->whereBetween('query_date', ["2024-01-01 00:00:00","2024-12-31 23:59:00"])
             ->orderBy('query_date', 'asc')
             ->get();
         $bay1 = "true";
         $line1 = array();
+        $line2 = array();
+        $line3 = array();
+        $line4 = array();
+        $line5 = array();
         $axis = array();
         foreach ($dex as $row) {
            // array_push($x_axis, $init_date);
                 if ($bay1 == 'true') {
-                    array_push($line1,$row->dpi_906);
+                    array_push($line1,$row->$dx1);
+                    array_push($line2,$row->$dx2);
+                    array_push($line3,$row->$dx3);
+                    array_push($line4,$row->$dx4);
+                 //   array_push($line5,$row->a_2021);
                     array_push($axis,$row->query_date);
-                $stream = [$axis,$line1];
+                $stream = [$axis,$line1,$line2,$line3,$line4,$line5];
             }}
             
        

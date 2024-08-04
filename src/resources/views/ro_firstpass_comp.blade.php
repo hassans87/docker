@@ -189,7 +189,7 @@
 
 
 
-                <tr class="tr1 table-light">
+                <tr class="tr2 table-light">
                     <td>
                         <div class="input-group input-group-sm">
                             <div class="col-auto "><input type="checkbox" class="query series-chk filter" id="line2"
@@ -328,6 +328,150 @@
                 %</span> </td>
 
                 </tr>
+
+
+
+                <tr class="tr3 table-light">
+                    <td>
+                        <div class="input-group input-group-sm">
+                            <div class="col-auto "><input type="checkbox" class="query series-chk filter" id="line3"
+                                    >
+                                &nbsp;2 &nbsp;<input type="color" id="pen3" name="pen3"
+                                    value="#44bd32" 
+                                        class="chart_render series-color"> &nbsp; </div>
+                                        <div class="col-auto input-group-sm">
+                                            <input type="text" class="form-control input-group-sm" value="Year 2018" readonly="true">
+                                        </div>
+                        </div>
+                    </td>
+                    <td style="text-align: center;">
+
+                        <!-- Button trigger modal series 2-->
+                        <span id="panel3">
+                            <span class="model3 badge badge-light3d" data-bs-toggle="modal" data-bs-target="#modal3">
+                                ⚙️</span> </span>
+
+
+
+                        <!-- Modal series 2-->
+                        <div class="modal fade" id="modal3" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header modelheader3" style="background-color: rgb(228, 17, 70);">
+                                        <h5 class="modal-title" id="seriestitle3">Series 1: DP (Head Loss) &nbsp;&nbsp;
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+
+                                        <div class="row mb-2">
+                                            <label for="chart_type3" class="col-sm-4 col-form-label">Chart
+                                                Type</label>
+                                            <div class="col-sm-4">
+                                                <select class="chart_render form-control form-select"
+                                                    id="chart_type3">
+                                                    <option value="spline" >
+                                                        Line</option>
+                                                    <option value="areaspline"
+                                                        >Area </option>
+                                                    <option value="column" >
+                                                        Column </option>
+                                                    <option value="scatter"
+                                                        >Scatter </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <label for="line_width3" class="col-sm-4 col-form-label">Line
+                                                Width</label>
+                                            <div class="col-sm-4">
+                                                <input type="number" id="line_width3"
+                                                    class="chart_render rednder form-control"
+                                                    value="1" min="0" max="4"
+                                                    step="0.1">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="marker3" class="col-sm-4 col-form-label">Marker
+                                                Weight</label>
+                                            <div class="col-sm-4">
+                                                <input type="number" id="marker3"
+                                                    class="chart_render form-control" value=""
+                                                    min="0" step="1" max="4">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <label for="marker_shape3" class="col-sm-4 col-form-label">Marker
+                                                Shape</label>
+                                            <div class="col-sm-4">
+                                                <select id="marker_shape3"
+                                                    class="chart_render form-control form-select">
+                                                    <option value="circle" >
+                                                        Circle </option>
+                                                    <option value="square" >
+                                                        Square </option>
+                                                    <option value="triangle"
+                                                        >Trianlge </option>
+                                                    <option value="diamond" >
+                                                        Diamond </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="input-group">
+
+                                                <input type="checkbox" class="chart_render form-check-input col-auto"
+                                                    id="dt_label2">
+                                                <label for="dt_label3" class="form-check-label col-auto">&nbsp; Show
+                                                    Data Labels</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <div class="input-group">
+                                                <input type="checkbox" class="chart_render form-check-input col-auto"
+                                                    id="y_axis3">
+                                                <label for="y_axis3" class="form-check-label col-auto">&nbsp; Show
+                                                    Y-axis</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-primary apply_changes">Apply
+                                                Changes</button>
+                                            <button type="button" class="btn btn-sm btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal end here   -->
+                        </div>
+                    </td>
+
+
+                    <td style="text-align: center; background-color: black; color:#3edbf0; "> <span
+                            id="data_length3">415</span></td>
+                    <td style="text-align: center; background-color: black; color:#f21170; "> <span
+                            id="data_max3">2.52</span> </td>
+                    <td style="text-align: center; background-color: black; color:#00ead3; "> <span
+                            id="data_min3">2.00</span> </td>
+                    <td style="text-align: center; background-color: black; color:#fff600; "> <span
+                            id="data_avg3">2.26</span> </td>
+                    <td style="text-align: center; background-color: black; color:#ced6e0; "><span id="unit3">
+                            </span> </td>
+                    <td style="text-align: center; background-color: black; color:#06f259; "><span id="oper_days3">
+                                Days</span> </td>
+            <td style="text-align: center; background-color: black; color:#06def2; "><span id="yield3">
+                %</span> </td>
+
+                </tr>
+
+                
             </tbody>
         </table>
 
@@ -491,36 +635,14 @@
                             <div class="input-group input-group-sm">
                                 <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm"><span
                                         style="font-size: 14px;"> 🎛️ </span> Process Value</div>
-                                <select class="query form-control form-control-sm form-select" id="ufdata1"
+                                <select class="query form-control form-control-sm form-select" id="process_value"
                                     style="background-color:#dff9fb;">
                                     <option value="dpi_906" >DPI</option>
-                                    <option value="norm_perm_flow" >Permeate Flow</option>
-                                    <option value="norm_per_salt_rej" >Salt Rejection</option>
-                                    <option value="norm_per_salt_pas" >Salt Passage</option>
-                                    <option value="feed_pres_pt108" >Feed Pressure</option>
-                                    <option value="rear_cond_at301" >Rear Permeate EC</option>
-                                    <option value="front_cond_at303" >Front Permeate EC</option>
-                                    <option value="feed_temp" >Feed Water Temperature</option>
+                                    <option value="rear_ec" >Rear EC</option>
+                            
+                                    
+                                    
                                    
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm">🕝
-                                    Interval</div>
-                                <select class="query form-control form-control-sm form-select" id="invt"
-                                    style="background-color:#dff9fb;">
-                                    <option value="0.7" >1 hr</option>
-                                    <option value="1.8" >2 hrs</option>
-                                    <option value="3.7" >4 Hrs</option>
-                                    <option value="5.7" >6 Hrs</option>
-                                    <option value="7.7" >8 Hrs</option>
-                                    <option value="11" >12 Hrs</option>
-                                    <option value="23" >24 Hrs</option>
-                                    <option value="47" >48 Hrs</option>
                                 </select>
                             </div>
                         </div>

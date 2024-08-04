@@ -251,7 +251,6 @@ $('.not_ready').click(function(){
 setInterval(shimmer, 4000)
 function shimmer(){
   let ran = Math.floor(Math.random() * 17);
-  console.log(ran);
   $(".bdrx").removeClass("shimmer");
   $("#btn"+ran).addClass("shimmer");
   
