@@ -141,24 +141,27 @@ public function firstPassDataCleansing(Request $request)
     {
         try {
         $target_skid = '41'. $request->skid . '_normalization';
-        $resultx = DB::table($target_skid)->select('query_date','rear_cond_at301')
+        $resultx = DB::table($target_skid)->select('query_date','dpi_906')
             ->whereBetween('query_date',[$request->from." 00:00:00",$request->dateto." 23:59:00"])
             ->orderBy('query_date', 'asc')
             ->get();
             $index=0;
+            $db_year="";
+            $monthx = "";
             $total_row = $resultx->count();
                 if ($total_row > 0) {
                     foreach ($resultx as $result) {
+                    if(intval($result->dpi_906)>0.5){ 
                     
                     $monthx=substr($result->query_date, 5,6);
                     $hour=substr($result->query_date, 11,2);
                     $db_year= substr($request->from, 0,4);
-                    DB::table('compiler_ro1_ec')
+                    DB::table('complier_ro1_dpi')
                     ->whereBetween('query_date', ["2024-".$monthx." ".$hour.":00", "2024-".$monthx." ".$hour.":59"])
-                    ->update([$request->skid."_".$db_year => $result->rear_cond_at301]);
+                    ->update([$request->skid."_".$db_year => $result->dpi_906]);
                     $index++;
-                    }
-return "<div style='background-color:black; color:lime; height:7vh;'>Total Records Processed: ".$index.", Year: ". $db_year." Month: ".$monthx. ", Skid: 41-".strtoupper($request->skid)."</div>"
+                    }}
+return "<div style='background-color:black; color:lime; height:3vh;'>Total Records Processed: ".$index.", Year: ". $db_year." Month: ".$monthx. ", Skid: 41-".strtoupper($request->skid)."</div>"
                ;     
                 }
                  else {
@@ -209,6 +212,165 @@ return "<div style='background-color:black; color:lime; height:7vh;'>Total Recor
         return json_encode($stream);
     }
 
+    public function firstPassDPI(Request $request)
+    { 
+        // ->whereNotNull($data1)
+        $data1 = "dpi_906";
+        $bay1 = "true";
+        $dx1 = $request->skid."_2024";
+        $dx2 = $request->skid."_2023";
+        $dx3 = $request->skid."_2022";
+        $dx4 = $request->skid."_2021";
+        $dx5 = $request->skid."_2020";
+        $dx6 = "ref_temp";
+        $target_skid= $request->skid."_2024";
+        $target_db = 'complier_ro1_dpi';
+        $dex = DB::table($target_db)->select("query_date",$target_skid,$dx1,$dx2,$dx3,$dx4,$dx5,$dx6)
+            ->whereBetween('query_date', ["2024-01-01 00:00:00","2024-12-31 23:59:00"])
+            ->orderBy('query_date', 'asc')
+            ->get();
+        $bay1 = "true";
+        $line1 = array();
+        $line2 = array();
+        $line3 = array();
+        $line4 = array();
+        $line5 = array();
+        $line6 = array();
+        $axis = array();
+        foreach ($dex as $row) {
+           // array_push($x_axis, $init_date);
+                if ($bay1 == 'true') {
+                    array_push($line1,$row->$dx1);
+                    array_push($line2,$row->$dx2);
+                    array_push($line3,$row->$dx3);
+                    array_push($line4,$row->$dx4);
+                    array_push($line5,$row->$dx5);
+                    array_push($line6,$row->$dx6);
+                    array_push($axis,$row->query_date);
+                $stream = [$axis,$line1,$line2,$line3,$line4,$line5,$line6];
+            }}
+            
+       
+        return json_encode($stream);
+    }
+
+
+    public function secondPassComp(Request $request)
+    { 
+        // ->whereNotNull($data1)
+        $data1 = "dpi_906";
+        $bay1 = "true";
+        $dx1 = $request->skid."_2024";
+        $dx2 = $request->skid."_2023";
+        $dx3 = $request->skid."_2022";
+        $dx4 = $request->skid."_2021";
+        $dx5 = $request->skid."_2020";
+        $target_skid= $request->skid."_2024";
+        $target_db = 'compiler_ro2_mix_ec';
+        $dex = DB::table($target_db)->select("query_date",$target_skid,$dx1,$dx2,$dx3,$dx4,$dx5)
+            ->whereBetween('query_date', ["2024-01-01 00:00:00","2024-12-31 23:59:00"])
+            ->orderBy('query_date', 'asc')
+            ->get();
+        $bay1 = "true";
+        $line1 = array();
+        $line2 = array();
+        $line3 = array();
+        $line4 = array();
+        $line5 = array();
+        $axis = array();
+        foreach ($dex as $row) {
+           // array_push($x_axis, $init_date);
+                if ($bay1 == 'true') {
+                    array_push($line1,$row->$dx1);
+                    array_push($line2,$row->$dx2);
+                    array_push($line3,$row->$dx3);
+                    array_push($line4,$row->$dx4);
+                    array_push($line5,$row->$dx5);
+                    array_push($axis,$row->query_date);
+                $stream = [$axis,$line1,$line2,$line3,$line4,$line5];
+            }}
+            
+       
+        return json_encode($stream);
+    }
+
+    public function secondPassStage2(Request $request)
+    { 
+        // ->whereNotNull($data1)
+        $data1 = "dpi_906";
+        $bay1 = "true";
+        $dx1 = $request->skid."_2024";
+        $dx2 = $request->skid."_2023";
+        $dx3 = $request->skid."_2022";
+        $dx4 = $request->skid."_2021";
+        $dx5 = $request->skid."_2020";
+        $target_skid= $request->skid."_2024";
+        $target_db = 'compiler_ro2_stage2_ec';
+        $dex = DB::table($target_db)->select("query_date",$target_skid,$dx1,$dx2,$dx3,$dx4,$dx5)
+            ->whereBetween('query_date', ["2024-01-01 00:00:00","2024-12-31 23:59:00"])
+            ->orderBy('query_date', 'asc')
+            ->get();
+        $bay1 = "true";
+        $line1 = array();
+        $line2 = array();
+        $line3 = array();
+        $line4 = array();
+        $line5 = array();
+        $axis = array();
+        foreach ($dex as $row) {
+           // array_push($x_axis, $init_date);
+                if ($bay1 == 'true') {
+                    array_push($line1,$row->$dx1);
+                    array_push($line2,$row->$dx2);
+                    array_push($line3,$row->$dx3);
+                    array_push($line4,$row->$dx4);
+                    array_push($line5,$row->$dx5);
+                    array_push($axis,$row->query_date);
+                $stream = [$axis,$line1,$line2,$line3,$line4,$line5];
+            }}
+            
+       
+        return json_encode($stream);
+    }
+
+    public function secondPassFeed(Request $request)
+    { 
+        // ->whereNotNull($data1)
+        $data1 = "dpi_906";
+        $bay1 = "true";
+        $dx1 = $request->skid."_2024";
+        $dx2 = $request->skid."_2023";
+        $dx3 = $request->skid."_2022";
+        $dx4 = $request->skid."_2021";
+        $dx5 = $request->skid."_2020";
+        $target_skid= $request->skid."_2024";
+        $target_db = 'compiler_ro2_feed_ec';
+        $dex = DB::table($target_db)->select("query_date",$target_skid,$dx1,$dx2,$dx3,$dx4,$dx5)
+            ->whereBetween('query_date', ["2024-01-01 00:00:00","2024-12-31 23:59:00"])
+            ->orderBy('query_date', 'asc')
+            ->get();
+        $bay1 = "true";
+        $line1 = array();
+        $line2 = array();
+        $line3 = array();
+        $line4 = array();
+        $line5 = array();
+        $axis = array();
+        foreach ($dex as $row) {
+           // array_push($x_axis, $init_date);
+                if ($bay1 == 'true') {
+                    array_push($line1,$row->$dx1);
+                    array_push($line2,$row->$dx2);
+                    array_push($line3,$row->$dx3);
+                    array_push($line4,$row->$dx4);
+                    array_push($line5,$row->$dx5);
+                    array_push($axis,$row->query_date);
+                $stream = [$axis,$line1,$line2,$line3,$line4,$line5];
+            }}
+            
+       
+        return json_encode($stream);
+    }
 
     public function ro1CIP()
     {

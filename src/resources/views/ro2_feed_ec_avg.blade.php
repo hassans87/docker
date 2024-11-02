@@ -19,12 +19,9 @@
     <script type="text/javascript" src="{{ asset('js/highcharts11/modules/exporting.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/highcharts11/modules/offline-exporting.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/highcharts11/modules/accessibility.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/highcharts11/modules/annotations.js') }}"></script>
-
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript" src="{{ asset('js/com.js') }}"></script>
-    <title>RO First Pass Data</title>
+    <title>RO Second Pass Feed EC Data</title>
 </head>
 
 <body>
@@ -618,34 +615,11 @@
                                         style="font-size: 14px;"> 🏷️ </span> Skid</div>
                                 <select class="query form-control form-control-sm form-select" id="skidx"
                                     style="background-color:#dff9fb;">
-                                    <option value="a" >41-A</option>
-                                    <option value="b" >41-B</option>
-                                    <option value="c" >41-C</option>
-                                    <option value="d" >41-D</option>
-                                    <option value="e" >41-E</option>
-                                    <option value="f" >41-F</option>
-                                    <option value="g" >41-G</option>
-                                    <option value="h" >41-H</option>
-                                    <option value="i" >41-I</option>
-                                    <option value="j" >41-J</option>
-                                    <option value="k" >41-K</option>
-                                </select>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="col-auto" style="margin-right:3px;">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-text badge-light3d mnbtn" id="inputGroup-sizing-sm"><span
-                                        style="font-size: 14px;"> 🎛️ </span> Process Value</div>
-                                <select class="query form-control form-control-sm form-select" id="process_value"
-                                    style="background-color:#dff9fb;">
-                                    <option value="dpi_906" >DPI</option>
-                                    <option value="rear_ec" >Rear EC</option>
-                            
-                                    
-                                    
-                                   
+                                    <option value="a" >43-A</option>
+                                    <option value="b" >43-B</option>
+                                    <option value="c" >43-C</option>
+                                    <option value="d" >43-D</option>
+                                    <option value="e" >43-E</option>
                                 </select>
                             </div>
                         </div>
@@ -663,7 +637,7 @@
             </div>
         </div>
     </nav>
-    <script type="text/javascript" src="{{ asset('js/stream/ro1_comp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/stream/ro2_ec_feed_lab.js') }}"></script>
 
 </body>
 

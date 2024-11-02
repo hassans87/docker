@@ -103,6 +103,7 @@
                   <option value="daf_inlet_tot_flow"> DAF Inlet Total Flow &nbsp;</option>
                   <option value="daf_cal_tot_flow"> DAF Inlet Flow(calc) &nbsp;</option>
                   <option value="ferric_flow_tot"> Ferric Flow  &nbsp;</option>
+                  <option value="ferric_sp_auto">FeCl3 Dosing Rate  &nbsp;</option> 
                   <option value="daf_inlet_ec"> DAF Inlet EC   &nbsp;</option>
                   <option value="daf_inlet_orp"> DAF Inlet ORP  &nbsp;</option>
                   <option value="daf_inlet_turbidity"> DAF Inlet Turbidity   &nbsp;</option>

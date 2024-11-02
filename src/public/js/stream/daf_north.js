@@ -617,7 +617,15 @@ working_daf:{
         arrFlr:1,
         valFixTo:0,
         sum:false
-        }
+        },
+        ferric_sp_auto:{
+        unit:" PPM",
+        name:"FeCl3 Dosing Rate",
+        yAxis:8,
+        arrFlr:1,
+        valFixTo:0,
+        sum:false
+        } 
 
 }
 
@@ -690,7 +698,7 @@ var stack11=["north_chlorine","south_cl2"];
 var stack12=["daf_inlet_ec"];
 var stack13=["daf_inlet_ph","daf_flr_ph"];
 var stack14=["sludge_pit_leve"];
-
+var stack15=["ferric_sp_auto"];
 var mainYaxis=(plotParam.yAxis || s1Param.isY && (stack0.includes(s1Param.ufData))||s2Param.isY && (stack0.includes(s2Param.ufData))||s3Param.isY && (stack0.includes(s3Param.ufData))||s4Param.isY && (stack0.includes(s4Param.ufData))||s5Param.isY && (stack0.includes(s5Param.ufData))||s6Param.isY && (stack0.includes(s6Param.ufData))||s7Param.isY && (stack0.includes(s7Param.ufData)))? true: false;
      var axis_Y1=(s1Param.isY && (stack1.includes(s1Param.ufData))||s2Param.isY && (stack1.includes(s2Param.ufData))||s3Param.isY && (stack1.includes(s3Param.ufData))||s4Param.isY && (stack1.includes(s4Param.ufData))||s5Param.isY && (stack1.includes(s5Param.ufData))||s6Param.isY && (stack1.includes(s6Param.ufData))||s7Param.isY && (stack1.includes(s7Param.ufData)))? true: false;
       var axis_Y2=(s1Param.isY && (stack2.includes(s1Param.ufData))||s2Param.isY && (stack2.includes(s2Param.ufData))||s3Param.isY && (stack2.includes(s3Param.ufData))||s4Param.isY && (stack2.includes(s4Param.ufData))||s5Param.isY && (stack2.includes(s5Param.ufData))||s6Param.isY && (stack2.includes(s6Param.ufData))||s7Param.isY && (stack2.includes(s7Param.ufData)))? true: false; 

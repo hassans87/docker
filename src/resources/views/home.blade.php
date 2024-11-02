@@ -167,8 +167,8 @@
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; RO2 Normalization</button></a>
          </td>
          <td>
-          <a  href="#"  style="text-decoration: none;" class="menu not_ready">
-            <button class="btn text-light btn-outline-dark menu"> 🩺&nbsp; Pumps vibration</button></a>
+          <a   href="{{ url('/DataCleansing') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn text-light btn-outline-dark menu">  🧹 &nbsp; Data Cleansing</button></a>
         </td>
          <td> </td>
          <td> </td>
@@ -179,7 +179,7 @@
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp;Brine Reject</button></a>  
         </td>
         <td><a   href="{{ url('/normscomparison') }}"  style="text-decoration: none;" class="menu">
-          <button class="btn text-light btn-outline-dark menu"> 🚦 &nbsp; RO1 Data Pipeline </button></a>   </td>
+          <button class="btn text-light btn-outline-dark menu"> 🚦 &nbsp; RO1 EC Compiled </button></a>   </td>
         <td> </td>
         <td> </td>
        </tr>
@@ -187,8 +187,8 @@
         <a   href="{{ url('/PostCO2') }}"  style="text-decoration: none;" class="menu">
           <button class="btn text-light btn-outline-dark menu"> 🖥️ &nbsp;Post CO2</button></a>     
        </td>
-       <td class="bdrx"><a   href="{{ url('/DataCleansing') }}"  style="text-decoration: none;" class="menu">
-        <button class="btn text-light btn-outline-dark menu">  🧹 &nbsp; Data Cleansing</button></a> </td>
+       <td class="bdrx"><a   href="{{ url('/ro_firstpass_dpi') }}"  style="text-decoration: none;" class="menu">
+        <button class="btn text-light btn-outline-dark menu"> 🚦 &nbsp; RO1 DP Compiled </button></a> </td>
        <td> </td>
        <td> </td>
       </tr>
@@ -196,7 +196,10 @@
         <a   href="{{ url('/PostLime') }}"  style="text-decoration: none;" class="menu">
           <button class="btn text-light btn-outline-dark menu"> 🖥️ &nbsp;Post Lime</button></a>
        </td>
-       <td> </td>
+       <td>
+        <a   href="{{ url('/ro2mix') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn text-light btn-outline-dark menu"> 🚦 &nbsp; RO2 Mix EC Compiled </button></a>
+      </td>
        <td> </td>
        <td> </td>
       </tr>
@@ -205,6 +208,8 @@
           <button class="btn text-light btn-outline-dark menu"> 🖥️ &nbsp;Post Cl2</button></a>
       </td>
       <td class="menu" >
+        <a   href="{{ url('/ro2stage2') }}"  style="text-decoration: none;" class="menu">
+          <button class="btn text-light btn-outline-dark menu"> 🚦 &nbsp; RO2 Stage2 EC Compiled </button></a>
         </td>
       <td> </td>
       <td> </td>
@@ -212,7 +217,10 @@
     <tr><td class="bdrx">
       
      </td>
-     <td> </td>
+     <td class="menu" >
+      <a   href="{{ url('/ro2feedec') }}"  style="text-decoration: none;" class="menu">
+        <button class="btn text-light btn-outline-dark menu"> 🚦 &nbsp; RO2 Feed EC Compiled </button></a>
+      </td>
      <td> </td>
      <td> </td>
     </tr>

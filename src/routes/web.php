@@ -60,9 +60,14 @@ Route::get('/RO2Conductvity', function () {return view('ro2dcs_ec');})->middlewa
 Route::get('/RO1DPI', function () {return view('ro1dcs_dpi');})->middleware('auth');
 Route::get('/BlendingTank', function () {return view('blending_tnk');})->middleware('auth');
 Route::get('/onlineDBNPA', function () {return view('dbnpa_onlinetest');})->middleware('auth');
-Route::get('/normscomparison', function () {return view('ro_firstpass_comp');})->middleware('auth');
 Route::get('/DataCleansing', function () {return view('db_data_cleansing');})->middleware('auth');
 Route::get('/DataCleansing/RO1DataCleansing', function () {return view('ro1_data_cleansing');})->middleware('auth');
+
+Route::get('/normscomparison', function () {return view('ro_firstpass_comp');})->middleware('auth');
+Route::get('/ro_firstpass_dpi', function () {return view('ro_firstpass_dpi');})->middleware('auth');
+Route::get('/ro2mix', function () {return view('ro2_ec_mix');})->middleware('auth');
+Route::get('/ro2stage2', function () {return view('ro2_ec_stage2');})->middleware('auth');
+Route::get('/ro2feedec', function () {return view('ro2_feed_ec_avg');})->middleware('auth');
 // data export GET requests
 Route::GET('/ro1dataExport', [RO1Normalisation::class, 'ro1DataExpView'])->middleware('auth');
 
@@ -112,7 +117,7 @@ ROUTE::GET('/mdrfReview/{id}',[Defects::class, 'ReviewMDRFLoading'])->middleware
 //Route::post('forgot-password', [PasswardController::class, 'resetPassword'])->name('forgot-password');
 //Route::put('reset-password', [PasswardController::class, 'updatePassword'])->name('reset-password');
 
-//Post Requests for data
+//Post Requests for data under process
 Route::POST('/checkpoint',  [UserController::class, 'checkme'])->name('login.check');
 
 Route::POST('/swintake', [SWIntake::class, 'seawaterIntake'])->name('seawater.intake')->middleware('auth');
@@ -123,6 +128,13 @@ Route::POST('/uf_north', [UltraFiltration::class, 'ufNorthSkids'])->name('ufnort
 Route::POST('/uf_south', [UltraFiltration::class, 'ufSouthSkids'])->name('ufsouth')->middleware('auth');
 Route::POST('/ROfeed', [ROFeedQuality::class, 'roFeedQc'])->name('ro.feed')->middleware('auth');
 Route::POST('/ro1norm', [RO1Normalisation::class, 'firstPassNorms'])->name('ro1.norms')->middleware('auth');
+
+//compiled data requests
+Route::POST('/ro_firstpass_dpi', [RO1Normalisation::class, 'firstPassDPI'])->name('ro1.norms')->middleware('auth');
+Route::POST('/ro2mix', [RO1Normalisation::class, 'secondPassComp'])->name('ro2.com')->middleware('auth');
+Route::POST('/ro2stage2', [RO1Normalisation::class, 'secondPassStage2'])->name('ro2.st2')->middleware('auth'); 
+Route::POST('/ro2feedec', [RO1Normalisation::class, 'secondPassFeed'])->name('ro2.feed')->middleware('auth'); 
+
 Route::POST('/normscomparison', [RO1Normalisation::class, 'firstPassComp'])->name('ro1.com')->middleware('auth');
 Route::POST('/ro2norm', [RO2Normalisation::class, 'secondPassNorms'])->name('ro2.norms')->middleware('auth');
 Route::POST('/ro1_cip', [RO1CIP::class, 'cipRoList'])->name('cip.list')->middleware('auth');

@@ -21,7 +21,7 @@
 <body class="">
     <div id="show"> </div>
     <br>
-    
+
 <style>
 body{
     width:100vw;
@@ -105,7 +105,14 @@ body{
                             </div>
                         </div>
                     </li>
-                    
+                           <li class="nav-item">
+                        <div class="col-auto" style="margin-right:3px;">
+                            <div class="input-group input-group-sm">
+                                <button id="clearnow" class="btn btn-sm badge-light3d">
+                                    <span style="font-size: 14px;">🧹  CLR</span></button>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

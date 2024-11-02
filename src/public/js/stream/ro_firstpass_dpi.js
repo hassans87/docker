@@ -101,6 +101,7 @@ let dataSeries2 = dataStream[2];
 let dataSeries3 = dataStream[3]; 
 let dataSeries4 = dataStream[4]; 
 let dataSeries5 = dataStream[5]; 
+let dataSeries6 = dataStream[6];
 let date22 = [];
 let datex = [];      
 for (var i in date) {      
@@ -130,7 +131,7 @@ dataSeries2 = dataSeries2.map(parseFloat);
 dataSeries3 = dataSeries3.map(parseFloat);
 dataSeries4 = dataSeries4.map(parseFloat);
 dataSeries5 = dataSeries5.map(parseFloat);
-
+dataSeries6 = dataSeries6.map(parseFloat);
 function seriesLook(dv,series){
     if(dv){
     $("#pen"+series).show(900);
@@ -263,7 +264,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:30, 
-        text: "RO Skid 41-"+plotParam.roSkid.toUpperCase()+" Four Years Conductivity Map",
+        text: "RO Skid 41-"+plotParam.roSkid.toUpperCase()+" DP",
         style: {color: plotParam.plotExpTitleColor,
         font: '"18px" "Calibri", Verdana, sans-serif',
         fontWeight:'bold'
@@ -275,7 +276,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         //url:"http://exportserver.data-tensor.com/:3300",
         //url: "http://localhost:7805",
         fallbackToExportServer: false,
-        filename:'RO1 '+plotParam.roSkid.toUpperCase(),
+        filename:'First_Pass 41-'+plotParam.roSkid.toUpperCase(),
         enabled: true,
         buttons: {
             contextButton: {
@@ -423,9 +424,9 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                             },
                             //labels: false,
                         },                 
-                        { //  [1]    bar for DP 0.9 - 3.9
-                            min:500, 
-                            max:5000,     
+                        { //  [1]    bar for DP 0.9 - 3.9  '°C'
+                            min:1.3, 
+                            max:3.5,     
                              visible:true, 
                              tickWidth: 1, 
                              tickAmount: 11,  
@@ -458,7 +459,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                    offset: 15,
                                    rotation: 0,
                                    y: -10,
-                                  text:"uS/cm",
+                                  text:"Bar",
                                    style: {
                                      color:"red",
                                        fontWeight:'bold',
@@ -466,26 +467,55 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                },
                                //labels: false,
                                //opposite: true
-                           },     
+                           },    
+                           { //  [1]    bar for DP 0.9 - 3.9  '°C'
+                            min:15, 
+                            max:38,     
+                             visible:false, 
+                             tickWidth: 1, 
+                             tickAmount: 11,  
+                            gridLineWidth: 0,
+                            opposite:true,
+                           crosshair: {color:'#ffffff',
+                                           dashStyle: 'Dot',
+                                           width:1.5,
+                                         label: {
+                                           enabled: true,
+                                           backgroundColor: '#ffffff',
+                                            
+                                         }
+                                       },
+                             labels: {
+                                   enabled: true,
+                                   format: '{value}',
+                                  // formatter: function() {
+                                   //    return Math.ceil(this.value);
+                                  //   },
+                                  style:{
+                                   color:"red",//confYaxis.y1RangeCol,
+                                   fontWeight:'bold',
+                                   backgroundColor: '#000000',
+                               }
+                               },
+                               title: {
+                                   useHTML: true,
+                                   align: 'high',
+                                   offset: 15,
+                                   rotation: 0,
+                                   y: -10,
+                                  text:"°C",
+                                   style: {
+                                     color:"red",
+                                       fontWeight:'bold',
+                                   }
+                               },
+                               //labels: false,
+                               //opposite: true
+                           },      
                         ],   
 
-                        annotations: [{
-                            labelOptions: {
-                                verticalAlign: 'top',
-                                y: 15
-                            },
-                            labels: [{
-                                point: {
-                                   //xAxis: 1,
-                                    yAxis: 1,
-                                    x:[Date.UTC(2024,1,10)],
-                                    y: 1500
-                                },
-                                useHTML: true,
-                                text: '<p style="font-size:8px; color: red;">Membrane replaced 2022 </p>',
-                            }]
-                        }]
-                        ,           
+    
+                                 
 
 
 
@@ -495,8 +525,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                         {  
                                                               name:"2024",
                                                               type:"spline",
-                                                              visible:true,
-                                                              showInLegend:true,
+                                                              visible:false,
+                                                              showInLegend:false,
                                                               data: dataSeries1,                                          
                                                              lineWidth:1.5,
                                                               yAxis:1,
@@ -533,8 +563,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                           {  
                                                             name:"2023",
                                                             type:"spline",
-                                                            visible:true,
-                                                            showInLegend:true,
+                                                            visible:false,
+                                                            showInLegend:false,
                                                             data: dataSeries2,                                          
                                                            lineWidth:1.5,
                                                             yAxis:1,
@@ -661,7 +691,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               useHTML: true,                                           
                                                              valueSuffix:"bar",
                                                             },
-                                                            color:"#f1c40f",
+                                                            color:"#a55eea",
                                                                   marker: {
                                                                   symbol: "circle",
                                                                   radius: 2,
@@ -678,7 +708,45 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                                         textShadow: false,
                                                                         textOutline:false
                                                                     },
-                                                                 color:"#f1c40f",                  
+                                                                 color:"#a55eea",                  
+                                                                },
+                                                        fillOpacity: 0.17,
+                                                        },
+                                                        {  
+                                                            name:"Feed Water Temp. ref(2023)",
+                                                            type:"spline",
+                                                            visible:false,
+                                                            showInLegend:false,
+                                                            data: dataSeries6,                                          
+                                                           lineWidth:1,
+                                                            yAxis:2,
+                                                           //className:s1Param.chartType,
+                                                            tooltip: {
+                                                              crosshairs: [true, true],
+                                                              headerFormat: '{point.key}<br>',
+                                                              pointFormat: '<span style="color: {series.color};">\u25CF</span> <small>{series.name}: </small><b>{point.y}</b><br>',
+                                                              shared: true,
+                                                              useHTML: true,                                           
+                                                             valueSuffix:"bar",
+                                                            },
+                                                            color:"#c23616",
+                                                                  marker: {
+                                                                  symbol: "circle",
+                                                                  radius: 2,
+                                                                  states: {
+                                                                            hover: {
+                                                                                enabled: false
+                                                                            }
+                                                                        }
+                                                                       },
+                                                                 dataLabels: {
+                                                                 enabled:false,
+                                                                 style: {
+                                                                        fontWeight: 'normal',
+                                                                        textShadow: false,
+                                                                        textOutline:false
+                                                                    },
+                                                                 color:"#c23616",                  
                                                                 },
                                                         fillOpacity: 0.17,
                                                         },

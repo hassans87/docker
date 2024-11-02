@@ -1921,9 +1921,9 @@ function queryStream() {
                                 //opposite: true
                             },
                             {
-                                //[11] FRC
+                                //[11] FRC Chlorine
                                 min: 0.0,
-                                max: 0.9,
+                                max: 0.7,
                                 tickAmount: 11,
                                 visible: axis_Y11,
                                 tickWidth: 1,

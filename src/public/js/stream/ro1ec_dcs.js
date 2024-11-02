@@ -1069,7 +1069,14 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                     //labels: false,
                                     //opposite: true
                                 }
-                        ],   
+                        ], 
+                        
+                       
+
+
+
+
+
                         series: [  
                     
                                                         {  

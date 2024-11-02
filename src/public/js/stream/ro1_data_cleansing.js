@@ -3,7 +3,12 @@ setInterval(function () {$("head title").html($("head title").html().substring(1
 $('.query_fire').click(function(){
     queryStream();})
 
-
+$('#clearnow').click(function(){
+    clearScreen();})
+    
+function clearScreen(){
+    $("#show").html("");
+}
     function queryStream(){
         Notiflix.Block.Pulse('body', 'Please Wait, Compiling'); 
         let plotParam = {

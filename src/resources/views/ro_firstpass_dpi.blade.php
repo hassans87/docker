@@ -24,7 +24,7 @@
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript" src="{{ asset('js/com.js') }}"></script>
-    <title>RO First Pass Data</title>
+    <title>RO First Pass DPI</title>
 </head>
 
 <body>
@@ -663,7 +663,7 @@
             </div>
         </div>
     </nav>
-    <script type="text/javascript" src="{{ asset('js/stream/ro1_comp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/stream/ro_firstpass_dpi.js') }}"></script>
 
 </body>
 

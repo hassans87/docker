@@ -117,7 +117,7 @@ let series_date_conts  = day_x +' '+siri_month+' '+timex;
 let date_xseries = day_x +'-'+siri_month;
 date22.push(date_xseries);
 datex.push(series_date_conts);} 
-//console.log(datex);
+
 let tickcal = 0;
 let date_length = date22.length;
 let core_factor = date_length/15;
@@ -204,7 +204,7 @@ const st = {
         seriesLook(s1Param.series,1);
 
         let plotParam = {
-            bayline: "41",
+            bayline: "43",
             roSkid: $('#skidx').val(), 
             chartBackground:$('#pen_main').val(),
             plotWidth:screen.availWidth * 0.95,
@@ -263,7 +263,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         align: 'center',
         x:35,
         y:30, 
-        text: "RO Skid 41-"+plotParam.roSkid.toUpperCase()+" Four Years Conductivity Map",
+        text: "RO Second Pass Skids Feed average EC Map",
         style: {color: plotParam.plotExpTitleColor,
         font: '"18px" "Calibri", Verdana, sans-serif',
         fontWeight:'bold'
@@ -275,7 +275,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
         //url:"http://exportserver.data-tensor.com/:3300",
         //url: "http://localhost:7805",
         fallbackToExportServer: false,
-        filename:'RO1 '+plotParam.roSkid.toUpperCase(),
+        filename:'RO 43Z',
         enabled: true,
         buttons: {
             contextButton: {
@@ -425,7 +425,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                         },                 
                         { //  [1]    bar for DP 0.9 - 3.9
                             min:500, 
-                            max:5000,     
+                            max:3100,     
                              visible:true, 
                              tickWidth: 1, 
                              tickAmount: 11,  
@@ -468,28 +468,6 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                //opposite: true
                            },     
                         ],   
-
-                        annotations: [{
-                            labelOptions: {
-                                verticalAlign: 'top',
-                                y: 15
-                            },
-                            labels: [{
-                                point: {
-                                   //xAxis: 1,
-                                    yAxis: 1,
-                                    x:[Date.UTC(2024,1,10)],
-                                    y: 1500
-                                },
-                                useHTML: true,
-                                text: '<p style="font-size:8px; color: red;">Membrane replaced 2022 </p>',
-                            }]
-                        }]
-                        ,           
-
-
-
-
                         series: [  
                     
                                                         {  
@@ -647,8 +625,8 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                         {  
                                                             name:"2020",
                                                             type:"spline",
-                                                            visible:false,
-                                                            showInLegend:false,
+                                                            visible:true,
+                                                            showInLegend:true,
                                                             data: dataSeries5,                                          
                                                            lineWidth:1.5,
                                                             yAxis:1,
@@ -661,7 +639,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                               useHTML: true,                                           
                                                              valueSuffix:"bar",
                                                             },
-                                                            color:"#f1c40f",
+                                                            color:"#a55eea",
                                                                   marker: {
                                                                   symbol: "circle",
                                                                   radius: 2,
@@ -678,7 +656,7 @@ Highcharts.seriesTypes.scatter.prototype.noSharedTooltip = false;
                                                                         textShadow: false,
                                                                         textOutline:false
                                                                     },
-                                                                 color:"#f1c40f",                  
+                                                                 color:"#a55eea",                  
                                                                 },
                                                         fillOpacity: 0.17,
                                                         },
