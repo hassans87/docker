@@ -167,8 +167,9 @@
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; RO2 Normalization</button></a>
          </td>
          <td>
-          <a   href="{{ url('/DataCleansing') }}"  style="text-decoration: none;" class="menu">
-            <button class="btn text-light btn-outline-dark menu">  🧹 &nbsp; Data Cleansing</button></a>
+          
+          
+          
         </td>
          <td> </td>
          <td> </td>
