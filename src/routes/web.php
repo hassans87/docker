@@ -13,6 +13,7 @@ use App\Http\Controllers\PostTreatment;
 use App\Http\Controllers\ROFeedQuality;
 use App\Http\Controllers\OperationDCS;
 use App\Http\Controllers\Defects;
+use App\Http\Controllers\Stockx;
 /* 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,7 @@ use App\Http\Controllers\Defects;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 Route::get('/', function () {return view('home');});
-
+~
 */
 
 //GET request handler
@@ -31,6 +32,9 @@ Route::get('/', [UserController::class, 'login']);
 Route::get('/home', function () {return view('home');})->name('home')->middleware('auth');
 
 
+//Tasi Stocks controller
+Route::get('/stock_tasi', function () {return view('ksa_tasi_stocks');})->middleware('auth');
+Route::POST('/stock_tasi',  [Stockx::class, 'tasi_Stocks_KSA'])->middleware('auth');
 
 
 // data analytics get request
@@ -119,6 +123,10 @@ ROUTE::GET('/mdrfReview/{id}',[Defects::class, 'ReviewMDRFLoading'])->middleware
 
 //Post Requests for data under process
 Route::POST('/checkpoint',  [UserController::class, 'checkme'])->name('login.check');
+
+
+
+
 
 Route::POST('/swintake', [SWIntake::class, 'seawaterIntake'])->name('seawater.intake')->middleware('auth');
 Route::POST('/dafnorth', [DAFNorthSouth::class, 'dafNorthLine'])->name('dafnorth')->middleware('auth');

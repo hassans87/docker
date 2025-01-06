@@ -63,18 +63,16 @@
             }
                 </style>
               <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="a">N1</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="b">N2</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="c">N3</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="d">DPI</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="e">Flow</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="f">Feed Pressure</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="g">Conductivity</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="h">Recovery - Feed EC</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Pressure - Temperature</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Feed Flow - DPI</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Recovery - Salt Passage</button>
-                <button type="button" class="short_cut btn btn-sm badge-light3d" id="i">Flux</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="norm_a">Norm</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="dpix">DPI</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="flow_q">Flow</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="feed_pressure">Pressure</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="ec_com">Conductivity</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="rec_feedEC">Recovery - Feed EC</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="press_temp_dp">Pressure - Temperature</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="feed_flow_dpi">Feed Flow - DPI</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="rec_saltPassage">Salt Passage</button>
+                <button type="button" class="short_cut btn btn-sm badge-light3d" id="overFlush">Overflush</button>
               </div>
 
 

@@ -1,4 +1,5 @@
-queryStream();
+//queryStream();
+scfDpiQuery();
 //$('.tensor-flow,.rednder').change(function(){queryStream();})
 setInterval(function () {$("head title").html($("head title").html().substring(1) + $("head title").html().substring(0,1));}, 400);
 $('.query_fire').click(function(){queryStream();})
@@ -6,27 +7,44 @@ $('.query').change(function(){
     //    queryStream();
 Notiflix.Notify.Info('Changes detected, Press Query Button to apply'); 
 })
+
 //buttons query selector
-$("#scf_pres_btn").click(function(){scfPresQuery();});
-$("#scf_dpi_btn").click(function () {scfDpiQuery();});
-function scfPresQuery(){ 
+$("#scf_pres_btn").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#scf_pres_btn").removeClass("badge-light3d").addClass("btn-danger");
+scfPressureQuery();});
+
+$("#scf_dpi_btn").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#scf_dpi_btn").removeClass("badge-light3d").addClass("btn-danger");
+scfDpiQuery();});
+
+$("#pumps_flow").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#pumps_flow").removeClass("badge-light3d").addClass("btn-danger");
+scfFlowQuery();});
+
+function scfFlowQuery(){ 
 $("#line1").prop( "checked", true );
 $("#line2").prop( "checked", true );
 $("#line3").prop( "checked", true );
 $("#line4").prop( "checked", true );
 $("#line5").prop( "checked", true );
 $("#line6").prop( "checked", true );
-$("#line7").prop( "checked", false );
-$('#ufdata1 option[value=p1_pt]').prop('selected', true);
-$('#ufdata2 option[value=p2_pt]').prop('selected', true);
-$('#ufdata3 option[value=p3_pt]').prop('selected', true);
-$('#ufdata4 option[value=p4_pt]').prop('selected', true);
-$('#ufdata5 option[value=p5_pt]').prop('selected', true);
-$('#ufdata6 option[value=p6_pt]').prop('selected', true);
-$('#chr_title').attr('value', 'UF Feed Pumps Pressure');
+$("#line7").prop( "checked", true );
+$('#ufdata1 option[value=p1_flow]').prop('selected', true);
+$('#ufdata2 option[value=p2_flow]').prop('selected', true);
+$('#ufdata3 option[value=p3_flow]').prop('selected', true);
+$('#ufdata4 option[value=p4_flow]').prop('selected', true);
+$('#ufdata5 option[value=p5_flow]').prop('selected', true);
+$('#ufdata6 option[value=p6_flow]').prop('selected', true);
+$('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chr_title').attr('value', 'UF Feed Pumps Calculated Flow');
 queryStream();
 }
 function scfDpiQuery(){ 
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#scf_dpi_btn").removeClass("badge-light3d").addClass("btn-danger");
 $("#line1").prop( "checked", true );
 $("#line2").prop( "checked", true );
 $("#line3").prop( "checked", true );
@@ -43,7 +61,24 @@ $('#ufdata6 option[value=p6_dpi]').prop('selected', true);
 $('#chr_title').attr('value', 'SCF DPI');
 queryStream();
 }
-
+// SCF pumps discharge pressure button function
+function scfPressureQuery(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", true );
+    $("#line5").prop( "checked", true );
+    $("#line6").prop( "checked", true );
+    $("#line7").prop( "checked", false );
+    $('#ufdata1 option[value=p1_pt]').prop('selected', true);
+    $('#ufdata2 option[value=p2_pt]').prop('selected', true);
+    $('#ufdata3 option[value=p3_pt]').prop('selected', true);
+    $('#ufdata4 option[value=p4_pt]').prop('selected', true);
+    $('#ufdata5 option[value=p5_pt]').prop('selected', true);
+    $('#ufdata6 option[value=p6_pt]').prop('selected', true);
+    $('#chr_title').attr('value', 'Pumps Discharge Pressure');
+    queryStream();
+    }
 // constructor function 
 function Stream(target){
     this.series = $('#line'+target).is(':checked');
@@ -295,7 +330,7 @@ p6_pt:{
         },
 p1_flow:{
         unit:" m<sup>3</sup>/h",
-        name:"22A Flow",
+        name:"Pump-1",
         yAxis:5,
         arrFlr:1,
         valFixTo:0,
@@ -304,7 +339,7 @@ p1_flow:{
 
 p2_flow:{
         unit:" m<sup>3</sup>/h",
-        name:"22B Flow",
+        name:"Pump-2",
         yAxis:5,
         arrFlr:1,
         valFixTo:0,
@@ -313,7 +348,7 @@ p2_flow:{
 
 p3_flow:{
         unit:" m<sup>3</sup>/h",
-        name:"22C Flow",
+        name:"Pump-3",
         yAxis:5,
         arrFlr:1,
         valFixTo:0,
@@ -322,7 +357,7 @@ p3_flow:{
  
  p4_flow:{
         unit:" m<sup>3</sup>/h",
-        name:"22D Flow",
+        name:"Pump-4",
         yAxis:5,
         arrFlr:1,
         valFixTo:0,
@@ -331,7 +366,7 @@ p3_flow:{
  
  p5_flow:{
         unit:" m<sup>3</sup>/h",
-        name:"22E Flow",
+        name:"Pump-5",
         yAxis:5,
         arrFlr:1,
         valFixTo:0,
@@ -340,7 +375,7 @@ p3_flow:{
  
  p6_flow:{
         unit:" m<sup>3</sup>/h",
-        name:"22F Flow",
+        name:"Pump-6",
         yAxis:5,
         arrFlr:1,
         valFixTo:0,

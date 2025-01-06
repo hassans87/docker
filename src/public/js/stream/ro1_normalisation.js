@@ -14,7 +14,273 @@ function Stream(target){
     this.ufData = $('#ufdata'+target).val();
 
 }
+//buttons query selector
+$("#norm_a").click(function(){
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#norm_a").removeClass("badge-light3d").addClass("btn-danger");
+normTemp();});
 
+$("#dpix").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#dpix").removeClass("badge-light3d").addClass("btn-danger");
+dpiMap();});
+
+$("#flow_q").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#flow_q").removeClass("badge-light3d").addClass("btn-danger");
+flowMap();});
+
+$("#feed_pressure").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#feed_pressure").removeClass("badge-light3d").addClass("btn-danger");
+pressureMap();});
+
+$("#ec_com").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#ec_com").removeClass("badge-light3d").addClass("btn-danger");
+ecMap();});
+
+
+$("#rec_feedEC").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#rec_feedEC").removeClass("badge-light3d").addClass("btn-danger");
+recFeedEC();});
+
+
+$("#press_temp_dp").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#press_temp_dp").removeClass("badge-light3d").addClass("btn-danger");
+feedPressureTemp();});
+
+
+$("#feed_flow_dpi").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#feed_flow_dpi").removeClass("badge-light3d").addClass("btn-danger");
+feedFlowDpi();});
+
+$("#rec_saltPassage").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#rec_saltPassage").removeClass("badge-light3d").addClass("btn-danger");
+saltPassage();});
+
+
+$("#overFlush").click(function () {
+$(".short_cut").removeClass("btn-danger").addClass("badge-light3d");
+$("#overFlush").removeClass("badge-light3d").addClass("btn-danger");
+overFlush();});
+
+function normTemp(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $('#ufdata1 option[value=dpi_906]').prop('selected', true);
+    $('#ufdata2 option[value=norm_per_salt_pas]').prop('selected', true);
+    $('#ufdata3 option[value=cip]').prop('selected', true);
+  //  $('#ufdata4 option[value=p4_flow]').prop('selected', true);
+  //  $('#ufdata5 option[value=p5_flow]').prop('selected', true);
+  //  $('#ufdata6 option[value=p6_flow]').prop('selected', true);
+   // $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+   $('#chart_type1 option[value=areaspline]').prop('selected', true);
+    //$('#chart_type1').attr('value', '');
+    queryStream();
+    }
+
+function dpiMap(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", false );
+$("#line3").prop( "checked", false );
+$("#line4").prop( "checked", false );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=dpi_906]').prop('selected', true);
+$('#ufdata2 option[value=norm_per_salt_pas]').prop('selected', true);
+$('#ufdata3 option[value=cip]').prop('selected', true);
+//  $('#ufdata4 option[value=p4_flow]').prop('selected', true);
+//  $('#ufdata5 option[value=p5_flow]').prop('selected', true);
+//  $('#ufdata6 option[value=p6_flow]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=areaspline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+
+
+function flowMap(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=feed_flow]').prop('selected', true);
+$('#ufdata2 option[value=hp_pump_ft101]').prop('selected', true);
+$('#ufdata3 option[value=eri_out_ft203]').prop('selected', true);
+$('#ufdata4 option[value=eri_inlet_ft207]').prop('selected', true);
+$('#ufdata5 option[value=conc_flow_cal]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+
+function pressureMap(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=feed_pres_pt108]').prop('selected', true);
+$('#ufdata2 option[value=conc_pres_pt307]').prop('selected', true);
+$('#ufdata3 option[value=per_pres_pt312]').prop('selected', true);
+$('#ufdata4 option[value=net_driving_press]').prop('selected', true);
+$('#ufdata5 option[value=feed_brine_ro_press]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+function ecMap(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=feed_cond_at211]').prop('selected', true);
+$('#ufdata2 option[value=eri_hp_out_cond_at306]').prop('selected', true);
+$('#ufdata3 option[value=eri_hp_in_con_at206]').prop('selected', true);
+$('#ufdata4 option[value=rear_cond_at301]').prop('selected', true);
+$('#ufdata5 option[value=front_cond_at303]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+
+function recFeedEC(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#ufdata1 option[value=recovery]').prop('selected', true);
+$('#ufdata2 option[value=feed_cond_at211]').prop('selected', true);
+$('#ufdata3 option[value=rear_cond_at301]').prop('selected', true);
+$('#ufdata4 option[value=front_cond_at303]').prop('selected', true);
+$('#ufdata5 option[value=cond_average]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+
+function feedPressureTemp(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", false );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#pen1').attr('value', '#4834d4');
+$('#pen2').attr('value', '#eb4d4b');
+$('#pen3').attr('value', '#f9ca24');
+$('#ufdata1 option[value=feed_pres_pt108]').prop('selected', true);
+$('#ufdata2 option[value=feed_temp_tit212]').prop('selected', true);
+$('#ufdata3 option[value=dpi_906]').prop('selected', true);
+$('#ufdata4 option[value=front_cond_at303]').prop('selected', true);
+$('#ufdata5 option[value=cond_average]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+
+function feedFlowDpi(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", true );
+$("#line3").prop( "checked", true );
+$("#line4").prop( "checked", true );
+$("#line5").prop( "checked", true );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#pen1').attr('value', '#badc58');
+$('#pen2').attr('value', '#4834d4');
+$('#pen3').attr('value', '#22a6b3');
+$('#pen4').attr('value', '#f9ca24');
+$('#pen5').attr('value', '#eb4d4b');
+$('#ufdata1 option[value=norm_perm_flow]').prop('selected', true);
+$('#ufdata2 option[value=feed_flow]').prop('selected', true);
+$('#ufdata3 option[value=hp_pump_ft101]').prop('selected', true);
+$('#ufdata4 option[value=eri_out_ft203]').prop('selected', true);
+$('#ufdata5 option[value=dpi_906]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=spline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
+
+function saltPassage(){ 
+    $("#line1").prop( "checked", true );
+    $("#line2").prop( "checked", true );
+    $("#line3").prop( "checked", true );
+    $("#line4").prop( "checked", false );
+    $("#line5").prop( "checked", false );
+    $("#line6").prop( "checked", false );
+    $("#line7").prop( "checked", false );
+    $('#pen1').attr('value', '#2ed573');
+    $('#pen2').attr('value', '#eb4d4b');
+    $('#pen3').attr('value', '#D980FA');
+    $('#pen4').attr('value', '#f9ca24');
+   // $('#pen5').attr('value', '#eb4d4b');
+   $("#yaxis_opposite5").prop( "checked", false );
+    $('#ufdata1 option[value=norm_per_salt_pas]').prop('selected', true);
+    $('#ufdata2 option[value=feed_temp_tit212]').prop('selected', true);
+    $('#ufdata3 option[value=cip]').prop('selected', true);
+    $('#ufdata4 option[value=eri_out_ft203]').prop('selected', true);
+    $('#ufdata5 option[value=dpi_906]').prop('selected', true);
+    // $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+    $('#chart_type1 option[value=areaspline]').prop('selected', true);
+    //$('#chart_type1').attr('value', '');
+    queryStream();
+    }
+    
+
+function overFlush(){ 
+$("#line1").prop( "checked", true );
+$("#line2").prop( "checked", false );
+$("#line3").prop( "checked", false );
+$("#line4").prop( "checked", false );
+$("#line5").prop( "checked", false );
+$("#line6").prop( "checked", false );
+$("#line7").prop( "checked", false );
+$('#pen1').attr('value', '#2ed573');
+$('#pen2').attr('value', '#eb4d4b');
+$('#pen3').attr('value', '#D980FA');
+$('#pen4').attr('value', '#f9ca24');
+// $('#pen5').attr('value', '#eb4d4b');
+//$("#yaxis_opposite5").prop( "checked", false );
+$('#ufdata1 option[value=overflush]').prop('selected', true);
+$('#ufdata2 option[value=feed_temp_tit212]').prop('selected', true);
+$('#ufdata3 option[value=cip]').prop('selected', true);
+$('#ufdata4 option[value=eri_out_ft203]').prop('selected', true);
+$('#ufdata5 option[value=dpi_906]').prop('selected', true);
+// $('#ufdata7 option[value=nb_pump_running]').prop('selected', true);
+$('#chart_type1 option[value=areaspline]').prop('selected', true);
+//$('#chart_type1').attr('value', '');
+queryStream();
+}
 function ChartParam(target){
                     this.series = $('#line'+target).is(':checked');
                     this.ufData = $('#ufdata'+target).val();

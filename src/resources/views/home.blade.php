@@ -114,7 +114,12 @@
             <td class="bdrx" id="btn10"><a   href="{{ url('/labFirstPass_x') }}"  style="text-decoration: none;" class="menu not_ready">
               <button class="btn text-light btn-outline-dark menu"> <i class="ancherx fa fa-flask" aria-hidden="true" ></i>&nbsp;RO First Pass</button></a> 
               </td>
-            <td> </td>
+            <td
+              class="bdrx" id="btn10"><a   href="{{ url('/stock_tasi') }}"  style="text-decoration: none;" class="menu">
+                <button class="btn text-light btn-outline-dark menu"> <i class="ancherx fa fa-server" aria-hidden="true" ></i>&nbsp;TASI</button></a> 
+                      
+            
+            </td>
            </tr>
            <tr><td class="bdrx" id="btn11">
             <a   href={{ url('/uf_north') }} style="text-decoration: none;" class="menu">
@@ -167,7 +172,8 @@
             <button class="btn text-light btn-outline-dark menu"> 🖥️&nbsp; RO2 Normalization</button></a>
          </td>
          <td>
-          
+          <a   href="{{ url('/DataCleansing') }}"  style="text-decoration: none;" class="menu">
+            <button class="btn text-light btn-outline-dark menu">  🧹 &nbsp; Data Cleansing</button></a>
           
           
         </td>
